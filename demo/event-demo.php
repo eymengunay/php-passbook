@@ -114,7 +114,7 @@ $passbook->set_image('thumbnail', './img/event/thumbnail.png');
 $passbook->set_image('thumbnail', './img/event/thumbnail@2x.png', true);
 
 // Create a pass
-$pass = $passbook->create('eymen', false);
+$pass = $passbook->create('some_file_name', false);
 
 /* End of file event-demo.php */
 /* Location: ./demo/event-demo.php */
