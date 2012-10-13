@@ -4,6 +4,11 @@
 
 I have created this handy library just out of curiosity while experimenting with the new [Passbook](http://www.apple.com/ios/whats-new/#passbook "Passbook") and even though it can create any kind off pass it still misses [PassKit Web Service](https://developer.apple.com/library/ios/#documentation/PassKit/Reference/PassKit_WebService/WebService.html#//apple_ref/doc/uid/TP40011988 "PassKit Web Service") support. You can start creating your own passes by passing few configurable items and images. Requires P12 & WWDR certificates and a Pass Type ID. See requesting certificates section for more information. 
 
+## Requirements
+* PHP > 5.2
+* [zip](http://php.net/manual/en/book.zip.php)
+* [OpenSSL](http://www.php.net/manual/en/book.openssl.php)
+
 ## Requesting Certificates
 
 ### P12 Certificate & Pass Type ID
@@ -21,3 +26,7 @@ ABC123ABC1.pass.com.your-company.id
 The part starting with pass.com is your teamIdentifier and first 10 characters are passTypeIdentifier
 
 ### WWDR Certificate
+Apple’s World Wide Developer Relations (WWDR) certificate is available from Apple at <http://developer.apple.com/certificationauthority/AppleWWDRCA.cer>. Download and install the certificate so that you can use it to certify builds. The WWDR certificate links your development certificate to Apple, completing the trust chain for your application.
+
+## Examples
+You can see demo folder for example code. You will need to fill in required fields (certificates and ids) in order to generate a pass successfully.
