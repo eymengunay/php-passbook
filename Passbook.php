@@ -4,21 +4,21 @@
  *
  * Copyright (c) 2012 Eymen Gunay
  *
- * Permission is hereby granted, free of charge, to any person obtaining a copy of 
- * this software and associated documentation files (the "Software"), to deal in the 
- * Software without restriction, including without limitation the rights to use, copy, 
- * modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, 
- * and to permit persons to whom the Software is furnished to do so, subject to the 
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of
+ * this software and associated documentation files (the "Software"), to deal in the
+ * Software without restriction, including without limitation the rights to use, copy,
+ * modify, merge, publish, distribute, sublicense, and/or sell copies of the Software,
+ * and to permit persons to whom the Software is furnished to do so, subject to the
  * following conditions:
  *
- * The above copyright notice and this permission notice shall be included in all copies 
+ * The above copyright notice and this permission notice shall be included in all copies
  * or substantial portions of the Software.
  *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
- * INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR 
- * PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE 
- * FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR 
- * OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER 
+ * INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR
+ * PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE
+ * FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+ * OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
  * DEALINGS IN THE SOFTWARE.
  *
  * @author      Eymen Gunay <eymen@egunay.com>
@@ -226,8 +226,8 @@ class Passbook {
     /**
      * Initializes all variables to an empty state.
      *
-     * This function is intended for use if you run 
-     * the pass creating function in a loop, 
+     * This function is intended for use if you run
+     * the pass creating function in a loop,
      * permitting the data to be reset between cycles.
      *
      * @access  public
@@ -244,7 +244,7 @@ class Passbook {
         header('Content-length: '.filesize($pass));
         // Set disposition
         header('Content-Disposition: attachment; filename="pass.pkpass"');
-        echo file_get_contents($pass);  
+        echo file_get_contents($pass);
     }
 
     /**
@@ -301,7 +301,7 @@ class Passbook {
             $begin = 'filename="smime.p7s"' . PHP_EOL . PHP_EOL;
             $end = PHP_EOL . PHP_EOL . '------';
             // Convert signature
-            $signature_content = substr($signature_content, strpos($signature_content, $begin)+strlen($begin));    
+            $signature_content = substr($signature_content, strpos($signature_content, $begin)+strlen($begin));
             $signature_content = substr($signature_content, 0, strpos($signature_content, $end));
             $signature_content = base64_decode($signature_content);
             // Put new signature
@@ -326,7 +326,7 @@ class Passbook {
             {
                 if ($object != "." && $object != "..")
                 {
-                    if (filetype($dir."/".$object) == "dir") $this->_remove_dir($dir."/".$object); 
+                    if (filetype($dir."/".$object) == "dir") $this->_remove_dir($dir."/".$object);
                     else unlink($dir."/".$object);
                 }
             }
