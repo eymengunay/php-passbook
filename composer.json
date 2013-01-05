@@ -1,6 +1,6 @@
 {
     "name": "eymengunay/passbook",
-    "description": "iOS Passbook for PHP 5.3",
+    "description": "iOS Passbook for PHP",
     "keywords": ["passbook", "ios", "pass", "mobile", "wallet", "coupons", "tickets"],
     "type": "library",
     "license": "MIT",

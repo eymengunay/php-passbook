@@ -16,10 +16,10 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-// Require passbook library
-require_once '../passbook.php';
-
-// Init class
+// Require passbook library and init class
+// As of commit #0dc19c2b08 composer support has been added! 
+// https://github.com/eymengunay/php-passbook/commit/0dc19c2b08bc5192e0325e45f29d150531edd7fd
+require_once '../../src/PHP-Passbook/Passbook.php';
 $passbook = new Passbook();
 
 // Set pass output path
@@ -63,7 +63,7 @@ $pass_data = array(
         )
     ),
     // Event
-    'relevantDate'          => "2011-12-08T13:00-08:00",
+    'relevantDate'          => "2013-12-28T13:00-08:00",
     'eventTicket'           => array(
         'primaryFields'         => array(
             array(
@@ -117,4 +117,4 @@ $passbook->set_image('thumbnail', './img/event/thumbnail@2x.png', true);
 $pass = $passbook->create('some_file_name', false);
 
 /* End of file event-demo.php */
-/* Location: ./demo/event-demo.php */
+/* Location: ./doc/demo/event-demo.php */

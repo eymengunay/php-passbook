@@ -29,4 +29,4 @@ The part starting with pass.com is your teamIdentifier and first 10 characters a
 Apple’s World Wide Developer Relations (WWDR) certificate is available from Apple at <http://developer.apple.com/certificationauthority/AppleWWDRCA.cer>. Download and install the certificate so that you can use it to certify builds. The WWDR certificate links your development certificate to Apple, completing the trust chain for your application.
 
 ## Examples
-You can see demo folder for example code. You will need to fill in required fields (certificates and ids) in order to generate a pass successfully.
+You can see [doc/demo](https://github.com/eymengunay/php-passbook/tree/master/doc/demo "doc/demo") folder for example code. You will need to fill in required fields (certificates and ids) in order to generate a pass successfully.
