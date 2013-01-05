@@ -16,6 +16,6 @@
         "ext-openssl": "*"
     },
     "autoload": {
-        "psr-0": { "PHP-Passbook\\": "src/" }
+        "files": ["src/PHP-Passbook/Passbook.php"]
     }
 }
