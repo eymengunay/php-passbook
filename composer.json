@@ -1,9 +1,10 @@
 {
-    "name": "eo/passbook",
+    "name":        "eo/passbook",
+    "type":        "library",
     "description": "iOS Passbook for PHP",
-    "keywords": ["passbook", "ios", "pass", "mobile", "wallet", "coupons", "tickets"],
-    "type": "library",
-    "license": "MIT",
+    "keywords":    ["passbook", "ios", "pass", "mobile", "wallet", "coupons", "tickets"],
+    "homepage":    "https://github.com/eymengunay/php-passbook",
+    "license":     "MIT",
     "authors": [
         {
             "name": "Eymen Gunay",
@@ -15,7 +16,12 @@
         "ext-zip": "*",
         "ext-openssl": "*"
     },
-    "autoload": {
-        "files": ["src/PHP-Passbook/Passbook.php"]
+    "autoload":     {
+        "psr-0": { "Passbook\\": "src/" }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0.x-dev"
+        }
     }
 }

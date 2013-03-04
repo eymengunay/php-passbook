@@ -1,37 +1,24 @@
 <?php
 
+/*
+ * This file is part of the Passbook package.
+ *
+ * (c) Eymen Gunay <eymen@egunay.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
+namespace Passbook;
+
+use Passbook\Exception\FileException;
+use Passbook\Exception\FileNotFoundException;
+
 /**
  * PHP PASSBOOK PASS LIBRARY
  *
- * Copyright (c) 2012 Eymen Gunay
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy of
- * this software and associated documentation files (the "Software"), to deal in the
- * Software without restriction, including without limitation the rights to use, copy,
- * modify, merge, publish, distribute, sublicense, and/or sell copies of the Software,
- * and to permit persons to whom the Software is furnished to do so, subject to the
- * following conditions:
- *
- * The above copyright notice and this permission notice shall be included in all copies
- * or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
- * INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR
- * PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE
- * FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
- * OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
- * DEALINGS IN THE SOFTWARE.
- *
- * @author      Eymen Gunay <eymen@egunay.com>
- * @link        https://github.com/eymengunay/php-passbook
- * @package     Passbook
- * @category    Library
- * @version     0.1
- * @license     http://opensource.org/licenses/OSL-3.0 Open Software License (OSL 3.0)
+ * @author Eymen Gunay <eymen@egunay.com>
  */
-
-namespace Eymengunay\PHPPassbook;
-
 class Passbook {
 
     /**
@@ -110,7 +97,7 @@ class Passbook {
      * @param   string  Value
      * @return  object
      */
-    public function set_json($key, $val = false)
+    public function setJSON($key, $val = false)
     {
         // Push into keys
         if (!$val) $this->_keys = $key;
@@ -138,12 +125,12 @@ class Passbook {
      * @param   bool    Image quality, true for retina
      * @return  object
      */
-    public function set_image($image_type, $image_path, $retina = false)
+    public function setImage($imageType, $image_path, $retina = false)
     {
         // Set image
         $this->_images[] = array(
             'path'      => $image_path,
-            'type'      => $image_type,
+            'type'      => $imageType,
             'retina'    => $retina
         );
         // Method chainability
@@ -169,9 +156,9 @@ class Passbook {
         // Set temporary pass folder path
         $pass_folder_path = $this->temp_path . $pass_folder_name . DIRECTORY_SEPARATOR;
         // Create temporary pass folder
-        if (!mkdir($pass_folder_path, 0777)) throw new Exception("Couldn't create temporary pass folder.");
+        if (!mkdir($pass_folder_path, 0777)) throw new FileException("Couldn't create temporary pass folder.");
         // Create pass.json file
-        if (!file_put_contents($pass_folder_path . $this->_pass_file_name, $pass_contents)) throw new Exception("Couldn't create pass.json file.");
+        if (!file_put_contents($pass_folder_path . $this->_pass_file_name, $pass_contents)) throw new FileException("Couldn't create pass.json file.");
         // Check for images
         if (!empty($this->_images)) {
             // Loop images
@@ -183,7 +170,7 @@ class Passbook {
                 // Add extension
                 $image_name .= '.png';
                 // Add images
-                if (!copy($image['path'], $pass_folder_path . $image_name)) throw new Exception("Couldn't copy image.");
+                if (!copy($image['path'], $pass_folder_path . $image_name)) throw new FileException("Couldn't copy image.");
             }
         }
         // Generate manifest file
@@ -195,7 +182,7 @@ class Passbook {
         // Init zip
         $zip = new ZipArchive();
         // Open zip file (by default it overwrites if file exists)
-        if (!$zip->open($zip_file, ZIPARCHIVE::OVERWRITE)) throw new Exception("Couldn't open zip file.");
+        if (!$zip->open($zip_file, ZIPARCHIVE::OVERWRITE)) throw new FileException("Couldn't open zip file.");
         // Open pass folder
         if ($handle = opendir($pass_folder_path)) {
             // Add dir
@@ -264,7 +251,7 @@ class Passbook {
             $manifest[$file] = sha1_file($pass_folder_path . $file);
         }
         // Put manifest file in pass folder path
-        if (!file_put_contents($pass_folder_path . $this->_manifest_file_name, json_encode($manifest))) throw new Exception("Failed to write manifest.json.");
+        if (!file_put_contents($pass_folder_path . $this->_manifest_file_name, json_encode($manifest))) throw new FileException("Failed to write manifest.json.");
         return true;
     }
 
@@ -278,7 +265,7 @@ class Passbook {
     private function _generate_signature($pass_folder_path)
     {
         // Check for the certificate file
-        if ($this->p12_certificate == '' or !file_exists($this->p12_certificate)) throw new Exception("P12 certificate file missing.");
+        if ($this->p12_certificate == '' or !file_exists($this->p12_certificate)) throw new FileNotFoundException("P12 certificate file missing.");
         // Read content of the certificate file
         $p12_content = file_get_contents($this->p12_certificate);
         // Init certs array
@@ -292,7 +279,7 @@ class Passbook {
             // Get signature content
             $signature_content = @file_get_contents($pass_folder_path . $this->_signature_file_name);
             // Check signature content
-            if (!$signature_content) throw new Exception("Couldn't read signature file.");
+            if (!$signature_content) throw new FileException("Couldn't read signature file.");
             // Delimeters
             $begin = 'filename="smime.p7s"' . PHP_EOL . PHP_EOL;
             $end = PHP_EOL . PHP_EOL . '------';
@@ -301,7 +288,7 @@ class Passbook {
             $signature_content = substr($signature_content, 0, strpos($signature_content, $end));
             $signature_content = base64_decode($signature_content);
             // Put new signature
-            if (!file_put_contents($pass_folder_path . $this->_signature_file_name, $signature_content)) throw new Exception("Couldn't write signature file.");
+            if (!file_put_contents($pass_folder_path . $this->_signature_file_name, $signature_content)) throw new FileException("Couldn't write signature file.");
             return true;
         }
     }
@@ -329,5 +316,5 @@ class Passbook {
     }
 }
 
-/* End of file passbook.php */
-/* Location: ./passbook.php */
+/* End of file Passbook.php */
+/* Location: ./src/Passbook/Passbook.php */
