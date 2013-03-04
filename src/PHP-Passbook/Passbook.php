@@ -1,4 +1,5 @@
 <?php
+
 /**
  * PHP PASSBOOK PASS LIBRARY
  *
@@ -28,6 +29,9 @@
  * @version     0.1
  * @license     http://opensource.org/licenses/OSL-3.0 Open Software License (OSL 3.0)
  */
+
+namespace Eymengunay\PHPPassbook;
+
 class Passbook {
 
     /**
@@ -169,11 +173,9 @@ class Passbook {
         // Create pass.json file
         if (!file_put_contents($pass_folder_path . $this->_pass_file_name, $pass_contents)) throw new Exception("Couldn't create pass.json file.");
         // Check for images
-        if (!empty($this->_images))
-        {
+        if (!empty($this->_images)) {
             // Loop images
-            foreach ($this->_images as $image)
-            {
+            foreach ($this->_images as $image) {
                 // Set new filename
                 $image_name = $image['type'];
                 // Check for retina
@@ -195,22 +197,18 @@ class Passbook {
         // Open zip file (by default it overwrites if file exists)
         if (!$zip->open($zip_file, ZIPARCHIVE::OVERWRITE)) throw new Exception("Couldn't open zip file.");
         // Open pass folder
-        if ($handle = opendir($pass_folder_path))
-        {
+        if ($handle = opendir($pass_folder_path)) {
             // Add dir
             $zip->addFile($pass_folder_path);
             // Loop over the dir
-            while (false !== ($entry = readdir($handle)))
-            {
+            while (false !== ($entry = readdir($handle))) {
                 // Skip . and ..
                 if ($entry == '.' or $entry == '..') continue;
                 // Add files into zip
                 $zip->addFile($pass_folder_path . $entry, $entry);
             }
             closedir($handle);
-        }
-        else
-        {
+        } else {
             // Throw exception @todo
             die('Error creating temporary pass directory!');
         }
@@ -259,8 +257,7 @@ class Passbook {
         // Init manifest array
         $manifest = array();
         // Add folder content to manifest
-        foreach (scandir($pass_folder_path) as $file)
-        {
+        foreach (scandir($pass_folder_path) as $file) {
             // Skip "." and ".."
             if ($file == '.' or $file == '..') continue;
             // Push into manifest
@@ -287,8 +284,7 @@ class Passbook {
         // Init certs array
         $certs = array();
         // Read p12 certificate
-        if(openssl_pkcs12_read($p12_content, $certs, $this->p12_cert_pass) == true)
-        {
+        if (openssl_pkcs12_read($p12_content, $certs, $this->p12_cert_pass) == true) {
             $certdata = openssl_x509_read($certs['cert']);
             $privkey = openssl_pkey_get_private($certs['pkey'], $this->p12_cert_pass );
             openssl_pkcs7_sign($pass_folder_path . $this->_manifest_file_name, $pass_folder_path . $this->_signature_file_name, $certdata, $privkey, array(), PKCS7_BINARY | PKCS7_DETACHED, $this->wwdr_certificate);
@@ -319,13 +315,10 @@ class Passbook {
      */
     private function _remove_dir($dir)
     {
-        if (is_dir($dir))
-        {
+        if (is_dir($dir)) {
             $objects = scandir($dir);
-            foreach ($objects as $object)
-            {
-                if ($object != "." && $object != "..")
-                {
+            foreach ($objects as $object) {
+                if ($object != "." && $object != "..") {
                     if (filetype($dir."/".$object) == "dir") $this->_remove_dir($dir."/".$object);
                     else unlink($dir."/".$object);
                 }

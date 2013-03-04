@@ -1,5 +1,5 @@
 {
-    "name": "eymengunay/passbook",
+    "name": "eo/passbook",
     "description": "iOS Passbook for PHP",
     "keywords": ["passbook", "ios", "pass", "mobile", "wallet", "coupons", "tickets"],
     "type": "library",

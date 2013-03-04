@@ -5,7 +5,11 @@
 I have created this handy library just out of curiosity while experimenting with the new [Passbook](http://www.apple.com/ios/whats-new/#passbook "Passbook") and even though it can create any kind off pass it still misses [PassKit Web Service](https://developer.apple.com/library/ios/#documentation/PassKit/Reference/PassKit_WebService/WebService.html#//apple_ref/doc/uid/TP40011988 "PassKit Web Service") support. You can start creating your own passes by passing few configurable items and images. Requires P12 & WWDR certificates and a Pass Type ID. See requesting certificates section for more information. 
 
 ## Requirements
+<<<<<<< HEAD
 * PHP 5.3+
+=======
+* PHP >= 5.3
+>>>>>>> Namespace changing
 * [zip](http://php.net/manual/en/book.zip.php)
 * [OpenSSL](http://www.php.net/manual/en/book.openssl.php)
 

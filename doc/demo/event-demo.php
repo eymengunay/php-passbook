@@ -17,8 +17,7 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
 // Require passbook library and init class
-// As of commit #0dc19c2b08 composer support has been added! 
-// https://github.com/eymengunay/php-passbook/commit/0dc19c2b08bc5192e0325e45f29d150531edd7fd
+// As of commit #0dc19c2b08 composer support has been added!
 require_once '../../src/PHP-Passbook/Passbook.php';
 $passbook = new Passbook();
 
@@ -63,7 +62,7 @@ $pass_data = array(
         )
     ),
     // Event
-    'relevantDate'          => "2013-12-28T13:00-08:00",
+    'relevantDate'          => "2013-12-28T13:00+01:00",
     'eventTicket'           => array(
         'primaryFields'         => array(
             array(
