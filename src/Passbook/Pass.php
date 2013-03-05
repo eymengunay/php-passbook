@@ -12,9 +12,8 @@
 namespace Passbook;
 
 use Passbook\Pass\Location;
-use Passbook\Pass\LocationInterface;
 use Passbook\Pass\Barcode;
-use Passbook\Pass\BarcodeInterface;
+use Passbook\Pass\Image;
 
 /**
  * Pass
@@ -32,12 +31,6 @@ class Pass
     protected $serialNumber;
 
     /**
-     * Pass name
-     * @var string
-     */
-    protected $name;
-
-    /**
      * Brief description of the pass,
      * used by the iOS accessibility technologies.
      * @var string
@@ -48,7 +41,7 @@ class Pass
      * Pass type
      * @var string
      */
-    protected $type;
+    private $type;
 
     /**
      * Version of the file format.
@@ -61,7 +54,7 @@ class Pass
      * Pass images
      * @var string
      */
-    protected $images = array();
+    private $images = array();
 
     /**
      * A list of iTunes Store item identifiers
@@ -197,9 +190,17 @@ class Pass
     /**
      * {@inheritdoc}
      */
-    public function addImage(ImageInterface $image)
+    public function getFormatVersion()
     {
-        $this->image[] = $image;
+        return $this->formatVersion;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function addImage(Image $image)
+    {
+        $this->images[] = $image;
         return $this;
     }
 
@@ -208,7 +209,7 @@ class Pass
      */
     public function getImages()
     {
-        return $this->image;
+        return $this->images;
     }
 
     /**
@@ -231,7 +232,7 @@ class Pass
     /**
      * {@inheritdoc}
      */
-    public function addLocation(LocationInterface $location)
+    public function addLocation(Location $location)
     {
         $this->locations[] = $location;
         return $this;
@@ -265,24 +266,7 @@ class Pass
     /**
      * {@inheritdoc}
      */
-    public function setRelevantDate($relevantDate)
-    {
-        $this->relevantDate = $relevantDate;
-        return $this;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getRelevantDate()
-    {
-        return $this->relevantDate;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function setBarcode(BarcodeInterface $barcode)
+    public function setBarcode(Barcode $barcode)
     {
         $this->barcode = $barcode;
         return $this;
