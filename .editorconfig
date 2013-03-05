@@ -1,0 +1,11 @@
+; EditorConfig is awesome: http://EditorConfig.org
+root = true
+
+[*]
+indent_style = space
+end_of_line = LF
+charset = utf-8
+trim_trailing_whitespace = true
+
+[*.php]
+indent_size = 4
