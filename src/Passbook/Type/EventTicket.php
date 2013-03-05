@@ -18,9 +18,9 @@ namespace Passbook\Type;
  */
 class EventTicket extends Pass
 {
-	/**
-	 * Pass type
-	 * @var string
-	 */
-	protected $type = 'eventTicket';
+    /**
+     * Pass type
+     * @var string
+     */
+    protected $type = 'eventTicket';
 }

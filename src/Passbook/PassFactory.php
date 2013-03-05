@@ -21,12 +21,12 @@ use Passbook\Certificate\WWDR;
  */
 class PassFactory
 {
-	public function __construct($passTypeIdentifier, $teamIdentifier, $organizationName)
-	{
-		throw new \Exception("I didn't have time to finish this :)");
-	}
+    public function __construct($passTypeIdentifier, $teamIdentifier, $organizationName)
+    {
+        throw new \Exception("I didn't have time to finish this :)");
+    }
 
-	public function create(PassInterface $pass)
-	{
-	}
+    public function create(PassInterface $pass)
+    {
+    }
 }

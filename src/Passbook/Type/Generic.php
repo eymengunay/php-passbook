@@ -18,9 +18,9 @@ namespace Passbook\Type;
  */
 class Generic extends Pass
 {
-	/**
-	 * Pass type
-	 * @var string
-	 */
-	protected $type = 'generic';
+    /**
+     * Pass type
+     * @var string
+     */
+    protected $type = 'generic';
 }

@@ -18,26 +18,26 @@ namespace Passbook\Certificate;
  */
 class P12 extends \SplFileObject implements P12Interface
 {
-	/**
-	 * P12 certificate password
-	 * @var string
-	 */
-	protected $password;
+    /**
+     * P12 certificate password
+     * @var string
+     */
+    protected $password;
 
-	/**
-	 * {@inheritdoc}
-	 */
-	public function setPassword($password)
-	{
-		$this->password = $password;
-		return $this;
-	}
+    /**
+     * {@inheritdoc}
+     */
+    public function setPassword($password)
+    {
+        $this->password = $password;
+        return $this;
+    }
 
-	/**
-	 * {@inheritdoc}
-	 */
-	public function getPassword()
-	{
-		return $this->password;
-	}
+    /**
+     * {@inheritdoc}
+     */
+    public function getPassword()
+    {
+        return $this->password;
+    }
 }

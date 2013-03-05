@@ -18,9 +18,9 @@ namespace Passbook\Type;
  */
 class Coupon extends Pass
 {
-	/**
-	 * Pass type
-	 * @var string
-	 */
-	protected $type = 'coupon';
+    /**
+     * Pass type
+     * @var string
+     */
+    protected $type = 'coupon';
 }

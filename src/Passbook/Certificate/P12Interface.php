@@ -18,7 +18,7 @@ namespace Passbook\Certificate;
  */
 interface P12Interface
 {
-	/**
+    /**
      * Returns p12 password
      *
      * @return string

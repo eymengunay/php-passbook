@@ -18,24 +18,24 @@ namespace Passbook\Type;
  */
 class BoardingPass extends Pass
 {
-	/**
-	 * Pass type
-	 * @var string
-	 */
-	protected $type = 'boardingPass';
+    /**
+     * Pass type
+     * @var string
+     */
+    protected $type = 'boardingPass';
 
-	/**
-	 * Type of transit. Must be one of the following values:
-	 * PKTransitTypeAir, PKTransitTypeBoat, PKTransitTypeBus, PKTransitTypeGeneric,PKTransitTypeTrain
-	 * @var string
-	 */
-	protected $transitType;
+    /**
+     * Type of transit. Must be one of the following values:
+     * PKTransitTypeAir, PKTransitTypeBoat, PKTransitTypeBus, PKTransitTypeGeneric,PKTransitTypeTrain
+     * @var string
+     */
+    protected $transitType;
 
-	public function __construct($serialNumber, $name, $description, $transitType)
-	{
-		// Required for boarding passes; otherwise not allowed
-		$this->$transitType = $transitType;
-		// Call parent
-		parent::__construct($serialNumber, $name, $description);
-	}
+    public function __construct($serialNumber, $name, $description, $transitType)
+    {
+        // Required for boarding passes; otherwise not allowed
+        $this->$transitType = $transitType;
+        // Call parent
+        parent::__construct($serialNumber, $name, $description);
+    }
 }

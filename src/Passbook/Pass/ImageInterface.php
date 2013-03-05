@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Passbook\File;
+namespace Passbook\Pass;
 
 use Passbook\Exception\FileException;
 use Passbook\Exception\FileNotFoundException;
@@ -21,19 +21,12 @@ use Passbook\Exception\FileNotFoundException;
  */
 interface ImageInterface
 {
-	/**
-     * Returns image type
-     *
-     * @return string
-     */
-    public function getType();
-
     /**
-     * Sets image type
+     * Sets image is retina
      *
-     * @param string
+     * @param bool
      */
-    public function setType($type);
+    public function setIsRetina($isRetina);
 
     /**
      * Returns image is retina
@@ -41,11 +34,4 @@ interface ImageInterface
      * @param string
      */
     public function getIsRetina();
-
-    /**
-     * Sets image is retina
-     *
-     * @param bool
-     */
-    public function setIsRetina($isRetina);
 }
