@@ -11,6 +11,8 @@
 
 namespace Passbook;
 
+use Passbook\File\File;
+use Passbook\File\Image;
 use Passbook\Exception\FileException;
 use Passbook\Exception\FileNotFoundException;
 
@@ -120,12 +122,9 @@ class Passbook {
      * See documentation - images section
      *
      * @access  public
-     * @param   string  Image type
-     * @param   string  Image full path
-     * @param   bool    Image quality, true for retina
-     * @return  object
+     * @param   Image $image
      */
-    public function setImage($imageType, $image_path, $retina = false)
+    public function setImage(Image $image)
     {
         // Set image
         $this->_images[] = array(
