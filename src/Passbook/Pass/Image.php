@@ -11,9 +11,6 @@
 
 namespace Passbook\Pass;
 
-use Passbook\Exception\FileException;
-use Passbook\Exception\FileNotFoundException;
-
 /**
  * Image
  *
@@ -34,12 +31,12 @@ class Image extends \SplFileObject implements ImageInterface
      * thumbnail, icon, background, logo, footer, strip
      * @var [type]
      */
-    protected $type;
+    public $type;
 
     /**
      * @var bool
      */
-    protected $isRetina;
+    public $isRetina;
 
     public function __construct($filename, $type)
     {

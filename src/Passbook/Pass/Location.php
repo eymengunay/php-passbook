@@ -22,19 +22,19 @@ class Location implements LocationInterface
      * Altitude, in meters, of the location.
      * @var float
      */
-    protected $altitude;
+    public $altitude;
 
     /**
      * Latitude, in degrees, of the location.
      * @var float
      */
-    protected $latitude;
+    public $latitude;
 
     /**
      * Longitude, in degrees, of the location.
      * @var float
      */
-    protected $longitude;
+    public $longitude;
 
     /**
      * Text displayed on the lock screen when the pass is currently relevant.
@@ -42,7 +42,7 @@ class Location implements LocationInterface
      * “Store nearby on 1st and Main.”
      * @var string
      */
-    protected $relevantText;
+    public $relevantText;
 
     public function __construct($latitude, $longitude)
     {

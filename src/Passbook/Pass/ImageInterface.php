@@ -11,9 +11,6 @@
 
 namespace Passbook\Pass;
 
-use Passbook\Exception\FileException;
-use Passbook\Exception\FileNotFoundException;
-
 /**
  * ImageInterface
  *

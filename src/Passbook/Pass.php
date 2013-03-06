@@ -11,6 +11,8 @@
 
 namespace Passbook;
 
+use JMS\Serializer\Annotation\Exclude;
+use Passbook\Pass\Structure;
 use Passbook\Pass\Location;
 use Passbook\Pass\Barcode;
 use Passbook\Pass\Image;
@@ -28,111 +30,118 @@ class Pass
      * may have the same serial number.
      * @var string
      */
-    protected $serialNumber;
+    public $serialNumber;
 
     /**
      * Brief description of the pass,
      * used by the iOS accessibility technologies.
      * @var string
      */
-    protected $description;
-
-    /**
-     * Pass type
-     * @var string
-     */
-    private $type;
+    public $description;
 
     /**
      * Version of the file format.
      * The value must be 1.
      * @var int
      */
-    protected $formatVersion = 1;
+    public $formatVersion = 1;
+
+    /**
+     * Pass type
+     * @Exclude
+     * @var string
+     */
+    public $type = 'generic';
+
+    /**
+     * Pass structure
+     * @var Structure
+     */
+    public $structure;
 
     /**
      * Pass images
+     * @Exclude
      * @var string
      */
-    private $images = array();
+    public $images = array();
 
     /**
      * A list of iTunes Store item identifiers
      * (also known as Adam IDs) for the associated apps.
      * @var array array of numbers
      */
-    protected $associatedStoreIdentifiers = array();
+    public $associatedStoreIdentifiers = array();
 
     /**
      * Locations where the pass is relevant.
      * For example, the location of your store.
      * @var array
      */
-    protected $locations = array();
+    public $locations = array();
 
     /**
      * Date and time when the pass becomes relevant.
      * For example, the start time of a movie.
      * @var string W3C date
      */
-    protected $relevantDate;
+    public $relevantDate;
 
     /**
      * Date and time when the pass becomes relevant.
      * For example, the start time of a movie.
      * @var Barcode
      */
-    protected $barcode;
+    public $barcode;
 
     /**
      * Background color of the pass, specified as an CSS-style RGB triple.
      * @var string rgb(23, 187, 82)
      */
-    protected $backgroundColor;
+    public $backgroundColor;
 
     /**
      * Foreground color of the pass, specified as a CSS-style RGB triple.
      * @var string rgb(100, 10, 110)
      */
-    protected $foregroundColor;
+    public $foregroundColor;
 
     /**
      * Color of the label text, specified as a CSS-style RGB triple.
      * @var string rgb(255, 255, 255)
      */
-    protected $labelColor;
+    public $labelColor;
 
     /**
      * Text displayed next to the logo on the pass.
      * @var string
      */
-    protected $logoText;
+    public $logoText;
 
     /**
      * If true, the strip image is displayed without a shine effect.
      * @var string The default value is false
      */
-    protected $suppressStripShine;
+    public $suppressStripShine;
 
     /**
      * The authentication token to use with the web service.
      * The token must be 16 characters or longer.
      * @var string
      */
-    protected $authenticationToken;
+    public $authenticationToken;
 
     /**
      * The URL of a web service that conforms to the API described in Passbook Web Service Reference.
      * http://developer.apple.com/library/ios/documentation/PassKit/Reference/PassKit_WebService/WebService.html#//apple_ref/doc/uid/TP40011988
      * @var string
      */
-    protected $webServiceURL;
+    public $webServiceURL;
 
-    public function __construct($serialNumber, $name, $description)
+    public function __construct($serialNumber, $description)
     {
         // Required
         $this->serialNumber = $serialNumber;
-        $this->name         = $name;
         $this->description  = $description;
     }
 
@@ -151,23 +160,6 @@ class Pass
     public function getSerialNumber()
     {
         return $this->serialNumber;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-        return $this;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getName()
-    {
-        return $this->name;
     }
 
     /**
@@ -193,6 +185,33 @@ class Pass
     public function getFormatVersion()
     {
         return $this->formatVersion;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setStructure($structure)
+    {
+        $type = $this->type;
+        $this->$type = $structure;
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getStructure()
+    {
+        $type = $this->type;
+        return $this->$type;
     }
 
     /**

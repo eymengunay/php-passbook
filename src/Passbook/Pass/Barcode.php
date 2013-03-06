@@ -23,26 +23,26 @@ class Barcode implements BarcodeInterface
      * PKBarcodeFormatQR, PKBarcodeFormatPDF417, PKBarcodeFormatAztec.
      * @var string
      */
-    protected $format;
+    public $format;
 
     /**
      * Message or payload to be displayed as a barcode.
      * @var string
      */
-    protected $message;
+    public $message;
 
     /**
      * Message or payload to be displayed as a barcode.
      * @var string
      */
-    protected $messageEncoding;
+    public $messageEncoding;
 
     /**
      * Text encoding that is used to convert the message from the
      * string representation to a data representation to render the barcode.
      * @var string
      */
-    protected $altText;
+    public $altText;
 
     public function __construct($format, $message, $messageEncoding = 'iso-8859-1')
     {
