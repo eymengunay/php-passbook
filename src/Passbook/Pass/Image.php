@@ -31,12 +31,12 @@ class Image extends \SplFileObject implements ImageInterface
      * thumbnail, icon, background, logo, footer, strip
      * @var [type]
      */
-    public $type;
+    protected $type;
 
     /**
      * @var bool
      */
-    public $isRetina;
+    protected $isRetina;
 
     public function __construct($filename, $type)
     {

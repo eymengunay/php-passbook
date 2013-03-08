@@ -22,22 +22,22 @@ class Field implements FieldInterface
      * Format string for the alert text that is displayed when the pass is updated.
      * The format string may contain the escape %@, which is replaced with the
      * field’s new value. For example, “Gate changed to %@.”
-     *
+     * 
      * @var string
      */
     public $changeMessage;
 
     /**
-     * The key must be unique within the scope of the entire pass.
+     * The key must be unique within the scope of the entire pass. 
      * For example, “departure-gate”.
-     *
+     * 
      * @var array
      */
     public $key;
 
     /**
      * Label text for the field.
-     *
+     * 
      * @var string
      */
     public $label;
@@ -45,12 +45,12 @@ class Field implements FieldInterface
     /**
      * Alignment for the field’s contents. Must be one of the following values:
      * PKTextAlignmentLeft, PKTextAlignmentCenter, PKTextAlignmentRight, PKTextAlignmentNatural
-     *
-     * The default value is natural alignment,
+     * 
+     * The default value is natural alignment, 
      * which aligns the text appropriately based on its script direction.
      *
      * This key is not allowed for primary fields.
-     *
+     * 
      * @var string
      */
     public $textAlignment;
