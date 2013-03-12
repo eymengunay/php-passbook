@@ -11,6 +11,9 @@
 
 namespace Passbook;
 
+use JMS\Serializer\Annotation\ExclusionPolicy;
+use JMS\Serializer\Annotation\AccessType;
+use JMS\Serializer\Annotation\Accessor;
 use JMS\Serializer\Annotation\Exclude;
 use Passbook\Pass\Structure;
 use Passbook\Pass\Location;
@@ -20,6 +23,8 @@ use Passbook\Pass\Image;
 /**
  * Pass
  *
+ * @AccessType("public_method")
+ * @ExclusionPolicy("none")
  * @author Eymen Gunay <eymen@egunay.com>
  */
 class Pass
@@ -30,113 +35,118 @@ class Pass
      * may have the same serial number.
      * @var string
      */
-    public $serialNumber;
+    private $serialNumber;
 
     /**
      * Brief description of the pass,
      * used by the iOS accessibility technologies.
      * @var string
      */
-    public $description;
+    private $description;
 
     /**
      * Version of the file format.
      * The value must be 1.
+     * @Exclude
      * @var int
      */
-    public $formatVersion = 1;
+    private $formatVersion = 1;
 
     /**
      * Pass type
      * @Exclude
      * @var string
      */
-    public $type = 'generic';
+    private $type = 'generic';
 
     /**
      * Pass structure
      * @var Structure
      */
-    public $structure;
+    private $structure;
 
     /**
      * Pass images
+     * @Accessor(setter="addImage")
      * @Exclude
      * @var string
      */
-    public $images = array();
+    private $images = array();
 
     /**
      * A list of iTunes Store item identifiers
      * (also known as Adam IDs) for the associated apps.
+     * @Accessor(setter="addAssociatedStoreIdentifiers")
+     * @Exclude
      * @var array array of numbers
      */
-    public $associatedStoreIdentifiers = array();
+    private $associatedStoreIdentifiers = array();
 
     /**
      * Locations where the pass is relevant.
      * For example, the location of your store.
+     * @Accessor(setter="addLocation")
      * @var array
      */
-    public $locations = array();
+    private $locations = array();
 
     /**
      * Date and time when the pass becomes relevant.
      * For example, the start time of a movie.
      * @var string W3C date
      */
-    public $relevantDate;
+    private $relevantDate;
 
     /**
      * Date and time when the pass becomes relevant.
      * For example, the start time of a movie.
      * @var Barcode
      */
-    public $barcode;
+    private $barcode;
 
     /**
      * Background color of the pass, specified as an CSS-style RGB triple.
      * @var string rgb(23, 187, 82)
      */
-    public $backgroundColor;
+    private $backgroundColor;
 
     /**
      * Foreground color of the pass, specified as a CSS-style RGB triple.
      * @var string rgb(100, 10, 110)
      */
-    public $foregroundColor;
+    private $foregroundColor;
 
     /**
      * Color of the label text, specified as a CSS-style RGB triple.
      * @var string rgb(255, 255, 255)
      */
-    public $labelColor;
+    private $labelColor;
 
     /**
      * Text displayed next to the logo on the pass.
      * @var string
      */
-    public $logoText;
+    private $logoText;
 
     /**
      * If true, the strip image is displayed without a shine effect.
      * @var string The default value is false
      */
-    public $suppressStripShine;
+    private $suppressStripShine;
 
     /**
      * The authentication token to use with the web service.
      * The token must be 16 characters or longer.
      * @var string
      */
-    public $authenticationToken;
+    private $authenticationToken;
 
     /**
      * The URL of a web service that conforms to the API described in Passbook Web Service Reference.
      * http://developer.apple.com/library/ios/documentation/PassKit/Reference/PassKit_WebService/WebService.html#//apple_ref/doc/uid/TP40011988
      * @var string
      */
-    public $webServiceURL;
+    private $webServiceURL;
 
     public function __construct($serialNumber, $description)
     {
@@ -190,9 +200,25 @@ class Pass
     /**
      * {@inheritdoc}
      */
+    public function setFormatVersion($formatVersion)
+    {
+        $this->formatVersion = $formatVersion;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function getType()
     {
         return $this->type;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
     }
 
     /**
