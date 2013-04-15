@@ -14,9 +14,16 @@ To add PHP-Passbook as a local, per-project dependency to your project, simply a
 }
 ```
 
+## API Doc
+Search by class, method name, or package: http://eymengunay.github.io/php-passbook/api
+
 ## Usage Example
 
 ```
+<?php
+
+...
+
 use Passbook\Pass\Field;
 use Passbook\PassFactory;
 use Passbook\Pass\Barcode;
