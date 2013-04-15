@@ -7,9 +7,7 @@
 
     <link rel="stylesheet" href="stylesheets/styles.css">
     <link rel="stylesheet" href="stylesheets/pygment_trac.css">
-    <script src="javascripts/scale.fix.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
@@ -19,7 +17,10 @@
       <header>
         <h1>PHP-Passbook</h1>
         <p>Pass library for PHP 5.3+</p>
+
         <p class="view"><a href="https://github.com/eymengunay/php-passbook">View the Project on GitHub <small>eymengunay/php-passbook</small></a></p>
+
+
         <ul>
           <li><a href="https://github.com/eymengunay/php-passbook/zipball/master">Download <strong>ZIP File</strong></a></li>
           <li><a href="https://github.com/eymengunay/php-passbook/tarball/master">Download <strong>TAR Ball</strong></a></li>
@@ -29,9 +30,62 @@
       <section>
         <h1>PHP PASSBOOK LIBRARY</h1>
 
-<h2>Introduction</h2>
+<h2>Installing</h2>
 
-<p>I have created this handy library just out of curiosity while experimenting with the new <a href="http://www.apple.com/ios/whats-new/#passbook" title="Passbook">Passbook</a> and even though it can create any kind off pass it still misses <a href="https://developer.apple.com/library/ios/#documentation/PassKit/Reference/PassKit_WebService/WebService.html#//apple_ref/doc/uid/TP40011988" title="PassKit Web Service">PassKit Web Service</a> support. You can start creating your own passes by passing few configurable items and images. Requires P12 &amp; WWDR certificates and a Pass Type ID. See requesting certificates section for more information. </p>
+<h3>Using Composer</h3>
+
+<p>To add PHP-Passbook as a local, per-project dependency to your project, simply add a dependency on eo/passbook to your project's composer.json file. Here is a minimal example of a composer.json file that just defines a development-time dependency on the latest version of the library:</p>
+
+<pre><code>{
+    "require-dev": {
+        "eo/passbook": "dev-master"
+    }
+}
+</code></pre>
+
+<h2>Usage Example</h2>
+
+<pre><code>use Passbook\Pass\Field;
+use Passbook\PassFactory;
+use Passbook\Pass\Barcode;
+use Passbook\Pass\Structure;
+use Passbook\Type\EventTicket;
+
+// Create an event ticket
+$pass = new EventTicket("1234567890", "The Beat Goes On");
+$pass-&gt;setBackgroundColor('rgb(60, 65, 76)');
+$pass-&gt;setLogoText('Apple Inc.');
+
+// Create pass structure
+$structure = new Structure();
+
+// Add primary field
+$primary = new Field('event', 'The Beat Goes On');
+$primary-&gt;setLabel('Event');
+$structure-&gt;addPrimaryField($primary);
+
+// Add secondary field
+$secondary = new Field('location', 'Moscone West');
+$secondary-&gt;setLabel('Location');
+$structure-&gt;addSecondaryField($secondary);
+
+// Add auxiliary field
+$auxiliary = new Field('datetime', '2013-04-15 @10:25');
+$auxiliary-&gt;setLabel('Date &amp; Time');
+$structure-&gt;addAuxiliaryField($auxiliary);
+
+// Set pass structure
+$pass-&gt;setStructure($structure);
+
+// Add barcode
+$barcode = new Barcode('PKBarcodeFormatQR', 'barcodeMessage');
+$pass-&gt;setBarcode($barcode);
+
+// Create pass factory instance
+$factory = new PassFactory('PASS-TYPE-IDENTIFIER', 'TEAM-IDENTIFIER', 'ORGANIZATION-NAME', '/path/to/p12/certificate', 'P12-PASSWORD', '/path/to/wwdr/certificate');
+$factory-&gt;setOutputPath('/path/to/output/path');
+$factory-&gt;package($pass);
+</code></pre>
 
 <h2>Requirements</h2>
 
@@ -44,32 +98,20 @@
 <h3>P12 Certificate &amp; Pass Type ID</h3>
 
 <ol>
-<li>Logon to <a href="https://developer.apple.com/ios/manage/passtypeids/index.action" title="iOS Provisioning portal">iOS Provisioning portal</a> and click on Pass Type IDs</li>
-<li>Follow the instructions to create a Pass Type ID</li>
-<li>Once you have created, click on configure and download the .cer file</li>
-<li>Add downloaded file to your Keychain Access simply by clicking</li>
-<li>Locate the certificate in Keychain Access and select Export pass in right click menu</li>
-<li>Enter a password and save the P12 certifacate somewhere that the library can reach</li>
-</ol><p>Note down also your Pass Type ID. You will find it above download button in the following format:</p>
+<li>Logon to <a href="https://developer.apple.com/ios/manage/passtypeids/index.action" title="iOS Provisioning portal">iOS Provisioning portal</a> and go to Identifiers &gt; Pass Type IDs</li>
+<li>Follow the instructions to create a new Pass Type ID and download .cer file to your computer (Download button is under Settings)</li>
+<li>Open downloaded file to add it into Keychain Access</li>
+<li>Locate the certificate in Keychain Access and export it in .p12 format</li>
+</ol><h3>WWDR Certificate</h3>
 
-<p>ABC123ABC1.pass.com.your-company.id</p>
-
-<p>The part starting with pass.com is your teamIdentifier and first 10 characters are passTypeIdentifier</p>
-
-<h3>WWDR Certificate</h3>
-
-<p>Apple’s World Wide Developer Relations (WWDR) certificate is available from Apple at <a href="http://developer.apple.com/certificationauthority/AppleWWDRCA.cer">http://developer.apple.com/certificationauthority/AppleWWDRCA.cer</a>. Download and install the certificate so that you can use it to certify builds. The WWDR certificate links your development certificate to Apple, completing the trust chain for your application.</p>
-
-<h2>Examples</h2>
-
-<p>You can see <a href="https://github.com/eymengunay/php-passbook/tree/master/doc/demo" title="doc/demo">doc/demo</a> folder for example code. You will need to fill in required fields (certificates and ids) in order to generate a pass successfully.</p>
+<p>Apple’s World Wide Developer Relations (WWDR) certificate is available from Apple at <a href="http://developer.apple.com/certificationauthority/AppleWWDRCA.cer">http://developer.apple.com/certificationauthority/AppleWWDRCA.cer</a>. You will have to add this to your Keychain Access and export it in .pem format to use it with the library. The WWDR certificate links your development certificate to Apple, completing the trust chain for your application.</p>
       </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/eymengunay">eymengunay</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
     </div>
-    <footer>
-      <p>Project maintained by <a href="https://github.com/eymengunay">eymengunay</a></p>
-      <p>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></p>
-    </footer>
-    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    <script src="javascripts/scale.fix.js"></script>
     
   </body>
 </html>
