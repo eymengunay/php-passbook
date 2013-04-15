@@ -19,15 +19,25 @@ namespace Passbook\Pass;
 interface ImageInterface
 {
     /**
+     * Set image context
+     * @param bool
+     */
+    public function setContext($context);
+
+    /**
+     * Get image context
+     * @param string
+     */
+    public function getContext();
+
+    /**
      * Sets image is retina
-     *
      * @param bool
      */
     public function setIsRetina($isRetina);
 
     /**
      * Returns image is retina
-     *
      * @param string
      */
     public function getIsRetina();
