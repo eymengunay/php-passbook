@@ -12,6 +12,7 @@
 namespace Passbook;
 
 use JMS\Serializer\Annotation\ExclusionPolicy;
+use JMS\Serializer\Annotation\SerializedName;
 use JMS\Serializer\Annotation\AccessType;
 use JMS\Serializer\Annotation\Accessor;
 use JMS\Serializer\Annotation\Exclude;
@@ -23,47 +24,47 @@ use Passbook\Pass\Image;
 /**
  * Pass
  *
- * @AccessType("public_method")
  * @ExclusionPolicy("none")
  * @author Eymen Gunay <eymen@egunay.com>
  */
-class Pass
+class Pass implements PassInterface
 {
     /**
      * Serial number that uniquely identifies the pass.
      * No two passes with the same pass type identifier
      * may have the same serial number.
+     * @SerializedName(value="serialNumber")
      * @var string
      */
-    private $serialNumber;
+    protected $serialNumber;
 
     /**
      * Brief description of the pass,
      * used by the iOS accessibility technologies.
      * @var string
      */
-    private $description;
+    protected $description;
 
     /**
      * Version of the file format.
      * The value must be 1.
-     * @Exclude
+     * @SerializedName(value="formatVersion")
      * @var int
      */
-    private $formatVersion = 1;
+    protected $formatVersion = 1;
 
     /**
      * Pass type
      * @Exclude
      * @var string
      */
-    private $type = 'generic';
+    protected $type;
 
     /**
      * Pass structure
      * @var Structure
      */
-    private $structure;
+    protected $structure;
 
     /**
      * Pass images
@@ -71,7 +72,7 @@ class Pass
      * @Exclude
      * @var string
      */
-    private $images = array();
+    protected $images = array();
 
     /**
      * A list of iTunes Store item identifiers
@@ -80,73 +81,103 @@ class Pass
      * @Exclude
      * @var array array of numbers
      */
-    private $associatedStoreIdentifiers = array();
+    protected $associatedStoreIdentifiers = array();
 
     /**
      * Locations where the pass is relevant.
      * For example, the location of your store.
      * @Accessor(setter="addLocation")
+     * @Exclude
      * @var array
      */
-    private $locations = array();
+    protected $locations = array();
 
     /**
      * Date and time when the pass becomes relevant.
      * For example, the start time of a movie.
+     * @SerializedName(value="relevantDate")
      * @var string W3C date
      */
-    private $relevantDate;
+    protected $relevantDate;
 
     /**
      * Date and time when the pass becomes relevant.
      * For example, the start time of a movie.
      * @var Barcode
      */
-    private $barcode;
+    protected $barcode;
 
     /**
      * Background color of the pass, specified as an CSS-style RGB triple.
+     * @SerializedName(value="backgroundColor")
      * @var string rgb(23, 187, 82)
      */
-    private $backgroundColor;
+    protected $backgroundColor;
 
     /**
      * Foreground color of the pass, specified as a CSS-style RGB triple.
+     * @SerializedName(value="foregroundColor")
      * @var string rgb(100, 10, 110)
      */
-    private $foregroundColor;
+    protected $foregroundColor;
 
     /**
      * Color of the label text, specified as a CSS-style RGB triple.
+     * @SerializedName(value="labelColor")
      * @var string rgb(255, 255, 255)
      */
-    private $labelColor;
+    protected $labelColor;
 
     /**
      * Text displayed next to the logo on the pass.
+     * @SerializedName(value="logoText")
      * @var string
      */
-    private $logoText;
+    protected $logoText;
 
     /**
      * If true, the strip image is displayed without a shine effect.
+     * @SerializedName(value="suppressStripShine")
      * @var string The default value is false
      */
-    private $suppressStripShine;
+    protected $suppressStripShine;
 
     /**
      * The authentication token to use with the web service.
      * The token must be 16 characters or longer.
+     * @SerializedName(value="authenticationToken")
      * @var string
      */
-    private $authenticationToken;
+    protected $authenticationToken;
 
     /**
      * The URL of a web service that conforms to the API described in Passbook Web Service Reference.
      * http://developer.apple.com/library/ios/documentation/PassKit/Reference/PassKit_WebService/WebService.html#//apple_ref/doc/uid/TP40011988
+     * @SerializedName(value="webServiceUrl")
      * @var string
      */
-    private $webServiceURL;
+    protected $webServiceURL;
+
+    /**
+     * Pass type identifier
+     * @SerializedName(value="passTypeIdentifier")
+     * @var string
+     */
+    protected $passTypeIdentifier;
+
+    /**
+     * Team identifier
+     * @SerializedName(value="teamIdentifier")
+     * @var string
+     */
+    protected $teamIdentifier;
+
+    /**
+     * Organization name
+     * @SerializedName(value="organizationName")
+     * @var string
+     */
+    protected $organizationName;
 
     public function __construct($serialNumber, $description)
     {
@@ -226,8 +257,7 @@ class Pass
      */
     public function setStructure($structure)
     {
-        $type = $this->type;
-        $this->$type = $structure;
+        $this->structure = $structure;
         return $this;
     }
 
@@ -236,8 +266,7 @@ class Pass
      */
     public function getStructure()
     {
-        $type = $this->type;
-        return $this->$type;
+        return $this->$structure;
     }
 
     /**
@@ -442,5 +471,56 @@ class Pass
     public function getWebServiceURL()
     {
         return $this->webServiceURL;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setPassTypeIdentifier($passTypeIdentifier)
+    {
+        $this->passTypeIdentifier = $passTypeIdentifier;
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getPassTypeIdentifier()
+    {
+        return $this->passTypeIdentifier;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setTeamIdentifier($teamIdentifier)
+    {
+        $this->teamIdentifier = $teamIdentifier;
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getTeamIdentifier()
+    {
+        return $this->teamIdentifier;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setOrganizationName($organizationName)
+    {
+        $this->organizationName = $organizationName;
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getOrganizationName()
+    {
+        return $this->organizationName;
     }
 }

@@ -11,6 +11,10 @@
 
 namespace Passbook\Type;
 
+use Passbook\Pass;
+use JMS\Serializer\Annotation\Exclude;
+use JMS\Serializer\Annotation\SerializedName;
+
 /**
  * EventTicket
  *
@@ -20,7 +24,15 @@ class EventTicket extends Pass
 {
     /**
      * Pass type
+     * @Exclude
      * @var string
      */
     protected $type = 'eventTicket';
+
+    /**
+     * Pass structure
+     * @SerializedName(value="eventTicket")
+     * @var Structure
+     */
+    protected $structure;
 }

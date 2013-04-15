@@ -11,10 +11,11 @@
 
 namespace Passbook\Pass;
 
+use JMS\Serializer\Annotation\SerializedName;
 use JMS\Serializer\Annotation\Exclude;
 
 /**
- * Pass
+ * Pass Structure
  *
  * @author Eymen Gunay <eymen@egunay.com>
  */
@@ -22,30 +23,35 @@ class Structure implements StructureInterface
 {
     /**
      * Fields to be displayed in the header on the front of the pass.
+     * @SerializedName(value="headerFields")
      * @var array
      */
     public $headerFields;
 
     /**
      * Fields to be displayed prominently on the front of the pass.
+     * @SerializedName(value="primaryFields")
      * @var array
      */
     public $primaryFields;
 
     /**
      * Fields to be displayed on the front of the pass.
+     * @SerializedName(value="secondaryFields")
      * @var array
      */
     public $secondaryFields;
 
     /**
      * Additional fields to be displayed on the front of the pass.
+     * @SerializedName(value="auxiliaryFields")
      * @var array
      */
     public $auxiliaryFields;
 
     /**
      * Fields to be on the back of the pass.
+     * @SerializedName(value="backFields")
      * @var array
      */
     public $backFields;

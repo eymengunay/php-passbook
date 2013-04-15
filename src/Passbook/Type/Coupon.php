@@ -11,6 +11,10 @@
 
 namespace Passbook\Type;
 
+use Passbook\Pass;
+use JMS\Serializer\Annotation\Exclude;
+use JMS\Serializer\Annotation\SerializedName;
+
 /**
  * Coupon
  *
@@ -20,7 +24,15 @@ class Coupon extends Pass
 {
     /**
      * Pass type
+     * @Exclude
      * @var string
      */
     protected $type = 'coupon';
+
+    /**
+     * Pass structure
+     * @SerializedName(value="coupon")
+     * @var Structure
+     */
+    protected $structure;
 }

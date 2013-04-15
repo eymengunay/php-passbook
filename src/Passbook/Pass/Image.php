@@ -11,6 +11,8 @@
 
 namespace Passbook\Pass;
 
+use JMS\Serializer\Annotation\SerializedName;
+
 /**
  * Image
  *
@@ -27,23 +29,43 @@ namespace Passbook\Pass;
 class Image extends \SplFileObject implements ImageInterface
 {
     /**
-     * Image type. Must be one of the following values:
+     * Image context. Must be one of the following values:
      * thumbnail, icon, background, logo, footer, strip
-     * @var [type]
+     * @var string
      */
-    protected $type;
+    protected $context;
 
     /**
+     * All of the pass’s images are loaded using standard UIImage image-loading methods.
+     * This means, for example, the file name of high resolution version of the image ends with @2x.png.
+     * @SerializedName(value="isRetina")
      * @var bool
      */
     protected $isRetina;
 
-    public function __construct($filename, $type)
+    public function __construct($filename, $context)
     {
-        // Pass image type
-        $this->$type = $type;
         // Call parent
         parent::__construct($filename);
+        // Pass image context
+        $this->setContext($context);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setContext($context)
+    {
+        $this->context = $context;
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getContext()
+    {
+        return $this->context;
     }
 
     /**
