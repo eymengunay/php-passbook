@@ -16,7 +16,7 @@
         "ext-zip": "*",
         "ext-openssl": "*",
         "jms/serializer": ">=0.11.0,<0.13-dev",
-        "symfony/filesystem": "2.3.x-dev"
+        "symfony/filesystem": ">= 2.1.0"
     },
     "autoload":     {
         "psr-0": { "Passbook\\": "src/" }
