@@ -71,6 +71,8 @@ $factory->package($pass);
 * [zip](http://php.net/manual/en/book.zip.php)
 * [OpenSSL](http://www.php.net/manual/en/book.openssl.php)
 
+<sub>PHP-Passbook depends on [JMS/Serializer](http://jmsyst.com/libs/serializer/master) library for pass serialization.</sub>
+
 ## Requesting Certificates
 
 ### P12 Certificate & Pass Type ID
