@@ -266,7 +266,7 @@ class Pass implements PassInterface
      */
     public function getStructure()
     {
-        return $this->$structure;
+        return $this->structure;
     }
 
     /**
