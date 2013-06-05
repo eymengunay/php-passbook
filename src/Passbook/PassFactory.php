@@ -18,7 +18,6 @@ use Passbook\Certificate\P12;
 use Passbook\Certificate\WWDR;
 use Passbook\Exception\FileException;
 use JMS\Serializer\SerializerBuilder;
-use Symfony\Component\Filesystem\Filesystem;
 
 /**
  * PassFactory - Creates .pkpass files
@@ -71,15 +70,9 @@ class PassFactory
 
     /**
      * Pass file extension
-     * @var array
+     * @var string
      */
-    private $passExtension = '.pkpass';
-
-    /**
-     * Symfony filesystem component
-     * @var Symfony\Component\Filesystem\Filesystem
-     */
-    private $filesystem;
+    const PASS_EXTENSION = '.pkpass';
 
     public function __construct($passTypeIdentifier, $teamIdentifier, $organizationName, $p12File, $p12Pass, $wwdrFile)
     {
@@ -90,8 +83,6 @@ class PassFactory
         // Create certificate objects
         $this->p12  = new P12($p12File, $p12Pass);
         $this->wwdr = new WWDR($wwdrFile);
-        // Filesystem
-        $this->filesystem = new Filesystem();
     }
 
     /**
@@ -203,7 +194,7 @@ class PassFactory
         }
 
         // Zip pass
-        $zipFile = $outputPath . $pass->getSerialNumber() . $this->passExtension;
+        $zipFile = $outputPath . $pass->getSerialNumber() . self::PASS_EXTENSION;
         $zip = new ZipArchive();
         if (!$zip->open($zipFile, $this->override ? ZIPARCHIVE::OVERWRITE : ZipArchive::CREATE)) throw new FileException("Couldn't open zip file.");
         if ($handle = opendir($passDir)) {
@@ -217,8 +208,21 @@ class PassFactory
             throw new FileException("Error reading pass directory");
         }
         $zip->close();
-        // Clean temporary pass directory
-        $this->filesystem->remove($passDir);
+        // Remove temporary pass directory
+        $this->rrmdir($passDir);
         return new SplFileObject($zipFile);
+    }
+
+    /**
+     * Recursive folder remove
+     *
+     * @param string $dir
+     */
+    private function rrmdir($dir) {
+        $files = array_diff(scandir($dir), array('.', '..'));
+        foreach ($files as $file) {
+            is_dir("$dir/$file") ? $this->rrmdir("$dir/$file") : unlink("$dir/$file");
+        }
+        return rmdir($dir);
     }
 }
