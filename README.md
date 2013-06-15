@@ -1,5 +1,7 @@
 # PHP PASSBOOK LIBRARY
 
+[![Dependencies Status](https://d2xishtp1ojlk0.cloudfront.net/d/5913521)](http://depending.in/eymengunay/php-passbook)
+
 ## Installing
 
 ### Using Composer
