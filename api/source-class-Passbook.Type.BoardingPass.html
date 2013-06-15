@@ -5,9 +5,9 @@
 	<meta name="generator" content="ApiGen 2.8.0" />
 	<meta name="robots" content="noindex" />
 
-	<title>File Passbook/Type/BoardingPass.php</title>
+	<title>File Passbook/Type/BoardingPass.php | PHP-Passbook</title>
 
-	<script type="text/javascript" src="resources/combined.js?2966811159"></script>
+	<script type="text/javascript" src="resources/combined.js?348581735"></script>
 	<script type="text/javascript" src="elementlist.js?3517421344"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
@@ -86,8 +86,14 @@
 			<li>
 				<a href="tree.html" title="Tree view of classes, interfaces, traits and exceptions"><span>Tree</span></a>
 			</li>
+			<li>
+				<a href="todo.html" title="Todo list"><span>Todo</span></a>
+			</li>
 		</ul>
 		<ul>
+			<li>
+				<a href="php-passbook-api-documentation.zip" title="Download documentation as ZIP archive"><span>Download</span></a>
+			</li>
 		</ul>
 	</div>
 
@@ -131,22 +137,54 @@
 </span><span id="38" class="l"><a class="l" href="#38">38: </a>
 </span><span id="39" class="l"><a class="l" href="#39">39: </a>    <span class="php-comment">/**
 </span></span><span id="40" class="l"><a class="l" href="#40">40: </a><span class="php-comment">     * Type of transit. Must be one of the following values:
-</span></span><span id="41" class="l"><a class="l" href="#41">41: </a><span class="php-comment">     * PKTransitTypeAir, PKTransitTypeBoat, PKTransitTypeBus, PKTransitTypeGeneric,PKTransitTypeTrain
+</span></span><span id="41" class="l"><a class="l" href="#41">41: </a><span class="php-comment">     * PKTransitTypeAir, PKTransitTypeBoat, PKTransitTypeBus, PKTransitTypeGeneric, PKTransitTypeTrain
 </span></span><span id="42" class="l"><a class="l" href="#42">42: </a><span class="php-comment">     * @var string
 </span></span><span id="43" class="l"><a class="l" href="#43">43: </a><span class="php-comment">     */</span>
 </span><span id="44" class="l"><a class="l" href="#44">44: </a>    <span class="php-keyword1">protected</span> <span class="php-var"><a id="$transitType" href="#$transitType">$transitType</a></span>;
 </span><span id="45" class="l"><a class="l" href="#45">45: </a>
-</span><span id="46" class="l"><a class="l" href="#46">46: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> <a id="___construct" href="#___construct">__construct</a>(<span class="php-var">$serialNumber</span>, <span class="php-var">$name</span>, <span class="php-var">$description</span>, <span class="php-var">$transitType</span>)
-</span><span id="47" class="l"><a class="l" href="#47">47: </a>    {
-</span><span id="48" class="l"><a class="l" href="#48">48: </a>        <span class="php-comment">// Required for boarding passes; otherwise not allowed</span>
-</span><span id="49" class="l"><a class="l" href="#49">49: </a>        <span class="php-var">$this</span>-&gt;<span class="php-var">$transitType</span> = <span class="php-var">$transitType</span>;
-</span><span id="50" class="l"><a class="l" href="#50">50: </a>        <span class="php-comment">// Call parent</span>
-</span><span id="51" class="l"><a class="l" href="#51">51: </a>        parent::__construct(<span class="php-var">$serialNumber</span>, <span class="php-var">$name</span>, <span class="php-var">$description</span>);
-</span><span id="52" class="l"><a class="l" href="#52">52: </a>    }
-</span><span id="53" class="l"><a class="l" href="#53">53: </a></span>}</code></pre>
+</span><span id="46" class="l"><a class="l" href="#46">46: </a>    <span class="php-comment">/**
+</span></span><span id="47" class="l"><a class="l" href="#47">47: </a><span class="php-comment">     * @var string
+</span></span><span id="48" class="l"><a class="l" href="#48">48: </a><span class="php-comment">     */</span>
+</span><span id="49" class="l"><a class="l" href="#49">49: </a>    <span class="php-keyword1">const</span> <a id="TYPE_AIR" href="#TYPE_AIR">TYPE_AIR</a> = <span class="php-quote">'PKTransitTypeAir'</span>;
+</span><span id="50" class="l"><a class="l" href="#50">50: </a>
+</span><span id="51" class="l"><a class="l" href="#51">51: </a>    <span class="php-comment">/**
+</span></span><span id="52" class="l"><a class="l" href="#52">52: </a><span class="php-comment">     * @var string
+</span></span><span id="53" class="l"><a class="l" href="#53">53: </a><span class="php-comment">     */</span>
+</span><span id="54" class="l"><a class="l" href="#54">54: </a>    <span class="php-keyword1">const</span> <a id="TYPE_BOAT" href="#TYPE_BOAT">TYPE_BOAT</a> = <span class="php-quote">'PKTransitTypeBoat'</span>;
+</span><span id="55" class="l"><a class="l" href="#55">55: </a>
+</span><span id="56" class="l"><a class="l" href="#56">56: </a>    <span class="php-comment">/**
+</span></span><span id="57" class="l"><a class="l" href="#57">57: </a><span class="php-comment">     * @var string
+</span></span><span id="58" class="l"><a class="l" href="#58">58: </a><span class="php-comment">     */</span>
+</span><span id="59" class="l"><a class="l" href="#59">59: </a>    <span class="php-keyword1">const</span> <a id="TYPE_BUS" href="#TYPE_BUS">TYPE_BUS</a> = <span class="php-quote">'PKTransitTypeBus'</span>;
+</span><span id="60" class="l"><a class="l" href="#60">60: </a>
+</span><span id="61" class="l"><a class="l" href="#61">61: </a>    <span class="php-comment">/**
+</span></span><span id="62" class="l"><a class="l" href="#62">62: </a><span class="php-comment">     * @var string
+</span></span><span id="63" class="l"><a class="l" href="#63">63: </a><span class="php-comment">     */</span>
+</span><span id="64" class="l"><a class="l" href="#64">64: </a>    <span class="php-keyword1">const</span> <a id="TYPE_GENERIC" href="#TYPE_GENERIC">TYPE_GENERIC</a> = <span class="php-quote">'PKTransitTypeGeneric'</span>;
+</span><span id="65" class="l"><a class="l" href="#65">65: </a>
+</span><span id="66" class="l"><a class="l" href="#66">66: </a>    <span class="php-comment">/**
+</span></span><span id="67" class="l"><a class="l" href="#67">67: </a><span class="php-comment">     * @var string
+</span></span><span id="68" class="l"><a class="l" href="#68">68: </a><span class="php-comment">     */</span>
+</span><span id="69" class="l"><a class="l" href="#69">69: </a>    <span class="php-keyword1">const</span> <a id="TYPE_TRAIN" href="#TYPE_TRAIN">TYPE_TRAIN</a> = <span class="php-quote">'PKTransitTypeTrain'</span>;
+</span><span id="70" class="l"><a class="l" href="#70">70: </a>
+</span><span id="71" class="l"><a class="l" href="#71">71: </a>    <span class="php-comment">/**
+</span></span><span id="72" class="l"><a class="l" href="#72">72: </a><span class="php-comment">     * Class constructor
+</span></span><span id="73" class="l"><a class="l" href="#73">73: </a><span class="php-comment">     *
+</span></span><span id="74" class="l"><a class="l" href="#74">74: </a><span class="php-comment">     * @param string $serialNumber
+</span></span><span id="75" class="l"><a class="l" href="#75">75: </a><span class="php-comment">     * @param string $description
+</span></span><span id="76" class="l"><a class="l" href="#76">76: </a><span class="php-comment">     * @param string $transitType
+</span></span><span id="77" class="l"><a class="l" href="#77">77: </a><span class="php-comment">     */</span>
+</span><span id="78" class="l"><a class="l" href="#78">78: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> <a id="___construct" href="#___construct">__construct</a>(<span class="php-var">$serialNumber</span>, <span class="php-var">$description</span>, <span class="php-var">$transitType</span> = self::TYPE_GENERIC)
+</span><span id="79" class="l"><a class="l" href="#79">79: </a>    {
+</span><span id="80" class="l"><a class="l" href="#80">80: </a>        <span class="php-comment">// Required for boarding passes; otherwise not allowed</span>
+</span><span id="81" class="l"><a class="l" href="#81">81: </a>        <span class="php-var">$this</span>-&gt;<span class="php-var">$transitType</span> = <span class="php-var">$transitType</span>;
+</span><span id="82" class="l"><a class="l" href="#82">82: </a>        <span class="php-comment">// Call parent</span>
+</span><span id="83" class="l"><a class="l" href="#83">83: </a>        parent::__construct(<span class="php-var">$serialNumber</span>, <span class="php-var">$description</span>);
+</span><span id="84" class="l"><a class="l" href="#84">84: </a>    }
+</span><span id="85" class="l"><a class="l" href="#85">85: </a></span>}</code></pre>
 
 	<div id="footer">
-		 API documentation generated by <a href="http://apigen.org">ApiGen 2.8.0</a>
+		PHP-Passbook API documentation generated by <a href="http://apigen.org">ApiGen 2.8.0</a>
 	</div>
 </div>
 </div>
