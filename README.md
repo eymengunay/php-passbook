@@ -3,6 +3,15 @@
 [![Build Status](https://travis-ci.org/eymengunay/php-passbook.png?branch=master)](https://travis-ci.org/eymengunay/php-passbook)
 [![Dependencies Status](https://d2xishtp1ojlk0.cloudfront.net/d/5913521)](http://depending.in/eymengunay/php-passbook)
 
+## What is Passbook?
+
+> Passbook is an application in iOS that allows users to store coupons, boarding passes, event tickets,
+> store cards, 'generic' cards and other forms of mobile payment.
+
+## What does this library do?
+
+PHP-Passbook is a library for creating and packaging passes inside your application. Distribution of generated pass files can be done by attaching the file in an e-mail or serving it from your web server.
+
 ## Installing
 
 ### Using Composer
@@ -11,7 +20,7 @@ To add PHP-Passbook as a local, per-project dependency to your project, simply a
 
 ```
 {
-    "require-dev": {
+    "require": {
         "eo/passbook": "dev-master"
     }
 }
@@ -76,13 +85,46 @@ $factory->package($pass);
 
 <sub>PHP-Passbook depends on [JMS/Serializer](http://jmsyst.com/libs/serializer/master) library for pass serialization.</sub>
 
+## Obtaining the Pass Type Identifier and Team ID
+
+You can find more information on [http://developer.apple.com/library/ios/#documentation/userexperience/conceptual/PassKit_PG/Chapters/YourFirst.html](http://developer.apple.com/library/ios/#documentation/userexperience/conceptual/PassKit_PG/Chapters/YourFirst.html)
+
 ## Requesting Certificates
 
-### P12 Certificate & Pass Type ID
-1. Logon to [iOS Provisioning portal](https://developer.apple.com/ios/manage/passtypeids/index.action "iOS Provisioning portal") and go to Identifiers > Pass Type IDs
-2. Follow the instructions to create a new Pass Type ID and download .cer file to your computer (Download button is under Settings)
-3. Open downloaded file to add it into Keychain Access
-4. Locate the certificate in Keychain Access and export it in .p12 format
+### P12 Certificate
+Once you have downloaded the Apple iPhone certificate from Apple, export it to the P12 certificate format.
+
+**To do this on Mac OS:**
+
+1. Open the Keychain Access application (in the Applications/Utilities folder).
+2. If you have not already added the certificate to Keychain, select File > Import. Then navigate to the certificate file (the .cer file) you obtained from Apple.
+3. Select the Keys category in Keychain Access.
+4. Select the private key associated with your iPhone Development Certificate. The private key is identified by the iPhone Developer: <First Name> <Last Name> public certificate that is paired with it.
+5. Select File > Export Items.
+6. Save your key in the Personal Information Exchange (.p12) file format.
+7. You will be prompted to create a password that is used when you attempt to import this key on another computer.
+
+**on Windows:**
+
+1. Convert the developer certificate file you receive from Apple into a PEM certificate file. Run the following command-line statement from the OpenSSL bin directory:
+
+```
+openssl x509 -in developer_identity.cer -inform DER -out developer_identity.pem -outform PEM
+```
+
+2. If you are using the private key from the keychain on a Mac computer, convert it into a PEM key:
+
+```
+openssl pkcs12 -nocerts -in mykey.p12 -out mykey.pem
+```
+
+3. You can now generate a valid P12 file, based on the key and the PEM version of the iPhone developer certificate:
+
+```
+openssl pkcs12 -export -inkey mykey.key -in developer_identity.pem -out iphone_dev.p12
+```
+
+If you are using a key from the Mac OS keychain, use the PEM version you generated in the previous step. Otherwise, use the OpenSSL key you generated earlier (on Windows).
 
 ### WWDR Certificate
 Apple’s World Wide Developer Relations (WWDR) certificate is available from Apple at <http://developer.apple.com/certificationauthority/AppleWWDRCA.cer>. You will have to add this to your Keychain Access and export it in .pem format to use it with the library. The WWDR certificate links your development certificate to Apple, completing the trust chain for your application.
