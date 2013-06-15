@@ -1,5 +1,6 @@
 # PHP PASSBOOK LIBRARY
 
+[![Build Status](https://travis-ci.org/eymengunay/php-passbook.png?branch=master)](https://travis-ci.org/eymengunay/php-passbook)
 [![Dependencies Status](https://d2xishtp1ojlk0.cloudfront.net/d/5913521)](http://depending.in/eymengunay/php-passbook)
 
 ## Installing
