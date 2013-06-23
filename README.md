@@ -2,6 +2,7 @@
 
 [![Build Status](https://travis-ci.org/eymengunay/php-passbook.png?branch=master)](https://travis-ci.org/eymengunay/php-passbook)
 [![Dependencies Status](https://d2xishtp1ojlk0.cloudfront.net/d/5913521)](http://depending.in/eymengunay/php-passbook)
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/eymengunay/php-passbook/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
 
 ## What is Passbook?
 
