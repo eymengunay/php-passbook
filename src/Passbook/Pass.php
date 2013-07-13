@@ -16,10 +16,10 @@ use JMS\Serializer\Annotation\SerializedName;
 use JMS\Serializer\Annotation\AccessType;
 use JMS\Serializer\Annotation\Accessor;
 use JMS\Serializer\Annotation\Exclude;
-use Passbook\Pass\Structure;
-use Passbook\Pass\Location;
-use Passbook\Pass\Barcode;
-use Passbook\Pass\Image;
+use Passbook\Pass\StructureInterface;
+use Passbook\Pass\LocationInterface;
+use Passbook\Pass\BarcodeInterface;
+use Passbook\Pass\ImageInterface;
 
 /**
  * Pass
@@ -255,7 +255,7 @@ class Pass implements PassInterface
     /**
      * {@inheritdoc}
      */
-    public function setStructure($structure)
+    public function setStructure(StructureInterface $structure)
     {
         $this->structure = $structure;
         return $this;
@@ -272,7 +272,7 @@ class Pass implements PassInterface
     /**
      * {@inheritdoc}
      */
-    public function addImage(Image $image)
+    public function addImage(ImageInterface $image)
     {
         $this->images[] = $image;
         return $this;
@@ -306,7 +306,7 @@ class Pass implements PassInterface
     /**
      * {@inheritdoc}
      */
-    public function addLocation(Location $location)
+    public function addLocation(LocationInterface $location)
     {
         $this->locations[] = $location;
         return $this;
@@ -340,7 +340,7 @@ class Pass implements PassInterface
     /**
      * {@inheritdoc}
      */
-    public function setBarcode(Barcode $barcode)
+    public function setBarcode(BarcodeInterface $barcode)
     {
         $this->barcode = $barcode;
         return $this;

@@ -127,6 +127,7 @@ class PassFactory
      * Creates a pkpass file
      *
      * @param  Passbook\PassInterface $pass
+     * @throws FileException If an IO error occurred
      * @return SplFileObject
      */
     public function package(PassInterface $pass)
@@ -140,7 +141,7 @@ class PassFactory
         $outputPath = rtrim($this->getOutputPath(), DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR;
         $passDir = $outputPath . $pass->getSerialNumber() . DIRECTORY_SEPARATOR;
         $passDirExists = file_exists($passDir);
-        if ($passDirExists && !$this->override) {
+        if ($passDirExists && !$this->getOverride()) {
             throw new FileException("Temporary pass directory already exists");
         } elseif (!$passDirExists && !mkdir($passDir, 0777, true)) {
             throw new FileException("Couldn't create temporary pass directory");
@@ -179,7 +180,9 @@ class PassFactory
             // Get signature content
             $signature = @file_get_contents($signatureFile);
             // Check signature content
-            if (!$signature) throw new FileException("Couldn't read signature file.");
+            if (!$signature) {
+                throw new FileException("Couldn't read signature file.");
+            }
             // Delimeters
             $begin = 'filename="smime.p7s"' . PHP_EOL . PHP_EOL;
             $end = PHP_EOL . PHP_EOL . '------';
@@ -188,7 +191,9 @@ class PassFactory
             $signature = substr($signature, 0, strpos($signature, $end));
             $signature = base64_decode($signature);
             // Put new signature
-            if (!file_put_contents($signatureFile, $signature)) throw new FileException("Couldn't write signature file.");
+            if (!file_put_contents($signatureFile, $signature)) {
+                throw new FileException("Couldn't write signature file.");
+            }
         } else {
             throw new FileException("Error reading certificate file");
         }
@@ -196,7 +201,9 @@ class PassFactory
         // Zip pass
         $zipFile = $outputPath . $pass->getSerialNumber() . self::PASS_EXTENSION;
         $zip = new ZipArchive();
-        if (!$zip->open($zipFile, $this->override ? ZIPARCHIVE::OVERWRITE : ZipArchive::CREATE)) throw new FileException("Couldn't open zip file.");
+        if (!$zip->open($zipFile, $this->getOverride() ? ZIPARCHIVE::OVERWRITE : ZipArchive::CREATE)) {
+            throw new FileException("Couldn't open zip file.");
+        }
         if ($handle = opendir($passDir)) {
             $zip->addFile($passDir);
             while (false !== ($entry = readdir($handle))) {
@@ -208,6 +215,7 @@ class PassFactory
             throw new FileException("Error reading pass directory");
         }
         $zip->close();
+
         // Remove temporary pass directory
         $this->rrmdir($passDir);
         return new SplFileObject($zipFile);

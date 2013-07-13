@@ -68,7 +68,7 @@ interface PassInterface
     /**
      * {@inheritdoc}
      */
-    public function setStructure($structure);
+    public function setStructure(StructureInterface $structure);
 
     /**
      * {@inheritdoc}
