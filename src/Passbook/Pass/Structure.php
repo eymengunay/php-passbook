@@ -59,7 +59,7 @@ class Structure implements StructureInterface
     /**
      * {@inheritdoc}
      */
-    public function addHeaderField(Field $headerField)
+    public function addHeaderField(FieldInterface $headerField)
     {
         $this->headerFields[] = $headerField;
         return $this;
@@ -76,7 +76,7 @@ class Structure implements StructureInterface
     /**
      * {@inheritdoc}
      */
-    public function addPrimaryField(Field $primaryField)
+    public function addPrimaryField(FieldInterface $primaryField)
     {
         $this->primaryFields[] = $primaryField;
         return $this;
@@ -93,7 +93,7 @@ class Structure implements StructureInterface
     /**
      * {@inheritdoc}
      */
-    public function addSecondaryField(Field $secondaryField)
+    public function addSecondaryField(FieldInterface $secondaryField)
     {
         $this->secondaryFields[] = $secondaryField;
         return $this;
@@ -110,7 +110,7 @@ class Structure implements StructureInterface
     /**
      * {@inheritdoc}
      */
-    public function addAuxiliaryField(Field $auxiliaryField)
+    public function addAuxiliaryField(FieldInterface $auxiliaryField)
     {
         $this->auxiliaryFields[] = $auxiliaryField;
         return $this;
@@ -127,7 +127,7 @@ class Structure implements StructureInterface
     /**
      * {@inheritdoc}
      */
-    public function addBackField(Field $backField)
+    public function addBackField(FieldInterface $backField)
     {
         $this->backFields[] = $backField;
         return $this;

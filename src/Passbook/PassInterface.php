@@ -11,10 +11,10 @@
 
 namespace Passbook;
 
-use Passbook\Pass\Structure;
-use Passbook\Pass\Location;
-use Passbook\Pass\Barcode;
-use Passbook\Pass\Image;
+use Passbook\Pass\StructureInterface;
+use Passbook\Pass\LocationInterface;
+use Passbook\Pass\BarcodeInterface;
+use Passbook\Pass\ImageInterface;
 
 /**
  * PassInterface
@@ -78,7 +78,7 @@ interface PassInterface
     /**
      * {@inheritdoc}
      */
-    public function addImage(Image $image);
+    public function addImage(ImageInterface $image);
 
     /**
      * {@inheritdoc}
@@ -98,7 +98,7 @@ interface PassInterface
     /**
      * {@inheritdoc}
      */
-    public function addLocation(Location $location);
+    public function addLocation(LocationInterface $location);
 
     /**
      * {@inheritdoc}
@@ -118,7 +118,7 @@ interface PassInterface
     /**
      * {@inheritdoc}
      */
-    public function setBarcode(Barcode $barcode);
+    public function setBarcode(BarcodeInterface $barcode);
 
     /**
      * {@inheritdoc}
