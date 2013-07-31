@@ -153,7 +153,7 @@ class Pass implements PassInterface
     /**
      * The URL of a web service that conforms to the API described in Passbook Web Service Reference.
      * http://developer.apple.com/library/ios/documentation/PassKit/Reference/PassKit_WebService/WebService.html#//apple_ref/doc/uid/TP40011988
-     * @SerializedName(value="webServiceUrl")
+     * @SerializedName(value="webServiceURL")
      * @var string
      */
     protected $webServiceURL;
