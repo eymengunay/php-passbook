@@ -43,6 +43,14 @@ use Passbook\Pass\Barcode;
 use Passbook\Pass\Structure;
 use Passbook\Type\EventTicket;
 
+/*
+ * Make sure that jms serializer annotations are registered:
+ *
+ * use Doctrine\Common\Annotations\AnnotationRegistry;
+ * $loader = require_once __DIR__ . "/vendor/autoload.php";
+ * AnnotationRegistry::registerAutoloadNamespace('JMS\Serializer\Annotation', __DIR__ . "/vendor/jms/serializer/src");
+ */
+
 // Create an event ticket
 $pass = new EventTicket("1234567890", "The Beat Goes On");
 $pass->setBackgroundColor('rgb(60, 65, 76)');
