@@ -1,8 +1,8 @@
 # PHP PASSBOOK LIBRARY
 
 [![Build Status](https://travis-ci.org/eymengunay/php-passbook.png?branch=master)](https://travis-ci.org/eymengunay/php-passbook)
-[![Dependencies Status](https://www.versioneye.com/php/eo:passbook/1.0.0/badge.png)](https://www.versioneye.com/php/eo:passbook/1.0.0)
-[![githalytics.com alpha](https://cruel-carlota.pagodabox.com/abaeb504a2efaca9b6560d59bee83651 "githalytics.com")](http://githalytics.com/eymengunay/php-passbook)
+[![Total Downloads](https://poser.pugx.org/eo/passbook/downloads.png)](https://packagist.org/packages/eo/passbook)
+[![Latest Stable Version](https://poser.pugx.org/eo/passbook/v/stable.png)](https://packagist.org/packages/eo/passbook)
 
 ## What is Passbook?
 
