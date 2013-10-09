@@ -12,7 +12,6 @@
 namespace Passbook\Pass;
 
 use JMS\Serializer\Annotation\SerializedName;
-use JMS\Serializer\Annotation\Exclude;
 
 /**
  * Pass Structure

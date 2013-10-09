@@ -13,7 +13,6 @@ namespace Passbook;
 
 use JMS\Serializer\Annotation\ExclusionPolicy;
 use JMS\Serializer\Annotation\SerializedName;
-use JMS\Serializer\Annotation\AccessType;
 use JMS\Serializer\Annotation\Accessor;
 use JMS\Serializer\Annotation\Exclude;
 use Passbook\Pass\StructureInterface;
