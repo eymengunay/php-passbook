@@ -86,7 +86,6 @@ class Pass implements PassInterface
      * Locations where the pass is relevant.
      * For example, the location of your store.
      * @Accessor(setter="addLocation")
-     * @Exclude
      * @var array
      */
     protected $locations = array();
