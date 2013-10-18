@@ -124,6 +124,18 @@ class PassFactory
     }
 
     /**
+     * Serialize pass
+     *
+     * @param  Passbook\PassInterface $pass
+     * @param  string $format
+     * @return string
+     */
+    public static function serialize(PassInterface $pass, $format = 'json')
+    {
+        return SerializerBuilder::create()->build()->serialize($pass, $format);
+    }
+
+    /**
      * Creates a pkpass file
      *
      * @param  Passbook\PassInterface $pass
@@ -132,11 +144,12 @@ class PassFactory
      */
     public function package(PassInterface $pass)
     {
-        // Serialize pass
         $pass->setPassTypeIdentifier($this->passTypeIdentifier);
         $pass->setTeamIdentifier($this->teamIdentifier);
         $pass->setOrganizationName($this->organizationName);
-        $json = SerializerBuilder::create()->build()->serialize($pass, 'json');
+
+        // Serialize pass
+        $json = self::serialize($pass, 'json');
 
         $outputPath = rtrim($this->getOutputPath(), DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR;
         $passDir = $outputPath . $pass->getSerialNumber() . DIRECTORY_SEPARATOR;
