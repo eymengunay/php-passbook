@@ -60,6 +60,7 @@ class Location implements LocationInterface
     public function setAltitude($altitude)
     {
         $this->altitude = $altitude;
+
         return $this;
     }
 
@@ -77,6 +78,7 @@ class Location implements LocationInterface
     public function setLatitude($latitude)
     {
         $this->latitude = $latitude;
+
         return $this;
     }
 
@@ -94,6 +96,7 @@ class Location implements LocationInterface
     public function setLongitude($longitude)
     {
         $this->longitude = $longitude;
+
         return $this;
     }
 
@@ -111,6 +114,7 @@ class Location implements LocationInterface
     public function setRelevantText($relevantText)
     {
         $this->relevantText = $relevantText;
+
         return $this;
     }
 

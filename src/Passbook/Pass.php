@@ -190,6 +190,7 @@ class Pass implements PassInterface
     public function setSerialNumber($serialNumber)
     {
         $this->serialNumber = $serialNumber;
+
         return $this;
     }
 
@@ -207,6 +208,7 @@ class Pass implements PassInterface
     public function setDescription($description)
     {
         $this->description = $description;
+
         return $this;
     }
 
@@ -256,6 +258,7 @@ class Pass implements PassInterface
     public function setStructure(StructureInterface $structure)
     {
         $this->structure = $structure;
+
         return $this;
     }
 
@@ -273,6 +276,7 @@ class Pass implements PassInterface
     public function addImage(ImageInterface $image)
     {
         $this->images[] = $image;
+
         return $this;
     }
 
@@ -290,6 +294,7 @@ class Pass implements PassInterface
     public function addAssociatedStoreIdentifier($associatedStoreIdentifier)
     {
         $this->associatedStoreIdentifiers[] = $associatedStoreIdentifier;
+
         return $this;
     }
 
@@ -307,6 +312,7 @@ class Pass implements PassInterface
     public function addLocation(LocationInterface $location)
     {
         $this->locations[] = $location;
+
         return $this;
     }
 
@@ -324,6 +330,7 @@ class Pass implements PassInterface
     public function setRelevantDate($relevantDate)
     {
         $this->relevantDate = $relevantDate;
+
         return $this;
     }
 
@@ -341,6 +348,7 @@ class Pass implements PassInterface
     public function setBarcode(BarcodeInterface $barcode)
     {
         $this->barcode = $barcode;
+
         return $this;
     }
 
@@ -358,6 +366,7 @@ class Pass implements PassInterface
     public function setBackgroundColor($backgroundColor)
     {
         $this->backgroundColor = $backgroundColor;
+
         return $this;
     }
 
@@ -375,6 +384,7 @@ class Pass implements PassInterface
     public function setForegroundColor($foregroundColor)
     {
         $this->foregroundColor = $foregroundColor;
+
         return $this;
     }
 
@@ -392,6 +402,7 @@ class Pass implements PassInterface
     public function setLabelColor($labelColor)
     {
         $this->labelColor = $labelColor;
+
         return $this;
     }
 
@@ -409,6 +420,7 @@ class Pass implements PassInterface
     public function setLogoText($logoText)
     {
         $this->logoText = $logoText;
+
         return $this;
     }
 
@@ -426,6 +438,7 @@ class Pass implements PassInterface
     public function setSuppressStripShine($suppressStripShine)
     {
         $this->suppressStripShine = $suppressStripShine;
+
         return $this;
     }
 
@@ -443,6 +456,7 @@ class Pass implements PassInterface
     public function setAuthenticationToken($authenticationToken)
     {
         $this->authenticationToken = $authenticationToken;
+
         return $this;
     }
 
@@ -460,6 +474,7 @@ class Pass implements PassInterface
     public function setWebServiceURL($webServiceURL)
     {
         $this->webServiceURL = $webServiceURL;
+
         return $this;
     }
 
@@ -477,6 +492,7 @@ class Pass implements PassInterface
     public function setPassTypeIdentifier($passTypeIdentifier)
     {
         $this->passTypeIdentifier = $passTypeIdentifier;
+
         return $this;
     }
 
@@ -494,6 +510,7 @@ class Pass implements PassInterface
     public function setTeamIdentifier($teamIdentifier)
     {
         $this->teamIdentifier = $teamIdentifier;
+
         return $this;
     }
 
@@ -511,6 +528,7 @@ class Pass implements PassInterface
     public function setOrganizationName($organizationName)
     {
         $this->organizationName = $organizationName;
+
         return $this;
     }
 

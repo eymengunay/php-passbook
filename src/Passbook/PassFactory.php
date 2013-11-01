@@ -92,6 +92,7 @@ class PassFactory
     public function setOutputPath($outputPath)
     {
         $this->outputPath = $outputPath;
+
         return $this;
     }
 
@@ -111,6 +112,7 @@ class PassFactory
     public function setOverride($override)
     {
         $this->override = $override;
+
         return $this;
     }
 
@@ -127,7 +129,7 @@ class PassFactory
      * Serialize pass
      *
      * @param  Passbook\PassInterface $pass
-     * @param  string $format
+     * @param  string                 $format
      * @return string
      */
     public static function serialize(PassInterface $pass, $format = 'json')
@@ -139,7 +141,7 @@ class PassFactory
      * Creates a pkpass file
      *
      * @param  Passbook\PassInterface $pass
-     * @throws FileException If an IO error occurred
+     * @throws FileException          If an IO error occurred
      * @return SplFileObject
      */
     public function package(PassInterface $pass)
@@ -175,8 +177,7 @@ class PassFactory
         // Manifest.json
         $manifestJSONFile = $passDir . 'manifest.json';
         $manifest = array();
-        foreach (scandir($passDir) as $file)
-        {
+        foreach (scandir($passDir) as $file) {
             if ($file == '.' or $file == '..') continue;
             $manifest[$file] = sha1_file($passDir . $file);
         }
@@ -231,6 +232,7 @@ class PassFactory
 
         // Remove temporary pass directory
         $this->rrmdir($passDir);
+
         return new SplFileObject($zipFile);
     }
 
@@ -239,11 +241,13 @@ class PassFactory
      *
      * @param string $dir
      */
-    private function rrmdir($dir) {
+    private function rrmdir($dir)
+    {
         $files = array_diff(scandir($dir), array('.', '..'));
         foreach ($files as $file) {
             is_dir("$dir/$file") ? $this->rrmdir("$dir/$file") : unlink("$dir/$file");
         }
+
         return rmdir($dir);
     }
 }

@@ -76,6 +76,7 @@ class Field implements FieldInterface
     public function setChangeMessage($changeMessage)
     {
         $this->changeMessage = $changeMessage;
+
         return $this;
     }
 
@@ -93,6 +94,7 @@ class Field implements FieldInterface
     public function setKey($key)
     {
         $this->key = $key;
+
         return $this;
     }
 
@@ -110,6 +112,7 @@ class Field implements FieldInterface
     public function setLabel($label)
     {
         $this->label = $label;
+
         return $this;
     }
 
@@ -127,6 +130,7 @@ class Field implements FieldInterface
     public function setTextAlignment($textAlignment)
     {
         $this->textAlignment = $textAlignment;
+
         return $this;
     }
 
@@ -144,6 +148,7 @@ class Field implements FieldInterface
     public function setValue($value)
     {
         $this->value = $value;
+
         return $this;
     }
 

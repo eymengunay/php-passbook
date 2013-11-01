@@ -57,6 +57,7 @@ class Image extends \SplFileObject implements ImageInterface
     public function setContext($context)
     {
         $this->context = $context;
+
         return $this;
     }
 
@@ -74,6 +75,7 @@ class Image extends \SplFileObject implements ImageInterface
     public function setIsRetina($isRetina)
     {
         $this->isRetina = $isRetina;
+
         return $this;
     }
 

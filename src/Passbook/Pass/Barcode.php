@@ -62,6 +62,7 @@ class Barcode implements BarcodeInterface
     public function setFormat($format)
     {
         $this->format = $format;
+
         return $this;
     }
 
@@ -79,6 +80,7 @@ class Barcode implements BarcodeInterface
     public function setMessage($message)
     {
         $this->message = $message;
+
         return $this;
     }
 
@@ -96,6 +98,7 @@ class Barcode implements BarcodeInterface
     public function setMessageEncoding($messageEncoding)
     {
         $this->messageEncoding = $messageEncoding;
+
         return $this;
     }
 
@@ -113,6 +116,7 @@ class Barcode implements BarcodeInterface
     public function setAltText($altText)
     {
         $this->altText = $altText;
+
         return $this;
     }
 
