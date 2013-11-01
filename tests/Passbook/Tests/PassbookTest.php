@@ -129,7 +129,7 @@ class PassbookTest extends \PHPUnit_Framework_TestCase
      */
     protected function setUp()
     {
-        $loader = require_once __DIR__ . "/../../../vendor/autoload.php";
+        require_once __DIR__ . "/../../../vendor/autoload.php";
         AnnotationRegistry::registerAutoloadNamespace('JMS\Serializer\Annotation', __DIR__ . "/../../../vendor/jms/serializer/src");
 
         $this->boardingPass = new BoardingPass(uniqid(), 'Lorem ipsum', 'PKTransitTypeBoat');
