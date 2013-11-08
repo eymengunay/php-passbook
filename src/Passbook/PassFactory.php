@@ -171,7 +171,7 @@ class PassFactory
             $fileName = $passDir . $image->getContext();
             if ($image->getIsRetina()) $fileName .= '@2x';
             $fileName .= '.' . $image->getExtension();
-            copy($image->getRealPath(), $fileName);
+            copy($image->getPathname(), $fileName);
         }
 
         // Manifest.json
