@@ -201,9 +201,12 @@ class PassFactory
             $begin = 'filename="smime.p7s"' . PHP_EOL . PHP_EOL;
             $end = PHP_EOL . PHP_EOL . '------';
             // Convert signature
-            $signature = substr($signature, strpos($signature, $begin) + strlen($begin));
-            $signature = substr($signature, 0, strpos($signature, $end));
-            $signature = base64_decode($signature);
+            //$signature = substr($signature, strpos($signature, $begin) + strlen($begin));
+            //$signature = substr($signature, 0, strpos($signature, $end));
+            //$signature = base64_decode($signature);
+            
+            $signature = substr($signature, (strpos($signature, 'filename="smime.p7s"')+20));
+            $signature = base64_decode(trim(substr($signature, 0, strpos($signature, '------'))));
             // Put new signature
             if (!file_put_contents($signatureFile, $signature)) {
                 throw new FileException("Couldn't write signature file.");
@@ -219,7 +222,7 @@ class PassFactory
             throw new FileException("Couldn't open zip file.");
         }
         if ($handle = opendir($passDir)) {
-            $zip->addFile($passDir);
+            //$zip->addFile($passDir);
             while (false !== ($entry = readdir($handle))) {
                 if ($entry == '.' or $entry == '..') continue;
                 $zip->addFile($passDir . $entry, $entry);
