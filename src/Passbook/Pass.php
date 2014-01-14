@@ -16,6 +16,7 @@ use JMS\Serializer\Annotation\SerializedName;
 use JMS\Serializer\Annotation\Accessor;
 use JMS\Serializer\Annotation\Exclude;
 use Passbook\Pass\StructureInterface;
+use Passbook\Pass\BeaconInterface;
 use Passbook\Pass\LocationInterface;
 use Passbook\Pass\BarcodeInterface;
 use Passbook\Pass\ImageInterface;
@@ -72,6 +73,13 @@ class Pass implements PassInterface
      * @var string
      */
     protected $images = array();
+
+    /**
+     * Beacons where the pass is relevant.
+     * @Accessor(setter="addBeacon")
+     * @var array
+     */
+    protected $beacons = array();
 
     /**
      * A list of iTunes Store item identifiers
@@ -322,6 +330,24 @@ class Pass implements PassInterface
     public function getLocations()
     {
         return $this->locations;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function addBeacon(BeaconInterface $beacon)
+    {
+        $this->beacons[] = $beacon;
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getBeacons()
+    {
+        return $this->beacons;
     }
 
     /**
