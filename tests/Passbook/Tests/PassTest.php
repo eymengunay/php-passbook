@@ -2,9 +2,12 @@
 
 namespace Passbook\Tests;
 
+use Passbook\Pass;
 use Passbook\PassFactory;
 use Passbook\Pass\Field;
+use Passbook\Pass\DateField;
 use Passbook\Pass\Barcode;
+use Passbook\Pass\Beacon;
 use Passbook\Pass\Location;
 use Passbook\Pass\Structure;
 use Passbook\Type\BoardingPass;
@@ -12,9 +15,8 @@ use Passbook\Type\Coupon;
 use Passbook\Type\EventTicket;
 use Passbook\Type\Generic;
 use Passbook\Type\StoreCard;
-use Doctrine\Common\Annotations\AnnotationRegistry;
 
-class PassbookTest extends \PHPUnit_Framework_TestCase
+class PassTest extends \PHPUnit_Framework_TestCase
 {
     /**
      * @var PassInterface
@@ -40,6 +42,27 @@ class PassbookTest extends \PHPUnit_Framework_TestCase
      * @var PassInterface
      */
     protected $storeCard;
+
+    /**
+     * Boarding Pass
+     */
+    public function testBoardingPass()
+    {
+        $boardingPass = new BoardingPass(uniqid(), 'Lorem ipsum', BoardingPass::TYPE_BUS);
+        $json = PassFactory::serialize($boardingPass);
+        $array = json_decode($json, true);
+
+        $this->assertArrayHasKey('transitType', $array);
+    }
+
+    /**
+     * Store Card
+     */
+    public function testStoreCard()
+    {
+        $json = PassFactory::serialize($this->storeCard);
+        $array = json_decode($json, true);
+    }
 
     /**
      * Event Ticket
@@ -73,20 +96,26 @@ class PassbookTest extends \PHPUnit_Framework_TestCase
         $auxiliary->setLabel('Date & Time');
         $structure->addAuxiliaryField($auxiliary);
 
+        // Relevant date
+        $this->eventTicket->setRelevantDate(new \DateTime());
+
         // Set pass structure
         $this->eventTicket->setStructure($structure);
 
+        // Add barcode
         $barcode = new Barcode('PKBarcodeFormatQR', 'barcodeMessage');
         $this->eventTicket->setBarcode($barcode);
 
         $json = PassFactory::serialize($this->eventTicket);
         $array = json_decode($json, true);
 
+        $this->assertArrayHasKey('eventTicket', $array);
         $this->assertArrayHasKey('locations', $array);
         $this->assertArrayHasKey('barcode', $array);
         $this->assertArrayHasKey('logoText', $array);
         $this->assertArrayHasKey('backgroundColor', $array);
         $this->assertArrayHasKey('eventTicket', $array);
+        $this->assertArrayHasKey('relevantDate', $array);
     }
 
     /**
@@ -98,6 +127,11 @@ class PassbookTest extends \PHPUnit_Framework_TestCase
         $this->assertSame('rgb(60, 65, 76)', $this->generic->getBackgroundColor());
         $this->generic->setLogoText('Apple Inc.');
         $this->assertSame('Apple Inc.', $this->generic->getLogoText());
+
+        $this->generic
+            ->setFormatVersion(1)
+            ->setDescription('description')
+        ;
 
         // Create pass structure
         $structure = new Structure();
@@ -113,15 +147,38 @@ class PassbookTest extends \PHPUnit_Framework_TestCase
         $structure->addSecondaryField($back);
 
         // Add auxiliary field
-        $auxiliary = new Field('datetime', '2013-04-15 @10:25');
+        $auxiliary = new DateField('datetime', new \DateTime());
         $auxiliary->setLabel('Date & Time');
         $structure->addAuxiliaryField($auxiliary);
 
         // Set pass structure
         $this->generic->setStructure($structure);
 
-        $barcode = new Barcode('PKBarcodeFormatQR', 'barcodeMessage');
-        $this->generic->setBarcode($barcode);
+        // Add beacon
+        $beacon = new Beacon('abcdef01-2345-6789-abcd-ef0123456789');
+        $this->generic->addBeacon($beacon);
+
+        $json = PassFactory::serialize($this->generic);
+        $array = json_decode($json, true);
+
+        $this->assertArrayHasKey('beacons', $array);
+        $this->assertArrayHasKey('generic', $array);
+    }
+
+    /**
+     * Pass
+     */
+    public function testPass()
+    {
+        $this->pass
+            ->setWebServiceURL('http://example.com')
+            ->setForegroundColor('rgb(0, 255, 0)')
+            ->setBackgroundColor('rgb(0, 255, 0)')
+            ->setLabelColor('rgb(0, 255, 0)')
+            ->setAuthenticationToken('123')
+            ->setType('generic')
+            ->setSuppressStripShine(false)
+        ;
     }
 
     /**
@@ -129,13 +186,10 @@ class PassbookTest extends \PHPUnit_Framework_TestCase
      */
     protected function setUp()
     {
-        require_once __DIR__ . "/../../../vendor/autoload.php";
-        AnnotationRegistry::registerAutoloadNamespace('JMS\Serializer\Annotation', __DIR__ . "/../../../vendor/jms/serializer/src");
-
-        $this->boardingPass = new BoardingPass(uniqid(), 'Lorem ipsum', 'PKTransitTypeBoat');
         $this->coupon       = new Coupon(uniqid(), 'Lorem ipsum');
         $this->eventTicket  = new EventTicket(uniqid(), 'Lorem ipsum');
         $this->generic      = new Generic(uniqid(), 'Lorem ipsum');
         $this->storeCard    = new StoreCard(uniqid(), 'Lorem ipsum');
+        $this->pass         = new Pass(uniqid(), 'Lorem ipsum');
     }
 }
