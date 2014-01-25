@@ -12,6 +12,7 @@
 namespace Passbook;
 
 use Passbook\Pass\StructureInterface;
+use Passbook\Pass\BeaconInterface;
 use Passbook\Pass\LocationInterface;
 use Passbook\Pass\BarcodeInterface;
 use Passbook\Pass\ImageInterface;
@@ -104,6 +105,16 @@ interface PassInterface
      * {@inheritdoc}
      */
     public function getLocations();
+
+    /**
+     * {@inheritdoc}
+     */
+    public function addBeacon(BeaconInterface $beacon);
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getBeacons();
 
     /**
      * {@inheritdoc}
