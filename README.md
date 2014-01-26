@@ -1,6 +1,7 @@
 # PHP PASSBOOK LIBRARY
 
 [![Build Status](https://travis-ci.org/eymengunay/php-passbook.png?branch=master)](https://travis-ci.org/eymengunay/php-passbook)
+[![Code Coverage](https://scrutinizer-ci.com/g/eymengunay/php-passbook/badges/coverage.png?s=46b9519154148d7c525fd706d8b37999c40e9312)](https://scrutinizer-ci.com/g/eymengunay/php-passbook/)
 [![Total Downloads](https://poser.pugx.org/eo/passbook/downloads.png)](https://packagist.org/packages/eo/passbook)
 [![Latest Stable Version](https://poser.pugx.org/eo/passbook/v/stable.png)](https://packagist.org/packages/eo/passbook)
 
