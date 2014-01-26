@@ -4,7 +4,6 @@ namespace Passbook\Tests\Pass;
 
 use Passbook\Pass\Structure;
 use Passbook\Pass\Field;
-use Passbook\Pass\DateField;
 
 class StructureTest extends \PHPUnit_Framework_TestCase
 {

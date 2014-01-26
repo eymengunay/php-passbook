@@ -167,8 +167,10 @@ class PassFactory
         // Images
         foreach ($pass->getImages() as $image) {
             $fileName = $passDir . $image->getContext();
-            if ($image->getIsRetina()) $fileName .= '@2x';
-            $fileName .= '.' . $image->getExtension();
+            if ($image->isRetina()) {
+                $fileName .= '@2x';
+            }
+            $fileName .= '.'.$image->getExtension();
             copy($image->getPathname(), $fileName);
         }
 

@@ -236,7 +236,7 @@ class Pass implements PassInterface
      */
     public function getSerialNumber()
     {
-        return $this->serialNumber;
+        return strval($this->serialNumber);
     }
 
     /**
