@@ -21,6 +21,21 @@ use JMS\Serializer\Annotation\SerializedName;
 class Barcode implements BarcodeInterface
 {
     /**
+     * @var string
+     */
+    const TYPE_QR = 'PKBarcodeFormatQR';
+
+    /**
+     * @var string
+     */
+    const TYPE_PDF_417 = 'PKBarcodeFormatPDF417';
+
+    /**
+     * @var string
+     */
+    const TYPE_AZTEC = 'PKBarcodeFormatAztec';
+
+    /**
      * Barcode format. Must be one of the following values:
      * PKBarcodeFormatQR, PKBarcodeFormatPDF417, PKBarcodeFormatAztec.
      * @var string
