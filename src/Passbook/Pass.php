@@ -21,6 +21,7 @@ use Passbook\Pass\ImageInterface;
  * Pass
  *
  * @author Eymen Gunay <eymen@egunay.com>
+ * @author Sotaro Omura <http://omoon.org>
  */
 class Pass implements PassInterface
 {

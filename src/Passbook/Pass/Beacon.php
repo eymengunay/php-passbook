@@ -14,7 +14,7 @@ namespace Passbook\Pass;
 /**
  * Beacon
  *
- * @author Eymen Gunay <eymen@egunay.com>
+ * @author Sotaro Omura <http://omoon.org>
  */
 class Beacon implements BeaconInterface
 {

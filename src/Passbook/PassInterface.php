@@ -21,6 +21,7 @@ use Passbook\Pass\ImageInterface;
  * PassInterface
  *
  * @author Eymen Gunay <eymen@egunay.com>
+ * @author Sotaro Omura <http://omoon.org>
  */
 interface PassInterface
 {

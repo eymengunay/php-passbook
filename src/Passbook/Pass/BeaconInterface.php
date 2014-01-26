@@ -14,7 +14,7 @@ namespace Passbook\Pass;
 /**
  * BeaconInterface
  *
- * @author Eymen Gunay <eymen@egunay.com>
+ * @author Sotaro Omura <http://omoon.org>
  */
 interface BeaconInterface
 {
