@@ -28,24 +28,66 @@
         </ul>
       </header>
       <section>
-        <h1>PHP PASSBOOK LIBRARY</h1>
+        <h1>
+<a name="php-passbook-library" class="anchor" href="#php-passbook-library"><span class="octicon octicon-link"></span></a>PHP PASSBOOK LIBRARY</h1>
 
-<h2>Installing</h2>
+<p><a href="https://travis-ci.org/eymengunay/php-passbook"><img src="https://travis-ci.org/eymengunay/php-passbook.png?branch=master" alt="Build Status"></a>
+<a href="https://scrutinizer-ci.com/g/eymengunay/php-passbook/"><img src="https://scrutinizer-ci.com/g/eymengunay/php-passbook/badges/coverage.png?s=46b9519154148d7c525fd706d8b37999c40e9312" alt="Code Coverage"></a>
+<a href="https://packagist.org/packages/eo/passbook"><img src="https://poser.pugx.org/eo/passbook/downloads.png" alt="Total Downloads"></a>
+<a href="https://packagist.org/packages/eo/passbook"><img src="https://poser.pugx.org/eo/passbook/v/stable.png" alt="Latest Stable Version"></a></p>
 
-<h3>Using Composer</h3>
+<h2>
+<a name="what-is-passbook" class="anchor" href="#what-is-passbook"><span class="octicon octicon-link"></span></a>What is Passbook?</h2>
+
+<blockquote>
+<p>Passbook is an application in iOS that allows users to store coupons, boarding passes, event tickets,
+store cards, 'generic' cards and other forms of mobile payment.</p>
+</blockquote>
+
+<h2>
+<a name="what-does-this-library-do" class="anchor" href="#what-does-this-library-do"><span class="octicon octicon-link"></span></a>What does this library do?</h2>
+
+<p>PHP-Passbook is a library for creating and packaging passes inside your application. Distribution of generated pass files can be done by attaching the file in an e-mail or serving it from your web server.</p>
+
+<h2>
+<a name="breaking-changes" class="anchor" href="#breaking-changes"><span class="octicon octicon-link"></span></a>Breaking changes</h2>
+
+<h3>
+<a name="version-110" class="anchor" href="#version-110"><span class="octicon octicon-link"></span></a>Version 1.1.0</h3>
+
+<ul>
+<li>Pass setRelevantDate now accepts a DateTime object instead of string</li>
+<li>
+<code>PassFactory:override</code> property renamed to <code>PassFactory:overwrite</code>
+</li>
+<li>JMS Serializer dependency removed</li>
+</ul><h2>
+<a name="installing" class="anchor" href="#installing"><span class="octicon octicon-link"></span></a>Installing</h2>
+
+<h3>
+<a name="using-composer" class="anchor" href="#using-composer"><span class="octicon octicon-link"></span></a>Using Composer</h3>
 
 <p>To add PHP-Passbook as a local, per-project dependency to your project, simply add a dependency on eo/passbook to your project's composer.json file. Here is a minimal example of a composer.json file that just defines a development-time dependency on the latest version of the library:</p>
 
 <pre><code>{
-    "require-dev": {
+    "require": {
         "eo/passbook": "dev-master"
     }
 }
 </code></pre>
 
-<h2>Usage Example</h2>
+<h2>
+<a name="api-doc" class="anchor" href="#api-doc"><span class="octicon octicon-link"></span></a>API Doc</h2>
 
-<pre><code>use Passbook\Pass\Field;
+<p>Search by class, method name, or package: <a href="http://eymengunay.github.io/php-passbook/api">http://eymengunay.github.io/php-passbook/api</a></p>
+
+<h2>
+<a name="usage-example" class="anchor" href="#usage-example"><span class="octicon octicon-link"></span></a>Usage Example</h2>
+
+<pre><code>&lt;?php
+
+use Passbook\Pass\Field;
+use Passbook\Pass\Image;
 use Passbook\PassFactory;
 use Passbook\Pass\Barcode;
 use Passbook\Pass\Structure;
@@ -74,11 +116,15 @@ $auxiliary = new Field('datetime', '2013-04-15 @10:25');
 $auxiliary-&gt;setLabel('Date &amp; Time');
 $structure-&gt;addAuxiliaryField($auxiliary);
 
+// Add icon image
+$icon = new Image('/path/to/icon.png', 'icon');
+$pass-&gt;addImage($icon);
+
 // Set pass structure
 $pass-&gt;setStructure($structure);
 
 // Add barcode
-$barcode = new Barcode('PKBarcodeFormatQR', 'barcodeMessage');
+$barcode = new Barcode(Barcode::TYPE_QR, 'barcodeMessage');
 $pass-&gt;setBarcode($barcode);
 
 // Create pass factory instance
@@ -87,24 +133,69 @@ $factory-&gt;setOutputPath('/path/to/output/path');
 $factory-&gt;package($pass);
 </code></pre>
 
-<h2>Requirements</h2>
+<h2>
+<a name="requirements" class="anchor" href="#requirements"><span class="octicon octicon-link"></span></a>Requirements</h2>
 
 <ul>
 <li>PHP 5.3+</li>
 <li><a href="http://php.net/manual/en/book.zip.php">zip</a></li>
 <li><a href="http://www.php.net/manual/en/book.openssl.php">OpenSSL</a></li>
-</ul><h2>Requesting Certificates</h2>
+</ul><h2>
+<a name="obtaining-the-pass-type-identifier-and-team-id" class="anchor" href="#obtaining-the-pass-type-identifier-and-team-id"><span class="octicon octicon-link"></span></a>Obtaining the Pass Type Identifier and Team ID</h2>
 
-<h3>P12 Certificate &amp; Pass Type ID</h3>
+<p>You can find more information on <a href="http://developer.apple.com/library/ios/#documentation/userexperience/conceptual/PassKit_PG/Chapters/YourFirst.html">http://developer.apple.com/library/ios/#documentation/userexperience/conceptual/PassKit_PG/Chapters/YourFirst.html</a></p>
+
+<h2>
+<a name="requesting-certificates" class="anchor" href="#requesting-certificates"><span class="octicon octicon-link"></span></a>Requesting Certificates</h2>
+
+<h3>
+<a name="p12-certificate" class="anchor" href="#p12-certificate"><span class="octicon octicon-link"></span></a>P12 Certificate</h3>
+
+<p>Once you have downloaded the Apple iPhone certificate from Apple, export it to the P12 certificate format.</p>
+
+<p><strong>To do this on Mac OS:</strong></p>
 
 <ol>
-<li>Logon to <a href="https://developer.apple.com/ios/manage/passtypeids/index.action" title="iOS Provisioning portal">iOS Provisioning portal</a> and go to Identifiers &gt; Pass Type IDs</li>
-<li>Follow the instructions to create a new Pass Type ID and download .cer file to your computer (Download button is under Settings)</li>
-<li>Open downloaded file to add it into Keychain Access</li>
-<li>Locate the certificate in Keychain Access and export it in .p12 format</li>
-</ol><h3>WWDR Certificate</h3>
+<li>Open the Keychain Access application (in the Applications/Utilities folder).</li>
+<li>If you have not already added the certificate to Keychain, select File &gt; Import. Then navigate to the certificate file (the .cer file) you obtained from Apple.</li>
+<li>Select the Keys category in Keychain Access.</li>
+<li>Select the private key associated with your iPhone Development Certificate. The private key is identified by the iPhone Developer:  public certificate that is paired with it.</li>
+<li>Select File &gt; Export Items.</li>
+<li>Save your key in the Personal Information Exchange (.p12) file format.</li>
+<li>You will be prompted to create a password that is used when you attempt to import this key on another computer.</li>
+</ol><p><strong>on Windows:</strong></p>
+
+<ol>
+<li>Convert the developer certificate file you receive from Apple into a PEM certificate file. Run the following command-line statement from the OpenSSL bin directory:</li>
+</ol><pre><code>openssl x509 -in developer_identity.cer -inform DER -out developer_identity.pem -outform PEM
+</code></pre>
+
+<ol>
+<li>If you are using the private key from the keychain on a Mac computer, convert it into a PEM key:</li>
+</ol><pre><code>openssl pkcs12 -nocerts -in mykey.p12 -out mykey.pem
+</code></pre>
+
+<ol>
+<li>You can now generate a valid P12 file, based on the key and the PEM version of the iPhone developer certificate:</li>
+</ol><pre><code>openssl pkcs12 -export -inkey mykey.key -in developer_identity.pem -out iphone_dev.p12
+</code></pre>
+
+<p>If you are using a key from the Mac OS keychain, use the PEM version you generated in the previous step. Otherwise, use the OpenSSL key you generated earlier (on Windows).</p>
+
+<h3>
+<a name="wwdr-certificate" class="anchor" href="#wwdr-certificate"><span class="octicon octicon-link"></span></a>WWDR Certificate</h3>
 
 <p>Apple’s World Wide Developer Relations (WWDR) certificate is available from Apple at <a href="http://developer.apple.com/certificationauthority/AppleWWDRCA.cer">http://developer.apple.com/certificationauthority/AppleWWDRCA.cer</a>. You will have to add this to your Keychain Access and export it in .pem format to use it with the library. The WWDR certificate links your development certificate to Apple, completing the trust chain for your application.</p>
+
+<h2>
+<a name="reporting-an-issue-or-a-feature-request" class="anchor" href="#reporting-an-issue-or-a-feature-request"><span class="octicon octicon-link"></span></a>Reporting an issue or a feature request</h2>
+
+<p>Issues and feature requests related to this library are tracked in the Github issue tracker: <a href="https://github.com/eymengunay/php-passbook/issues">https://github.com/eymengunay/php-passbook/issues</a></p>
+
+<h2>
+<a name="see-also" class="anchor" href="#see-also"><span class="octicon octicon-link"></span></a>See also</h2>
+
+<p><a href="https://github.com/eymengunay/PassbookBundle">PassbookBundle</a>: PHP-Passbook library integration for Symfony2</p>
       </section>
       <footer>
         <p>This project is maintained by <a href="https://github.com/eymengunay">eymengunay</a></p>
