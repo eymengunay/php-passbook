@@ -11,8 +11,6 @@
 
 namespace Passbook\Pass;
 
-use JMS\Serializer\Annotation\SerializedName;
-
 /**
  * Field
  *
@@ -44,7 +42,6 @@ class Field implements FieldInterface
      * Format string for the alert text that is displayed when the pass is updated.
      * The format string may contain the escape %@, which is replaced with the
      * field’s new value. For example, “Gate changed to %@.”
-     * @SerializedName(value="formatVersion")
      * @var string
      */
     protected $changeMessage;
@@ -86,8 +83,30 @@ class Field implements FieldInterface
     public function __construct($key, $value)
     {
         // Required
-        $this->key   = $key;
-        $this->value = $value;
+        $this->setKey($key);
+        $this->setValue($value);
+    }
+
+    public function toArray()
+    {
+        $array = array(
+            'key' => $this->getKey(),
+            'value' => $this->getValue()
+        );
+
+        if ($changeMessage = $this->getChangeMessage()) {
+            $array['changeMessage'] = $changeMessage;
+        }
+
+        if ($label = $this->getLabel()) {
+            $array['label'] = $label;
+        }
+
+        if ($textAlignment = $this->getTextAlignment()) {
+            $array['textAlignment'] = $textAlignment;
+        }
+
+        return $array;
     }
 
     /**

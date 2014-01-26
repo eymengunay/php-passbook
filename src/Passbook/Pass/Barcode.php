@@ -11,8 +11,6 @@
 
 namespace Passbook\Pass;
 
-use JMS\Serializer\Annotation\SerializedName;
-
 /**
  * Barcode
  *
@@ -50,7 +48,6 @@ class Barcode implements BarcodeInterface
 
     /**
      * Message or payload to be displayed as a barcode.
-     * @SerializedName(value="messageEncoding")
      * @var string
      */
     protected $messageEncoding;
@@ -58,7 +55,6 @@ class Barcode implements BarcodeInterface
     /**
      * Text encoding that is used to convert the message from the
      * string representation to a data representation to render the barcode.
-     * @SerializedName(value="altText")
      * @var string
      */
     protected $altText;
@@ -69,6 +65,21 @@ class Barcode implements BarcodeInterface
         $this->format          = $format;
         $this->message         = $message;
         $this->messageEncoding = $messageEncoding;
+    }
+
+    public function toArray()
+    {
+        $array = array(
+            'format' => $this->getFormat(),
+            'message' => $this->getMessage(),
+            'messageEncoding' => $this->getMessageEncoding()
+        );
+
+        if ($altText = $this->getAltText()) {
+            $array['altText'] = $altText;
+        }
+
+        return $array;
     }
 
     /**

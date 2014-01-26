@@ -20,7 +20,7 @@ interface ImageInterface
 {
     /**
      * Set image context
-     * @param bool
+     * @param boolean
      */
     public function setContext($context);
 
@@ -32,13 +32,13 @@ interface ImageInterface
 
     /**
      * Sets image is retina
-     * @param bool
+     * @param boolean
      */
     public function setIsRetina($isRetina);
 
     /**
      * Returns image is retina
-     * @param string
+     * @param boolean
      */
-    public function getIsRetina();
+    public function isRetina();
 }

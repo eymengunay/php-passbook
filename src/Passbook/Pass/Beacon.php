@@ -11,8 +11,6 @@
 
 namespace Passbook\Pass;
 
-use JMS\Serializer\Annotation\SerializedName;
-
 /**
  * Beacon
  *
@@ -22,7 +20,6 @@ class Beacon implements BeaconInterface
 {
     /**
      * Unique identifier of a Bluetooth Low Energy location beacon.
-     * @SerializedName(value="proximityUUID")
      * @var string
      */
     protected $proximityUUID;
@@ -43,7 +40,6 @@ class Beacon implements BeaconInterface
      * Text displayed on the lock screen when the pass is currently relevant.
      * For example, a description of the nearby location such as
      * “Store nearby on 1st and Main.”
-     * @SerializedName(value="relevantText")
      * @var string
      */
     protected $relevantText;
@@ -51,7 +47,28 @@ class Beacon implements BeaconInterface
     public function __construct($proximityUUID)
     {
         // Required
-        $this->proximityUUID  = $proximityUUID;
+        $this->setProximityUUID($proximityUUID);
+    }
+
+    public function toArray()
+    {
+        $array = array(
+            'proximityUUID' => $this->getProximityUUID()
+        );
+
+        if ($major = $this->getMajor()) {
+            $array['major'] = $major;
+        }
+
+        if ($minor = $this->getMinor()) {
+            $array['minor'] = $minor;
+        }
+
+        if ($relevantText = $this->getRelevantText()) {
+            $array['relevantText'] = $relevantText;
+        }
+
+        return $array;
     }
 
     /**

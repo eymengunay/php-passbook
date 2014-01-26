@@ -11,10 +11,6 @@
 
 namespace Passbook;
 
-use JMS\Serializer\Annotation\ExclusionPolicy;
-use JMS\Serializer\Annotation\SerializedName;
-use JMS\Serializer\Annotation\Accessor;
-use JMS\Serializer\Annotation\Exclude;
 use Passbook\Pass\StructureInterface;
 use Passbook\Pass\BeaconInterface;
 use Passbook\Pass\LocationInterface;
@@ -24,7 +20,6 @@ use Passbook\Pass\ImageInterface;
 /**
  * Pass
  *
- * @ExclusionPolicy("none")
  * @author Eymen Gunay <eymen@egunay.com>
  */
 class Pass implements PassInterface
@@ -33,7 +28,6 @@ class Pass implements PassInterface
      * Serial number that uniquely identifies the pass.
      * No two passes with the same pass type identifier
      * may have the same serial number.
-     * @SerializedName(value="serialNumber")
      * @var string
      */
     protected $serialNumber;
@@ -48,14 +42,12 @@ class Pass implements PassInterface
     /**
      * Version of the file format.
      * The value must be 1.
-     * @SerializedName(value="formatVersion")
      * @var int
      */
     protected $formatVersion = 1;
 
     /**
      * Pass type
-     * @Exclude
      * @var string
      */
     protected $type;
@@ -68,15 +60,12 @@ class Pass implements PassInterface
 
     /**
      * Pass images
-     * @Accessor(setter="addImage")
-     * @Exclude
      * @var string
      */
     protected $images = array();
 
     /**
      * Beacons where the pass is relevant.
-     * @Accessor(setter="addBeacon")
      * @var array
      */
     protected $beacons = array();
@@ -84,8 +73,6 @@ class Pass implements PassInterface
     /**
      * A list of iTunes Store item identifiers
      * (also known as Adam IDs) for the associated apps.
-     * @Accessor(setter="addAssociatedStoreIdentifiers")
-     * @Exclude
      * @var array array of numbers
      */
     protected $associatedStoreIdentifiers = array();
@@ -93,7 +80,6 @@ class Pass implements PassInterface
     /**
      * Locations where the pass is relevant.
      * For example, the location of your store.
-     * @Accessor(setter="addLocation")
      * @var array
      */
     protected $locations = array();
@@ -101,7 +87,6 @@ class Pass implements PassInterface
     /**
      * Date and time when the pass becomes relevant.
      * For example, the start time of a movie.
-     * @SerializedName(value="relevantDate")
      * @var DateTime
      */
     protected $relevantDate;
@@ -115,35 +100,30 @@ class Pass implements PassInterface
 
     /**
      * Background color of the pass, specified as an CSS-style RGB triple.
-     * @SerializedName(value="backgroundColor")
      * @var string rgb(23, 187, 82)
      */
     protected $backgroundColor;
 
     /**
      * Foreground color of the pass, specified as a CSS-style RGB triple.
-     * @SerializedName(value="foregroundColor")
      * @var string rgb(100, 10, 110)
      */
     protected $foregroundColor;
 
     /**
      * Color of the label text, specified as a CSS-style RGB triple.
-     * @SerializedName(value="labelColor")
      * @var string rgb(255, 255, 255)
      */
     protected $labelColor;
 
     /**
      * Text displayed next to the logo on the pass.
-     * @SerializedName(value="logoText")
      * @var string
      */
     protected $logoText;
 
     /**
      * If true, the strip image is displayed without a shine effect.
-     * @SerializedName(value="suppressStripShine")
      * @var string The default value is false
      */
     protected $suppressStripShine;
@@ -151,7 +131,6 @@ class Pass implements PassInterface
     /**
      * The authentication token to use with the web service.
      * The token must be 16 characters or longer.
-     * @SerializedName(value="authenticationToken")
      * @var string
      */
     protected $authenticationToken;
@@ -159,28 +138,24 @@ class Pass implements PassInterface
     /**
      * The URL of a web service that conforms to the API described in Passbook Web Service Reference.
      * http://developer.apple.com/library/ios/documentation/PassKit/Reference/PassKit_WebService/WebService.html#//apple_ref/doc/uid/TP40011988
-     * @SerializedName(value="webServiceURL")
      * @var string
      */
     protected $webServiceURL;
 
     /**
      * Pass type identifier
-     * @SerializedName(value="passTypeIdentifier")
      * @var string
      */
     protected $passTypeIdentifier;
 
     /**
      * Team identifier
-     * @SerializedName(value="teamIdentifier")
      * @var string
      */
     protected $teamIdentifier;
 
     /**
      * Organization name
-     * @SerializedName(value="organizationName")
      * @var string
      */
     protected $organizationName;
@@ -188,8 +163,62 @@ class Pass implements PassInterface
     public function __construct($serialNumber, $description)
     {
         // Required
-        $this->serialNumber = $serialNumber;
-        $this->description  = $description;
+        $this->setSerialNumber($serialNumber);
+        $this->setDescription($description);
+    }
+
+    public function toArray()
+    {
+        $array = array();
+
+        // Structure
+        if ($structure = $this->getStructure()) {
+            $array[$this->getType()] = $structure->toArray();
+        }
+
+        $properties = array(
+            'serialNumber',
+            'description',
+            'formatVersion',
+            'beacons',
+            'locations',
+            'relevantDate',
+            'barcode',
+            'backgroundColor',
+            'foregroundColor',
+            'labelColor',
+            'logoText',
+            'suppressStripShine',
+            'authenticationToken',
+            'webServiceURL',
+            'passTypeIdentifier',
+            'teamIdentifier',
+            'organizationName'
+        );
+        foreach ($properties as $property) {
+            $method = 'is'.ucfirst($property);
+            if (!method_exists($this, $method)) {
+                $method = 'get'.ucfirst($property);
+            }
+            $val = $this->$method();
+            if ($val instanceof \DateTime) {
+                // Date
+                $array[$property] = $val->format('c');
+            } elseif (is_object($val)) {
+                // Object
+                $array[$property] = $val->toArray();
+            } elseif (is_scalar($val)) {
+                // Scalar
+                $array[$property] = $val;
+            } elseif (is_array($val)) {
+                // Array
+                foreach ($val as $v) {
+                    $array[$property][] = $v->toArray();
+                }
+            }
+        }
+
+        return $array;
     }
 
     /**
@@ -242,6 +271,8 @@ class Pass implements PassInterface
     public function setFormatVersion($formatVersion)
     {
         $this->formatVersion = $formatVersion;
+
+        return $this;
     }
 
     /**
@@ -258,6 +289,8 @@ class Pass implements PassInterface
     public function setType($type)
     {
         $this->type = $type;
+
+        return $this;
     }
 
     /**

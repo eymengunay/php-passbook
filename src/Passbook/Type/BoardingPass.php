@@ -78,8 +78,16 @@ class BoardingPass extends Pass
     public function __construct($serialNumber, $description, $transitType = self::TYPE_GENERIC)
     {
         // Required for boarding passes; otherwise not allowed
-        $this->$transitType = $transitType;
+        $this->transitType = $transitType;
         // Call parent
         parent::__construct($serialNumber, $description);
+    }
+
+    public function toArray()
+    {
+        $array = parent::toArray();
+        $array['transitType'] = $this->transitType;
+
+        return $array;
     }
 }

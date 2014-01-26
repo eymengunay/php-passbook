@@ -11,8 +11,6 @@
 
 namespace Passbook\Pass;
 
-use JMS\Serializer\Annotation\SerializedName;
-
 /**
  * Location
  *
@@ -42,7 +40,6 @@ class Location implements LocationInterface
      * Text displayed on the lock screen when the pass is currently relevant.
      * For example, a description of the nearby location such as
      * “Store nearby on 1st and Main.”
-     * @SerializedName(value="relevantText")
      * @var string
      */
     protected $relevantText;
@@ -50,8 +47,26 @@ class Location implements LocationInterface
     public function __construct($latitude, $longitude)
     {
         // Required
-        $this->latitude  = $latitude;
-        $this->longitude = $longitude;
+        $this->setLatitude($latitude);
+        $this->setLongitude($longitude);
+    }
+
+    public function toArray()
+    {
+        $array = array(
+            'latitude' => $this->getLatitude(),
+            'longitude' => $this->getLongitude()
+        );
+
+        if ($altitude = $this->getAltitude()) {
+            $array['altitude'] = $altitude;
+        }
+
+        if ($relevantText = $this->getRelevantText()) {
+            $array['relevantText'] = $relevantText;
+        }
+
+        return $array;
     }
 
     /**

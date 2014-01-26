@@ -12,7 +12,7 @@
 namespace Passbook\Pass;
 
 /**
- * StructureInterface
+ * FieldInterface
  *
  * @author Eymen Gunay <eymen@egunay.com>
  */

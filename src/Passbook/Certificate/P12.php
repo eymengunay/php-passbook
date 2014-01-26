@@ -27,7 +27,8 @@ class P12 extends \SplFileObject implements P12Interface
     public function __construct($filename, $password)
     {
         parent::__construct($filename);
-        $this->password = $password;
+        
+        $this->setPassword($password);
     }
 
     /**

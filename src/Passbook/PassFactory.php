@@ -17,7 +17,6 @@ use Passbook\PassInterface;
 use Passbook\Certificate\P12;
 use Passbook\Certificate\WWDR;
 use Passbook\Exception\FileException;
-use JMS\Serializer\SerializerBuilder;
 
 /**
  * PassFactory - Creates .pkpass files
@@ -33,10 +32,10 @@ class PassFactory
     protected $outputPath = '';
 
     /**
-     * Override if pass exists
+     * Overwrite if pass exists
      * @var bool
      */
-    protected $override = false;
+    protected $overwrite = false;
 
     /**
      * Pass type identifier
@@ -106,35 +105,34 @@ class PassFactory
     }
 
     /**
-     * Set override
-     * @param string
+     * Set overwrite
+     * @param boolean
      */
-    public function setOverride($override)
+    public function setOverwrite($overwrite)
     {
-        $this->override = $override;
+        $this->overwrite = $overwrite;
 
         return $this;
     }
 
     /**
-     * Get override
-     * @return string
+     * Get overwrite
+     * @return boolean
      */
-    public function getOverride()
+    public function isOverwrite()
     {
-        return $this->override;
+        return $this->overwrite;
     }
 
     /**
      * Serialize pass
      *
      * @param  Passbook\PassInterface $pass
-     * @param  string                 $format
      * @return string
      */
-    public static function serialize(PassInterface $pass, $format = 'json')
+    public static function serialize(PassInterface $pass)
     {
-        return SerializerBuilder::create()->build()->serialize($pass, $format);
+        return json_encode($pass->toArray());
     }
 
     /**
@@ -151,12 +149,12 @@ class PassFactory
         $pass->setOrganizationName($this->organizationName);
 
         // Serialize pass
-        $json = self::serialize($pass, 'json');
+        $json = self::serialize($pass);
 
         $outputPath = rtrim($this->getOutputPath(), DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR;
         $passDir = $outputPath . $pass->getSerialNumber() . DIRECTORY_SEPARATOR;
         $passDirExists = file_exists($passDir);
-        if ($passDirExists && !$this->getOverride()) {
+        if ($passDirExists && !$this->isOverwrite()) {
             throw new FileException("Temporary pass directory already exists");
         } elseif (!$passDirExists && !mkdir($passDir, 0777, true)) {
             throw new FileException("Couldn't create temporary pass directory");
@@ -215,7 +213,7 @@ class PassFactory
         // Zip pass
         $zipFile = $outputPath . $pass->getSerialNumber() . self::PASS_EXTENSION;
         $zip = new ZipArchive();
-        if (!$zip->open($zipFile, $this->getOverride() ? ZIPARCHIVE::OVERWRITE : ZipArchive::CREATE)) {
+        if (!$zip->open($zipFile, $this->isOverwrite() ? ZIPARCHIVE::OVERWRITE : ZipArchive::CREATE)) {
             throw new FileException("Couldn't open zip file.");
         }
         if ($handle = opendir($passDir)) {

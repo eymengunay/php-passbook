@@ -11,8 +11,6 @@
 
 namespace Passbook\Pass;
 
-use JMS\Serializer\Annotation\SerializedName;
-
 /**
  * Image
  *
@@ -38,7 +36,6 @@ class Image extends \SplFileObject implements ImageInterface
     /**
      * All of the pass’s images are loaded using standard UIImage image-loading methods.
      * This means, for example, the file name of high resolution version of the image ends with @2x.png.
-     * @SerializedName(value="isRetina")
      * @var bool
      */
     protected $isRetina;
@@ -82,7 +79,7 @@ class Image extends \SplFileObject implements ImageInterface
     /**
      * {@inheritdoc}
      */
-    public function getIsRetina()
+    public function isRetina()
     {
         return $this->isRetina;
     }

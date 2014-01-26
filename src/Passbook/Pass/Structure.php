@@ -11,8 +11,6 @@
 
 namespace Passbook\Pass;
 
-use JMS\Serializer\Annotation\SerializedName;
-
 /**
  * Pass Structure
  *
@@ -22,38 +20,60 @@ class Structure implements StructureInterface
 {
     /**
      * Fields to be displayed in the header on the front of the pass.
-     * @SerializedName(value="headerFields")
      * @var array
      */
-    public $headerFields;
+    public $headerFields = array();
 
     /**
      * Fields to be displayed prominently on the front of the pass.
-     * @SerializedName(value="primaryFields")
      * @var array
      */
-    public $primaryFields;
+    public $primaryFields = array();
 
     /**
      * Fields to be displayed on the front of the pass.
-     * @SerializedName(value="secondaryFields")
      * @var array
      */
-    public $secondaryFields;
+    public $secondaryFields = array();
 
     /**
      * Additional fields to be displayed on the front of the pass.
-     * @SerializedName(value="auxiliaryFields")
      * @var array
      */
-    public $auxiliaryFields;
+    public $auxiliaryFields = array();
 
     /**
      * Fields to be on the back of the pass.
-     * @SerializedName(value="backFields")
      * @var array
      */
-    public $backFields;
+    public $backFields = array();
+
+    public function toArray()
+    {
+        $array = array();
+        
+        foreach ($this->getHeaderFields() as $headerField) {
+            $array['headerFields'][] = $headerField->toArray();
+        }
+
+        foreach ($this->getPrimaryFields() as $primaryField) {
+            $array['primaryFields'][] = $primaryField->toArray();
+        }
+
+        foreach ($this->getSecondaryFields() as $secondaryField) {
+            $array['secondaryFields'][] = $secondaryField->toArray();
+        }
+
+        foreach ($this->getAuxiliaryFields() as $auxiliaryField) {
+            $array['auxiliaryFields'][] = $auxiliaryField->toArray();
+        }
+
+        foreach ($this->getBackFields() as $backField) {
+            $array['backFields'][] = $backField->toArray();
+        }
+
+        return $array;
+    }
 
     /**
      * {@inheritdoc}
