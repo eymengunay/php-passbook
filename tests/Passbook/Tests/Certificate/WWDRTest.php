@@ -8,6 +8,6 @@ class WWDRTest extends \PHPUnit_Framework_TestCase
 {
     public function testWWDR()
     {
-        $wwdr = new WWDR(__DIR__.'/../../../dummy.wwdr');
+        $wwdr = new WWDR(__DIR__.'/../../../cert/dummy.wwdr');
     }
 }

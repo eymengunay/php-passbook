@@ -6,7 +6,7 @@ use Passbook\PassFactory;
 use Passbook\Type\EventTicket;
 use Passbook\Pass\Field;
 use Passbook\Pass\Barcode;
-use Passbook\Pass\Location;
+use Passbook\Pass\Image;
 use Passbook\Pass\Structure;
 
 class PassFactoryTest extends \PHPUnit_Framework_TestCase
@@ -44,15 +44,10 @@ class PassFactoryTest extends \PHPUnit_Framework_TestCase
             );
         }
 
-        $eventTicket  = new EventTicket(uniqid(), 'Lorem ipsum');
-        $eventTicket->setBackgroundColor('rgb(60, 65, 76)');
-        $this->assertSame('rgb(60, 65, 76)', $eventTicket->getBackgroundColor());
-        $eventTicket->setLogoText('Apple Inc.');
-        $this->assertSame('Apple Inc.', $eventTicket->getLogoText());
-
-        // Add location
-        $location = new Location(59.33792, 18.06873);
-        $eventTicket->addLocation($location);
+        // Create an event ticket
+        $pass = new EventTicket(time(), "The Beat Goes On");
+        $pass->setBackgroundColor('rgb(60, 65, 76)');
+        $pass->setLogoText('Apple Inc.');
 
         // Create pass structure
         $structure = new Structure();
@@ -72,18 +67,19 @@ class PassFactoryTest extends \PHPUnit_Framework_TestCase
         $auxiliary->setLabel('Date & Time');
         $structure->addAuxiliaryField($auxiliary);
 
-        // Relevant date
-        $eventTicket->setRelevantDate(new \DateTime());
+        // Add icon image
+        $icon = new Image(__DIR__.'/../../img/icon.png', 'icon');
+        $pass->addImage($icon);
 
         // Set pass structure
-        $eventTicket->setStructure($structure);
+        $pass->setStructure($structure);
 
         // Add barcode
-        $barcode = new Barcode('PKBarcodeFormatQR', 'barcodeMessage');
-        $eventTicket->setBarcode($barcode);
+        $barcode = new Barcode(Barcode::TYPE_QR, 'barcodeMessage');
+        $pass->setBarcode($barcode);
 
-        $this->factory->setOutputPath(sys_get_temp_dir());
-        $file = $this->factory->package($eventTicket);
+        $this->factory->setOutputPath(__DIR__.'/../../../www/passes');
+        $file = $this->factory->package($pass);
         $this->assertInstanceOf('SplFileObject', $file);
     }
 
@@ -92,17 +88,29 @@ class PassFactoryTest extends \PHPUnit_Framework_TestCase
      */
     protected function setUp()
     {
-        if (getenv('PASSBOOK_TEST_P12') && getenv('PASSBOOK_TEST_P12_PASS') && getenv('PASSBOOK_TEST_WWDR')) {
+        if (getenv('PASSBOOK_TEST_P12') && 
+            getenv('PASSBOOK_TEST_P12_PASS') && 
+            getenv('PASSBOOK_TEST_WWDR') && 
+            getenv('PASSBOOK_TEST_TYPE_ID') && 
+            getenv('PASSBOOK_TEST_TEAM_ID') && 
+            getenv('PASSBOOK_TEST_ORG_NAME')) {
+
             $p12File = getenv('PASSBOOK_TEST_P12');
             $p12Pass = getenv('PASSBOOK_TEST_P12_PASS');
             $wwdrFile = getenv('PASSBOOK_TEST_WWDR');
-        } else {
-            $p12File = __DIR__.'/../../dummy.p12';
-            $p12Pass = '123456';
-            $wwdrFile = 'http://developer.apple.com/certificationauthority/AppleWWDRCA.cer';
-            $this->skipPackageTest = true;
-        }
 
-        $this->factory = new PassFactory('pass-type-identifier', 'team-identifier', 'organization-name', $p12File, $p12Pass, $wwdrFile);
+            $passTypeIdentifier = getenv('PASSBOOK_TEST_TYPE_ID');
+            $teamIdentifier = getenv('PASSBOOK_TEST_TEAM_ID');
+            $organizationName = getenv('PASSBOOK_TEST_ORG_NAME');
+
+            $this->factory = new PassFactory($passTypeIdentifier, $teamIdentifier, $organizationName, $p12File, $p12Pass, $wwdrFile);
+        } else {
+            $p12File = __DIR__.'/../../cert/dummy.p12';
+            $p12Pass = '123456';
+            $wwdrFile = __DIR__.'/../../cert/dummy.wwdr';
+            $this->skipPackageTest = true;
+
+            $this->factory = new PassFactory('pass-type-identifier', 'team-identifier', 'organization-name', $p12File, $p12Pass, $wwdrFile);
+        }
     }
 }

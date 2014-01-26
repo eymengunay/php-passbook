@@ -5,7 +5,6 @@ namespace Passbook\Tests;
 use Passbook\Pass;
 use Passbook\PassFactory;
 use Passbook\Pass\Field;
-use Passbook\Pass\DateField;
 use Passbook\Pass\Barcode;
 use Passbook\Pass\Beacon;
 use Passbook\Pass\Location;
@@ -147,7 +146,7 @@ class PassTest extends \PHPUnit_Framework_TestCase
         $structure->addSecondaryField($back);
 
         // Add auxiliary field
-        $auxiliary = new DateField('datetime', new \DateTime());
+        $auxiliary = new Field('datetime', '2014 Aug 1');
         $auxiliary->setLabel('Date & Time');
         $structure->addAuxiliaryField($auxiliary);
 
