@@ -102,7 +102,7 @@ class Pass implements PassInterface
      * Date and time when the pass becomes relevant.
      * For example, the start time of a movie.
      * @SerializedName(value="relevantDate")
-     * @var string W3C date
+     * @var DateTime
      */
     protected $relevantDate;
 
@@ -353,7 +353,7 @@ class Pass implements PassInterface
     /**
      * {@inheritdoc}
      */
-    public function setRelevantDate($relevantDate)
+    public function setRelevantDate(\DateTime $relevantDate)
     {
         $this->relevantDate = $relevantDate;
 

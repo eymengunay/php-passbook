@@ -119,7 +119,7 @@ interface PassInterface
     /**
      * {@inheritdoc}
      */
-    public function setRelevantDate($relevantDate);
+    public function setRelevantDate(\DateTime $relevantDate);
 
     /**
      * {@inheritdoc}
