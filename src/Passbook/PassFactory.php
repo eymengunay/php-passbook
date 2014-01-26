@@ -219,7 +219,6 @@ class PassFactory
             throw new FileException("Couldn't open zip file.");
         }
         if ($handle = opendir($passDir)) {
-            $zip->addFile($passDir);
             while (false !== ($entry = readdir($handle))) {
                 if ($entry == '.' or $entry == '..') continue;
                 $zip->addFile($passDir . $entry, $entry);
