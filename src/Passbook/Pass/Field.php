@@ -21,6 +21,26 @@ use JMS\Serializer\Annotation\SerializedName;
 class Field implements FieldInterface
 {
     /**
+     * @var string
+     */
+    const ALIGN_LEFT = 'PKTextAlignmentLeft';
+
+    /**
+     * @var string
+     */
+    const ALIGN_CENTER = 'PKTextAlignmentCenter';
+
+    /**
+     * @var string
+     */
+    const ALIGN_RIGHT = 'PKTextAlignmentRight';
+
+    /**
+     * @var string
+     */
+    const ALIGN_NATURAL = 'PKTextAlignmentNatural';
+
+    /**
      * Format string for the alert text that is displayed when the pass is updated.
      * The format string may contain the escape %@, which is replaced with the
      * field’s new value. For example, “Gate changed to %@.”
