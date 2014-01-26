@@ -13,6 +13,14 @@
 
 PHP-Passbook is a library for creating and packaging passes inside your application. Distribution of generated pass files can be done by attaching the file in an e-mail or serving it from your web server.
 
+## Breaking changes
+
+### Version 1.1.0
+
+* Pass setRelevantDate now accepts a DateTime object instead of string
+* `PassFactory:override` property renamed to `PassFactory:overwrite`
+* JMS Serializer dependency removed
+
 ## Installing
 
 ### Using Composer
@@ -35,21 +43,12 @@ Search by class, method name, or package: http://eymengunay.github.io/php-passbo
 ```
 <?php
 
-...
-
 use Passbook\Pass\Field;
+use Passbook\Pass\Image;
 use Passbook\PassFactory;
 use Passbook\Pass\Barcode;
 use Passbook\Pass\Structure;
 use Passbook\Type\EventTicket;
-
-/*
- * Make sure that jms serializer annotations are registered:
- *
- * use Doctrine\Common\Annotations\AnnotationRegistry;
- * $loader = require_once __DIR__ . "/vendor/autoload.php";
- * AnnotationRegistry::registerAutoloadNamespace('JMS\Serializer\Annotation', __DIR__ . "/vendor/jms/serializer/src");
- */
 
 // Create an event ticket
 $pass = new EventTicket("1234567890", "The Beat Goes On");
@@ -74,11 +73,15 @@ $auxiliary = new Field('datetime', '2013-04-15 @10:25');
 $auxiliary->setLabel('Date & Time');
 $structure->addAuxiliaryField($auxiliary);
 
+// Add icon image
+$icon = new Image('/path/to/icon.png', 'icon');
+$pass->addImage($icon);
+
 // Set pass structure
 $pass->setStructure($structure);
 
 // Add barcode
-$barcode = new Barcode('PKBarcodeFormatQR', 'barcodeMessage');
+$barcode = new Barcode(Barcode::TYPE_QR, 'barcodeMessage');
 $pass->setBarcode($barcode);
 
 // Create pass factory instance
@@ -91,8 +94,6 @@ $factory->package($pass);
 * PHP 5.3+
 * [zip](http://php.net/manual/en/book.zip.php)
 * [OpenSSL](http://www.php.net/manual/en/book.openssl.php)
-
-<sub>PHP-Passbook depends on [JMS/Serializer](http://jmsyst.com/libs/serializer/master) library for pass serialization.</sub>
 
 ## Obtaining the Pass Type Identifier and Team ID
 
