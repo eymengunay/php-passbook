@@ -4,7 +4,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="generator" content="ApiGen 2.8.0" />
 
-	<title>Interface Passbook\Pass\StructureInterface | PHP-Passbook</title>
+	<title>Interface Passbook\Pass\BeaconInterface | PHP-Passbook</title>
 
 	<script type="text/javascript" src="resources/combined.js?1177154521"></script>
 	<script type="text/javascript" src="elementlist.js?1730068341"></script>
@@ -54,11 +54,11 @@
 			<h3>Interfaces</h3>
 			<ul>
 				<li><a href="class-Passbook.Pass.BarcodeInterface.html">BarcodeInterface</a></li>
-				<li><a href="class-Passbook.Pass.BeaconInterface.html">BeaconInterface</a></li>
+				<li class="active"><a href="class-Passbook.Pass.BeaconInterface.html">BeaconInterface</a></li>
 				<li><a href="class-Passbook.Pass.FieldInterface.html">FieldInterface</a></li>
 				<li><a href="class-Passbook.Pass.ImageInterface.html">ImageInterface</a></li>
 				<li><a href="class-Passbook.Pass.LocationInterface.html">LocationInterface</a></li>
-				<li class="active"><a href="class-Passbook.Pass.StructureInterface.html">StructureInterface</a></li>
+				<li><a href="class-Passbook.Pass.StructureInterface.html">StructureInterface</a></li>
 			</ul>
 
 
@@ -106,12 +106,12 @@
 	</div>
 
 <div id="content" class="class">
-	<h1>Interface StructureInterface</h1>
+	<h1>Interface BeaconInterface</h1>
 
 
 	<div class="description">
 	
-<p>StructureInterface</p>
+<p>BeaconInterface</p>
 
 	</div>
 
@@ -121,7 +121,7 @@
 
 	<div>
 		<h4>Direct known implementers</h4>
-			<a href="class-Passbook.Pass.Structure.html">Passbook\Pass\Structure</a>
+			<a href="class-Passbook.Pass.Beacon.html">Passbook\Pass\Beacon</a>
 	</div>
 
 
@@ -136,14 +136,14 @@
 				<b>Author:</b>
 				Eymen Gunay &lt;<a
 href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
-		<b>Located at</b> <a href="source-class-Passbook.Pass.StructureInterface.html#14-90" title="Go to source code">Passbook/Pass/StructureInterface.php</a><br />
+		<b>Located at</b> <a href="source-class-Passbook.Pass.BeaconInterface.html#14-77" title="Go to source code">Passbook/Pass/BeaconInterface.php</a><br />
 	</div>
 
 
 
 	<table class="summary" id="methods">
 	<caption>Methods summary</caption>
-	<tr data-order="addHeaderField" id="_addHeaderField">
+	<tr data-order="setProximityUUID" id="_setProximityUUID">
 
 		<td class="attributes"><code>
 			 public 
@@ -153,25 +153,25 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 		</td>
 
 		<td class="name"><div>
-		<a class="anchor" href="#_addHeaderField">#</a>
-		<code><a href="source-class-Passbook.Pass.StructureInterface.html#21-26" title="Go to source code">addHeaderField</a>( <span><code><a href="class-Passbook.Pass.FieldInterface.html">Passbook\Pass\FieldInterface</a></code> <var>$headerField</var></span> )</code>
+		<a class="anchor" href="#_setProximityUUID">#</a>
+		<code><a href="source-class-Passbook.Pass.BeaconInterface.html#21-26" title="Go to source code">setProximityUUID</a>( <span>string <var>$uuid</var></span> )</code>
 
 		<div class="description short">
 			
-<p>Adds header field</p>
+<p>Sets proximity UUID</p>
 
 		</div>
 
 		<div class="description detailed hidden">
 			
-<p>Adds header field</p>
+<p>Sets proximity UUID</p>
 
 
 
 				<h4>Parameters</h4>
 				<div class="list"><dl>
-					<dt><var>$headerField</var></dt>
-					<dd><code><code><a href="class-Passbook.Pass.Field.html">Passbook\Pass\Field</a></code></code></dd>
+					<dt><var>$uuid</var></dt>
+					<dd><code>string</code></dd>
 				</dl></div>
 
 
@@ -181,32 +181,36 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 		</div>
 		</div></td>
 	</tr>
-	<tr data-order="getHeaderFields" id="_getHeaderFields">
+	<tr data-order="getProximityUUID" id="_getProximityUUID">
 
 		<td class="attributes"><code>
 			 public 
-			
+			string
 			
 			</code>
 		</td>
 
 		<td class="name"><div>
-		<a class="anchor" href="#_getHeaderFields">#</a>
-		<code><a href="source-class-Passbook.Pass.StructureInterface.html#28-33" title="Go to source code">getHeaderFields</a>( )</code>
+		<a class="anchor" href="#_getProximityUUID">#</a>
+		<code><a href="source-class-Passbook.Pass.BeaconInterface.html#28-33" title="Go to source code">getProximityUUID</a>( )</code>
 
 		<div class="description short">
 			
-<p>Returns header fields</p>
+<p>Gets proximity UUID</p>
 
 		</div>
 
 		<div class="description detailed hidden">
 			
-<p>Returns header fields</p>
+<p>Gets proximity UUID</p>
 
 
 
 
+				<h4>Returns</h4>
+				<div class="list">
+					<code>string</code><br />
+				</div>
 
 
 
@@ -214,7 +218,7 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 		</div>
 		</div></td>
 	</tr>
-	<tr data-order="addPrimaryField" id="_addPrimaryField">
+	<tr data-order="setMajor" id="_setMajor">
 
 		<td class="attributes"><code>
 			 public 
@@ -224,25 +228,25 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 		</td>
 
 		<td class="name"><div>
-		<a class="anchor" href="#_addPrimaryField">#</a>
-		<code><a href="source-class-Passbook.Pass.StructureInterface.html#35-40" title="Go to source code">addPrimaryField</a>( <span><code><a href="class-Passbook.Pass.FieldInterface.html">Passbook\Pass\FieldInterface</a></code> <var>$primaryField</var></span> )</code>
+		<a class="anchor" href="#_setMajor">#</a>
+		<code><a href="source-class-Passbook.Pass.BeaconInterface.html#35-40" title="Go to source code">setMajor</a>( <span>integer <var>$major</var></span> )</code>
 
 		<div class="description short">
 			
-<p>Adds primary field</p>
+<p>Sets major</p>
 
 		</div>
 
 		<div class="description detailed hidden">
 			
-<p>Adds primary field</p>
+<p>Sets major</p>
 
 
 
 				<h4>Parameters</h4>
 				<div class="list"><dl>
-					<dt><var>$primaryField</var></dt>
-					<dd><code><code><a href="class-Passbook.Pass.Field.html">Passbook\Pass\Field</a></code></code></dd>
+					<dt><var>$major</var></dt>
+					<dd><code>integer</code></dd>
 				</dl></div>
 
 
@@ -252,32 +256,36 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 		</div>
 		</div></td>
 	</tr>
-	<tr data-order="getPrimaryFields" id="_getPrimaryFields">
+	<tr data-order="getMajor" id="_getMajor">
 
 		<td class="attributes"><code>
 			 public 
-			
+			integer
 			
 			</code>
 		</td>
 
 		<td class="name"><div>
-		<a class="anchor" href="#_getPrimaryFields">#</a>
-		<code><a href="source-class-Passbook.Pass.StructureInterface.html#42-47" title="Go to source code">getPrimaryFields</a>( )</code>
+		<a class="anchor" href="#_getMajor">#</a>
+		<code><a href="source-class-Passbook.Pass.BeaconInterface.html#42-47" title="Go to source code">getMajor</a>( )</code>
 
 		<div class="description short">
 			
-<p>Returns primary fields</p>
+<p>Gets major</p>
 
 		</div>
 
 		<div class="description detailed hidden">
 			
-<p>Returns primary fields</p>
+<p>Gets major</p>
 
 
 
 
+				<h4>Returns</h4>
+				<div class="list">
+					<code>integer</code><br />
+				</div>
 
 
 
@@ -285,7 +293,7 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 		</div>
 		</div></td>
 	</tr>
-	<tr data-order="addSecondaryField" id="_addSecondaryField">
+	<tr data-order="setMinor" id="_setMinor">
 
 		<td class="attributes"><code>
 			 public 
@@ -295,25 +303,25 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 		</td>
 
 		<td class="name"><div>
-		<a class="anchor" href="#_addSecondaryField">#</a>
-		<code><a href="source-class-Passbook.Pass.StructureInterface.html#49-54" title="Go to source code">addSecondaryField</a>( <span><code><a href="class-Passbook.Pass.FieldInterface.html">Passbook\Pass\FieldInterface</a></code> <var>$secondaryField</var></span> )</code>
+		<a class="anchor" href="#_setMinor">#</a>
+		<code><a href="source-class-Passbook.Pass.BeaconInterface.html#49-54" title="Go to source code">setMinor</a>( <span>integer <var>$minor</var></span> )</code>
 
 		<div class="description short">
 			
-<p>Adds secondary field</p>
+<p>Sets minor</p>
 
 		</div>
 
 		<div class="description detailed hidden">
 			
-<p>Adds secondary field</p>
+<p>Sets minor</p>
 
 
 
 				<h4>Parameters</h4>
 				<div class="list"><dl>
-					<dt><var>$secondaryField</var></dt>
-					<dd><code><code><a href="class-Passbook.Pass.Field.html">Passbook\Pass\Field</a></code></code></dd>
+					<dt><var>$minor</var></dt>
+					<dd><code>integer</code></dd>
 				</dl></div>
 
 
@@ -323,32 +331,36 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 		</div>
 		</div></td>
 	</tr>
-	<tr data-order="getSecondaryFields" id="_getSecondaryFields">
+	<tr data-order="getMinor" id="_getMinor">
 
 		<td class="attributes"><code>
 			 public 
-			
+			integer
 			
 			</code>
 		</td>
 
 		<td class="name"><div>
-		<a class="anchor" href="#_getSecondaryFields">#</a>
-		<code><a href="source-class-Passbook.Pass.StructureInterface.html#56-61" title="Go to source code">getSecondaryFields</a>( )</code>
+		<a class="anchor" href="#_getMinor">#</a>
+		<code><a href="source-class-Passbook.Pass.BeaconInterface.html#56-61" title="Go to source code">getMinor</a>( )</code>
 
 		<div class="description short">
 			
-<p>Returns secondary fields</p>
+<p>Gets minor</p>
 
 		</div>
 
 		<div class="description detailed hidden">
 			
-<p>Returns secondary fields</p>
+<p>Gets minor</p>
 
 
 
 
+				<h4>Returns</h4>
+				<div class="list">
+					<code>integer</code><br />
+				</div>
 
 
 
@@ -356,7 +368,44 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 		</div>
 		</div></td>
 	</tr>
-	<tr data-order="addAuxiliaryField" id="_addAuxiliaryField">
+	<tr data-order="getRelevantText" id="_getRelevantText">
+
+		<td class="attributes"><code>
+			 public 
+			string
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getRelevantText">#</a>
+		<code><a href="source-class-Passbook.Pass.BeaconInterface.html#63-68" title="Go to source code">getRelevantText</a>( )</code>
+
+		<div class="description short">
+			
+<p>Gets relevant text</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Gets relevant text</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>string</code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="setRelevantText" id="_setRelevantText">
 
 		<td class="attributes"><code>
 			 public 
@@ -366,130 +415,26 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 		</td>
 
 		<td class="name"><div>
-		<a class="anchor" href="#_addAuxiliaryField">#</a>
-		<code><a href="source-class-Passbook.Pass.StructureInterface.html#63-68" title="Go to source code">addAuxiliaryField</a>( <span><code><a href="class-Passbook.Pass.FieldInterface.html">Passbook\Pass\FieldInterface</a></code> <var>$auxiliaryField</var></span> )</code>
+		<a class="anchor" href="#_setRelevantText">#</a>
+		<code><a href="source-class-Passbook.Pass.BeaconInterface.html#70-75" title="Go to source code">setRelevantText</a>( <span>string <var>$relevantText</var></span> )</code>
 
 		<div class="description short">
 			
-<p>Adds auxiliary field</p>
+<p>Sets relevant text</p>
 
 		</div>
 
 		<div class="description detailed hidden">
 			
-<p>Adds auxiliary field</p>
+<p>Sets relevant text</p>
 
 
 
 				<h4>Parameters</h4>
 				<div class="list"><dl>
-					<dt><var>$auxiliaryField</var></dt>
-					<dd><code><code><a href="class-Passbook.Pass.Field.html">Passbook\Pass\Field</a></code></code></dd>
+					<dt><var>$relevantText</var></dt>
+					<dd><code>string</code></dd>
 				</dl></div>
-
-
-
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="getAuxiliaryFields" id="_getAuxiliaryFields">
-
-		<td class="attributes"><code>
-			 public 
-			
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_getAuxiliaryFields">#</a>
-		<code><a href="source-class-Passbook.Pass.StructureInterface.html#70-75" title="Go to source code">getAuxiliaryFields</a>( )</code>
-
-		<div class="description short">
-			
-<p>Returns auxiliary fields</p>
-
-		</div>
-
-		<div class="description detailed hidden">
-			
-<p>Returns auxiliary fields</p>
-
-
-
-
-
-
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="addBackField" id="_addBackField">
-
-		<td class="attributes"><code>
-			 public 
-			
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_addBackField">#</a>
-		<code><a href="source-class-Passbook.Pass.StructureInterface.html#77-82" title="Go to source code">addBackField</a>( <span><code><a href="class-Passbook.Pass.FieldInterface.html">Passbook\Pass\FieldInterface</a></code> <var>$backField</var></span> )</code>
-
-		<div class="description short">
-			
-<p>Adds back field</p>
-
-		</div>
-
-		<div class="description detailed hidden">
-			
-<p>Adds back field</p>
-
-
-
-				<h4>Parameters</h4>
-				<div class="list"><dl>
-					<dt><var>$backField</var></dt>
-					<dd><code><code><a href="class-Passbook.Pass.Field.html">Passbook\Pass\Field</a></code></code></dd>
-				</dl></div>
-
-
-
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="getBackFields" id="_getBackFields">
-
-		<td class="attributes"><code>
-			 public 
-			
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_getBackFields">#</a>
-		<code><a href="source-class-Passbook.Pass.StructureInterface.html#84-89" title="Go to source code">getBackFields</a>( )</code>
-
-		<div class="description short">
-			
-<p>Returns back fields</p>
-
-		</div>
-
-		<div class="description detailed hidden">
-			
-<p>Returns back fields</p>
-
-
-
 
 
 

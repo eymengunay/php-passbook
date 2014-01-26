@@ -4,7 +4,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="generator" content="ApiGen 2.8.0" />
 
-	<title>Interface RecursiveIterator | PHP-Passbook</title>
+	<title>Interface DateTimeInterface | PHP-Passbook</title>
 
 	<script type="text/javascript" src="resources/combined.js?1177154521"></script>
 	<script type="text/javascript" src="elementlist.js?1730068341"></script>
@@ -50,9 +50,9 @@
 
 			<h3>Interfaces</h3>
 			<ul>
-				<li><a href="class-DateTimeInterface.html">DateTimeInterface</a></li>
+				<li class="active"><a href="class-DateTimeInterface.html">DateTimeInterface</a></li>
 				<li><a href="class-Iterator.html">Iterator</a></li>
-				<li class="active"><a href="class-RecursiveIterator.html">RecursiveIterator</a></li>
+				<li><a href="class-RecursiveIterator.html">RecursiveIterator</a></li>
 				<li><a href="class-SeekableIterator.html">SeekableIterator</a></li>
 				<li><a href="class-Traversable.html">Traversable</a></li>
 			</ul>
@@ -107,53 +107,36 @@
 	</div>
 
 <div id="content" class="class">
-	<h1>Interface RecursiveIterator</h1>
+	<h1>Interface DateTimeInterface</h1>
 
 
 
-	<dl class="tree">
-		<dd style="padding-left:0px">
-<b><span>RecursiveIterator</span></b>			
-			 implements 
-				<a href="class-Iterator.html"><span>Iterator</span></a>, 
-			
-				<a href="class-Traversable.html"><span>Traversable</span></a>
-			
-			
-		</dd>
-	</dl>
 
 
 
 
 	<div>
 		<h4>Direct known implementers</h4>
-			<a href="class-SplFileObject.html">SplFileObject</a>
+			<a href="class-DateTime.html">DateTime</a>
 	</div>
 
-	<div>
-		<h4>Indirect known implementers</h4>
-			<a href="class-Passbook.Certificate.P12.html">Passbook\Certificate\P12</a>, 
-			<a href="class-Passbook.Certificate.WWDR.html">Passbook\Certificate\WWDR</a>, 
-			<a href="class-Passbook.Pass.Image.html">Passbook\Pass\Image</a>
-	</div>
 
 
 
 	<div class="info">
 		
-		<b>PHP Extension:</b> <a href="http://php.net/manual/book.spl.php" title="Go to PHP documentation">SPL</a><br />
+		<b>PHP Extension:</b> <a href="http://php.net/manual/book.datetime.php" title="Go to PHP documentation">Date</a><br />
 		
 		
 
-		<b>Documented at</b> <a href="http://php.net/manual/class.recursiveiterator.php" title="Go to PHP documentation">php.net</a><br />
+		<b>Documented at</b> <a href="http://php.net/manual/class.datetimeinterface.php" title="Go to PHP documentation">php.net</a><br />
 	</div>
 
 
 
 	<table class="summary" id="methods">
 	<caption>Methods summary</caption>
-	<tr data-order="hasChildren" id="_hasChildren">
+	<tr data-order="format" id="_format">
 
 		<td class="attributes"><code>
 			 public 
@@ -163,8 +146,8 @@
 		</td>
 
 		<td class="name"><div>
-		<a class="anchor" href="#_hasChildren">#</a>
-		<code><a href="http://php.net/manual/recursiveiterator.haschildren.php" title="Go to PHP documentation">hasChildren</a>( )</code>
+		<a class="anchor" href="#_format">#</a>
+		<code><a href="http://php.net/manual/datetimeinterface.format.php" title="Go to PHP documentation">format</a>( <span>mixed <var>$format</var></span> )</code>
 
 		<div class="description short">
 			
@@ -182,7 +165,7 @@
 		</div>
 		</div></td>
 	</tr>
-	<tr data-order="getChildren" id="_getChildren">
+	<tr data-order="getTimezone" id="_getTimezone">
 
 		<td class="attributes"><code>
 			 public 
@@ -192,8 +175,124 @@
 		</td>
 
 		<td class="name"><div>
-		<a class="anchor" href="#_getChildren">#</a>
-		<code><a href="http://php.net/manual/recursiveiterator.getchildren.php" title="Go to PHP documentation">getChildren</a>( )</code>
+		<a class="anchor" href="#_getTimezone">#</a>
+		<code><a href="http://php.net/manual/datetimeinterface.gettimezone.php" title="Go to PHP documentation">getTimezone</a>( )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getOffset" id="_getOffset">
+
+		<td class="attributes"><code>
+			 public 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getOffset">#</a>
+		<code><a href="http://php.net/manual/datetimeinterface.getoffset.php" title="Go to PHP documentation">getOffset</a>( )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getTimestamp" id="_getTimestamp">
+
+		<td class="attributes"><code>
+			 public 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getTimestamp">#</a>
+		<code><a href="http://php.net/manual/datetimeinterface.gettimestamp.php" title="Go to PHP documentation">getTimestamp</a>( )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="diff" id="_diff">
+
+		<td class="attributes"><code>
+			 public 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_diff">#</a>
+		<code><a href="http://php.net/manual/datetimeinterface.diff.php" title="Go to PHP documentation">diff</a>( <span>mixed <var>$object</var></span>, <span>mixed <var>$absolute</var></span> )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="__wakeup" id="___wakeup">
+
+		<td class="attributes"><code>
+			 public 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#___wakeup">#</a>
+		<code><a href="http://php.net/manual/datetimeinterface.wakeup.php" title="Go to PHP documentation">__wakeup</a>( )</code>
 
 		<div class="description short">
 			
@@ -213,18 +312,6 @@
 	</tr>
 	</table>
 
-	<table class="summary inherited">
-	<caption>Methods inherited from <a href="class-Iterator.html#methods">Iterator</a></caption>
-	<tr>
-		<td><code>
-			<a href="class-Iterator.html#_current">current()</a>, 
-			<a href="class-Iterator.html#_key">key()</a>, 
-			<a href="class-Iterator.html#_next">next()</a>, 
-			<a href="class-Iterator.html#_rewind">rewind()</a>, 
-			<a href="class-Iterator.html#_valid">valid()</a>
-		</code></td>
-	</tr>
-	</table>
 
 
 

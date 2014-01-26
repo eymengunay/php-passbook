@@ -4,7 +4,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="generator" content="ApiGen 2.8.0" />
 
-	<title>Class Passbook\Pass\Location | PHP-Passbook</title>
+	<title>Class Passbook\Pass\Beacon | PHP-Passbook</title>
 
 	<script type="text/javascript" src="resources/combined.js?1177154521"></script>
 	<script type="text/javascript" src="elementlist.js?1730068341"></script>
@@ -44,10 +44,10 @@
 			<h3>Classes</h3>
 			<ul>
 				<li><a href="class-Passbook.Pass.Barcode.html">Barcode</a></li>
-				<li><a href="class-Passbook.Pass.Beacon.html">Beacon</a></li>
+				<li class="active"><a href="class-Passbook.Pass.Beacon.html">Beacon</a></li>
 				<li><a href="class-Passbook.Pass.Field.html">Field</a></li>
 				<li><a href="class-Passbook.Pass.Image.html">Image</a></li>
-				<li class="active"><a href="class-Passbook.Pass.Location.html">Location</a></li>
+				<li><a href="class-Passbook.Pass.Location.html">Location</a></li>
 				<li><a href="class-Passbook.Pass.Structure.html">Structure</a></li>
 			</ul>
 
@@ -106,20 +106,20 @@
 	</div>
 
 <div id="content" class="class">
-	<h1>Class Location</h1>
+	<h1>Class Beacon</h1>
 
 
 	<div class="description">
 	
-<p>Location</p>
+<p>Beacon</p>
 
 	</div>
 
 	<dl class="tree">
 		<dd style="padding-left:0px">
-<b><span>Passbook\Pass\Location</span></b>			
+<b><span>Passbook\Pass\Beacon</span></b>			
 			 implements 
-				<a href="class-Passbook.Pass.LocationInterface.html"><span>Passbook\Pass\LocationInterface</span></a>
+				<a href="class-Passbook.Pass.BeaconInterface.html"><span>Passbook\Pass\BeaconInterface</span></a>
 			
 			
 		</dd>
@@ -141,7 +141,7 @@
 				<b>Author:</b>
 				Eymen Gunay &lt;<a
 href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
-		<b>Located at</b> <a href="source-class-Passbook.Pass.Location.html#14-143" title="Go to source code">Passbook/Pass/Location.php</a><br />
+		<b>Located at</b> <a href="source-class-Passbook.Pass.Beacon.html#14-145" title="Go to source code">Passbook/Pass/Beacon.php</a><br />
 	</div>
 
 
@@ -159,7 +159,7 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#___construct">#</a>
-		<code><a href="source-class-Passbook.Pass.Location.html#47-52" title="Go to source code">__construct</a>( <span>mixed <var>$latitude</var></span>, <span>mixed <var>$longitude</var></span> )</code>
+		<code><a href="source-class-Passbook.Pass.Beacon.html#47-51" title="Go to source code">__construct</a>( <span>mixed <var>$proximityUUID</var></span> )</code>
 
 		<div class="description short">
 			
@@ -188,7 +188,7 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_toArray">#</a>
-		<code><a href="source-class-Passbook.Pass.Location.html#54-70" title="Go to source code">toArray</a>( )</code>
+		<code><a href="source-class-Passbook.Pass.Beacon.html#53-72" title="Go to source code">toArray</a>( )</code>
 
 		<div class="description short">
 			
@@ -206,7 +206,7 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 		</div>
 		</div></td>
 	</tr>
-	<tr data-order="setAltitude" id="_setAltitude">
+	<tr data-order="setMajor" id="_setMajor">
 
 		<td class="attributes"><code>
 			 public 
@@ -216,25 +216,25 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 		</td>
 
 		<td class="name"><div>
-		<a class="anchor" href="#_setAltitude">#</a>
-		<code><a href="source-class-Passbook.Pass.Location.html#72-80" title="Go to source code">setAltitude</a>( <span>float <var>$altitude</var></span> )</code>
+		<a class="anchor" href="#_setMajor">#</a>
+		<code><a href="source-class-Passbook.Pass.Beacon.html#74-82" title="Go to source code">setMajor</a>( <span>integer <var>$major</var></span> )</code>
 
 		<div class="description short">
 			
-<p>Sets location altitude</p>
+<p>Sets major</p>
 
 		</div>
 
 		<div class="description detailed hidden">
 			
-<p>Sets location altitude</p>
+<p>Sets major</p>
 
 
 
 				<h4>Parameters</h4>
 				<div class="list"><dl>
-					<dt><var>$altitude</var></dt>
-					<dd><code>float</code></dd>
+					<dt><var>$major</var></dt>
+					<dd><code>integer</code></dd>
 				</dl></div>
 
 
@@ -242,50 +242,50 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 
 
 				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-Passbook.Pass.LocationInterface.html#_setAltitude">Passbook\Pass\LocationInterface::setAltitude()</a></code></div>
+				<div class="list"><code><a href="class-Passbook.Pass.BeaconInterface.html#_setMajor">Passbook\Pass\BeaconInterface::setMajor()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
-	<tr data-order="getAltitude" id="_getAltitude">
+	<tr data-order="getMajor" id="_getMajor">
 
 		<td class="attributes"><code>
 			 public 
-			float
+			integer
 			
 			</code>
 		</td>
 
 		<td class="name"><div>
-		<a class="anchor" href="#_getAltitude">#</a>
-		<code><a href="source-class-Passbook.Pass.Location.html#82-88" title="Go to source code">getAltitude</a>( )</code>
+		<a class="anchor" href="#_getMajor">#</a>
+		<code><a href="source-class-Passbook.Pass.Beacon.html#84-90" title="Go to source code">getMajor</a>( )</code>
 
 		<div class="description short">
 			
-<p>Gets location altitude</p>
+<p>Gets major</p>
 
 		</div>
 
 		<div class="description detailed hidden">
 			
-<p>Gets location altitude</p>
+<p>Gets major</p>
 
 
 
 
 				<h4>Returns</h4>
 				<div class="list">
-					<code>float</code><br />
+					<code>integer</code><br />
 				</div>
 
 
 
 
 				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-Passbook.Pass.LocationInterface.html#_getAltitude">Passbook\Pass\LocationInterface::getAltitude()</a></code></div>
+				<div class="list"><code><a href="class-Passbook.Pass.BeaconInterface.html#_getMajor">Passbook\Pass\BeaconInterface::getMajor()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
-	<tr data-order="setLatitude" id="_setLatitude">
+	<tr data-order="setMinor" id="_setMinor">
 
 		<td class="attributes"><code>
 			 public 
@@ -295,25 +295,25 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 		</td>
 
 		<td class="name"><div>
-		<a class="anchor" href="#_setLatitude">#</a>
-		<code><a href="source-class-Passbook.Pass.Location.html#90-98" title="Go to source code">setLatitude</a>( <span>float <var>$latitude</var></span> )</code>
+		<a class="anchor" href="#_setMinor">#</a>
+		<code><a href="source-class-Passbook.Pass.Beacon.html#92-100" title="Go to source code">setMinor</a>( <span>integer <var>$minor</var></span> )</code>
 
 		<div class="description short">
 			
-<p>Sets location latitude</p>
+<p>Sets minor</p>
 
 		</div>
 
 		<div class="description detailed hidden">
 			
-<p>Sets location latitude</p>
+<p>Sets minor</p>
 
 
 
 				<h4>Parameters</h4>
 				<div class="list"><dl>
-					<dt><var>$latitude</var></dt>
-					<dd><code>float</code></dd>
+					<dt><var>$minor</var></dt>
+					<dd><code>integer</code></dd>
 				</dl></div>
 
 
@@ -321,50 +321,50 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 
 
 				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-Passbook.Pass.LocationInterface.html#_setLatitude">Passbook\Pass\LocationInterface::setLatitude()</a></code></div>
+				<div class="list"><code><a href="class-Passbook.Pass.BeaconInterface.html#_setMinor">Passbook\Pass\BeaconInterface::setMinor()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
-	<tr data-order="getLatitude" id="_getLatitude">
+	<tr data-order="getMinor" id="_getMinor">
 
 		<td class="attributes"><code>
 			 public 
-			float
+			integer
 			
 			</code>
 		</td>
 
 		<td class="name"><div>
-		<a class="anchor" href="#_getLatitude">#</a>
-		<code><a href="source-class-Passbook.Pass.Location.html#100-106" title="Go to source code">getLatitude</a>( )</code>
+		<a class="anchor" href="#_getMinor">#</a>
+		<code><a href="source-class-Passbook.Pass.Beacon.html#102-108" title="Go to source code">getMinor</a>( )</code>
 
 		<div class="description short">
 			
-<p>Gets location latitude</p>
+<p>Gets minor</p>
 
 		</div>
 
 		<div class="description detailed hidden">
 			
-<p>Gets location latitude</p>
+<p>Gets minor</p>
 
 
 
 
 				<h4>Returns</h4>
 				<div class="list">
-					<code>float</code><br />
+					<code>integer</code><br />
 				</div>
 
 
 
 
 				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-Passbook.Pass.LocationInterface.html#_getLatitude">Passbook\Pass\LocationInterface::getLatitude()</a></code></div>
+				<div class="list"><code><a href="class-Passbook.Pass.BeaconInterface.html#_getMinor">Passbook\Pass\BeaconInterface::getMinor()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
-	<tr data-order="setLongitude" id="_setLongitude">
+	<tr data-order="setProximityUUID" id="_setProximityUUID">
 
 		<td class="attributes"><code>
 			 public 
@@ -374,25 +374,25 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 		</td>
 
 		<td class="name"><div>
-		<a class="anchor" href="#_setLongitude">#</a>
-		<code><a href="source-class-Passbook.Pass.Location.html#108-116" title="Go to source code">setLongitude</a>( <span>float <var>$longitude</var></span> )</code>
+		<a class="anchor" href="#_setProximityUUID">#</a>
+		<code><a href="source-class-Passbook.Pass.Beacon.html#110-118" title="Go to source code">setProximityUUID</a>( <span>string <var>$proximityUUID</var></span> )</code>
 
 		<div class="description short">
 			
-<p>Sets location longitude</p>
+<p>Sets proximity UUID</p>
 
 		</div>
 
 		<div class="description detailed hidden">
 			
-<p>Sets location longitude</p>
+<p>Sets proximity UUID</p>
 
 
 
 				<h4>Parameters</h4>
 				<div class="list"><dl>
-					<dt><var>$longitude</var></dt>
-					<dd><code>float</code></dd>
+					<dt><var>$proximityUUID</var></dt>
+					<dd><code>string</code></dd>
 				</dl></div>
 
 
@@ -400,46 +400,46 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 
 
 				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-Passbook.Pass.LocationInterface.html#_setLongitude">Passbook\Pass\LocationInterface::setLongitude()</a></code></div>
+				<div class="list"><code><a href="class-Passbook.Pass.BeaconInterface.html#_setProximityUUID">Passbook\Pass\BeaconInterface::setProximityUUID()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
-	<tr data-order="getLongitude" id="_getLongitude">
+	<tr data-order="getProximityUUID" id="_getProximityUUID">
 
 		<td class="attributes"><code>
 			 public 
-			float
+			string
 			
 			</code>
 		</td>
 
 		<td class="name"><div>
-		<a class="anchor" href="#_getLongitude">#</a>
-		<code><a href="source-class-Passbook.Pass.Location.html#118-124" title="Go to source code">getLongitude</a>( )</code>
+		<a class="anchor" href="#_getProximityUUID">#</a>
+		<code><a href="source-class-Passbook.Pass.Beacon.html#120-126" title="Go to source code">getProximityUUID</a>( )</code>
 
 		<div class="description short">
 			
-<p>Gets location longitude</p>
+<p>Gets proximity UUID</p>
 
 		</div>
 
 		<div class="description detailed hidden">
 			
-<p>Gets location longitude</p>
+<p>Gets proximity UUID</p>
 
 
 
 
 				<h4>Returns</h4>
 				<div class="list">
-					<code>float</code><br />
+					<code>string</code><br />
 				</div>
 
 
 
 
 				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-Passbook.Pass.LocationInterface.html#_getLongitude">Passbook\Pass\LocationInterface::getLongitude()</a></code></div>
+				<div class="list"><code><a href="class-Passbook.Pass.BeaconInterface.html#_getProximityUUID">Passbook\Pass\BeaconInterface::getProximityUUID()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -454,24 +454,24 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_setRelevantText">#</a>
-		<code><a href="source-class-Passbook.Pass.Location.html#126-134" title="Go to source code">setRelevantText</a>( <span>float <var>$relevantText</var></span> )</code>
+		<code><a href="source-class-Passbook.Pass.Beacon.html#128-136" title="Go to source code">setRelevantText</a>( <span>string <var>$relevantText</var></span> )</code>
 
 		<div class="description short">
 			
-<p>Sets location relevant text</p>
+<p>Sets relevant text</p>
 
 		</div>
 
 		<div class="description detailed hidden">
 			
-<p>Sets location relevant text</p>
+<p>Sets relevant text</p>
 
 
 
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$relevantText</var></dt>
-					<dd><code>float</code></dd>
+					<dd><code>string</code></dd>
 				</dl></div>
 
 
@@ -479,7 +479,7 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 
 
 				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-Passbook.Pass.LocationInterface.html#_setRelevantText">Passbook\Pass\LocationInterface::setRelevantText()</a></code></div>
+				<div class="list"><code><a href="class-Passbook.Pass.BeaconInterface.html#_setRelevantText">Passbook\Pass\BeaconInterface::setRelevantText()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -487,38 +487,38 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 
 		<td class="attributes"><code>
 			 public 
-			float
+			string
 			
 			</code>
 		</td>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getRelevantText">#</a>
-		<code><a href="source-class-Passbook.Pass.Location.html#136-142" title="Go to source code">getRelevantText</a>( )</code>
+		<code><a href="source-class-Passbook.Pass.Beacon.html#138-144" title="Go to source code">getRelevantText</a>( )</code>
 
 		<div class="description short">
 			
-<p>Gets location relevant text</p>
+<p>Gets relevant text</p>
 
 		</div>
 
 		<div class="description detailed hidden">
 			
-<p>Gets location relevant text</p>
+<p>Gets relevant text</p>
 
 
 
 
 				<h4>Returns</h4>
 				<div class="list">
-					<code>float</code><br />
+					<code>string</code><br />
 				</div>
 
 
 
 
 				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-Passbook.Pass.LocationInterface.html#_getRelevantText">Passbook\Pass\LocationInterface::getRelevantText()</a></code></div>
+				<div class="list"><code><a href="class-Passbook.Pass.BeaconInterface.html#_getRelevantText">Passbook\Pass\BeaconInterface::getRelevantText()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -537,82 +537,82 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 
 	<table class="summary" id="properties">
 	<caption>Properties summary</caption>
-	<tr data-order="altitude" id="$altitude">
+	<tr data-order="proximityUUID" id="$proximityUUID">
 		<td class="attributes"><code>
 			protected  
-			float
+			string
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-Passbook.Pass.Location.html#21-25" title="Go to source code"><var>$altitude</var></a>
+				<a href="source-class-Passbook.Pass.Beacon.html#21-25" title="Go to source code"><var>$proximityUUID</var></a>
 		</td>
 		<td class="value"><code></code></td>
 		<td class="description"><div>
-			<a href="#$altitude" class="anchor">#</a>
+			<a href="#$proximityUUID" class="anchor">#</a>
 
 			<div class="description short">
 				
-<p>Altitude, in meters, of the location.</p>
+<p>Unique identifier of a Bluetooth Low Energy location beacon.</p>
 
 			</div>
 
 			<div class="description detailed hidden">
 				
-<p>Altitude, in meters, of the location.</p>
+<p>Unique identifier of a Bluetooth Low Energy location beacon.</p>
 
 
 			</div>
 		</div></td>
 	</tr>
-	<tr data-order="latitude" id="$latitude">
+	<tr data-order="major" id="$major">
 		<td class="attributes"><code>
 			protected  
-			float
+			integer
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-Passbook.Pass.Location.html#27-31" title="Go to source code"><var>$latitude</var></a>
+				<a href="source-class-Passbook.Pass.Beacon.html#27-31" title="Go to source code"><var>$major</var></a>
 		</td>
 		<td class="value"><code></code></td>
 		<td class="description"><div>
-			<a href="#$latitude" class="anchor">#</a>
+			<a href="#$major" class="anchor">#</a>
 
 			<div class="description short">
 				
-<p>Latitude, in degrees, of the location.</p>
+<p>Major identifier of a Bluetooth Low Energy location beacon.</p>
 
 			</div>
 
 			<div class="description detailed hidden">
 				
-<p>Latitude, in degrees, of the location.</p>
+<p>Major identifier of a Bluetooth Low Energy location beacon.</p>
 
 
 			</div>
 		</div></td>
 	</tr>
-	<tr data-order="longitude" id="$longitude">
+	<tr data-order="minor" id="$minor">
 		<td class="attributes"><code>
 			protected  
-			float
+			integer
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-Passbook.Pass.Location.html#33-37" title="Go to source code"><var>$longitude</var></a>
+				<a href="source-class-Passbook.Pass.Beacon.html#33-37" title="Go to source code"><var>$minor</var></a>
 		</td>
 		<td class="value"><code></code></td>
 		<td class="description"><div>
-			<a href="#$longitude" class="anchor">#</a>
+			<a href="#$minor" class="anchor">#</a>
 
 			<div class="description short">
 				
-<p>Longitude, in degrees, of the location.</p>
+<p>Minor identifier of a Bluetooth Low Energy location beacon.</p>
 
 			</div>
 
 			<div class="description detailed hidden">
 				
-<p>Longitude, in degrees, of the location.</p>
+<p>Minor identifier of a Bluetooth Low Energy location beacon.</p>
 
 
 			</div>
@@ -625,7 +625,7 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-Passbook.Pass.Location.html#39-45" title="Go to source code"><var>$relevantText</var></a>
+				<a href="source-class-Passbook.Pass.Beacon.html#39-45" title="Go to source code"><var>$relevantText</var></a>
 		</td>
 		<td class="value"><code></code></td>
 		<td class="description"><div>

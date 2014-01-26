@@ -6,8 +6,8 @@
 
 	<title>Class Passbook\Pass\Structure | PHP-Passbook</title>
 
-	<script type="text/javascript" src="resources/combined.js?348581735"></script>
-	<script type="text/javascript" src="elementlist.js?3517421344"></script>
+	<script type="text/javascript" src="resources/combined.js?1177154521"></script>
+	<script type="text/javascript" src="elementlist.js?1730068341"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 </head>
@@ -44,6 +44,7 @@
 			<h3>Classes</h3>
 			<ul>
 				<li><a href="class-Passbook.Pass.Barcode.html">Barcode</a></li>
+				<li><a href="class-Passbook.Pass.Beacon.html">Beacon</a></li>
 				<li><a href="class-Passbook.Pass.Field.html">Field</a></li>
 				<li><a href="class-Passbook.Pass.Image.html">Image</a></li>
 				<li><a href="class-Passbook.Pass.Location.html">Location</a></li>
@@ -53,6 +54,7 @@
 			<h3>Interfaces</h3>
 			<ul>
 				<li><a href="class-Passbook.Pass.BarcodeInterface.html">BarcodeInterface</a></li>
+				<li><a href="class-Passbook.Pass.BeaconInterface.html">BeaconInterface</a></li>
 				<li><a href="class-Passbook.Pass.FieldInterface.html">FieldInterface</a></li>
 				<li><a href="class-Passbook.Pass.ImageInterface.html">ImageInterface</a></li>
 				<li><a href="class-Passbook.Pass.LocationInterface.html">LocationInterface</a></li>
@@ -139,13 +141,42 @@
 				<b>Author:</b>
 				Eymen Gunay &lt;<a
 href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
-		<b>Located at</b> <a href="source-class-Passbook.Pass.Structure.html#17-143" title="Go to source code">Passbook/Pass/Structure.php</a><br />
+		<b>Located at</b> <a href="source-class-Passbook.Pass.Structure.html#14-167" title="Go to source code">Passbook/Pass/Structure.php</a><br />
 	</div>
 
 
 
 	<table class="summary" id="methods">
 	<caption>Methods summary</caption>
+	<tr data-order="toArray" id="_toArray">
+
+		<td class="attributes"><code>
+			 public 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_toArray">#</a>
+		<code><a href="source-class-Passbook.Pass.Structure.html#51-76" title="Go to source code">toArray</a>( )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
 	<tr data-order="addHeaderField" id="_addHeaderField">
 
 		<td class="attributes"><code>
@@ -157,7 +188,7 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_addHeaderField">#</a>
-		<code><a href="source-class-Passbook.Pass.Structure.html#59-66" title="Go to source code">addHeaderField</a>( <span><code><a href="class-Passbook.Pass.Field.html">Passbook\Pass\Field</a></code> <var>$headerField</var></span> )</code>
+		<code><a href="source-class-Passbook.Pass.Structure.html#78-86" title="Go to source code">addHeaderField</a>( <span><code><a href="class-Passbook.Pass.FieldInterface.html">Passbook\Pass\FieldInterface</a></code> <var>$headerField</var></span> )</code>
 
 		<div class="description short">
 			
@@ -197,7 +228,7 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getHeaderFields">#</a>
-		<code><a href="source-class-Passbook.Pass.Structure.html#68-74" title="Go to source code">getHeaderFields</a>( )</code>
+		<code><a href="source-class-Passbook.Pass.Structure.html#88-94" title="Go to source code">getHeaderFields</a>( )</code>
 
 		<div class="description short">
 			
@@ -232,7 +263,7 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_addPrimaryField">#</a>
-		<code><a href="source-class-Passbook.Pass.Structure.html#76-83" title="Go to source code">addPrimaryField</a>( <span><code><a href="class-Passbook.Pass.Field.html">Passbook\Pass\Field</a></code> <var>$primaryField</var></span> )</code>
+		<code><a href="source-class-Passbook.Pass.Structure.html#96-104" title="Go to source code">addPrimaryField</a>( <span><code><a href="class-Passbook.Pass.FieldInterface.html">Passbook\Pass\FieldInterface</a></code> <var>$primaryField</var></span> )</code>
 
 		<div class="description short">
 			
@@ -272,7 +303,7 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getPrimaryFields">#</a>
-		<code><a href="source-class-Passbook.Pass.Structure.html#85-91" title="Go to source code">getPrimaryFields</a>( )</code>
+		<code><a href="source-class-Passbook.Pass.Structure.html#106-112" title="Go to source code">getPrimaryFields</a>( )</code>
 
 		<div class="description short">
 			
@@ -307,7 +338,7 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_addSecondaryField">#</a>
-		<code><a href="source-class-Passbook.Pass.Structure.html#93-100" title="Go to source code">addSecondaryField</a>( <span><code><a href="class-Passbook.Pass.Field.html">Passbook\Pass\Field</a></code> <var>$secondaryField</var></span> )</code>
+		<code><a href="source-class-Passbook.Pass.Structure.html#114-122" title="Go to source code">addSecondaryField</a>( <span><code><a href="class-Passbook.Pass.FieldInterface.html">Passbook\Pass\FieldInterface</a></code> <var>$secondaryField</var></span> )</code>
 
 		<div class="description short">
 			
@@ -347,7 +378,7 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getSecondaryFields">#</a>
-		<code><a href="source-class-Passbook.Pass.Structure.html#102-108" title="Go to source code">getSecondaryFields</a>( )</code>
+		<code><a href="source-class-Passbook.Pass.Structure.html#124-130" title="Go to source code">getSecondaryFields</a>( )</code>
 
 		<div class="description short">
 			
@@ -382,7 +413,7 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_addAuxiliaryField">#</a>
-		<code><a href="source-class-Passbook.Pass.Structure.html#110-117" title="Go to source code">addAuxiliaryField</a>( <span><code><a href="class-Passbook.Pass.Field.html">Passbook\Pass\Field</a></code> <var>$auxiliaryField</var></span> )</code>
+		<code><a href="source-class-Passbook.Pass.Structure.html#132-140" title="Go to source code">addAuxiliaryField</a>( <span><code><a href="class-Passbook.Pass.FieldInterface.html">Passbook\Pass\FieldInterface</a></code> <var>$auxiliaryField</var></span> )</code>
 
 		<div class="description short">
 			
@@ -422,7 +453,7 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getAuxiliaryFields">#</a>
-		<code><a href="source-class-Passbook.Pass.Structure.html#119-125" title="Go to source code">getAuxiliaryFields</a>( )</code>
+		<code><a href="source-class-Passbook.Pass.Structure.html#142-148" title="Go to source code">getAuxiliaryFields</a>( )</code>
 
 		<div class="description short">
 			
@@ -457,7 +488,7 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_addBackField">#</a>
-		<code><a href="source-class-Passbook.Pass.Structure.html#127-134" title="Go to source code">addBackField</a>( <span><code><a href="class-Passbook.Pass.Field.html">Passbook\Pass\Field</a></code> <var>$backField</var></span> )</code>
+		<code><a href="source-class-Passbook.Pass.Structure.html#150-158" title="Go to source code">addBackField</a>( <span><code><a href="class-Passbook.Pass.FieldInterface.html">Passbook\Pass\FieldInterface</a></code> <var>$backField</var></span> )</code>
 
 		<div class="description short">
 			
@@ -497,7 +528,7 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getBackFields">#</a>
-		<code><a href="source-class-Passbook.Pass.Structure.html#136-142" title="Go to source code">getBackFields</a>( )</code>
+		<code><a href="source-class-Passbook.Pass.Structure.html#160-166" title="Go to source code">getBackFields</a>( )</code>
 
 		<div class="description short">
 			
@@ -543,9 +574,9 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-Passbook.Pass.Structure.html#24-29" title="Go to source code"><var>$headerFields</var></a>
+				<a href="source-class-Passbook.Pass.Structure.html#21-25" title="Go to source code"><var>$headerFields</var></a>
 		</td>
-		<td class="value"><code></code></td>
+		<td class="value"><code><span class="php-keyword1">array</span>()</code></td>
 		<td class="description"><div>
 			<a href="#$headerFields" class="anchor">#</a>
 
@@ -560,9 +591,6 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 <p>Fields to be displayed in the header on the front of the pass.</p>
 
 
-					<h4>SerializedName(value="headerFields")</h4>
-					<div class="list">
-					</div>
 			</div>
 		</div></td>
 	</tr>
@@ -573,9 +601,9 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-Passbook.Pass.Structure.html#31-36" title="Go to source code"><var>$primaryFields</var></a>
+				<a href="source-class-Passbook.Pass.Structure.html#27-31" title="Go to source code"><var>$primaryFields</var></a>
 		</td>
-		<td class="value"><code></code></td>
+		<td class="value"><code><span class="php-keyword1">array</span>()</code></td>
 		<td class="description"><div>
 			<a href="#$primaryFields" class="anchor">#</a>
 
@@ -590,9 +618,6 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 <p>Fields to be displayed prominently on the front of the pass.</p>
 
 
-					<h4>SerializedName(value="primaryFields")</h4>
-					<div class="list">
-					</div>
 			</div>
 		</div></td>
 	</tr>
@@ -603,9 +628,9 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-Passbook.Pass.Structure.html#38-43" title="Go to source code"><var>$secondaryFields</var></a>
+				<a href="source-class-Passbook.Pass.Structure.html#33-37" title="Go to source code"><var>$secondaryFields</var></a>
 		</td>
-		<td class="value"><code></code></td>
+		<td class="value"><code><span class="php-keyword1">array</span>()</code></td>
 		<td class="description"><div>
 			<a href="#$secondaryFields" class="anchor">#</a>
 
@@ -620,9 +645,6 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 <p>Fields to be displayed on the front of the pass.</p>
 
 
-					<h4>SerializedName(value="secondaryFields")</h4>
-					<div class="list">
-					</div>
 			</div>
 		</div></td>
 	</tr>
@@ -633,9 +655,9 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-Passbook.Pass.Structure.html#45-50" title="Go to source code"><var>$auxiliaryFields</var></a>
+				<a href="source-class-Passbook.Pass.Structure.html#39-43" title="Go to source code"><var>$auxiliaryFields</var></a>
 		</td>
-		<td class="value"><code></code></td>
+		<td class="value"><code><span class="php-keyword1">array</span>()</code></td>
 		<td class="description"><div>
 			<a href="#$auxiliaryFields" class="anchor">#</a>
 
@@ -650,9 +672,6 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 <p>Additional fields to be displayed on the front of the pass.</p>
 
 
-					<h4>SerializedName(value="auxiliaryFields")</h4>
-					<div class="list">
-					</div>
 			</div>
 		</div></td>
 	</tr>
@@ -663,9 +682,9 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-Passbook.Pass.Structure.html#52-57" title="Go to source code"><var>$backFields</var></a>
+				<a href="source-class-Passbook.Pass.Structure.html#45-49" title="Go to source code"><var>$backFields</var></a>
 		</td>
-		<td class="value"><code></code></td>
+		<td class="value"><code><span class="php-keyword1">array</span>()</code></td>
 		<td class="description"><div>
 			<a href="#$backFields" class="anchor">#</a>
 
@@ -680,9 +699,6 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 <p>Fields to be on the back of the pass.</p>
 
 
-					<h4>SerializedName(value="backFields")</h4>
-					<div class="list">
-					</div>
 			</div>
 		</div></td>
 	</tr>
