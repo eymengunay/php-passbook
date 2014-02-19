@@ -1,13 +1,21 @@
 <?php
-/**
- * User: arsonik
- * Date: 18/02/14
- * Time: 17:20
+
+/*
+ * This file is part of the Passbook package.
+ *
+ * (c) Eymen Gunay <eymen@egunay.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
  */
 
 namespace Passbook\Pass;
 
-
+/**
+ * Class NumberField
+ * @package Passbook\Pass
+ * @author Florian Morello <florian@morello.fr>
+ */
 class NumberField extends Field {
 
 	/**
@@ -35,6 +43,21 @@ class NumberField extends Field {
 	 * @var string
 	 */
 	protected $numberStyle = null;
+
+    /**
+     * @return array
+     */
+    public function toArray()
+    {
+        $array = parent::toArray();
+        if ($this->getCurrencyCode() !== null) {
+            $array['currencyCode'] = $this->getCurrencyCode();
+        }
+        if ($this->getNumberStyle() !== null) {
+            $array['numberStyle'] = $this->getNumberStyle();
+        }
+        return $array;
+    }
 
 	/**
 	 * @param mixed $currencyCode
@@ -68,20 +91,5 @@ class NumberField extends Field {
 	public function getNumberStyle()
 	{
 		return $this->numberStyle;
-	}
-
-	/**
-	 * @return array
-	 */
-	public function toArray()
-	{
-		$array = parent::toArray();
-		if ($this->getCurrencyCode() !== null) {
-			$array['currencyCode'] = $this->getCurrencyCode();
-		}
-		if ($this->getNumberStyle() !== null) {
-			$array['numberStyle'] = $this->getNumberStyle();
-		}
-		return $array;
 	}
 }

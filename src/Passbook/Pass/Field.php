@@ -13,7 +13,6 @@ namespace Passbook\Pass;
 
 /**
  * Field
- *
  * @author Eymen Gunay <eymen@egunay.com>
  */
 class Field implements FieldInterface
@@ -39,6 +38,26 @@ class Field implements FieldInterface
     const ALIGN_NATURAL = 'PKTextAlignmentNatural';
 
     /**
+     * @var string
+     */
+    const PKDataDetectorTypePhoneNumber = 'PKDataDetectorTypePhoneNumber';
+
+    /**
+     * @var string
+     */
+    const PKDataDetectorTypeLink = 'PKDataDetectorTypeLink';
+
+    /**
+     * @var string
+     */
+    const PKDataDetectorTypeAddress = 'PKDataDetectorTypeAddress';
+
+    /**
+     * @var string
+     */
+    const PKDataDetectorTypeCalendarEvent = 'PKDataDetectorTypeCalendarEvent';
+
+    /**
      * Format string for the alert text that is displayed when the pass is updated.
      * The format string may contain the escape %@, which is replaced with the
      * field’s new value. For example, “Gate changed to %@.”
@@ -49,14 +68,12 @@ class Field implements FieldInterface
     /**
      * The key must be unique within the scope of the entire pass.
      * For example, “departure-gate”.
-     *
      * @var array
      */
     protected $key;
 
     /**
      * Label text for the field.
-     *
      * @var string
      */
     protected $label;
@@ -64,12 +81,9 @@ class Field implements FieldInterface
     /**
      * Alignment for the field’s contents. Must be one of the following values:
      * PKTextAlignmentLeft, PKTextAlignmentCenter, PKTextAlignmentRight, PKTextAlignmentNatural
-     *
      * The default value is natural alignment,
      * which aligns the text appropriately based on its script direction.
-     *
      * This key is not allowed for primary fields.
-     *
      * @var string
      */
     protected $textAlignment;
@@ -79,6 +93,21 @@ class Field implements FieldInterface
      * @var mixed ISO 8601 date as a string, or number
      */
     protected $value;
+
+    /**
+     * Array of strings
+     * The default value is all data detectors. Provide an empty array to use no data detectors.
+     * Data detectors are applied only to back fields.
+     * @link https://developer.apple.com/library/ios/documentation/userexperience/Reference/PassKit_Bundle/Chapters/FieldDictionary.html#//apple_ref/doc/uid/TP40012026-CH4-SW1
+     * @var array
+     */
+    protected $dataDetectorTypes;
+
+    /**
+     * Localizable string, ISO 8601 date as a string, or number
+     * @var string
+     */
+    protected $attributedValue;
 
     public function __construct($key, $value)
     {
@@ -104,6 +133,14 @@ class Field implements FieldInterface
 
         if ($textAlignment = $this->getTextAlignment()) {
             $array['textAlignment'] = $textAlignment;
+        }
+
+        if ($dataDecoratorTypes = $this->getDataDetectorTypes()) {
+            $array['dataDetectorTypes'] = $dataDecoratorTypes;
+        }
+
+        if ($attributedValue = $this->getAttributedValue()) {
+            $array['attributedValue'] = $attributedValue;
         }
 
         return $array;
@@ -197,5 +234,39 @@ class Field implements FieldInterface
     public function getValue()
     {
         return $this->value;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setAttributedValue($attributedValue)
+    {
+        $this->attributedValue = $attributedValue;
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getAttributedValue()
+    {
+        return $this->attributedValue;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setDataDetectorTypes(array $dataDetectorTypes)
+    {
+        $this->dataDetectorTypes = $dataDetectorTypes;
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getDataDetectorTypes()
+    {
+        return $this->dataDetectorTypes;
     }
 }
