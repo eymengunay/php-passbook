@@ -16,7 +16,7 @@ namespace Passbook\Certificate;
  *
  * @author Eymen Gunay <eymen@egunay.com>
  */
-class P12 extends \SplFileObject implements P12Interface
+class P12 extends Certificate implements P12Interface
 {
     /**
      * P12 certificate password
@@ -27,7 +27,7 @@ class P12 extends \SplFileObject implements P12Interface
     public function __construct($filename, $password)
     {
         parent::__construct($filename);
-        
+
         $this->setPassword($password);
     }
 
