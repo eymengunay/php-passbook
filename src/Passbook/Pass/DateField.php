@@ -51,6 +51,7 @@ class DateField extends Field
     public function toArray()
     {
         $array = parent::toArray();
+
         if (strlen($this->getDateStyle())) {
             $array['dateStyle'] = $this->getDateStyle();
         }
@@ -150,6 +151,7 @@ class DateField extends Field
         if ($value instanceof \DateTime) {
             $value = $value->format('c');
         }
+
         return parent::setValue($value);
     }
-} 
+}
