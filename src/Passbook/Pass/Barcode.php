@@ -47,14 +47,19 @@ class Barcode implements BarcodeInterface
     protected $message;
 
     /**
-     * Message or payload to be displayed as a barcode.
+     * Text encoding that is used to convert the message
+     * from the string representation to a data representation
+     * to render the barcode. The value is typically iso-8859-1,
+     * but you may use another encoding that is supported by
+     * your barcode scanning infrastructure.
      * @var string
      */
     protected $messageEncoding;
 
     /**
-     * Text encoding that is used to convert the message from the
-     * string representation to a data representation to render the barcode.
+     * Text displayed near the barcode. For example,
+     * a human-readable version of the barcode data
+     * in case the barcode doesn’t scan.
      * @var string
      */
     protected $altText;
