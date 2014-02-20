@@ -45,7 +45,7 @@ tools:
                 long_variable: false
                 short_method: false
                 constructor_conflict: true
-                constant_naming: true
+                constant_naming: false
                 boolean_method_name: false
             controversial_rules:
                 superglobals: true
