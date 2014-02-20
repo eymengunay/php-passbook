@@ -3,6 +3,7 @@
 namespace Passbook\Tests\Pass;
 
 use Passbook\Pass\Field;
+use Passbook\Pass\DateField;
 use Passbook\Pass\NumberField;
 
 class FieldTest extends \PHPUnit_Framework_TestCase
@@ -18,6 +19,15 @@ class FieldTest extends \PHPUnit_Framework_TestCase
 		$array = $field->toArray();
 		$this->assertArrayHasKey('key', $array);
 	}
+
+    public function testDateField()
+    {
+        $field = new DateField('key', new \DateTime('2014-01-01 00:00:00 UTC'));
+
+        $array = $field->toArray();
+        $this->assertArrayHasKey('value', $array);
+        $this->assertEquals('2014-01-01T00:00:00+00:00', $array['value']);
+    }
 
 	public function testNumberField()
 	{
