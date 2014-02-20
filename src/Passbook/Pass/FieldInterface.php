@@ -87,4 +87,32 @@ interface FieldInterface
      * @param string
      */
     public function getValue();
+
+    /**
+     * Sets Attributed Value
+     *
+     * @param string $attributedValue
+     */
+    public function setAttributedValue($attributedValue);
+
+    /**
+     * Return Attributed Value
+     *
+     * @return string
+     */
+    public function getAttributedValue();
+
+    /**
+     * Sets Data Detector Type
+     *
+     * @param array $dataDetectorTypes
+     */
+    public function setDataDetectorTypes(array $dataDetectorTypes);
+
+    /**
+     * Return Data Detector Type
+     *
+     * @return array
+     */
+    public function getDataDetectorTypes();
 }
