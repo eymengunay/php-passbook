@@ -160,7 +160,17 @@ class Pass implements PassInterface
      * @var string
      */
     protected $organizationName;
+    
+    /**
+     * Date and time when the pass expires.     * @var DateTime
+     */
+    protected $expirationDate;
 
+	/**
+     * ndicates that the pass is void—for example, a one time use coupon that has been redeemed. The default value is false.     * @var boolean
+     */
+    protected $voided;
+    
     public function __construct($serialNumber, $description)
     {
         // Required
@@ -194,7 +204,9 @@ class Pass implements PassInterface
             'webServiceURL',
             'passTypeIdentifier',
             'teamIdentifier',
-            'organizationName'
+            'organizationName',
+            'expirationDate',
+            'voided'
         );
         foreach ($properties as $property) {
             $method = 'is'.ucfirst($property);
@@ -599,4 +611,41 @@ class Pass implements PassInterface
     {
         return $this->organizationName;
     }
+    
+	/**
+     * {@inheritdoc}
+     */
+    public function setExpirationDate(\DateTime $expirationDate)
+    {
+        $this->expirationDate = $expirationDate;
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getExpirationDate()
+    {
+        return $this->expirationDate;
+    }
+    
+    /**
+     * {@inheritdoc}
+     */
+    public function setVoided($voided)
+    {
+        $this->voided = $voided;
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getVoided()
+    {
+        return $this->voided;
+    }
+
 }
