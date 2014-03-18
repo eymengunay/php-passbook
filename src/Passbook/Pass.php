@@ -162,14 +162,25 @@ class Pass implements PassInterface
     protected $organizationName;
     
     /**
-     * Date and time when the pass expires.     * @var DateTime
+     * Date and time when the pass expires.
+     * @var DateTime
      */
     protected $expirationDate;
 
 	/**
-     * ndicates that the pass is void—for example, a one time use coupon that has been redeemed. The default value is false.     * @var boolean
+     * Indicates that the pass is void—for example, a one time use coupon that has been redeemed. The default value is false.
+     * @var boolean
      */
     protected $voided;
+	
+	/**
+	 * 
+	 * A URL to be passed to the associated app when launching it.
+	 * The app receives this URL in the application:didFinishLaunchingWithOptions: and application:handleOpenURL: methods of its app delegate.
+	 * If this key is present, the associatedStoreIdentifiers key must also be present.
+	 * @var string
+	 */
+	protected $appLaunchURL;
     
     public function __construct($serialNumber, $description)
     {
@@ -206,7 +217,8 @@ class Pass implements PassInterface
             'teamIdentifier',
             'organizationName',
             'expirationDate',
-            'voided'
+            'voided',
+			'appLaunchURL'
         );
         foreach ($properties as $property) {
             $method = 'is'.ucfirst($property);
@@ -648,4 +660,21 @@ class Pass implements PassInterface
         return $this->voided;
     }
 
+	/**
+     * {@inheritdoc}
+     */
+    public function setAppLaunchURL($appLaunchURL)
+    {
+        $this->appLaunchURL = $appLaunchURL;
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getAppLaunchURL()
+    {
+        return $this->appLaunchURL;
+    }
 }
