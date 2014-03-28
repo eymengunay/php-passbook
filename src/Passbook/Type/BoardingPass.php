@@ -86,7 +86,7 @@ class BoardingPass extends Pass
     public function toArray()
     {
         $array = parent::toArray();
-        $array['transitType'] = $this->transitType;
+        $array[$this->getType()]['transitType'] = $this->transitType;
 
         return $array;
     }
