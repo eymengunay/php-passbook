@@ -47,11 +47,72 @@ class PassTest extends \PHPUnit_Framework_TestCase
      */
     public function testBoardingPass()
     {
-        $boardingPass = new BoardingPass(uniqid(), 'Lorem ipsum', BoardingPass::TYPE_BUS);
+        $boardingPass = new BoardingPass(uniqid(), 'SFO to JFK', BoardingPass::TYPE_AIR);
+
+        // Set colors
+        $boardingPass->setBackgroundColor('rgb(22, 55, 110)');
+        $boardingPass->setForegroundColor('rgb(50, 91, 185)');
+
+        // Logo text
+        $boardingPass->setLogoText('Skyport Airways');
+
+        // Relevant date
+        $boardingPass->setRelevantDate(new \DateTime());
+
+        // Add location
+        $location = new Location(-122.3748889, 37.6189722);
+        $boardingPass->addLocation($location);
+
+        // Create pass structure
+        $structure = new Structure();
+
+        // Add header field
+        $header = new Field('gate', '23');
+        $header->setLabel('GATE');
+        $structure->addHeaderField($header);
+
+        // Add primary fields
+        $primary = new Field('depart', 'SFO');
+        $primary->setLabel('SAN FRANCISCO');
+        $structure->addPrimaryField($primary);
+
+        $primary = new Field('arrive', 'JFK');
+        $primary->setLabel('NEW YORK');
+        $structure->addPrimaryField($primary);
+
+        // Add secondary field
+        $secondary = new Field('passenger', 'John Appleseed');
+        $secondary->setLabel('PASSENGER');
+        $structure->addSecondaryField($secondary);
+
+        // Add auxiliary fields
+        $auxiliary = new Field('boardingTime', '2:25 PM');
+        $auxiliary->setLabel('DEPART');
+        $structure->addAuxiliaryField($auxiliary);
+
+        $auxiliary = new Field('flightNewName', '815');
+        $auxiliary->setLabel('FLIGHT');
+        $structure->addAuxiliaryField($auxiliary);
+
+        $auxiliary = new Field('class', 'Coach');
+        $auxiliary->setLabel('DESIG.');
+        $structure->addAuxiliaryField($auxiliary);
+
+        $auxiliary = new Field('date', '7/22');
+        $auxiliary->setLabel('DATE');
+        $structure->addAuxiliaryField($auxiliary);
+
+        // Set pass structure
+        $boardingPass->setStructure($structure);
+
+        // Add barcode
+        $barcode = new Barcode(Barcode::TYPE_PDF_417, 'SFOJFK JOHN APPLESEED LH451 2012-07-22T14:25-08:00');
+        $boardingPass->setBarcode($barcode);
+
         $json = PassFactory::serialize($boardingPass);
         $array = json_decode($json, true);
 
-        $this->assertArrayHasKey('transitType', $array);
+        $this->assertArrayHasKey('transitType', $array[$boardingPass->getType()]);
     }
 
     /**
