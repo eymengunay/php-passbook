@@ -140,6 +140,39 @@ If you are using a key from the Mac OS keychain, use the PEM version you generat
 ### WWDR Certificate
 Apple’s World Wide Developer Relations (WWDR) certificate is available from Apple at <http://developer.apple.com/certificationauthority/AppleWWDRCA.cer>. You will have to add this to your Keychain Access and export it in .pem format to use it with the library. The WWDR certificate links your development certificate to Apple, completing the trust chain for your application.
 
+## Running Tests
+Before submitting a patch for inclusion, you need to run the test suite to check that you have not broken anything.
+
+To run the test suite, install PHPUnit 3.7 (or later) first.
+
+### Dependencies
+To run the entire test suite, including tests that depend on external dependencies, php-passbook needs to be able to autoload them. By default, they are autoloaded from vendor/ under the main root directory (see vendor/autoload.php).
+
+To install them all, use [Composer](http://getcomposer.org):
+
+Step 1: Get [Composer](http://getcomposer.org)
+```
+curl -s http://getcomposer.org/installer | php
+```
+Make sure you download composer.phar in the same folder where the composer.json file is located.
+
+Step 2: Install vendors
+```
+php composer.phar --dev install
+```
+
+> Note that the script takes some time to finish.
+
+### Running
+First, install the vendors (see above).
+
+Then, run the test suite from the package root directory with the following command:
+```
+phpunit
+```
+
+The output should display OK. If not, you need to figure out what's going on and if the tests are broken because of your modifications.
+
 ## Reporting an issue or a feature request
 Issues and feature requests related to this library are tracked in the Github issue tracker: https://github.com/eymengunay/php-passbook/issues
 
