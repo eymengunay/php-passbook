@@ -198,8 +198,8 @@ class PassFactory
                 throw new FileException("Couldn't read signature file.");
             }
             // Delimeters
-            $begin = 'filename="smime.p7s"' . PHP_EOL . PHP_EOL;
-            $end = PHP_EOL . PHP_EOL . '------';
+            $begin = 'filename="smime.p7s"';
+            $end = '------';
             // Convert signature
             $signature = substr($signature, strpos($signature, $begin) + strlen($begin));
             $signature = substr($signature, 0, strpos($signature, $end));
