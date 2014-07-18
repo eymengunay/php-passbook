@@ -219,7 +219,7 @@ class Pass implements PassInterface
             'organizationName',
             'expirationDate',
             'voided',
-			'appLaunchURL'
+            'appLaunchURL'
         );
         foreach ($properties as $property) {
             $method = 'is'.ucfirst($property);
