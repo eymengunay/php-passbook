@@ -13,10 +13,13 @@ namespace Passbook;
 
 use ZipArchive;
 use SplFileObject;
-use Passbook\PassInterface;
+use RecursiveDirectoryIterator;
+use RecursiveIteratorIterator;
+use Exception;
 use Passbook\Certificate\P12;
 use Passbook\Certificate\WWDR;
 use Passbook\Exception\FileException;
+use Passbook\Pass\Image;
 
 /**
  * PassFactory - Creates .pkpass files
@@ -57,13 +60,13 @@ class PassFactory
 
     /**
      * P12 file
-     * @var Passbook\Certificate\P12
+     * @var \Passbook\Certificate\P12
      */
     protected $p12;
 
     /**
      * WWDR file
-     * @var Passbook\Certificate\WWDR
+     * @var \Passbook\Certificate\WWDR
      */
     protected $wwdr;
 
@@ -127,7 +130,7 @@ class PassFactory
     /**
      * Serialize pass
      *
-     * @param  Passbook\PassInterface $pass
+     * @param  PassInterface $pass
      * @return string
      */
     public static function serialize(PassInterface $pass)
@@ -138,7 +141,7 @@ class PassFactory
     /**
      * Creates a pkpass file
      *
-     * @param  Passbook\PassInterface $pass
+     * @param  PassInterface $pass
      * @throws FileException          If an IO error occurred
      * @return SplFileObject
      */
@@ -165,6 +168,7 @@ class PassFactory
         file_put_contents($passJSONFile, $json);
 
         // Images
+        /** @var Image $image */
         foreach ($pass->getImages() as $image) {
             $fileName = $passDir . $image->getContext();
             if ($image->isRetina()) {
@@ -174,14 +178,44 @@ class PassFactory
             copy($image->getPathname(), $fileName);
         }
 
-        // Manifest.json
+        // Localizations
+        foreach ( $pass->getLocalizations() as $localization) {
+            // Create dir (LANGUAGE.lproj)
+            $localizationDir = $passDir . $localization->getLanguage() . '.lproj' . DIRECTORY_SEPARATOR;
+            mkdir($localizationDir, 0777, true);
+
+            // pass.strings File (Format: "token" = "value")
+            $localizationStringsFile = $localizationDir . 'pass.strings';
+            file_put_contents($localizationStringsFile, $localization->getStringsFileOutput() );
+
+            // Localization images
+            foreach ($localization->getImages() as $image) {
+                $fileName = $localizationDir . $image->getContext();
+                if ($image->isRetina()) {
+                    $fileName .= '@2x';
+                }
+                $fileName .= '.'.$image->getExtension();
+                copy($image->getPathname(), $fileName);
+            }
+        }
+
+        // Manifest.json - recursive, also add files in sub directories
         $manifestJSONFile = $passDir . 'manifest.json';
         $manifest = array();
-        foreach (scandir($passDir) as $file) {
-            if ($file == '.' or $file == '..') continue;
-            $manifest[$file] = sha1_file($passDir . $file);
+        $files = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($passDir), RecursiveIteratorIterator::SELF_FIRST);
+        foreach ($files as $file)
+        {
+            // Ignore "." and ".." folders
+            if( in_array(substr($file, strrpos($file, '/')+1), array('.', '..')) ) continue;
+            //
+            $filePath = realpath($file);
+            if (is_file($filePath) === true)
+            {
+                $relativePathName = str_replace($passDir , '' , $file->getPathname() );
+                $manifest[$relativePathName] = sha1_file($filePath);
+            }
         }
-        file_put_contents($manifestJSONFile, json_encode($manifest));
+        file_put_contents($manifestJSONFile, json_encode($manifest , JSON_UNESCAPED_SLASHES));
 
         // Signature
         $signatureFile = $passDir . 'signature';
@@ -197,7 +231,7 @@ class PassFactory
             if (!$signature) {
                 throw new FileException("Couldn't read signature file.");
             }
-            // Delimeters
+            // Delimiters
             $begin = 'filename="smime.p7s"';
             $end = '------';
             // Convert signature
@@ -214,20 +248,7 @@ class PassFactory
 
         // Zip pass
         $zipFile = $outputPath . $pass->getSerialNumber() . self::PASS_EXTENSION;
-        $zip = new ZipArchive();
-        if (!$zip->open($zipFile, $this->isOverwrite() ? ZIPARCHIVE::OVERWRITE : ZipArchive::CREATE)) {
-            throw new FileException("Couldn't open zip file.");
-        }
-        if ($handle = opendir($passDir)) {
-            while (false !== ($entry = readdir($handle))) {
-                if ($entry == '.' or $entry == '..') continue;
-                $zip->addFile($passDir . $entry, $entry);
-            }
-            closedir($handle);
-        } else {
-            throw new FileException("Error reading pass directory");
-        }
-        $zip->close();
+        $this->zip($passDir, $zipFile);
 
         // Remove temporary pass directory
         $this->rrmdir($passDir);
@@ -235,10 +256,60 @@ class PassFactory
         return new SplFileObject($zipFile);
     }
 
+
+    /**
+     * Creates a zip of a directory including all sub directories (recursive)
+     * @param $source
+     * @param $destination
+     * @return bool
+     * @throws Exception
+     */
+    private function zip ( $source , $destination )
+    {
+        if (!extension_loaded('zip') ) {
+            throw new Exception("ZIP extension not available");
+        }
+
+        $zip = new ZipArchive();
+
+        if (!$zip->open($destination, $this->isOverwrite() ? ZIPARCHIVE::OVERWRITE : ZipArchive::CREATE)) {
+            throw new FileException("Couldn't open zip file.");
+        }
+
+        $source = str_replace('\\', '/', realpath($source));
+
+        if (is_dir($source) === true)
+        {
+            $files = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($source), RecursiveIteratorIterator::SELF_FIRST);
+
+            foreach ($files as $file)
+            {
+                $file = str_replace('\\', '/', $file);
+
+                // Ignore "." and ".." folders
+                if( in_array(substr($file, strrpos($file, '/')+1), array('.', '..')) ) {
+                    continue;
+                }
+                $file = realpath($file);
+
+                if (is_dir($file) === true) {
+                    $zip->addEmptyDir(str_replace($source . '/', '', $file . '/'));
+                } else if (is_file($file) === true) {
+                    $zip->addFromString(str_replace($source . '/', '', $file), file_get_contents($file));
+                }
+            }
+        } else if (is_file($source) === true) {
+            $zip->addFromString(basename($source), file_get_contents($source));
+        }
+
+        return $zip->close();
+    }
+
     /**
      * Recursive folder remove
      *
      * @param string $dir
+     * @return bool
      */
     private function rrmdir($dir)
     {
