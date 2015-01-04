@@ -15,6 +15,7 @@ use ZipArchive;
 use SplFileObject;
 use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;
+use Exception;
 use Passbook\PassInterface;
 use Passbook\Certificate\P12;
 use Passbook\Certificate\WWDR;
@@ -167,6 +168,7 @@ class PassFactory
         file_put_contents($passJSONFile, $json);
 
         // Images
+        /** @var \Passbook\Pass\Image $image */
         foreach ($pass->getImages() as $image) {
             $fileName = $passDir . $image->getContext();
             if ($image->isRetina()) {
@@ -197,14 +199,23 @@ class PassFactory
             }
         }
 
-        // Manifest.json
+        // Manifest.json - recursove, also add files in sub directories
         $manifestJSONFile = $passDir . 'manifest.json';
         $manifest = array();
-        foreach (scandir($passDir) as $file) {
-            if ($file == '.' or $file == '..') continue;
-            $manifest[$file] = sha1_file($passDir . $file);
+        $files = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($passDir), RecursiveIteratorIterator::SELF_FIRST);
+        foreach ($files as $file)
+        {
+            // Ignore "." and ".." folders
+            if( in_array(substr($file, strrpos($file, '/')+1), array('.', '..')) ) continue;
+            //
+            $filepath = realpath($file);
+            if (is_file($filepath) === true)
+            {
+                $relativePathName = str_replace($passDir , '' , $file->getPathname() );
+                $manifest[$relativePathName] = sha1_file($filepath);
+            }
         }
-        file_put_contents($manifestJSONFile, json_encode($manifest));
+        file_put_contents($manifestJSONFile, json_encode($manifest , JSON_UNESCAPED_SLASHES));
 
         // Signature
         $signatureFile = $passDir . 'signature';
@@ -276,9 +287,8 @@ class PassFactory
                 $file = str_replace('\\', '/', $file);
 
                 // Ignore "." and ".." folders
-                if( in_array(substr($file, strrpos($file, '/')+1), array('.', '..')) )
-                    continue;
-
+                if( in_array(substr($file, strrpos($file, '/')+1), array('.', '..')) ) continue;
+                //
                 $file = realpath($file);
 
                 if (is_dir($file) === true)
@@ -303,6 +313,7 @@ class PassFactory
      * Recursive folder remove
      *
      * @param string $dir
+     * @return bool
      */
     private function rrmdir($dir)
     {
