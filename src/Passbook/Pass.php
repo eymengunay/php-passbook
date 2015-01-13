@@ -248,7 +248,7 @@ class Pass implements PassInterface
             } elseif (is_array($val)) {
                 // Array
                 foreach ($val as $v) {
-                    if ( is_array($v) ) {
+                    if ( is_object($v) ) {
                         $array[$property][] = $v->toArray();
                     } else {
                         $array[$property][] = $v;
