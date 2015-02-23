@@ -1,9 +1,10 @@
 # PHP PASSBOOK LIBRARY
 
 [![Build Status](https://travis-ci.org/eymengunay/php-passbook.png?branch=master)](https://travis-ci.org/eymengunay/php-passbook)
-[![Code Coverage](https://scrutinizer-ci.com/g/eymengunay/php-passbook/badges/coverage.png?s=46b9519154148d7c525fd706d8b37999c40e9312)](https://scrutinizer-ci.com/g/eymengunay/php-passbook/)
-[![Total Downloads](https://poser.pugx.org/eo/passbook/downloads.png)](https://packagist.org/packages/eo/passbook)
-[![Latest Stable Version](https://poser.pugx.org/eo/passbook/v/stable.png)](https://packagist.org/packages/eo/passbook)
+[![Tip me with Gratipay](https://img.shields.io/gratipay/eymengunay.svg)](https://gratipay.com/eymengunay)
+[![Tip me with ChangeTip](https://img.shields.io/badge/changetip-donate-green.svg)](http://eymengunay.tip.me)
+[![Total Downloads](https://img.shields.io/packagist/dt/eo/passbook.svg)](https://packagist.org/packages/eo/passbook)
+[![Latest Stable Version](https://img.shields.io/packagist/v/eo/passbook.svg)](https://packagist.org/packages/eo/passbook)
 
 ## What is Passbook?
 
@@ -175,6 +176,10 @@ The output should display OK. If not, you need to figure out what's going on and
 
 ## Reporting an issue or a feature request
 Issues and feature requests related to this library are tracked in the Github issue tracker: https://github.com/eymengunay/php-passbook/issues
+
+## Donating
+
+If you want to support the project, please consider to donate a small amount using my [Gratipay](https://gratipay.com/eymengunay) or [Changetip](http://eymengunay.tip.me) page. Thank you for your support!
 
 ## See also
 [PassbookBundle](https://github.com/eymengunay/PassbookBundle): PHP-Passbook library integration for Symfony2
