@@ -22,4 +22,23 @@ class BarcodeTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($barcode->getAltText(), 'hello world');
         $array = $barcode->toArray();
     }
+
+    public function testBarcodeMessageIsString()
+    {
+        $barcode = new Barcode(Barcode::TYPE_QR, 123);
+        $barcode->setAltText(456);
+
+        $this->assertInternalType('string', $barcode->getMessage());
+        $this->assertInternalType('string', $barcode->getAltText());
+
+        $barcodeDetails = $barcode->toArray();
+        $this->assertInternalType('string', $barcodeDetails['message']);
+        $this->assertInternalType('string', $barcodeDetails['altText']);
+
+        $barcode->setMessage(789);
+        $this->assertInternalType('string', $barcode->getMessage());
+
+        $barcode->setMessage(null);
+        $this->assertEquals('', $barcode->getMessage());
+    }
 }

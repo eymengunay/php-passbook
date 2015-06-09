@@ -67,8 +67,8 @@ class Barcode implements BarcodeInterface
     public function __construct($format, $message, $messageEncoding = 'iso-8859-1')
     {
         // Required
-        $this->format          = $format;
-        $this->message         = $message;
+        $this->setMessage($message);
+        $this->format = $format;
         $this->messageEncoding = $messageEncoding;
     }
 
@@ -110,7 +110,7 @@ class Barcode implements BarcodeInterface
      */
     public function setMessage($message)
     {
-        $this->message = $message;
+        $this->message = strval($message);
 
         return $this;
     }
@@ -146,7 +146,7 @@ class Barcode implements BarcodeInterface
      */
     public function setAltText($altText)
     {
-        $this->altText = $altText;
+        $this->altText = strval($altText);
 
         return $this;
     }
