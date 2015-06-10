@@ -2,6 +2,7 @@
 
 namespace Passbook\Tests;
 
+use Passbook\Pass;
 use Passbook\PassFactory;
 use Passbook\Type\EventTicket;
 use Passbook\Pass\Field;
@@ -81,6 +82,17 @@ class PassFactoryTest extends \PHPUnit_Framework_TestCase
         $this->factory->setOutputPath(__DIR__.'/../../../www/passes');
         $file = $this->factory->package($pass);
         $this->assertInstanceOf('SplFileObject', $file);
+    }
+
+    /**
+     * @expectedException \InvalidArgumentException
+     */
+    public function testPackagePassWithoutSerialNumberThrowsException()
+    {
+        $pass = new Pass('', 'pass without a serial number');
+
+        $this->factory->setOutputPath('/tmp');
+        $this->factory->package($pass);
     }
 
     /**
