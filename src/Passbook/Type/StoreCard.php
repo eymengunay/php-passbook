@@ -12,8 +12,7 @@
 namespace Passbook\Type;
 
 use Passbook\Pass;
-use JMS\Serializer\Annotation\Exclude;
-use JMS\Serializer\Annotation\SerializedName;
+use Passbook\Pass\Structure;
 
 /**
  * StoreCard
@@ -24,14 +23,12 @@ class StoreCard extends Pass
 {
     /**
      * Pass type
-     * @Exclude
      * @var string
      */
     protected $type = 'storeCard';
 
     /**
      * Pass structure
-     * @SerializedName(value="storeCard")
      * @var Structure
      */
     protected $structure;
