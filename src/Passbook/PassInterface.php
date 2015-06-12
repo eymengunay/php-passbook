@@ -131,6 +131,16 @@ interface PassInterface
     /**
      * {@inheritdoc}
      */
+    public function setMaxDistance(\DateTime $maxDistance);
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getMaxDistance();
+
+    /**
+     * {@inheritdoc}
+     */
     public function setBarcode(BarcodeInterface $barcode);
 
     /**
