@@ -11,12 +11,14 @@
 
 namespace Passbook\Pass;
 
+use Passbook\ArrayableInterface;
+
 /**
  * LocationInterface
  *
  * @author Eymen Gunay <eymen@egunay.com>
  */
-interface LocationInterface
+interface LocationInterface extends ArrayableInterface
 {
     /**
      * Sets location altitude

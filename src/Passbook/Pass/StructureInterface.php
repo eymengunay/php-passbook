@@ -11,12 +11,14 @@
 
 namespace Passbook\Pass;
 
+use Passbook\ArrayableInterface;
+
 /**
  * StructureInterface
  *
  * @author Eymen Gunay <eymen@egunay.com>
  */
-interface StructureInterface
+interface StructureInterface extends ArrayableInterface
 {
     /**
      * Adds header field

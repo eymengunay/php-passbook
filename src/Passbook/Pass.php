@@ -279,6 +279,7 @@ class Pass implements PassInterface
                 $array[$property] = $val->format('c');
             } elseif (is_object($val)) {
                 // Object
+                /* @var ArrayableInterface $val */
                 $array[$property] = $val->toArray();
             } elseif (is_scalar($val)) {
                 // Scalar
@@ -287,6 +288,7 @@ class Pass implements PassInterface
                 // Array
                 foreach ($val as $v) {
                     if (is_object($v)) {
+                        /* @var ArrayableInterface $v */
                         $array[$property][] = $v->toArray();
                     } else {
                         $array[$property][] = $v;

@@ -11,12 +11,14 @@
 
 namespace Passbook\Pass;
 
+use Passbook\ArrayableInterface;
+
 /**
  * BarcodeInterface
  *
  * @author Eymen Gunay <eymen@egunay.com>
  */
-interface BarcodeInterface
+interface BarcodeInterface extends ArrayableInterface
 {
     /**
      * Sets barcode format

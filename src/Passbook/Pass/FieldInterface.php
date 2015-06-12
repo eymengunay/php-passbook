@@ -11,12 +11,14 @@
 
 namespace Passbook\Pass;
 
+use Passbook\ArrayableInterface;
+
 /**
  * FieldInterface
  *
  * @author Eymen Gunay <eymen@egunay.com>
  */
-interface FieldInterface
+interface FieldInterface extends ArrayableInterface
 {
     /**
      * Sets change message

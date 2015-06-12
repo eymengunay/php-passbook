@@ -11,12 +11,14 @@
 
 namespace Passbook\Pass;
 
+use Passbook\ArrayableInterface;
+
 /**
  * BeaconInterface
  *
  * @author Sotaro Omura <http://omoon.org>
  */
-interface BeaconInterface
+interface BeaconInterface extends ArrayableInterface
 {
     /**
      * Sets proximity UUID

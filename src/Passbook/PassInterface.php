@@ -24,7 +24,7 @@ use Passbook\Pass\StructureInterface;
  * @author Eymen Gunay <eymen@egunay.com>
  * @author Sotaro Omura <http://omoon.org>
  */
-interface PassInterface
+interface PassInterface extends ArrayableInterface
 {
     public function __construct($serialNumber, $description);
 
