@@ -18,4 +18,10 @@ namespace Passbook\Certificate;
  */
 interface WWDRInterface
 {
+    /**
+     * Returns the absolute path to the certificate file
+     *
+     * @return string
+     */
+    public function getRealPath();
 }

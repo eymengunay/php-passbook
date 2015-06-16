@@ -19,6 +19,13 @@ namespace Passbook\Certificate;
 interface P12Interface
 {
     /**
+     * Returns the absolute path to the certificate file
+     *
+     * @return string
+     */
+    public function getRealPath();
+
+    /**
      * Returns p12 password
      *
      * @return string
