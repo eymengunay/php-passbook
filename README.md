@@ -29,7 +29,7 @@ PHP-Passbook is a library for creating and packaging passes inside your applicat
 
 To add PHP-Passbook as a local, per-project dependency to your project, simply add a dependency on eo/passbook to your project's composer.json file. Here is a minimal example of a composer.json file that just defines a development-time dependency on the latest version of the library:
 
-```
+```json
 {
     "require": {
         "eo/passbook": "dev-master"
@@ -42,7 +42,7 @@ Search by class, method name, or package: http://eymengunay.github.io/php-passbo
 
 ## Usage Example
 
-```
+```php
 <?php
 
 use Passbook\Pass\Field;
