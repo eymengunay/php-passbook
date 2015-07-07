@@ -215,7 +215,7 @@ class PassFactory
         // Zip pass
         $zipFile = $outputPath . $pass->getSerialNumber() . self::PASS_EXTENSION;
         $zip = new ZipArchive();
-        if (!$zip->open($zipFile, $this->isOverwrite() ? ZIPARCHIVE::OVERWRITE : ZipArchive::CREATE)) {
+        if (!$zip->open($zipFile, $this->isOverwrite() ? ZipArchive::OVERWRITE | ZipArchive::CREATE : ZipArchive::CREATE)) {
             throw new FileException("Couldn't open zip file.");
         }
         if ($handle = opendir($passDir)) {

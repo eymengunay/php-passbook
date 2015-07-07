@@ -1,1 +1,4 @@
 vendor
+
+# PHPStorm settings
+.idea
