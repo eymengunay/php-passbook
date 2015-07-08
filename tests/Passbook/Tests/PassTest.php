@@ -18,29 +18,29 @@ use Passbook\Type\StoreCard;
 class PassTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @var PassInterface
-     */
-    protected $boardingPass;
-
-    /**
-     * @var PassInterface
+     * @var Coupon
      */
     protected $coupon;
 
     /**
-     * @var PassInterface
+     * @var EventTicket
      */
     protected $eventTicket;
 
     /**
-     * @var PassInterface
+     * @var Generic
      */
     protected $generic;
 
     /**
-     * @var PassInterface
+     * @var StoreCard
      */
     protected $storeCard;
+
+    /**
+     * @var Pass
+     */
+    protected $pass;
 
     /**
      * Boarding Pass
@@ -238,7 +238,24 @@ class PassTest extends \PHPUnit_Framework_TestCase
             ->setAuthenticationToken('123')
             ->setType('generic')
             ->setSuppressStripShine(false)
+            ->setAppLaunchURL('http://app.launch.url')
+            ->addAssociatedStoreIdentifier(123)
         ;
+
+        $properties = array(
+            'webServiceURL',
+            'foregroundColor',
+            'backgroundColor',
+            'labelColor',
+            'authenticationToken',
+            'suppressStripShine',
+            'associatedStoreIdentifiers',
+            'appLaunchURL',
+        );
+        $array = $this->pass->toArray();
+        foreach ($properties as $property) {
+            $this->assertTrue(isset($array[$property]));
+        }
     }
 
     /**
