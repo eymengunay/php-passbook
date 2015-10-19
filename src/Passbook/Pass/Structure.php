@@ -72,7 +72,7 @@ class Structure implements StructureInterface
             $array['backFields'][] = $backField->toArray();
         }
 
-        return $array;
+        return empty($array) ? (object)null : $array;
     }
 
     /**

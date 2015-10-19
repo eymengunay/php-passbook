@@ -30,7 +30,7 @@ interface StructureInterface extends ArrayableInterface
     /**
      * Returns header fields
      *
-     * @param array
+     * @return FieldInterface[]
      */
     public function getHeaderFields();
 
@@ -44,7 +44,7 @@ interface StructureInterface extends ArrayableInterface
     /**
      * Returns primary fields
      *
-     * @param array
+     * @return FieldInterface[]
      */
     public function getPrimaryFields();
 
@@ -58,7 +58,7 @@ interface StructureInterface extends ArrayableInterface
     /**
      * Returns secondary fields
      *
-     * @param array
+     * @return FieldInterface[]
      */
     public function getSecondaryFields();
 
@@ -72,7 +72,7 @@ interface StructureInterface extends ArrayableInterface
     /**
      * Returns auxiliary fields
      *
-     * @param array
+     * @return FieldInterface[]
      */
     public function getAuxiliaryFields();
 
@@ -86,7 +86,7 @@ interface StructureInterface extends ArrayableInterface
     /**
      * Returns back fields
      *
-     * @param array
+     * @return FieldInterface[]
      */
     public function getBackFields();
 }

@@ -18,6 +18,11 @@ use Passbook\Type\StoreCard;
 class PassTest extends \PHPUnit_Framework_TestCase
 {
     /**
+     * @var BoardingPass
+     */
+    protected $boardingPass;
+
+    /**
      * @var Coupon
      */
     protected $coupon;
@@ -256,6 +261,13 @@ class PassTest extends \PHPUnit_Framework_TestCase
         foreach ($properties as $property) {
             $this->assertTrue(isset($array[$property]));
         }
+    }
+
+    public function testPassWithEmptyStructureSerializesAsEmptyObject()
+    {
+        $this->storeCard->setStructure(new Structure());
+        $array = $this->storeCard->toArray();
+        self::assertTrue(is_object($array['storeCard']));
     }
 
     /**
