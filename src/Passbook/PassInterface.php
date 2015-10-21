@@ -139,14 +139,30 @@ interface PassInterface extends ArrayableInterface
     public function getMaxDistance();
 
     /**
-     * {@inheritdoc}
+     * @deprecated use addBarcode instead
+     *
+     * @param BarcodeInterface $barcode
+     *
+     * @return $this
      */
     public function setBarcode(BarcodeInterface $barcode);
 
     /**
-     * {@inheritdoc}
+     * @deprecated use getBarcodes instead
+     *
+     * @return BarcodeInterface
      */
     public function getBarcode();
+
+    /**
+     * @return $this
+     */
+    public function addBarcode(BarcodeInterface $barcode);
+
+    /**
+     * @return BarcodeInterface[]
+     */
+    public function getBarcodes();
 
     /**
      * {@inheritdoc}

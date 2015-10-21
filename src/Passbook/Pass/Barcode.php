@@ -34,6 +34,12 @@ class Barcode implements BarcodeInterface
     const TYPE_AZTEC = 'PKBarcodeFormatAztec';
 
     /**
+     * Available starting with iOS 9.
+     * @var string
+     */
+    const TYPE_CODE_128 = 'PKBarcodeFormatCode128';
+
+    /**
      * Barcode format. Must be one of the following values:
      * PKBarcodeFormatQR, PKBarcodeFormatPDF417, PKBarcodeFormatAztec.
      * @var string
@@ -80,8 +86,8 @@ class Barcode implements BarcodeInterface
             'messageEncoding' => $this->getMessageEncoding()
         );
 
-        if ($altText = $this->getAltText()) {
-            $array['altText'] = $altText;
+        if ($this->getAltText()) {
+            $array['altText'] = $this->getAltText();
         }
 
         return $array;

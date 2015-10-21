@@ -150,7 +150,7 @@ class PassValidator
 
     private function validateBarcodeKeys(Pass $pass)
     {
-        $validBarcodeFormats = array(Barcode::TYPE_QR, Barcode::TYPE_AZTEC, Barcode::TYPE_PDF_417);
+        $validBarcodeFormats = array(Barcode::TYPE_QR, Barcode::TYPE_AZTEC, Barcode::TYPE_PDF_417, Barcode::TYPE_CODE_128);
 
         $barcode = $pass->getBarcode();
 

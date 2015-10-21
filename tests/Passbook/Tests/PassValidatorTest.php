@@ -77,9 +77,9 @@ class PassValidatorTest extends \PHPUnit_Framework_TestCase
 
     public function testPassBarcodeFormat()
     {
-        // Test first before barcode is added
+        // First test pass without barcode passes
         $this->assertPasses($this->pass, PassValidator::BARCODE_FORMAT_INVALID);
-        $this->pass->setBarcode(new Barcode(Barcode::TYPE_QR, 'message'));
+        $this->pass->setBarcode(new Barcode(Barcode::TYPE_CODE_128, 'message'));
         $this->assertPasses($this->pass, PassValidator::BARCODE_FORMAT_INVALID);
 
         $this->pass->setBarcode(new Barcode('', 'message'));

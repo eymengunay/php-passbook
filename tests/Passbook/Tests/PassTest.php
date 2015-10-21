@@ -126,7 +126,7 @@ class PassTest extends \PHPUnit_Framework_TestCase
     public function testStoreCard()
     {
         $json = PassFactory::serialize($this->storeCard);
-        $array = json_decode($json, true);
+        json_decode($json, true);
     }
 
     /**
@@ -275,6 +275,26 @@ class PassTest extends \PHPUnit_Framework_TestCase
         $this->storeCard->setSerialNumber(0);
         $array = $this->storeCard->toArray();
         self::assertTrue(is_string($array['serialNumber']));
+    }
+
+    public function testAddingBarcode()
+    {
+        $barcode1 = new Barcode(Barcode::TYPE_QR, 'barcode 1');
+        $barcode2 = new Barcode(Barcode::TYPE_CODE_128, 'barcode 2');
+        $barcode3 = new Barcode(Barcode::TYPE_AZTEC, 'barcode 3');
+
+        $this->storeCard->addBarcode($barcode1);
+        self::assertEquals($barcode1, $this->storeCard->getBarcode());
+
+        $this->storeCard->addBarcode($barcode2);
+        self::assertEquals($barcode1, $this->storeCard->getBarcode());
+
+        $this->storeCard->setBarcode($barcode3);
+        self::assertEquals($barcode3, $this->storeCard->getBarcode());
+        $barcodes = $this->storeCard->getBarcodes();
+        self::assertEquals($barcode3, $barcodes[0]);
+        self::assertEquals($barcode1, $barcodes[1]);
+        self::assertEquals($barcode2, $barcodes[2]);
     }
 
     /**
