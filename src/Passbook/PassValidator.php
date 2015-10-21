@@ -38,6 +38,9 @@ class PassValidator
     const BEACON_PROXIMITY_UUID_REQUIRED = 'beacon proximity UUID is required';
     const BEACON_MAJOR_INVALID = 'beacon major is invalid; must be 16-bit unsigned integer';
     const BEACON_MINOR_INVALID = 'beacon minor is invalid; must be 16-bit unsigned integer';
+    const WEB_SERVICE_URL_INVALID = 'web service url is invalid; must start with https (or http for development)';
+    const WEB_SERVICE_AUTHENTICATION_TOKEN_REQUIRED = 'web service authentication token required and cannot be blank';
+    const WEB_SERVICE_AUTHENTICATION_TOKEN_INVALID = 'web service authentication token is invalid; must be at least 16 characters';
 
     public function validate(Pass $pass)
     {
@@ -47,6 +50,7 @@ class PassValidator
         $this->validateBeaconKeys($pass);
         $this->validateLocationKeys($pass);
         $this->validateBarcodeKeys($pass);
+        $this->validateWebServiceKeys($pass);
         $this->validateImages($pass);
 
         return count($this->errors) === 0;
@@ -160,6 +164,25 @@ class PassValidator
 
         if (!is_string($barcode->getMessage())) {
             $this->addError(self::BARCODE_MESSAGE_INVALID);
+        }
+    }
+
+    private function validateWebServiceKeys(Pass $pass)
+    {
+        if (null === $pass->getWebServiceURL()) {
+            return;
+        }
+
+        if (strpos($pass->getWebServiceURL(), 'http') !== 0) {
+            $this->addError(self::WEB_SERVICE_URL_INVALID);
+        }
+
+        if ($this->isBlankOrNull($pass->getAuthenticationToken())) {
+            $this->addError(self::WEB_SERVICE_AUTHENTICATION_TOKEN_REQUIRED);
+        }
+
+        if (strlen($pass->getAuthenticationToken()) < 16) {
+            $this->addError(self::WEB_SERVICE_AUTHENTICATION_TOKEN_INVALID);
         }
     }
 

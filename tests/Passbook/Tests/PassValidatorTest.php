@@ -176,6 +176,21 @@ class PassValidatorTest extends \PHPUnit_Framework_TestCase
         $this->assertFails($this->pass, PassValidator::BEACON_MINOR_INVALID);
     }
 
+    public function testWebServiceAuthenticationToken()
+    {
+        $this->assertPasses($this->pass, PassValidator::WEB_SERVICE_URL_INVALID);
+        $this->assertPasses($this->pass, PassValidator::WEB_SERVICE_AUTHENTICATION_TOKEN_INVALID);
+
+        $this->pass->setWebServiceURL('');
+        $this->assertFails($this->pass, PassValidator::WEB_SERVICE_URL_INVALID);
+
+        $this->pass->setWebServiceURL('https://example.com');
+        $this->assertFails($this->pass, PassValidator::WEB_SERVICE_AUTHENTICATION_TOKEN_REQUIRED);
+
+        $this->pass->setAuthenticationToken('1234567890abcde');
+        $this->assertFails($this->pass, PassValidator::WEB_SERVICE_AUTHENTICATION_TOKEN_INVALID);
+    }
+
     public function testPassWithoutIcon()
     {
         self::assertArrayNotHasKey('icon', $this->pass->getImages(), 'pass must not have an icon for test to be valid');
