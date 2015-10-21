@@ -270,6 +270,13 @@ class PassTest extends \PHPUnit_Framework_TestCase
         self::assertTrue(is_object($array['storeCard']));
     }
 
+    public function testSerialNumberConvertedToString()
+    {
+        $this->storeCard->setSerialNumber(0);
+        $array = $this->storeCard->toArray();
+        self::assertTrue(is_string($array['serialNumber']));
+    }
+
     /**
      * {@inheritdoc}
      */
