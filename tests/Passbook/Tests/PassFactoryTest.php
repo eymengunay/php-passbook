@@ -95,6 +95,27 @@ class PassFactoryTest extends \PHPUnit_Framework_TestCase
         $this->factory->package($pass);
     }
 
+    public function testRequiredInformationInPassNotOverwrittenByFactory()
+    {
+        $passOrganizationName = 'organization name in pass';
+        $passTeamIdentifier = 'team identifier in pass';
+        $passPassTypeIdentifier = 'pass type identifier in pass';
+
+        $pass = new Pass('serial number', 'description');
+        $pass->setOrganizationName($passOrganizationName);
+        $pass->setTeamIdentifier($passTeamIdentifier);
+        $pass->setPassTypeIdentifier($passPassTypeIdentifier);
+
+        $this->factory->setOutputPath('/tmp');
+        $this->factory->setOverwrite(true);
+        $this->factory->setSkipSignature(true);
+        $this->factory->package($pass);
+
+        self::assertEquals($passOrganizationName, $pass->getOrganizationName());
+        self::assertEquals($passTeamIdentifier, $pass->getTeamIdentifier());
+        self::assertEquals($passPassTypeIdentifier, $pass->getPassTypeIdentifier());
+    }
+
     /**
      * {@inheritdoc}
      */

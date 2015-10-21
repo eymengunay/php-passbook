@@ -78,6 +78,11 @@ class PassFactory
     protected $wwdr;
 
     /**
+     * @var bool - skip signing the pass; should only be used for testing
+     */
+    protected $skipSignature;
+
+    /**
      * Pass file extension
      *
      * @var string
@@ -140,6 +145,31 @@ class PassFactory
     }
 
     /**
+     * Set skip signature
+     *
+     * When set, the pass will not be signed when packaged. This should only
+     * be used for testing.
+     *
+     * @param boolean
+     * @return $this
+     */
+    public function setSkipSignature($skipSignature)
+    {
+        $this->skipSignature = $skipSignature;
+
+        return $this;
+    }
+
+    /**
+     * Get overwrite
+     * @return boolean
+     */
+    public function getSkipSignature()
+    {
+        return $this->skipSignature;
+    }
+
+    /**
      * Serialize pass
      *
      * @param  PassInterface $pass
@@ -165,9 +195,7 @@ class PassFactory
             throw new \InvalidArgumentException('Pass must have a serial number to be packaged');
         }
 
-        $pass->setPassTypeIdentifier($this->passTypeIdentifier);
-        $pass->setTeamIdentifier($this->teamIdentifier);
-        $pass->setOrganizationName($this->organizationName);
+        $this->populateRequiredInformation($pass);
 
         // Serialize pass
         $json = self::serialize($pass);
@@ -239,6 +267,28 @@ class PassFactory
         file_put_contents($manifestJSONFile, json_encode($manifest, JSON_UNESCAPED_SLASHES));
 
         // Signature
+        $this->sign($passDir, $manifestJSONFile);
+
+        // Zip pass
+        $zipFile = $outputPath . $pass->getSerialNumber() . self::PASS_EXTENSION;
+        $this->zip($passDir, $zipFile);
+
+        // Remove temporary pass directory
+        $this->rrmdir($passDir);
+
+        return new SplFileObject($zipFile);
+    }
+
+    /**
+     * @param $passDir
+     * @param $manifestJSONFile
+     */
+    private function sign($passDir, $manifestJSONFile)
+    {
+        if ($this->getSkipSignature()) {
+            return;
+        }
+
         $signatureFile = $passDir . 'signature';
         $p12 = file_get_contents($this->p12->getRealPath());
         $certs = array();
@@ -274,17 +324,7 @@ class PassFactory
         } else {
             throw new FileException("Error reading certificate file");
         }
-
-        // Zip pass
-        $zipFile = $outputPath . $pass->getSerialNumber() . self::PASS_EXTENSION;
-        $this->zip($passDir, $zipFile);
-
-        // Remove temporary pass directory
-        $this->rrmdir($passDir);
-
-        return new SplFileObject($zipFile);
     }
-
 
     /**
      * Creates a zip of a directory including all sub directories (recursive)
@@ -350,4 +390,23 @@ class PassFactory
 
         return rmdir($dir);
     }
+
+    /**
+     * @param PassInterface $pass
+     */
+    private function populateRequiredInformation(PassInterface $pass)
+    {
+        if (!$pass->getPassTypeIdentifier()) {
+            $pass->setPassTypeIdentifier($this->passTypeIdentifier);
+        }
+
+        if (!$pass->getTeamIdentifier()) {
+            $pass->setTeamIdentifier($this->teamIdentifier);
+        }
+
+        if (!$pass->getOrganizationName()) {
+            $pass->setOrganizationName($this->organizationName);
+        }
+    }
+
 }
