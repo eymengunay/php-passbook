@@ -178,7 +178,7 @@ class PassFactory
      */
     public static function serialize(PassInterface $pass)
     {
-        return json_encode($pass->toArray());
+        return self::jsonEncode($pass->toArray());
     }
 
     /**
@@ -264,7 +264,7 @@ class PassFactory
                 $manifest[$relativePathName] = sha1_file($filePath);
             }
         }
-        file_put_contents($manifestJSONFile, json_encode($manifest, JSON_UNESCAPED_SLASHES));
+        file_put_contents($manifestJSONFile, $this->jsonEncode($manifest));
 
         // Signature
         $this->sign($passDir, $manifestJSONFile);
@@ -407,6 +407,18 @@ class PassFactory
         if (!$pass->getOrganizationName()) {
             $pass->setOrganizationName($this->organizationName);
         }
+    }
+
+    /**
+     * @param $array
+     *
+     * @return string
+     */
+    private static function jsonEncode($array)
+    {
+        // Check if JSON_UNESCAPED_SLASHES is defined to support PHP 5.3.
+        $options = defined('JSON_UNESCAPED_SLASHES') ? JSON_UNESCAPED_SLASHES : 0;
+        return json_encode($array, $options);
     }
 
 }
