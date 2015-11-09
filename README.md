@@ -97,6 +97,8 @@ $factory->package($pass);
 * [zip](http://php.net/manual/en/book.zip.php)
 * [OpenSSL](http://www.php.net/manual/en/book.openssl.php)
 
+Version 1.2.0 is the last release to support PHP 5.3.
+
 ## Obtaining the Pass Type Identifier and Team ID
 
 You can find more information on [http://developer.apple.com/library/ios/#documentation/userexperience/conceptual/PassKit_PG/Chapters/YourFirst.html](http://developer.apple.com/library/ios/#documentation/userexperience/conceptual/PassKit_PG/Chapters/YourFirst.html)
