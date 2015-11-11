@@ -93,7 +93,7 @@ $factory->package($pass);
 ```
 
 ## Requirements
-* PHP 5.3+
+* PHP 5.4+
 * [zip](http://php.net/manual/en/book.zip.php)
 * [OpenSSL](http://www.php.net/manual/en/book.openssl.php)
 
@@ -101,7 +101,7 @@ Version 1.2.0 is the last release to support PHP 5.3.
 
 ## Obtaining the Pass Type Identifier and Team ID
 
-You can find more information on [http://developer.apple.com/library/ios/#documentation/userexperience/conceptual/PassKit_PG/Chapters/YourFirst.html](http://developer.apple.com/library/ios/#documentation/userexperience/conceptual/PassKit_PG/Chapters/YourFirst.html)
+You can find more information from Apple on [https://developer.apple.com/library/ios/documentation/UserExperience/Conceptual/PassKit_PG/YourFirst.html#//apple_ref/doc/uid/TP40012195-CH2-SW27](Setting the Pass Type Identifier and Team ID).
 
 ## Requesting Certificates
 
