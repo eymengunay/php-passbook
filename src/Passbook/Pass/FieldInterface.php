@@ -86,7 +86,7 @@ interface FieldInterface extends ArrayableInterface
     /**
      * Returns value
      *
-     * @param string
+     * @param string|int|float
      */
     public function getValue();
 

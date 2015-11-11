@@ -123,24 +123,24 @@ class Field implements FieldInterface
             'value' => $this->getValue()
         );
 
-        if ($changeMessage = $this->getChangeMessage()) {
-            $array['changeMessage'] = $changeMessage;
+        if ($this->getChangeMessage()) {
+            $array['changeMessage'] = $this->getChangeMessage();
         }
 
-        if ($label = $this->getLabel()) {
-            $array['label'] = $label;
+        if ($this->getLabel()) {
+            $array['label'] = $this->getLabel();
         }
 
-        if ($textAlignment = $this->getTextAlignment()) {
-            $array['textAlignment'] = $textAlignment;
+        if ($this->getTextAlignment()) {
+            $array['textAlignment'] = $this->getTextAlignment();
         }
 
-        if ($dataDecoratorTypes = $this->getDataDetectorTypes()) {
-            $array['dataDetectorTypes'] = $dataDecoratorTypes;
+        if ($this->getDataDetectorTypes()) {
+            $array['dataDetectorTypes'] = $this->getDataDetectorTypes();
         }
 
-        if ($attributedValue = $this->getAttributedValue()) {
-            $array['attributedValue'] = $attributedValue;
+        if ($this->getAttributedValue()) {
+            $array['attributedValue'] = $this->getAttributedValue();
         }
 
         return $array;

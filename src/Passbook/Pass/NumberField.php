@@ -13,36 +13,38 @@ namespace Passbook\Pass;
 
 /**
  * Class NumberField
+ *
  * @package Passbook\Pass
  * @author Florian Morello <florian@morello.fr>
  */
-class NumberField extends Field {
+class NumberField extends Field
+{
+    /**
+     * @var string
+     */
+    const PKNumberStyleDecimal = 'PKNumberStyleDecimal';
 
-	/**
-	 * @var string
-	 */
-	const PKNumberStyleDecimal = 'PKNumberStyleDecimal';
+    /**
+     * @var string
+     */
+    const PKNumberStylePercent = 'PKNumberStylePercent';
 
-	/**
-	 * @var string
-	 */
-	const PKNumberStylePercent = 'PKNumberStylePercent';
+    /**
+     * @var string
+     */
+    const PKNumberStyleScientific = 'PKNumberStyleScientific';
 
-	/**
-	 * @var string
-	 */
-	const PKNumberStyleScientific = 'PKNumberStyleScientific';
+    /**
+     * ISO 4217
+     *
+     * @var string
+     */
+    protected $currencyCode = null;
 
-	/**
-	 * ISO 4217
-	 * @var string
-	 */
-	protected $currencyCode = null;
-
-	/**
-	 * @var string
-	 */
-	protected $numberStyle = null;
+    /**
+     * @var string
+     */
+    protected $numberStyle = null;
 
     /**
      * @return array
@@ -56,40 +58,58 @@ class NumberField extends Field {
         if ($this->getNumberStyle() !== null) {
             $array['numberStyle'] = $this->getNumberStyle();
         }
+
         return $array;
     }
 
-	/**
-	 * @param mixed $currencyCode
-	 */
-	public function setCurrencyCode($currencyCode)
-	{
-		$this->currencyCode = $currencyCode;
-		return $this;
-	}
+    /**
+     * @param string $currencyCode an ISO 4217 currency code
+     *
+     * @return $this
+     */
+    public function setCurrencyCode($currencyCode)
+    {
+        $this->currencyCode = $currencyCode;
 
-	/**
-	 * @return mixed
-	 */
-	public function getCurrencyCode()
-	{
-		return $this->currencyCode;
-	}
+        return $this;
+    }
 
-	/**
-	 * @param string $numberStyle
-	 */
-	public function setNumberStyle($numberStyle)
-	{
-		$this->numberStyle = $numberStyle;
-		return $this;
-	}
+    /**
+     * @return string
+     */
+    public function getCurrencyCode()
+    {
+        return $this->currencyCode;
+    }
 
-	/**
-	 * @return string
-	 */
-	public function getNumberStyle()
-	{
-		return $this->numberStyle;
-	}
+    /**
+     * @param string $numberStyle
+     *
+     * @return $this
+     */
+    public function setNumberStyle($numberStyle)
+    {
+        $this->numberStyle = $numberStyle;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getNumberStyle()
+    {
+        return $this->numberStyle;
+    }
+
+    /**
+     * {@inheritdoc}
+     *
+     * @return int|float
+     */
+    public function getValue()
+    {
+        // Ensure value is int or float; adding 0 will convert type from string
+        return 0+parent::getValue();
+    }
 }

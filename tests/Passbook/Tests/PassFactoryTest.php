@@ -68,6 +68,11 @@ class PassFactoryTest extends \PHPUnit_Framework_TestCase
         $auxiliary->setLabel('Date & Time');
         $structure->addAuxiliaryField($auxiliary);
 
+        $auxiliary = new Pass\NumberField('price', '12.34');
+        $auxiliary->setLabel('Price');
+        $auxiliary->setCurrencyCode('USD');
+        $structure->addAuxiliaryField($auxiliary);
+
         // Add icon image
         $icon = new Image(__DIR__.'/../../img/icon.png', 'icon');
         $pass->addImage($icon);
@@ -121,29 +126,28 @@ class PassFactoryTest extends \PHPUnit_Framework_TestCase
      */
     protected function setUp()
     {
-        if (getenv('PASSBOOK_TEST_P12') && 
-            getenv('PASSBOOK_TEST_P12_PASS') && 
-            getenv('PASSBOOK_TEST_WWDR') && 
-            getenv('PASSBOOK_TEST_TYPE_ID') && 
-            getenv('PASSBOOK_TEST_TEAM_ID') && 
-            getenv('PASSBOOK_TEST_ORG_NAME')) {
+        // The configuration for the PassFactory can set using environment
+        // variables in your own phpunit.xml configuration file. Copy the
+        // phpunit.xml.dist file to phpunit.xml. Uncomment the following lines
+        // and add the values for your certificates and organization.
+        //
+        //<env name="PASSBOOK_TEST_P12" value="pass.com.example.testpass.p12" />
+        //<env name="PASSBOOK_TEST_PASS" value="123456" />
+        //<env name="PASSBOOK_TEST_WWDR" value="wwdr.pem" />
+        //<env name="PASSBOOK_TEST_TYPE_ID" value="pass.com.example.testpass" />
+        //<env name="PASSBOOK_TEST_TEAM_ID" value="ABCDE12345" />
+        //<env name="PASSBOOK_TEST_ORG_NAME" value="Organization Name" />
 
-            $p12File = getenv('PASSBOOK_TEST_P12');
-            $p12Pass = getenv('PASSBOOK_TEST_P12_PASS');
-            $wwdrFile = getenv('PASSBOOK_TEST_WWDR');
+        $p12File = getenv('PASSBOOK_TEST_P12') ?: __DIR__.'/../../cert/dummy.p12';
+        $wwdrFile = getenv('PASSBOOK_TEST_WWDR') ?: __DIR__.'/../../cert/dummy.wwdr';
+        $p12Password = getenv('PASSBOOK_TEST_P12_PASS') ?: '';
+        $passTypeIdentifier = getenv('PASSBOOK_TEST_TYPE_ID') ?: 'pass-type-identifier';
+        $teamIdentifier = getenv('PASSBOOK_TEST_TEAM_ID') ?: 'team-identifier';
+        $organizationName = getenv('PASSBOOK_TEST_ORG_NAME') ?: 'organization-name';
 
-            $passTypeIdentifier = getenv('PASSBOOK_TEST_TYPE_ID');
-            $teamIdentifier = getenv('PASSBOOK_TEST_TEAM_ID');
-            $organizationName = getenv('PASSBOOK_TEST_ORG_NAME');
+        // We can't package without the certificates.
+        $this->skipPackageTest = !getenv('PASSBOOK_TEST_P12') || !getenv('PASSBOOK_TEST_WWDR');
 
-            $this->factory = new PassFactory($passTypeIdentifier, $teamIdentifier, $organizationName, $p12File, $p12Pass, $wwdrFile);
-        } else {
-            $p12File = __DIR__.'/../../cert/dummy.p12';
-            $p12Pass = '123456';
-            $wwdrFile = __DIR__.'/../../cert/dummy.wwdr';
-            $this->skipPackageTest = true;
-
-            $this->factory = new PassFactory('pass-type-identifier', 'team-identifier', 'organization-name', $p12File, $p12Pass, $wwdrFile);
-        }
+        $this->factory = new PassFactory($passTypeIdentifier, $teamIdentifier, $organizationName, $p12File, $p12Password, $wwdrFile);
     }
 }
