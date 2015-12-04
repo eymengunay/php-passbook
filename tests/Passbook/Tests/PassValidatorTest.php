@@ -201,6 +201,20 @@ class PassValidatorTest extends \PHPUnit_Framework_TestCase
         $this->assertPasses($this->pass, PassValidator::ICON_REQUIRED);
     }
 
+    public function testPassAssociatedStoreIdentifiers()
+    {
+        $this->assertPasses($this->pass, PassValidator::ASSOCIATED_STORE_IDENTIFIER_INVALID);
+
+        $this->pass->setAppLaunchURL('url');
+        $this->assertFails($this->pass, PassValidator::ASSOCIATED_STORE_IDENTIFIER_REQUIRED);
+
+        $this->pass->addAssociatedStoreIdentifier(123);
+        $this->assertPasses($this->pass, PassValidator::ASSOCIATED_STORE_IDENTIFIER_INVALID);
+
+        $this->pass->addAssociatedStoreIdentifier('not an integer');
+        $this->assertFails($this->pass, PassValidator::ASSOCIATED_STORE_IDENTIFIER_INVALID);
+    }
+
     private function assertFails($pass, $expectedError)
     {
         $validator = new PassValidator();

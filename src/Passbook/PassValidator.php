@@ -21,26 +21,28 @@ class PassValidator
 {
     private $errors;
 
-    const DESCRIPTION_REQUIRED = 'description is required and cannot be blank.';
-    const FORMAT_VERSION_REQUIRED = 'formatVersion is required and must be 1.';
-    const ORGANIZATION_NAME_REQUIRED = 'organizationName is required and cannot be blank.';
-    const PASS_TYPE_IDENTIFIER_REQUIRED = 'passTypeIdentifier is required and cannot be blank.';
-    const SERIAL_NUMBER_REQUIRED = 'serialNumber is required and cannot be blank.';
-    const TEAM_IDENTIFIER_REQUIRED = 'teamIdentifier is required and cannot be blank.';
-    const ICON_REQUIRED = 'pass must have an icon image.';
-    const BARCODE_FORMAT_INVALID = 'barcode format is invalid.';
+    const DESCRIPTION_REQUIRED = 'description is required and cannot be blank';
+    const FORMAT_VERSION_REQUIRED = 'formatVersion is required and must be 1';
+    const ORGANIZATION_NAME_REQUIRED = 'organizationName is required and cannot be blank';
+    const PASS_TYPE_IDENTIFIER_REQUIRED = 'passTypeIdentifier is required and cannot be blank';
+    const SERIAL_NUMBER_REQUIRED = 'serialNumber is required and cannot be blank';
+    const TEAM_IDENTIFIER_REQUIRED = 'teamIdentifier is required and cannot be blank';
+    const ICON_REQUIRED = 'pass must have an icon image';
+    const BARCODE_FORMAT_INVALID = 'barcode format is invalid';
     const BARCODE_MESSAGE_INVALID = 'barcode message is invalid; must be a string';
     const LOCATION_LATITUDE_REQUIRED = 'location latitude is required';
     const LOCATION_LONGITUDE_REQUIRED = 'location longitude is required';
     const LOCATION_LATITUDE_INVALID = 'location latitude is invalid; must be numeric';
     const LOCATION_LONGITUDE_INVALID = 'location longitude is invalid; must be numeric';
     const LOCATION_ALTITUDE_INVALID = 'location altitude is invalid; must be numeric';
-    const BEACON_PROXIMITY_UUID_REQUIRED = 'beacon proximity UUID is required';
+    const BEACON_PROXIMITY_UUID_REQUIRED = 'beacon proximityUUID is required';
     const BEACON_MAJOR_INVALID = 'beacon major is invalid; must be 16-bit unsigned integer';
     const BEACON_MINOR_INVALID = 'beacon minor is invalid; must be 16-bit unsigned integer';
-    const WEB_SERVICE_URL_INVALID = 'web service url is invalid; must start with https (or http for development)';
-    const WEB_SERVICE_AUTHENTICATION_TOKEN_REQUIRED = 'web service authentication token required and cannot be blank';
-    const WEB_SERVICE_AUTHENTICATION_TOKEN_INVALID = 'web service authentication token is invalid; must be at least 16 characters';
+    const WEB_SERVICE_URL_INVALID = 'webServiceURL is invalid; must start with https (or http for development)';
+    const WEB_SERVICE_AUTHENTICATION_TOKEN_REQUIRED = 'authenticationToken required with webServiceURL and cannot be blank';
+    const WEB_SERVICE_AUTHENTICATION_TOKEN_INVALID = 'authenticationToken is invalid; must be at least 16 characters';
+    const ASSOCIATED_STORE_IDENTIFIER_INVALID = 'associatedStoreIdentifiers is invalid; must be an integer';
+    const ASSOCIATED_STORE_IDENTIFIER_REQUIRED = 'appLaunchURL is required when associatedStoreIdentifiers is present';
 
     public function validate(Pass $pass)
     {
@@ -52,6 +54,7 @@ class PassValidator
         $this->validateBarcodeKeys($pass);
         $this->validateWebServiceKeys($pass);
         $this->validateImages($pass);
+        $this->validateAssociatedStoreIdentifiers($pass);
 
         return count($this->errors) === 0;
     }
@@ -198,6 +201,26 @@ class PassValidator
         }
 
         $this->addError(self::ICON_REQUIRED);
+    }
+
+    private function validateAssociatedStoreIdentifiers(Pass $pass)
+    {
+        //appLaunchURL
+
+        $associatedStoreIdentifiers = $pass->getAssociatedStoreIdentifiers();
+
+        if (null !== $pass->getAppLaunchURL() && count($associatedStoreIdentifiers) == 0) {
+            $this->addError(self::ASSOCIATED_STORE_IDENTIFIER_REQUIRED);
+        }
+
+
+        foreach ($associatedStoreIdentifiers as $associatedStoreIdentifier) {
+            if (!is_int($associatedStoreIdentifier)) {
+                $this->addError(self::ASSOCIATED_STORE_IDENTIFIER_INVALID);
+
+                return;
+            }
+        }
     }
 
     private function isBlankOrNull($text)

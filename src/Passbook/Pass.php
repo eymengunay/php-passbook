@@ -83,8 +83,13 @@ class Pass implements PassInterface
     protected $beacons = array();
 
     /**
-     * A list of iTunes Store item identifiers
-     * (also known as Adam IDs) for the associated apps.
+     * A list of iTunes Store item identifiers (also known as Adam IDs) for the
+     * associated apps.
+     *
+     * Only one item in the list is used—the first item identifier for an app
+     * compatible with the current device. If the app is not installed, the
+     * link opens the App Store and shows the app. If the app is already
+     * installed, the link launches the app.
      *
      * @var int[]
      */
