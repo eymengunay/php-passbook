@@ -514,7 +514,7 @@ class Pass implements PassInterface
     /**
      * {@inheritdoc}
      */
-    public function setMaxDistance(\DateTime $maxDistance)
+    public function setMaxDistance($maxDistance)
     {
         $this->maxDistance = $maxDistance;
 

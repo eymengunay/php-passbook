@@ -131,7 +131,7 @@ interface PassInterface extends ArrayableInterface
     /**
      * {@inheritdoc}
      */
-    public function setMaxDistance(\DateTime $maxDistance);
+    public function setMaxDistance($maxDistance);
 
     /**
      * {@inheritdoc}

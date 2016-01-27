@@ -297,6 +297,12 @@ class PassTest extends \PHPUnit_Framework_TestCase
         self::assertEquals($barcode2, $barcodes[2]);
     }
 
+    public function testMaxDistance()
+    {
+        $this->storeCard->setMaxDistance(100);
+        self::assertEquals(100, $this->storeCard->getMaxDistance());
+    }
+
     /**
      * {@inheritdoc}
      */
