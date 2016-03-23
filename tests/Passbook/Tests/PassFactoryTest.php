@@ -3,6 +3,7 @@
 namespace Passbook\Tests;
 
 use Passbook\Pass;
+use Passbook\Pass\Localization;
 use Passbook\PassFactory;
 use Passbook\Type\EventTicket;
 use Passbook\Pass\Field;
@@ -46,7 +47,7 @@ class PassFactoryTest extends \PHPUnit_Framework_TestCase
         }
 
         // Create an event ticket
-        $pass = new EventTicket(time(), "The Beat Goes On");
+        $pass = new EventTicket(time(), 'The Beat Goes On');
         $pass->setBackgroundColor('rgb(60, 65, 76)');
         $pass->setLogoText('Apple Inc.');
 
@@ -84,6 +85,26 @@ class PassFactoryTest extends \PHPUnit_Framework_TestCase
         $barcode = new Barcode(Barcode::TYPE_QR, 'barcodeMessage');
         $pass->setBarcode($barcode);
 
+        // Add Localizations (this also tests zipping subdirectories)
+        $englishText = array(
+            'created_by' => 'Pass produced by php-passbook'
+        );
+
+        $spanishText = array(
+            'created_by' => 'Pase producido por php-passbook'
+        );
+        
+        $es = new Localization('es');
+        $es->addStrings($spanishText);
+        $pass->addLocalization($es);
+
+        $en = new Localization('en');
+        $en->addStrings($englishText);
+        $pass->addLocalization($en);
+        
+        $field = new Field('exclusive_card', 'created_by');
+        $structure->addBackField($field);
+        
         $this->factory->setOutputPath(__DIR__.'/../../../www/passes');
         $file = $this->factory->package($pass);
         $this->assertInstanceOf('SplFileObject', $file);

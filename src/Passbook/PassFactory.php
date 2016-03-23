@@ -12,6 +12,7 @@
 namespace Passbook;
 
 use Exception;
+use FilesystemIterator;
 use Passbook\Certificate\P12;
 use Passbook\Certificate\WWDR;
 use Passbook\Exception\FileException;
@@ -104,6 +105,8 @@ class PassFactory
      * Set outputPath
      *
      * @param string
+     *
+     * @return $this
      */
     public function setOutputPath($outputPath)
     {
@@ -126,6 +129,8 @@ class PassFactory
      * Set overwrite
      *
      * @param boolean
+     *
+     * @return $this
      */
     public function setOverwrite($overwrite)
     {
@@ -329,8 +334,8 @@ class PassFactory
     /**
      * Creates a zip of a directory including all sub directories (recursive)
      *
-     * @param $source
-     * @param $destination
+     * @param $source - path to the source directory
+     * @param $destination - output directory
      *
      * @return bool
      * @throws Exception
@@ -341,34 +346,27 @@ class PassFactory
             throw new Exception("ZIP extension not available");
         }
 
+        $source = realpath($source);
+        if (!is_dir($source)) {
+            throw new FileException("Source must be a directory.");
+        }
+        
         $zip = new ZipArchive();
-        $flags = $this->isOverwrite() ? ZipArchive::OVERWRITE | ZipArchive::CREATE : ZipArchive::CREATE;
-        if (!$zip->open($destination, $flags)) {
+        $shouldOverwrite = $this->isOverwrite() ? ZipArchive::OVERWRITE : 0;
+        if (!$zip->open($destination, ZipArchive::CREATE | $shouldOverwrite)) {
             throw new FileException("Couldn't open zip file.");
         }
 
-        $source = str_replace('\\', '/', realpath($source));
-
-        if (is_dir($source) === true) {
-            $files = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($source), RecursiveIteratorIterator::SELF_FIRST);
-
-            foreach ($files as $file) {
-                $file = str_replace('\\', '/', $file);
-
-                // Ignore "." and ".." folders
-                if (in_array(substr($file, strrpos($file, '/') + 1), array('.', '..'))) {
-                    continue;
-                }
-                $file = realpath($file);
-
-                if (is_dir($file) === true) {
-                    $zip->addEmptyDir(str_replace($source . '/', '', $file . '/'));
-                } else if (is_file($file) === true) {
-                    $zip->addFromString(str_replace($source . '/', '', $file), file_get_contents($file));
-                }
+        /* @var $iterator RecursiveIteratorIterator|RecursiveDirectoryIterator */
+        $dirIterator = new RecursiveDirectoryIterator($source, FilesystemIterator::SKIP_DOTS);
+        $iterator = new RecursiveIteratorIterator($dirIterator, RecursiveIteratorIterator::SELF_FIRST);
+        while ($iterator->valid()) {
+            if ($iterator->isDir()) {
+                $zip->addEmptyDir($iterator->getSubPathName());
+            } else if ($iterator->isFile()) {
+                $zip->addFromString($iterator->getSubPathName(), file_get_contents($iterator->key()));
             }
-        } else if (is_file($source) === true) {
-            $zip->addFromString(basename($source), file_get_contents($source));
+            $iterator->next();
         }
 
         return $zip->close();
