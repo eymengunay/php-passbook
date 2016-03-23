@@ -219,7 +219,11 @@ class PassValidatorTest extends \PHPUnit_Framework_TestCase
     {
         $this->assertPasses($this->pass, PassValidator::IMAGE_TYPE_INVALID);
 
-        $png = new Image(__DIR__ . '/../../img/icon.PNG', 'icon');
+        $png = new Image(__DIR__ . '/../../img/icon.png', 'icon');
+        $this->pass->addImage($png);
+        $this->assertPasses($this->pass, PassValidator::IMAGE_TYPE_INVALID);
+
+        $png = new Image(__DIR__ . '/../../img/icon2@2x.PNG', 'icon');
         $this->pass->addImage($png);
         $this->assertPasses($this->pass, PassValidator::IMAGE_TYPE_INVALID);
 
