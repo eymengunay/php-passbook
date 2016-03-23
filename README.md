@@ -42,6 +42,14 @@ Search by class, method name, or package: http://eymengunay.github.io/php-passbo
 
 ## Usage Example
 
+This example will create a pass of type Ticket and will save the pkpass file in the output path specified. To use this example, you will need to do the following and set the constants accordingly: 
+* [Create a P12 Certificate file](#p12-certificate) 
+* [Download Apple’s World Wide Developer Relations (WWDR) certificate](#wwdr-certificate) 
+* [Obtain a Pass Type Identifier and Team Identifier from Apple](#obtaining-the-pass-type-identifier-and-team-id)
+ * Get an icon (29x29 png file) for the pass  
+* Specify a name for your organization 
+* Specify the output path where the pass will be saved 
+
 ```php
 <?php
 
@@ -51,6 +59,16 @@ use Passbook\PassFactory;
 use Passbook\Pass\Barcode;
 use Passbook\Pass\Structure;
 use Passbook\Type\EventTicket;
+
+// Set these constants with your values 
+define('P12_FILE', '/path/to/p12/certificate.p12');
+ define('P12_PASSWORD', 'password_for_p12_file');
+ define('WWDR_FILE', '/path/to/wwdr.pem'); 
+define('PASS_TYPE_IDENTIFIER', 'pass.com.example.yourpass');
+ define('TEAM_IDENTIFIER', 'IDFROMAPPLE'); 
+define('ORGANIZATION_NAME', 'Your Organization Name');
+ define('OUTPUT_PATH', '/path/to/output/path'); 
+define('ICON_FILE', '/path/to/icon.png');
 
 // Create an event ticket
 $pass = new EventTicket("1234567890", "The Beat Goes On");
@@ -76,7 +94,7 @@ $auxiliary->setLabel('Date & Time');
 $structure->addAuxiliaryField($auxiliary);
 
 // Add icon image
-$icon = new Image('/path/to/icon.png', 'icon');
+$icon = new Image(ICON_FILE, 'icon');
 $pass->addImage($icon);
 
 // Set pass structure
@@ -87,8 +105,8 @@ $barcode = new Barcode(Barcode::TYPE_QR, 'barcodeMessage');
 $pass->setBarcode($barcode);
 
 // Create pass factory instance
-$factory = new PassFactory('PASS-TYPE-IDENTIFIER', 'TEAM-IDENTIFIER', 'ORGANIZATION-NAME', '/path/to/p12/certificate', 'P12-PASSWORD', '/path/to/wwdr/certificate');
-$factory->setOutputPath('/path/to/output/path');
+$factory = new PassFactory(PASS_TYPE_IDENTIFIER, TEAM_IDENTIFIER, ORGANIZATION_NAME, P12_FILE, P12_PASSWORD, WWDR_FILE);
+$factory->setOutputPath(OUTPUT_PATH);
 $factory->package($pass);
 ```
 
