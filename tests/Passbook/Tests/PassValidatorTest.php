@@ -215,6 +215,19 @@ class PassValidatorTest extends \PHPUnit_Framework_TestCase
         $this->assertFails($this->pass, PassValidator::ASSOCIATED_STORE_IDENTIFIER_INVALID);
     }
 
+    public function testPassImageType()
+    {
+        $this->assertPasses($this->pass, PassValidator::IMAGE_TYPE_INVALID);
+
+        $png = new Image(__DIR__ . '/../../img/icon.PNG', 'icon');
+        $this->pass->addImage($png);
+        $this->assertPasses($this->pass, PassValidator::IMAGE_TYPE_INVALID);
+
+        $jpg = new Image(__DIR__ . '/../../img/icon.jpg', 'icon');
+        $this->pass->addImage($jpg);
+        $this->assertFails($this->pass, PassValidator::IMAGE_TYPE_INVALID);
+    }
+    
     private function assertFails($pass, $expectedError)
     {
         $validator = new PassValidator();

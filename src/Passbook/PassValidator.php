@@ -4,7 +4,6 @@ namespace Passbook;
 
 use Passbook\Pass\Barcode;
 use Passbook\Pass\Beacon;
-use Passbook\Pass\Image;
 use Passbook\Pass\Location;
 
 /**
@@ -43,6 +42,7 @@ class PassValidator
     const WEB_SERVICE_AUTHENTICATION_TOKEN_INVALID = 'authenticationToken is invalid; must be at least 16 characters';
     const ASSOCIATED_STORE_IDENTIFIER_INVALID = 'associatedStoreIdentifiers is invalid; must be an integer';
     const ASSOCIATED_STORE_IDENTIFIER_REQUIRED = 'appLaunchURL is required when associatedStoreIdentifiers is present';
+    const IMAGE_TYPE_INVALID = 'image files must be PNG format';
 
     public function validate(Pass $pass)
     {
@@ -53,7 +53,8 @@ class PassValidator
         $this->validateLocationKeys($pass);
         $this->validateBarcodeKeys($pass);
         $this->validateWebServiceKeys($pass);
-        $this->validateImages($pass);
+        $this->validateIcon($pass);
+        $this->validateImageType($pass);
         $this->validateAssociatedStoreIdentifiers($pass);
 
         return count($this->errors) === 0;
@@ -189,12 +190,9 @@ class PassValidator
         }
     }
 
-    private function validateImages(Pass $pass)
+    private function validateIcon(PassInterface $pass)
     {
-        $images = $pass->getImages();
-
-        foreach ($images as $image) {
-            /* @var Image $image */
+        foreach ($pass->getImages() as $image) {
             if ($image->getContext() === 'icon') {
                 return;
             }
@@ -203,6 +201,16 @@ class PassValidator
         $this->addError(self::ICON_REQUIRED);
     }
 
+    private function validateImageType(PassInterface $pass)
+    {
+        foreach ($pass->getImages() as $image) {
+            $ext = pathinfo($image->getFilename(), PATHINFO_EXTENSION);
+            if (strcasecmp('png', $ext)) {
+                $this->addError(self::IMAGE_TYPE_INVALID);
+            }
+        }
+    }
+    
     private function validateAssociatedStoreIdentifiers(Pass $pass)
     {
         //appLaunchURL
