@@ -77,6 +77,13 @@ class PassFactory
      * @var \Passbook\Certificate\WWDRInterface
      */
     protected $wwdr;
+    
+    /**
+     * Pass file name
+     * 
+     * @var string
+     */
+    protected $passName;
 
     /**
      * @var bool - skip signing the pass; should only be used for testing
@@ -90,7 +97,7 @@ class PassFactory
      */
     const PASS_EXTENSION = '.pkpass';
 
-    public function __construct($passTypeIdentifier, $teamIdentifier, $organizationName, $p12File, $p12Pass, $wwdrFile)
+    public function __construct($passTypeIdentifier, $teamIdentifier, $organizationName, $p12File, $p12Pass, $wwdrFile, $passName)
     {
         // Required pass information
         $this->passTypeIdentifier = $passTypeIdentifier;
@@ -99,6 +106,7 @@ class PassFactory
         // Create certificate objects
         $this->p12 = new P12($p12File, $p12Pass);
         $this->wwdr = new WWDR($wwdrFile);
+        $this->passName = $passName;
     }
 
     /**
@@ -206,7 +214,7 @@ class PassFactory
         $json = self::serialize($pass);
 
         $outputPath = rtrim($this->getOutputPath(), DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR;
-        $passDir = $outputPath . $pass->getSerialNumber() . DIRECTORY_SEPARATOR;
+        $passDir = $outputPath . $this->getPassName($this->passName) . DIRECTORY_SEPARATOR;
         $passDirExists = file_exists($passDir);
         if ($passDirExists && !$this->isOverwrite()) {
             throw new FileException("Temporary pass directory already exists");
@@ -417,6 +425,14 @@ class PassFactory
         // Check if JSON_UNESCAPED_SLASHES is defined to support PHP 5.3.
         $options = defined('JSON_UNESCAPED_SLASHES') ? JSON_UNESCAPED_SLASHES : 0;
         return json_encode($array, $options);
+    }
+    
+    private function getPassName($passName) {
+        if ($passName == '' || null) {
+            return $pass->getSerialNumber();
+        } else {
+            return $passName;
+        }
     }
 
 }
