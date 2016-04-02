@@ -97,7 +97,7 @@ class PassFactory
      */
     const PASS_EXTENSION = '.pkpass';
 
-    public function __construct($passTypeIdentifier, $teamIdentifier, $organizationName, $p12File, $p12Pass, $wwdrFile, $passName)
+    public function __construct($passTypeIdentifier, $teamIdentifier, $organizationName, $p12File, $p12Pass, $wwdrFile, $passName= '')
     {
         // Required pass information
         $this->passTypeIdentifier = $passTypeIdentifier;
