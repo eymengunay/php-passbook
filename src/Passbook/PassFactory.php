@@ -427,7 +427,7 @@ class PassFactory
         return json_encode($array, $options);
     }
     
-    private function getPassName($passName, PassInterface $pass) {
+    public function getPassName($passName, PassInterface $pass) {
         if ($passName == '' || null) {
             return $pass->getSerialNumber();
         } else {
