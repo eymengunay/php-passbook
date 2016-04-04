@@ -77,13 +77,11 @@ tools:
                 eof_ending: false
         extensions:
             - php
-        command: php-cs-fixer
         filter:
             excluded_paths:
                 - ./tests
                 - ./www
             paths: {  }
-        path_configs: {  }
     php_code_sniffer:
         enabled: true
         config:
