@@ -127,7 +127,7 @@ class PassFactoryTest extends \PHPUnit_Framework_TestCase
         $passTeamIdentifier = 'team identifier in pass';
         $passPassTypeIdentifier = 'pass type identifier in pass';
 
-        $pass = new Pass('serial number', 'description');
+        $pass = new Pass('serial_number', 'description');
         $pass->setOrganizationName($passOrganizationName);
         $pass->setTeamIdentifier($passTeamIdentifier);
         $pass->setPassTypeIdentifier($passPassTypeIdentifier);
@@ -140,6 +140,22 @@ class PassFactoryTest extends \PHPUnit_Framework_TestCase
         self::assertEquals($passOrganizationName, $pass->getOrganizationName());
         self::assertEquals($passTeamIdentifier, $pass->getTeamIdentifier());
         self::assertEquals($passPassTypeIdentifier, $pass->getPassTypeIdentifier());
+    }
+    
+    public function testSpecifyPassName()
+    {
+        // Make sure the file doesn't already exist as that would invalidate the test.
+        if (file_exists('/tmp/passname.pkpass')) {
+            unlink('/tmp/passname.pkpass');    
+        }
+        
+        $pass = new Pass('serial number', 'description');
+
+        $this->factory->setOutputPath('/tmp');
+        $this->factory->setSkipSignature(true);
+        $this->factory->package($pass, 'pass name');
+        
+        self::assertTrue(file_exists('/tmp/passname.pkpass'));
     }
 
     /**

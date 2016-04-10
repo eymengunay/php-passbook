@@ -47,6 +47,12 @@ class PassTest extends \PHPUnit_Framework_TestCase
      */
     protected $pass;
 
+    public static function setUpBeforeClass()
+    {
+        // Avoid warnings when system does not have timezone set
+        date_default_timezone_set(date_default_timezone_get());
+    }
+    
     /**
      * Boarding Pass
      */
