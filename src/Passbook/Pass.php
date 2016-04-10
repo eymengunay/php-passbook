@@ -45,13 +45,6 @@ class Pass implements PassInterface
      * @var string
      */
     protected $description;
-    
-    /**
-     * The name used for the pass.
-     *
-     * @var string
-     */
-    protected $passName;
 
     /**
      * Version of the file format.
@@ -244,12 +237,11 @@ class Pass implements PassInterface
      */
     protected $appLaunchURL;
 
-    public function __construct($serialNumber, $description, $passName = '')
+    public function __construct($serialNumber, $description)
     {
         // Required
         $this->setSerialNumber($serialNumber);
         $this->setDescription($description);
-        $this->setPassName($passName);
     }
 
     public function toArray()
@@ -264,7 +256,6 @@ class Pass implements PassInterface
         $properties = array(
             'serialNumber',
             'description',
-            'passName',
             'formatVersion',
             'beacons',
             'locations',
@@ -356,25 +347,6 @@ class Pass implements PassInterface
     public function getDescription()
     {
         return $this->description;
-    }
-    
-    /**
-     * {@inheritdoc}
-     */
-    public function setpassName($passName)
-    {
-        $passNameSanitised = preg_replace("/[^a-zA-Z0-9]+/", "", $passName);
-        $this->passName = $passNameSanitised;
-
-        return $this;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getPassName()
-    {
-        return strlen($this->passName) != 0 ? $this->passName : $this->serialNumber;
     }
 
     /**

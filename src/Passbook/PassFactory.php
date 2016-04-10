@@ -194,7 +194,7 @@ class PassFactory
      * @throws FileException          If an IO error occurred
      * @return SplFileObject
      */
-    public function package(PassInterface $pass)
+    public function package(PassInterface $pass, $passName = '')
     {
         if ($pass->getSerialNumber() == '') {
             throw new \InvalidArgumentException('Pass must have a serial number to be packaged');
@@ -206,7 +206,7 @@ class PassFactory
         $json = self::serialize($pass);
 
         $outputPath = rtrim($this->getOutputPath(), DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR;
-        $passDir = $outputPath . $pass->getPassName() . DIRECTORY_SEPARATOR;
+        $passDir = $outputPath . $this->getPassName($passName, $pass) . DIRECTORY_SEPARATOR;
         $passDirExists = file_exists($passDir);
         if ($passDirExists && !$this->isOverwrite()) {
             throw new FileException("Temporary pass directory already exists");
@@ -275,7 +275,7 @@ class PassFactory
         $this->sign($passDir, $manifestJSONFile);
 
         // Zip pass
-        $zipFile = $outputPath . $pass->getPassName() . self::PASS_EXTENSION;
+        $zipFile = $outputPath . $this->getPassName($passName, $pass) . self::PASS_EXTENSION;
         $this->zip($passDir, $zipFile);
 
         // Remove temporary pass directory
@@ -417,6 +417,18 @@ class PassFactory
         // Check if JSON_UNESCAPED_SLASHES is defined to support PHP 5.3.
         $options = defined('JSON_UNESCAPED_SLASHES') ? JSON_UNESCAPED_SLASHES : 0;
         return json_encode($array, $options);
+    }
+    
+    /**
+     * @param $passName
+     * @param PassInterface $pass
+     *
+     * @return string
+     */
+    public function getPassName($passName, PassInterface $pass)
+    {
+        $passNameSanitised = preg_replace("/[^a-zA-Z0-9]+/", "", $passName);
+        return strlen($passNameSanitised) != 0 ? $passNameSanitised : $pass->getSerialNumber();
     }
 
 }

@@ -150,7 +150,7 @@ class PassFactoryTest extends \PHPUnit_Framework_TestCase
         $passTeamIdentifier = 'team identifier in pass';
         $passPassTypeIdentifier = 'pass type identifier in pass';
 
-        $pass = new Pass('serial number', 'description', 'pass name');
+        $pass = new Pass('serial number', 'description');
         $pass->setOrganizationName($passOrganizationName);
         $pass->setTeamIdentifier($passTeamIdentifier);
         $pass->setPassTypeIdentifier($passPassTypeIdentifier);
@@ -158,7 +158,7 @@ class PassFactoryTest extends \PHPUnit_Framework_TestCase
         $this->factory->setOutputPath('/tmp');
         $this->factory->setOverwrite(true);
         $this->factory->setSkipSignature(true);
-        $this->factory->package($pass);
+        $this->factory->package($pass, 'pass name');
 
         self::assertEquals($passOrganizationName, $pass->getOrganizationName());
         self::assertEquals($passTeamIdentifier, $pass->getTeamIdentifier());
