@@ -206,7 +206,7 @@ class PassFactory
         $json = self::serialize($pass);
 
         $outputPath = rtrim($this->getOutputPath(), DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR;
-        $passDir = $outputPath . $pass->getSerialNumber() . DIRECTORY_SEPARATOR;
+        $passDir = $outputPath . $pass->getPassName() . DIRECTORY_SEPARATOR;
         $passDirExists = file_exists($passDir);
         if ($passDirExists && !$this->isOverwrite()) {
             throw new FileException("Temporary pass directory already exists");
@@ -275,7 +275,7 @@ class PassFactory
         $this->sign($passDir, $manifestJSONFile);
 
         // Zip pass
-        $zipFile = $outputPath . $pass->getSerialNumber() . self::PASS_EXTENSION;
+        $zipFile = $outputPath . $pass->getPassName() . self::PASS_EXTENSION;
         $this->zip($passDir, $zipFile);
 
         // Remove temporary pass directory
