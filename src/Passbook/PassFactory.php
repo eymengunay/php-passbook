@@ -225,7 +225,9 @@ class PassFactory
             if ($image->isRetina()) {
                 $fileName .= '@2x';
             }
-            $fileName .= '.' . $image->getExtension();
+	    // Extension is forced to '.png' because when Image is created
+	    // by passing an URL 'getExtension' also returns query string parameters 
+            $fileName .= '.png';
             copy($image->getPathname(), $fileName);
         }
 
