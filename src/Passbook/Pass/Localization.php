@@ -93,7 +93,7 @@ class Localization implements LocalizationInterface
     {
         $output = '';
         foreach ($this->strings as $token => $value) {
-            $output .= '"' . $token . '" = "' . $value . '";' . PHP_EOL;
+            $output .= '"' . addslashes($token) . '" = "' . addslashes($value) . '";' . PHP_EOL;
         }
 
         return $output;
