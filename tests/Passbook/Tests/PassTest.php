@@ -2,6 +2,8 @@
 
 namespace Passbook\Tests;
 
+date_default_timezone_set('Europe/London');
+
 use Passbook\Pass;
 use Passbook\PassFactory;
 use Passbook\Pass\Field;

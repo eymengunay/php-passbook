@@ -9,6 +9,6 @@
  * file that was distributed with this source code.
  */
 
-$loader = require_once __DIR__ . "/../vendor/autoload.php";
+$loader = require __DIR__ . "/../vendor/autoload.php";
 $loader->add('Passbook\\', '../src/Passbook');
 $loader->add('Passbook\Tests', 'Passbook/Tests');
