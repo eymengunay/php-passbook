@@ -102,7 +102,7 @@ class Localization implements LocalizationInterface
     /**
      * {@inheritdoc}
      */
-    public function addImage(ImageInterface $image)
+    public function addImage(Image $image)
     {
         $this->images[] = $image;
 

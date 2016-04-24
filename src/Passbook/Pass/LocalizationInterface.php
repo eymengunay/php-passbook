@@ -68,14 +68,14 @@ interface LocalizationInterface
     public function getStringsFileOutput();
 
     /**
-     * @param ImageInterface $image
+     * @param Image $image
      *
      * @return LocalizationInterface
      */
-    public function addImage(ImageInterface $image);
+    public function addImage(Image $image);
 
     /**
-     * @return ImageInterface[]
+     * @return Image[]
      */
     public function getImages();
 }

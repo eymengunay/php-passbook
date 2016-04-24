@@ -16,7 +16,7 @@ use Passbook\Pass\Location;
  * difficult to identify. This class aims to help identify and prevent these
  * issues.
  */
-class PassValidator
+class PassValidator implements PassValidatorInterface
 {
     private $errors;
 
@@ -44,7 +44,10 @@ class PassValidator
     const ASSOCIATED_STORE_IDENTIFIER_REQUIRED = 'appLaunchURL is required when associatedStoreIdentifiers is present';
     const IMAGE_TYPE_INVALID = 'image files must be PNG format';
 
-    public function validate(Pass $pass)
+    /**
+     * {@inheritdoc}
+     */
+    public function validate(PassInterface $pass)
     {
         $this->errors = array();
 
@@ -60,12 +63,15 @@ class PassValidator
         return count($this->errors) === 0;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function getErrors()
     {
         return $this->errors;
     }
 
-    private function validateRequiredFields(Pass $pass)
+    private function validateRequiredFields(PassInterface $pass)
     {
         if ($this->isBlankOrNull($pass->getDescription())) {
             $this->addError(self::DESCRIPTION_REQUIRED);
@@ -92,7 +98,7 @@ class PassValidator
         }
     }
 
-    private function validateBeaconKeys(Pass $pass)
+    private function validateBeaconKeys(PassInterface $pass)
     {
         $beacons = $pass->getBeacons();
 
@@ -120,7 +126,7 @@ class PassValidator
         }
     }
 
-    private function validateLocationKeys(Pass $pass)
+    private function validateLocationKeys(PassInterface $pass)
     {
         $locations = $pass->getLocations();
 
@@ -152,7 +158,7 @@ class PassValidator
         }
     }
 
-    private function validateBarcodeKeys(Pass $pass)
+    private function validateBarcodeKeys(PassInterface $pass)
     {
         $validBarcodeFormats = array(Barcode::TYPE_QR, Barcode::TYPE_AZTEC, Barcode::TYPE_PDF_417, Barcode::TYPE_CODE_128);
 
@@ -171,7 +177,7 @@ class PassValidator
         }
     }
 
-    private function validateWebServiceKeys(Pass $pass)
+    private function validateWebServiceKeys(PassInterface $pass)
     {
         if (null === $pass->getWebServiceURL()) {
             return;
@@ -211,7 +217,7 @@ class PassValidator
         }
     }
     
-    private function validateAssociatedStoreIdentifiers(Pass $pass)
+    private function validateAssociatedStoreIdentifiers(PassInterface $pass)
     {
         //appLaunchURL
 

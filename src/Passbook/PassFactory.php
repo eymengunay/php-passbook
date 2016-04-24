@@ -16,6 +16,7 @@ use FilesystemIterator;
 use Passbook\Certificate\P12;
 use Passbook\Certificate\WWDR;
 use Passbook\Exception\FileException;
+use Passbook\Exception\PassInvalidException;
 use Passbook\Pass\Image;
 use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;
@@ -84,6 +85,11 @@ class PassFactory
     protected $skipSignature;
 
     /**
+     * @var PassValidatorInterface
+     */
+    private $passValidator;
+
+    /**
      * Pass file extension
      *
      * @var string
@@ -96,9 +102,13 @@ class PassFactory
         $this->passTypeIdentifier = $passTypeIdentifier;
         $this->teamIdentifier = $teamIdentifier;
         $this->organizationName = $organizationName;
+
         // Create certificate objects
         $this->p12 = new P12($p12File, $p12Pass);
         $this->wwdr = new WWDR($wwdrFile);
+        
+        // By default use the PassValidator
+        $this->passValidator = new PassValidator();
     }
 
     /**
@@ -123,6 +133,16 @@ class PassFactory
     public function getOutputPath()
     {
         return $this->outputPath;
+    }
+
+    /**
+     * The output path with a directory separator on the end.
+     *
+     * @return string
+     */
+    public function getNormalizedOutputPath()
+    {
+        return rtrim($this->outputPath, DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR;
     }
 
     /**
@@ -156,6 +176,7 @@ class PassFactory
      * be used for testing.
      *
      * @param boolean
+     *
      * @return $this
      */
     public function setSkipSignature($skipSignature)
@@ -166,12 +187,37 @@ class PassFactory
     }
 
     /**
-     * Get overwrite
+     * Get skip signature
+     *
      * @return boolean
      */
     public function getSkipSignature()
     {
         return $this->skipSignature;
+    }
+
+    /**
+     * Set an implementation of PassValidatorInterface to validate the pass
+     * before packaging. When set to null, no validation is performed when
+     * packaging the pass.
+     *
+     * @param PassValidatorInterface|null $passValidator
+     *
+     * @return $this
+     */
+    public function setPassValidator(PassValidatorInterface $passValidator = null)
+    {
+        $this->passValidator = $passValidator;
+
+        return $this;
+    }
+
+    /**
+     * @return PassValidatorInterface
+     */
+    public function getPassValidator()
+    {
+        return $this->passValidator;
     }
 
     /**
@@ -203,80 +249,31 @@ class PassFactory
 
         $this->populateRequiredInformation($pass);
 
-        // Serialize pass
-        $json = self::serialize($pass);
-
-        $outputPath = rtrim($this->getOutputPath(), DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR;
-        $passDir = $outputPath . $this->getPassName($passName, $pass) . DIRECTORY_SEPARATOR;
-        $passDirExists = file_exists($passDir);
-        if ($passDirExists && !$this->isOverwrite()) {
-            throw new FileException("Temporary pass directory already exists");
-        } elseif (!$passDirExists && !mkdir($passDir, 0777, true)) {
-            throw new FileException("Couldn't create temporary pass directory");
+        if ($this->passValidator) {
+            if (!$this->passValidator->validate($pass)){
+                throw new PassInvalidException($this->passValidator->getErrors());
+            };
         }
 
-        // Pass.json
-        $passJSONFile = $passDir . 'pass.json';
-        file_put_contents($passJSONFile, $json);
+        $passDir = $this->preparePassDirectory($pass);
+
+        // Serialize pass
+        file_put_contents($passDir . 'pass.json', self::serialize($pass));
 
         // Images
-        /** @var Image $image */
-        foreach ($pass->getImages() as $image) {
-            $fileName = $passDir . $image->getContext();
-            if ($image->isRetina()) {
-                $fileName .= '@2x';
-            }
-            $fileName .= '.' . $image->getExtension();
-            copy($image->getPathname(), $fileName);
-        }
+        $this->prepareImages($pass, $passDir);
 
         // Localizations
-        foreach ($pass->getLocalizations() as $localization) {
-            // Create dir (LANGUAGE.lproj)
-            $localizationDir = $passDir . $localization->getLanguage() . '.lproj' . DIRECTORY_SEPARATOR;
-            mkdir($localizationDir, 0777, true);
-
-            // pass.strings File (Format: "token" = "value")
-            $localizationStringsFile = $localizationDir . 'pass.strings';
-            file_put_contents($localizationStringsFile, $localization->getStringsFileOutput());
-
-            // Localization images
-            foreach ($localization->getImages() as $image) {
-                $fileName = $localizationDir . $image->getContext();
-                if ($image->isRetina()) {
-                    $fileName .= '@2x';
-                }
-                $fileName .= '.' . $image->getExtension();
-                copy($image->getPathname(), $fileName);
-            }
-        }
+        $this->prepareLocalizations($pass, $passDir);
 
         // Manifest.json - recursive, also add files in sub directories
-        $manifestJSONFile = $passDir . 'manifest.json';
-        $manifest = array();
-        $files = new RecursiveIteratorIterator(
-            new RecursiveDirectoryIterator($passDir),
-            RecursiveIteratorIterator::SELF_FIRST
-        );
-        foreach ($files as $file) {
-            // Ignore "." and ".." folders
-            if (in_array(substr($file, strrpos($file, '/') + 1), array('.', '..'))) {
-                continue;
-            }
-            //
-            $filePath = realpath($file);
-            if (is_file($filePath) === true) {
-                $relativePathName = str_replace($passDir, '', $file->getPathname());
-                $manifest[$relativePathName] = sha1_file($filePath);
-            }
-        }
-        file_put_contents($manifestJSONFile, $this->jsonEncode($manifest));
+        $manifestJSONFile = $this->prepareManifest($passDir);
 
         // Signature
         $this->sign($passDir, $manifestJSONFile);
 
         // Zip pass
-        $zipFile = $outputPath . $this->getPassName($passName, $pass) . self::PASS_EXTENSION;
+        $zipFile = $this->getNormalizedOutputPath() . $this->getPassName($passName, $pass) . self::PASS_EXTENSION;
         $this->zip($passDir, $zipFile);
 
         // Remove temporary pass directory
@@ -311,7 +308,7 @@ class PassFactory
                 $this->wwdr->getRealPath()
             );
             // Get signature content
-            $signature = @file_get_contents($signatureFile);
+            $signature = file_get_contents($signatureFile);
             // Check signature content
             if (!$signature) {
                 throw new FileException("Couldn't read signature file.");
@@ -431,5 +428,98 @@ class PassFactory
         $passNameSanitised = preg_replace("/[^a-zA-Z0-9]+/", "", $passName);
         return strlen($passNameSanitised) != 0 ? $passNameSanitised : $pass->getSerialNumber();
     }
+
+    /**
+     * @param $passDir
+     *
+     * @return string
+     */
+    private function prepareManifest($passDir)
+    {
+        $manifestJSONFile = $passDir . 'manifest.json';
+        $manifest = array();
+        $files = new RecursiveIteratorIterator(
+            new RecursiveDirectoryIterator($passDir),
+            RecursiveIteratorIterator::SELF_FIRST
+        );
+        foreach ($files as $file) {
+            // Ignore "." and ".." folders
+            if (in_array(substr($file, strrpos($file, '/') + 1), array('.', '..'))) {
+                continue;
+            }
+            //
+            $filePath = realpath($file);
+            if (is_file($filePath) === true) {
+                $relativePathName = str_replace($passDir, '', $file->getPathname());
+                $manifest[$relativePathName] = sha1_file($filePath);
+            }
+        }
+        file_put_contents($manifestJSONFile, $this->jsonEncode($manifest));
+
+        return $manifestJSONFile;
+    }
+
+    /**
+     * @param PassInterface $pass
+     *
+     * @return string
+     */
+    private function preparePassDirectory(PassInterface $pass)
+    {
+        $passDir = $this->getNormalizedOutputPath() . $pass->getSerialNumber() . DIRECTORY_SEPARATOR;
+        $passDirExists = file_exists($passDir);
+        if ($passDirExists && !$this->isOverwrite()) {
+            throw new FileException("Temporary pass directory already exists");
+        } elseif (!$passDirExists && !mkdir($passDir, 0777, true)) {
+            throw new FileException("Couldn't create temporary pass directory");
+        }
+
+        return $passDir;
+    }
+
+    /**
+     * @param PassInterface $pass
+     * @param $passDir
+     */
+    private function prepareImages(PassInterface $pass, $passDir)
+    {
+        /** @var Image $image */
+        foreach ($pass->getImages() as $image) {
+            $fileName = $passDir . $image->getContext();
+            if ($image->isRetina()) {
+                $fileName .= '@2x';
+            }
+            $fileName .= '.' . $image->getExtension();
+            copy($image->getPathname(), $fileName);
+        }
+    }
+
+    /**
+     * @param PassInterface $pass
+     * @param $passDir
+     */
+    private function prepareLocalizations(PassInterface $pass, $passDir)
+    {
+        foreach ($pass->getLocalizations() as $localization) {
+            // Create dir (LANGUAGE.lproj)
+            $localizationDir = $passDir . $localization->getLanguage() . '.lproj' . DIRECTORY_SEPARATOR;
+            mkdir($localizationDir, 0777, true);
+
+            // pass.strings File (Format: "token" = "value")
+            $localizationStringsFile = $localizationDir . 'pass.strings';
+            file_put_contents($localizationStringsFile, $localization->getStringsFileOutput());
+
+            // Localization images
+            foreach ($localization->getImages() as $image) {
+                $fileName = $localizationDir . $image->getContext();
+                if ($image->isRetina()) {
+                    $fileName .= '@2x';
+                }
+                $fileName .= '.' . $image->getExtension();
+                copy($image->getPathname(), $fileName);
+            }
+        }
+    }
+
 
 }

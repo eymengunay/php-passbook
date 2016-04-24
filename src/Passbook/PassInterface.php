@@ -156,6 +156,8 @@ interface PassInterface extends ArrayableInterface
     public function getBarcode();
 
     /**
+     * @param BarcodeInterface $barcode - barcode to add to the pass
+     *
      * @return $this
      */
     public function addBarcode(BarcodeInterface $barcode);
@@ -276,4 +278,15 @@ interface PassInterface extends ArrayableInterface
      * @return LocalizationInterface[]
      */
     public function getLocalizations();
+    
+    /**
+     * {@inheritdoc}
+     */
+    public function setAppLaunchURL($appLaunchURL);
+    
+    /**
+     * {@inheritdoc}
+     */
+    public function getAppLaunchURL();
+
 }

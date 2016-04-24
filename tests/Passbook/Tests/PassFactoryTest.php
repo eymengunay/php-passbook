@@ -5,6 +5,7 @@ namespace Passbook\Tests;
 use Passbook\Pass;
 use Passbook\Pass\Localization;
 use Passbook\PassFactory;
+use Passbook\PassValidator;
 use Passbook\Type\EventTicket;
 use Passbook\Pass\Field;
 use Passbook\Pass\Barcode;
@@ -131,6 +132,10 @@ class PassFactoryTest extends \PHPUnit_Framework_TestCase
         $pass->setOrganizationName($passOrganizationName);
         $pass->setTeamIdentifier($passTeamIdentifier);
         $pass->setPassTypeIdentifier($passPassTypeIdentifier);
+        
+        // Icon is required
+        $icon = new Image(__DIR__.'/../../img/icon.png', 'icon');
+        $pass->addImage($icon);
 
         $this->factory->setOutputPath('/tmp');
         $this->factory->setOverwrite(true);
@@ -140,6 +145,31 @@ class PassFactoryTest extends \PHPUnit_Framework_TestCase
         self::assertEquals($passOrganizationName, $pass->getOrganizationName());
         self::assertEquals($passTeamIdentifier, $pass->getTeamIdentifier());
         self::assertEquals($passPassTypeIdentifier, $pass->getPassTypeIdentifier());
+    }
+
+    public function testNormalizedOutputPath()
+    {
+        $s = DIRECTORY_SEPARATOR;
+
+        $this->factory->setOutputPath("path-ending-with-separator{$s}");
+        self::assertEquals("path-ending-with-separator{$s}", $this->factory->getNormalizedOutputPath());
+
+        $this->factory->setOutputPath("path-not-ending-with-separator");
+        self::assertEquals("path-not-ending-with-separator{$s}", $this->factory->getNormalizedOutputPath());
+
+        $this->factory->setOutputPath("path-ending-with-multiple-separators{$s}{$s}");
+        self::assertEquals("path-ending-with-multiple-separators{$s}", $this->factory->getNormalizedOutputPath());
+    }
+
+    /**
+     * @expectedException \Passbook\Exception\PassInvalidException
+     */
+    public function testPassThatFailsValidationThrowsException()
+    {
+        $this->factory->setPassValidator(new PassValidator());
+
+        $invalidPass = new Pass('serial number', 'description');
+        $this->factory->package($invalidPass);
     }
     
     public function testSpecifyPassName()
@@ -151,6 +181,10 @@ class PassFactoryTest extends \PHPUnit_Framework_TestCase
         
         $pass = new Pass('serial number', 'description');
 
+        // Icon is required
+        $icon = new Image(__DIR__.'/../../img/icon.png', 'icon');
+        $pass->addImage($icon);
+        
         $this->factory->setOutputPath('/tmp');
         $this->factory->setSkipSignature(true);
         $this->factory->package($pass, 'pass name');
