@@ -119,7 +119,7 @@ Version 1.2.0 is the last release to support PHP 5.3.
 
 ## Obtaining the Pass Type Identifier and Team ID
 
-You can find more information from Apple on [https://developer.apple.com/library/ios/documentation/UserExperience/Conceptual/PassKit_PG/YourFirst.html#//apple_ref/doc/uid/TP40012195-CH2-SW27](Setting the Pass Type Identifier and Team ID).
+You can find more information from Apple on [Setting the Pass Type Identifier and Team ID](https://developer.apple.com/library/ios/documentation/UserExperience/Conceptual/PassKit_PG/YourFirst.html#//apple_ref/doc/uid/TP40012195-CH2-SW27).
 
 ## Requesting Certificates
 
