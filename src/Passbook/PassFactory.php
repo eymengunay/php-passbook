@@ -251,7 +251,7 @@ class PassFactory
 
         if ($this->passValidator) {
             if (!$this->passValidator->validate($pass)){
-                throw new PassInvalidException($this->passValidator->getErrors());
+                throw new PassInvalidException('Failed to validate passbook', $this->passValidator->getErrors());
             };
         }
 
