@@ -15,7 +15,7 @@ class PassInvalidException extends \RuntimeException
     /**
      * Construct a PassInvalidException either with or without an array of errors.
      *
-     * @param string        $string
+     * @param string        $message
      * @param string[]|null $errors
      */
     public function __construct($message = '', array $errors = null)
