@@ -7,8 +7,8 @@
 
 	<title>File Passbook/Pass/Image.php | PHP-Passbook</title>
 
-	<script type="text/javascript" src="resources/combined.js?1177154521"></script>
-	<script type="text/javascript" src="elementlist.js?1730068341"></script>
+	<script type="text/javascript" src="resources/combined.js?2966811159"></script>
+	<script type="text/javascript" src="elementlist.js?232615948"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 </head>
@@ -46,9 +46,12 @@
 			<ul>
 				<li><a href="class-Passbook.Pass.Barcode.html">Barcode</a></li>
 				<li><a href="class-Passbook.Pass.Beacon.html">Beacon</a></li>
+				<li><a href="class-Passbook.Pass.DateField.html">DateField</a></li>
 				<li><a href="class-Passbook.Pass.Field.html">Field</a></li>
 				<li class="active"><a href="class-Passbook.Pass.Image.html">Image</a></li>
+				<li><a href="class-Passbook.Pass.Localization.html">Localization</a></li>
 				<li><a href="class-Passbook.Pass.Location.html">Location</a></li>
+				<li><a href="class-Passbook.Pass.NumberField.html">NumberField</a></li>
 				<li><a href="class-Passbook.Pass.Structure.html">Structure</a></li>
 			</ul>
 
@@ -58,6 +61,7 @@
 				<li><a href="class-Passbook.Pass.BeaconInterface.html">BeaconInterface</a></li>
 				<li><a href="class-Passbook.Pass.FieldInterface.html">FieldInterface</a></li>
 				<li><a href="class-Passbook.Pass.ImageInterface.html">ImageInterface</a></li>
+				<li><a href="class-Passbook.Pass.LocalizationInterface.html">LocalizationInterface</a></li>
 				<li><a href="class-Passbook.Pass.LocationInterface.html">LocationInterface</a></li>
 				<li><a href="class-Passbook.Pass.StructureInterface.html">StructureInterface</a></li>
 			</ul>
@@ -144,10 +148,10 @@
 </span><span id="35" class="l"><a class="l" href="#35">35: </a>
 </span><span id="36" class="l"><a class="l" href="#36">36: </a>    <span class="php-comment">/**
 </span></span><span id="37" class="l"><a class="l" href="#37">37: </a><span class="php-comment">     * All of the pass’s images are loaded using standard UIImage image-loading methods.
-</span></span><span id="38" class="l"><a class="l" href="#38">38: </a><span class="php-comment">     * This means, for example, the file name of high resolution version of the image ends with @2x.png.
-</span></span><span id="39" class="l"><a class="l" href="#39">39: </a><span class="php-comment">     * @var bool
+</span></span><span id="38" class="l"><a class="l" href="#38">38: </a><span class="php-comment">     * This means, for example, the file name of high resolution versions of the image ends with @2x.png/@3x.png.
+</span></span><span id="39" class="l"><a class="l" href="#39">39: </a><span class="php-comment">     * @var integer
 </span></span><span id="40" class="l"><a class="l" href="#40">40: </a><span class="php-comment">     */</span>
-</span><span id="41" class="l"><a class="l" href="#41">41: </a>    <span class="php-keyword1">protected</span> <span class="php-var"><a id="$isRetina" href="#$isRetina">$isRetina</a></span>;
+</span><span id="41" class="l"><a class="l" href="#41">41: </a>    <span class="php-keyword1">protected</span> <span class="php-var"><a id="$density" href="#$density">$density</a></span>;
 </span><span id="42" class="l"><a class="l" href="#42">42: </a>
 </span><span id="43" class="l"><a class="l" href="#43">43: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> <a id="___construct" href="#___construct">__construct</a>(<span class="php-var">$filename</span>, <span class="php-var">$context</span>)
 </span><span id="44" class="l"><a class="l" href="#44">44: </a>    {
@@ -178,9 +182,9 @@
 </span><span id="69" class="l"><a class="l" href="#69">69: </a>    <span class="php-comment">/**
 </span></span><span id="70" class="l"><a class="l" href="#70">70: </a><span class="php-comment">     * {@inheritdoc}
 </span></span><span id="71" class="l"><a class="l" href="#71">71: </a><span class="php-comment">     */</span>
-</span><span id="72" class="l"><a class="l" href="#72">72: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> <a id="_setIsRetina" href="#_setIsRetina">setIsRetina</a>(<span class="php-var">$isRetina</span>)
+</span><span id="72" class="l"><a class="l" href="#72">72: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> <a id="_setDensity" href="#_setDensity">setDensity</a>(<span class="php-var">$density</span>)
 </span><span id="73" class="l"><a class="l" href="#73">73: </a>    {
-</span><span id="74" class="l"><a class="l" href="#74">74: </a>        <span class="php-var">$this</span>-&gt;isRetina = <span class="php-var">$isRetina</span>;
+</span><span id="74" class="l"><a class="l" href="#74">74: </a>        <span class="php-var">$this</span>-&gt;density = <span class="php-var">$density</span>;
 </span><span id="75" class="l"><a class="l" href="#75">75: </a>
 </span><span id="76" class="l"><a class="l" href="#76">76: </a>        <span class="php-keyword1">return</span> <span class="php-var">$this</span>;
 </span><span id="77" class="l"><a class="l" href="#77">77: </a>    }
@@ -188,9 +192,9 @@
 </span><span id="79" class="l"><a class="l" href="#79">79: </a>    <span class="php-comment">/**
 </span></span><span id="80" class="l"><a class="l" href="#80">80: </a><span class="php-comment">     * {@inheritdoc}
 </span></span><span id="81" class="l"><a class="l" href="#81">81: </a><span class="php-comment">     */</span>
-</span><span id="82" class="l"><a class="l" href="#82">82: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> <a id="_isRetina" href="#_isRetina">isRetina</a>()
+</span><span id="82" class="l"><a class="l" href="#82">82: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> <a id="_getDensity" href="#_getDensity">getDensity</a>()
 </span><span id="83" class="l"><a class="l" href="#83">83: </a>    {
-</span><span id="84" class="l"><a class="l" href="#84">84: </a>        <span class="php-keyword1">return</span> <span class="php-var">$this</span>-&gt;isRetina;
+</span><span id="84" class="l"><a class="l" href="#84">84: </a>        <span class="php-keyword1">return</span> <span class="php-var">$this</span>-&gt;density;
 </span><span id="85" class="l"><a class="l" href="#85">85: </a>    }
 </span><span id="86" class="l"><a class="l" href="#86">86: </a>}
 </span><span id="87" class="l"><a class="l" href="#87">87: </a></span></code></pre>

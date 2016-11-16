@@ -6,8 +6,8 @@
 
 	<title>Interface Passbook\Pass\BeaconInterface | PHP-Passbook</title>
 
-	<script type="text/javascript" src="resources/combined.js?1177154521"></script>
-	<script type="text/javascript" src="elementlist.js?1730068341"></script>
+	<script type="text/javascript" src="resources/combined.js?2966811159"></script>
+	<script type="text/javascript" src="elementlist.js?232615948"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 </head>
@@ -45,9 +45,12 @@
 			<ul>
 				<li><a href="class-Passbook.Pass.Barcode.html">Barcode</a></li>
 				<li><a href="class-Passbook.Pass.Beacon.html">Beacon</a></li>
+				<li><a href="class-Passbook.Pass.DateField.html">DateField</a></li>
 				<li><a href="class-Passbook.Pass.Field.html">Field</a></li>
 				<li><a href="class-Passbook.Pass.Image.html">Image</a></li>
+				<li><a href="class-Passbook.Pass.Localization.html">Localization</a></li>
 				<li><a href="class-Passbook.Pass.Location.html">Location</a></li>
+				<li><a href="class-Passbook.Pass.NumberField.html">NumberField</a></li>
 				<li><a href="class-Passbook.Pass.Structure.html">Structure</a></li>
 			</ul>
 
@@ -57,6 +60,7 @@
 				<li class="active"><a href="class-Passbook.Pass.BeaconInterface.html">BeaconInterface</a></li>
 				<li><a href="class-Passbook.Pass.FieldInterface.html">FieldInterface</a></li>
 				<li><a href="class-Passbook.Pass.ImageInterface.html">ImageInterface</a></li>
+				<li><a href="class-Passbook.Pass.LocalizationInterface.html">LocalizationInterface</a></li>
 				<li><a href="class-Passbook.Pass.LocationInterface.html">LocationInterface</a></li>
 				<li><a href="class-Passbook.Pass.StructureInterface.html">StructureInterface</a></li>
 			</ul>
@@ -115,6 +119,15 @@
 
 	</div>
 
+	<dl class="tree">
+		<dd style="padding-left:0px">
+<b><span>Passbook\Pass\BeaconInterface</span></b>			
+			 implements 
+				<a href="class-Passbook.ArrayableInterface.html"><span>Passbook\ArrayableInterface</span></a>
+			
+			
+		</dd>
+	</dl>
 
 
 
@@ -134,9 +147,8 @@
 		
 
 				<b>Author:</b>
-				Eymen Gunay &lt;<a
-href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
-		<b>Located at</b> <a href="source-class-Passbook.Pass.BeaconInterface.html#14-77" title="Go to source code">Passbook/Pass/BeaconInterface.php</a><br />
+				Sotaro Omura &lt;<a href="http://omoon.org">http://omoon.org</a>&gt;<br />
+		<b>Located at</b> <a href="source-class-Passbook.Pass.BeaconInterface.html#16-79" title="Go to source code">Passbook/Pass/BeaconInterface.php</a><br />
 	</div>
 
 
@@ -154,7 +166,7 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_setProximityUUID">#</a>
-		<code><a href="source-class-Passbook.Pass.BeaconInterface.html#21-26" title="Go to source code">setProximityUUID</a>( <span>string <var>$uuid</var></span> )</code>
+		<code><a href="source-class-Passbook.Pass.BeaconInterface.html#23-28" title="Go to source code">setProximityUUID</a>( <span>string <var>$uuid</var></span> )</code>
 
 		<div class="description short">
 			
@@ -192,7 +204,7 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getProximityUUID">#</a>
-		<code><a href="source-class-Passbook.Pass.BeaconInterface.html#28-33" title="Go to source code">getProximityUUID</a>( )</code>
+		<code><a href="source-class-Passbook.Pass.BeaconInterface.html#30-35" title="Go to source code">getProximityUUID</a>( )</code>
 
 		<div class="description short">
 			
@@ -229,7 +241,7 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_setMajor">#</a>
-		<code><a href="source-class-Passbook.Pass.BeaconInterface.html#35-40" title="Go to source code">setMajor</a>( <span>integer <var>$major</var></span> )</code>
+		<code><a href="source-class-Passbook.Pass.BeaconInterface.html#37-42" title="Go to source code">setMajor</a>( <span>integer <var>$major</var></span> )</code>
 
 		<div class="description short">
 			
@@ -267,7 +279,7 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getMajor">#</a>
-		<code><a href="source-class-Passbook.Pass.BeaconInterface.html#42-47" title="Go to source code">getMajor</a>( )</code>
+		<code><a href="source-class-Passbook.Pass.BeaconInterface.html#44-49" title="Go to source code">getMajor</a>( )</code>
 
 		<div class="description short">
 			
@@ -304,7 +316,7 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_setMinor">#</a>
-		<code><a href="source-class-Passbook.Pass.BeaconInterface.html#49-54" title="Go to source code">setMinor</a>( <span>integer <var>$minor</var></span> )</code>
+		<code><a href="source-class-Passbook.Pass.BeaconInterface.html#51-56" title="Go to source code">setMinor</a>( <span>integer <var>$minor</var></span> )</code>
 
 		<div class="description short">
 			
@@ -342,7 +354,7 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getMinor">#</a>
-		<code><a href="source-class-Passbook.Pass.BeaconInterface.html#56-61" title="Go to source code">getMinor</a>( )</code>
+		<code><a href="source-class-Passbook.Pass.BeaconInterface.html#58-63" title="Go to source code">getMinor</a>( )</code>
 
 		<div class="description short">
 			
@@ -379,7 +391,7 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getRelevantText">#</a>
-		<code><a href="source-class-Passbook.Pass.BeaconInterface.html#63-68" title="Go to source code">getRelevantText</a>( )</code>
+		<code><a href="source-class-Passbook.Pass.BeaconInterface.html#65-70" title="Go to source code">getRelevantText</a>( )</code>
 
 		<div class="description short">
 			
@@ -416,7 +428,7 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_setRelevantText">#</a>
-		<code><a href="source-class-Passbook.Pass.BeaconInterface.html#70-75" title="Go to source code">setRelevantText</a>( <span>string <var>$relevantText</var></span> )</code>
+		<code><a href="source-class-Passbook.Pass.BeaconInterface.html#72-77" title="Go to source code">setRelevantText</a>( <span>string <var>$relevantText</var></span> )</code>
 
 		<div class="description short">
 			
@@ -445,6 +457,14 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 	</tr>
 	</table>
 
+	<table class="summary inherited">
+	<caption>Methods inherited from <a href="class-Passbook.ArrayableInterface.html#methods">Passbook\ArrayableInterface</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-Passbook.ArrayableInterface.html#_toArray">toArray()</a>
+		</code></td>
+	</tr>
+	</table>
 
 
 

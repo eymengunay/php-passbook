@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="generator" content="ApiGen 2.8.0" />
+
+	<title>Interface Passbook\PassValidatorInterface | PHP-Passbook</title>
+
+	<script type="text/javascript" src="resources/combined.js?2966811159"></script>
+	<script type="text/javascript" src="elementlist.js?232615948"></script>
+	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
+
+</head>
+
+<body>
+<div id="left">
+	<div id="menu">
+		<a href="index.html" title="Overview"><span>Overview</span></a>
+
+
+		<div id="groups">
+			<h3>Namespaces</h3>
+			<ul>
+				<li class="active"><a href="namespace-Passbook.html">Passbook<span></span></a>
+						<ul>
+				<li><a href="namespace-Passbook.Certificate.html">Certificate</a>
+						</li>
+				<li><a href="namespace-Passbook.Exception.html">Exception</a>
+						</li>
+				<li><a href="namespace-Passbook.Pass.html">Pass</a>
+						</li>
+				<li><a href="namespace-Passbook.Type.html">Type</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-PHP.html">PHP</a>
+						</li>
+			</ul>
+		</div>
+
+		<hr />
+
+
+		<div id="elements">
+			<h3>Classes</h3>
+			<ul>
+				<li><a href="class-Passbook.Pass.html">Pass</a></li>
+				<li><a href="class-Passbook.PassFactory.html">PassFactory</a></li>
+				<li><a href="class-Passbook.PassValidator.html">PassValidator</a></li>
+			</ul>
+
+			<h3>Interfaces</h3>
+			<ul>
+				<li><a href="class-Passbook.ArrayableInterface.html">ArrayableInterface</a></li>
+				<li><a href="class-Passbook.PassInterface.html">PassInterface</a></li>
+				<li class="active"><a href="class-Passbook.PassValidatorInterface.html">PassValidatorInterface</a></li>
+			</ul>
+
+
+
+
+		</div>
+	</div>
+</div>
+
+<div id="splitter"></div>
+
+<div id="right">
+<div id="rightInner">
+	<form id="search">
+		<input type="hidden" name="cx" value="" />
+		<input type="hidden" name="ie" value="UTF-8" />
+		<input type="text" name="q" class="text" />
+		<input type="submit" value="Search" />
+	</form>
+
+	<div id="navigation">
+		<ul>
+			<li>
+				<a href="index.html" title="Overview"><span>Overview</span></a>
+			</li>
+			<li>
+				<a href="namespace-Passbook.html" title="Summary of Passbook"><span>Namespace</span></a>
+			</li>
+			<li class="active">
+<span>Class</span>			</li>
+		</ul>
+		<ul>
+			<li>
+				<a href="tree.html" title="Tree view of classes, interfaces, traits and exceptions"><span>Tree</span></a>
+			</li>
+			<li>
+				<a href="todo.html" title="Todo list"><span>Todo</span></a>
+			</li>
+		</ul>
+		<ul>
+			<li>
+				<a href="php-passbook-api-documentation.zip" title="Download documentation as ZIP archive"><span>Download</span></a>
+			</li>
+		</ul>
+	</div>
+
+<div id="content" class="class">
+	<h1>Interface PassValidatorInterface</h1>
+
+
+
+
+
+
+
+	<div>
+		<h4>Direct known implementers</h4>
+			<a href="class-Passbook.PassValidator.html">Passbook\PassValidator</a>
+	</div>
+
+
+
+
+	<div class="info">
+		
+		
+		<b>Namespace:</b> <a href="namespace-Passbook.html">Passbook</a><br />
+		
+
+		<b>Located at</b> <a href="source-class-Passbook.PassValidatorInterface.html#5-24" title="Go to source code">Passbook/PassValidatorInterface.php</a><br />
+	</div>
+
+
+
+	<table class="summary" id="methods">
+	<caption>Methods summary</caption>
+	<tr data-order="validate" id="_validate">
+
+		<td class="attributes"><code>
+			 public 
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_validate">#</a>
+		<code><a href="source-class-Passbook.PassValidatorInterface.html#7-14" title="Go to source code">validate</a>( <span><code><a href="class-Passbook.PassInterface.html">Passbook\PassInterface</a></code> <var>$pass</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Performs validation of the pass.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Performs validation of the pass.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$pass</var></dt>
+					<dd><code><code><a href="class-Passbook.PassInterface.html">Passbook\PassInterface</a></code></code><br>$pass - the pass to be validated.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>boolean</code><br>- true if the pass passes validation, false otherwise<br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getErrors" id="_getErrors">
+
+		<td class="attributes"><code>
+			 public 
+			string[]
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getErrors">#</a>
+		<code><a href="source-class-Passbook.PassValidatorInterface.html#16-22" title="Go to source code">getErrors</a>( )</code>
+
+		<div class="description short">
+			
+<p>Returns the errors found when validating the pass. When there are no errors,
+an empty array is returned.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Returns the errors found when validating the pass. When there are no errors,
+an empty array is returned.</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>string[]</code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+	<div id="footer">
+		PHP-Passbook API documentation generated by <a href="http://apigen.org">ApiGen 2.8.0</a>
+	</div>
+</div>
+</div>
+</body>
+</html>

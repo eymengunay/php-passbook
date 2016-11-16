@@ -6,8 +6,8 @@
 
 	<title>Class Passbook\Pass\Field | PHP-Passbook</title>
 
-	<script type="text/javascript" src="resources/combined.js?1177154521"></script>
-	<script type="text/javascript" src="elementlist.js?1730068341"></script>
+	<script type="text/javascript" src="resources/combined.js?2966811159"></script>
+	<script type="text/javascript" src="elementlist.js?232615948"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 </head>
@@ -45,9 +45,12 @@
 			<ul>
 				<li><a href="class-Passbook.Pass.Barcode.html">Barcode</a></li>
 				<li><a href="class-Passbook.Pass.Beacon.html">Beacon</a></li>
+				<li><a href="class-Passbook.Pass.DateField.html">DateField</a></li>
 				<li class="active"><a href="class-Passbook.Pass.Field.html">Field</a></li>
 				<li><a href="class-Passbook.Pass.Image.html">Image</a></li>
+				<li><a href="class-Passbook.Pass.Localization.html">Localization</a></li>
 				<li><a href="class-Passbook.Pass.Location.html">Location</a></li>
+				<li><a href="class-Passbook.Pass.NumberField.html">NumberField</a></li>
 				<li><a href="class-Passbook.Pass.Structure.html">Structure</a></li>
 			</ul>
 
@@ -57,6 +60,7 @@
 				<li><a href="class-Passbook.Pass.BeaconInterface.html">BeaconInterface</a></li>
 				<li><a href="class-Passbook.Pass.FieldInterface.html">FieldInterface</a></li>
 				<li><a href="class-Passbook.Pass.ImageInterface.html">ImageInterface</a></li>
+				<li><a href="class-Passbook.Pass.LocalizationInterface.html">LocalizationInterface</a></li>
 				<li><a href="class-Passbook.Pass.LocationInterface.html">LocationInterface</a></li>
 				<li><a href="class-Passbook.Pass.StructureInterface.html">StructureInterface</a></li>
 			</ul>
@@ -126,6 +130,11 @@
 	</dl>
 
 
+	<div>
+		<h4>Direct known subclasses</h4>
+			<a href="class-Passbook.Pass.DateField.html">Passbook\Pass\DateField</a>, 
+			<a href="class-Passbook.Pass.NumberField.html">Passbook\Pass\NumberField</a>
+	</div>
 
 
 
@@ -141,7 +150,7 @@
 				<b>Author:</b>
 				Eymen Gunay &lt;<a
 href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
-		<b>Located at</b> <a href="source-class-Passbook.Pass.Field.html#14-201" title="Go to source code">Passbook/Pass/Field.php</a><br />
+		<b>Located at</b> <a href="source-class-Passbook.Pass.Field.html#14-272" title="Go to source code">Passbook/Pass/Field.php</a><br />
 	</div>
 
 
@@ -159,7 +168,7 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#___construct">#</a>
-		<code><a href="source-class-Passbook.Pass.Field.html#83-88" title="Go to source code">__construct</a>( <span>mixed <var>$key</var></span>, <span>mixed <var>$value</var></span> )</code>
+		<code><a href="source-class-Passbook.Pass.Field.html#112-117" title="Go to source code">__construct</a>( <span>mixed <var>$key</var></span>, <span>mixed <var>$value</var></span> )</code>
 
 		<div class="description short">
 			
@@ -181,28 +190,38 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 
 		<td class="attributes"><code>
 			 public 
-			
+			array
 			
 			</code>
 		</td>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_toArray">#</a>
-		<code><a href="source-class-Passbook.Pass.Field.html#90-110" title="Go to source code">toArray</a>( )</code>
+		<code><a href="source-class-Passbook.Pass.Field.html#119-147" title="Go to source code">toArray</a>( )</code>
 
 		<div class="description short">
 			
+<p>Get the instance as an array.</p>
+
 		</div>
 
 		<div class="description detailed hidden">
 			
+<p>Get the instance as an array.</p>
 
 
 
 
+				<h4>Returns</h4>
+				<div class="list">
+					<code>array</code><br />
+				</div>
 
 
 
+
+				<h4>Implementation of</h4>
+				<div class="list"><code><a href="class-Passbook.ArrayableInterface.html#_toArray">Passbook\ArrayableInterface::toArray()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -217,7 +236,7 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_setChangeMessage">#</a>
-		<code><a href="source-class-Passbook.Pass.Field.html#112-120" title="Go to source code">setChangeMessage</a>( <span>string <var>$changeMessage</var></span> )</code>
+		<code><a href="source-class-Passbook.Pass.Field.html#149-157" title="Go to source code">setChangeMessage</a>( <span>string <var>$changeMessage</var></span> )</code>
 
 		<div class="description short">
 			
@@ -257,7 +276,7 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getChangeMessage">#</a>
-		<code><a href="source-class-Passbook.Pass.Field.html#122-128" title="Go to source code">getChangeMessage</a>( )</code>
+		<code><a href="source-class-Passbook.Pass.Field.html#159-165" title="Go to source code">getChangeMessage</a>( )</code>
 
 		<div class="description short">
 			
@@ -292,7 +311,7 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_setKey">#</a>
-		<code><a href="source-class-Passbook.Pass.Field.html#130-138" title="Go to source code">setKey</a>( <span>string <var>$key</var></span> )</code>
+		<code><a href="source-class-Passbook.Pass.Field.html#167-175" title="Go to source code">setKey</a>( <span>string <var>$key</var></span> )</code>
 
 		<div class="description short">
 			
@@ -332,7 +351,7 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getKey">#</a>
-		<code><a href="source-class-Passbook.Pass.Field.html#140-146" title="Go to source code">getKey</a>( )</code>
+		<code><a href="source-class-Passbook.Pass.Field.html#177-183" title="Go to source code">getKey</a>( )</code>
 
 		<div class="description short">
 			
@@ -367,7 +386,7 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_setLabel">#</a>
-		<code><a href="source-class-Passbook.Pass.Field.html#148-156" title="Go to source code">setLabel</a>( <span>string <var>$label</var></span> )</code>
+		<code><a href="source-class-Passbook.Pass.Field.html#185-193" title="Go to source code">setLabel</a>( <span>string <var>$label</var></span> )</code>
 
 		<div class="description short">
 			
@@ -407,7 +426,7 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getLabel">#</a>
-		<code><a href="source-class-Passbook.Pass.Field.html#158-164" title="Go to source code">getLabel</a>( )</code>
+		<code><a href="source-class-Passbook.Pass.Field.html#195-201" title="Go to source code">getLabel</a>( )</code>
 
 		<div class="description short">
 			
@@ -442,7 +461,7 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_setTextAlignment">#</a>
-		<code><a href="source-class-Passbook.Pass.Field.html#166-174" title="Go to source code">setTextAlignment</a>( <span>string <var>$textAlignment</var></span> )</code>
+		<code><a href="source-class-Passbook.Pass.Field.html#203-211" title="Go to source code">setTextAlignment</a>( <span>string <var>$textAlignment</var></span> )</code>
 
 		<div class="description short">
 			
@@ -482,7 +501,7 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getTextAlignment">#</a>
-		<code><a href="source-class-Passbook.Pass.Field.html#176-182" title="Go to source code">getTextAlignment</a>( )</code>
+		<code><a href="source-class-Passbook.Pass.Field.html#213-219" title="Go to source code">getTextAlignment</a>( )</code>
 
 		<div class="description short">
 			
@@ -517,7 +536,7 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_setValue">#</a>
-		<code><a href="source-class-Passbook.Pass.Field.html#184-192" title="Go to source code">setValue</a>( <span>string <var>$value</var></span> )</code>
+		<code><a href="source-class-Passbook.Pass.Field.html#221-229" title="Go to source code">setValue</a>( <span>string <var>$value</var></span> )</code>
 
 		<div class="description short">
 			
@@ -557,7 +576,7 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getValue">#</a>
-		<code><a href="source-class-Passbook.Pass.Field.html#194-200" title="Go to source code">getValue</a>( )</code>
+		<code><a href="source-class-Passbook.Pass.Field.html#231-237" title="Go to source code">getValue</a>( )</code>
 
 		<div class="description short">
 			
@@ -581,6 +600,164 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 		</div>
 		</div></td>
 	</tr>
+	<tr data-order="setAttributedValue" id="_setAttributedValue">
+
+		<td class="attributes"><code>
+			 public 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_setAttributedValue">#</a>
+		<code><a href="source-class-Passbook.Pass.Field.html#239-246" title="Go to source code">setAttributedValue</a>( <span>string <var>$attributedValue</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Sets Attributed Value</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Sets Attributed Value</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$attributedValue</var></dt>
+					<dd><code>string</code><br>$attributedValue</dd>
+				</dl></div>
+
+
+
+
+
+				<h4>Implementation of</h4>
+				<div class="list"><code><a href="class-Passbook.Pass.FieldInterface.html#_setAttributedValue">Passbook\Pass\FieldInterface::setAttributedValue()</a></code></div>
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getAttributedValue" id="_getAttributedValue">
+
+		<td class="attributes"><code>
+			 public 
+			string
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getAttributedValue">#</a>
+		<code><a href="source-class-Passbook.Pass.Field.html#248-254" title="Go to source code">getAttributedValue</a>( )</code>
+
+		<div class="description short">
+			
+<p>Return Attributed Value</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Return Attributed Value</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>string</code><br />
+				</div>
+
+
+
+
+				<h4>Implementation of</h4>
+				<div class="list"><code><a href="class-Passbook.Pass.FieldInterface.html#_getAttributedValue">Passbook\Pass\FieldInterface::getAttributedValue()</a></code></div>
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="setDataDetectorTypes" id="_setDataDetectorTypes">
+
+		<td class="attributes"><code>
+			 public 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_setDataDetectorTypes">#</a>
+		<code><a href="source-class-Passbook.Pass.Field.html#256-263" title="Go to source code">setDataDetectorTypes</a>( <span>array <var>$dataDetectorTypes</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Sets Data Detector Type</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Sets Data Detector Type</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$dataDetectorTypes</var></dt>
+					<dd><code>array</code><br>$dataDetectorTypes</dd>
+				</dl></div>
+
+
+
+
+
+				<h4>Implementation of</h4>
+				<div class="list"><code><a href="class-Passbook.Pass.FieldInterface.html#_setDataDetectorTypes">Passbook\Pass\FieldInterface::setDataDetectorTypes()</a></code></div>
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getDataDetectorTypes" id="_getDataDetectorTypes">
+
+		<td class="attributes"><code>
+			 public 
+			array
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getDataDetectorTypes">#</a>
+		<code><a href="source-class-Passbook.Pass.Field.html#265-271" title="Go to source code">getDataDetectorTypes</a>( )</code>
+
+		<div class="description short">
+			
+<p>Return Data Detector Type</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Return Data Detector Type</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>array</code><br />
+				</div>
+
+
+
+
+				<h4>Implementation of</h4>
+				<div class="list"><code><a href="class-Passbook.Pass.FieldInterface.html#_getDataDetectorTypes">Passbook\Pass\FieldInterface::getDataDetectorTypes()</a></code></div>
+		</div>
+		</div></td>
+	</tr>
 	</table>
 
 
@@ -596,7 +773,7 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 
 		<td class="attributes"><code>string</code></td>
 		<td class="name"><code>
-				<a href="source-class-Passbook.Pass.Field.html#21-24" title="Go to source code"><b>ALIGN_LEFT</b></a>
+				<a href="source-class-Passbook.Pass.Field.html#20-23" title="Go to source code"><b>ALIGN_LEFT</b></a>
 		</code></td>
 		<td class="value"><code><span class="php-quote">'PKTextAlignmentLeft'</span></code></td>
 		<td class="description"><div>
@@ -616,7 +793,7 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 
 		<td class="attributes"><code>string</code></td>
 		<td class="name"><code>
-				<a href="source-class-Passbook.Pass.Field.html#26-29" title="Go to source code"><b>ALIGN_CENTER</b></a>
+				<a href="source-class-Passbook.Pass.Field.html#25-28" title="Go to source code"><b>ALIGN_CENTER</b></a>
 		</code></td>
 		<td class="value"><code><span class="php-quote">'PKTextAlignmentCenter'</span></code></td>
 		<td class="description"><div>
@@ -636,7 +813,7 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 
 		<td class="attributes"><code>string</code></td>
 		<td class="name"><code>
-				<a href="source-class-Passbook.Pass.Field.html#31-34" title="Go to source code"><b>ALIGN_RIGHT</b></a>
+				<a href="source-class-Passbook.Pass.Field.html#30-33" title="Go to source code"><b>ALIGN_RIGHT</b></a>
 		</code></td>
 		<td class="value"><code><span class="php-quote">'PKTextAlignmentRight'</span></code></td>
 		<td class="description"><div>
@@ -656,11 +833,91 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 
 		<td class="attributes"><code>string</code></td>
 		<td class="name"><code>
-				<a href="source-class-Passbook.Pass.Field.html#36-39" title="Go to source code"><b>ALIGN_NATURAL</b></a>
+				<a href="source-class-Passbook.Pass.Field.html#35-38" title="Go to source code"><b>ALIGN_NATURAL</b></a>
 		</code></td>
 		<td class="value"><code><span class="php-quote">'PKTextAlignmentNatural'</span></code></td>
 		<td class="description"><div>
 			<a href="#ALIGN_NATURAL" class="anchor">#</a>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="PKDataDetectorTypePhoneNumber" id="PKDataDetectorTypePhoneNumber">
+
+		<td class="attributes"><code>string</code></td>
+		<td class="name"><code>
+				<a href="source-class-Passbook.Pass.Field.html#40-43" title="Go to source code"><b>PKDataDetectorTypePhoneNumber</b></a>
+		</code></td>
+		<td class="value"><code><span class="php-quote">'PKDataDetectorTypePhoneNumber'</span></code></td>
+		<td class="description"><div>
+			<a href="#PKDataDetectorTypePhoneNumber" class="anchor">#</a>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="PKDataDetectorTypeLink" id="PKDataDetectorTypeLink">
+
+		<td class="attributes"><code>string</code></td>
+		<td class="name"><code>
+				<a href="source-class-Passbook.Pass.Field.html#45-48" title="Go to source code"><b>PKDataDetectorTypeLink</b></a>
+		</code></td>
+		<td class="value"><code><span class="php-quote">'PKDataDetectorTypeLink'</span></code></td>
+		<td class="description"><div>
+			<a href="#PKDataDetectorTypeLink" class="anchor">#</a>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="PKDataDetectorTypeAddress" id="PKDataDetectorTypeAddress">
+
+		<td class="attributes"><code>string</code></td>
+		<td class="name"><code>
+				<a href="source-class-Passbook.Pass.Field.html#50-53" title="Go to source code"><b>PKDataDetectorTypeAddress</b></a>
+		</code></td>
+		<td class="value"><code><span class="php-quote">'PKDataDetectorTypeAddress'</span></code></td>
+		<td class="description"><div>
+			<a href="#PKDataDetectorTypeAddress" class="anchor">#</a>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="PKDataDetectorTypeCalendarEvent" id="PKDataDetectorTypeCalendarEvent">
+
+		<td class="attributes"><code>string</code></td>
+		<td class="name"><code>
+				<a href="source-class-Passbook.Pass.Field.html#55-58" title="Go to source code"><b>PKDataDetectorTypeCalendarEvent</b></a>
+		</code></td>
+		<td class="value"><code><span class="php-quote">'PKDataDetectorTypeCalendarEvent'</span></code></td>
+		<td class="description"><div>
+			<a href="#PKDataDetectorTypeCalendarEvent" class="anchor">#</a>
 
 			<div class="description short">
 				
@@ -686,7 +943,7 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-Passbook.Pass.Field.html#41-47" title="Go to source code"><var>$changeMessage</var></a>
+				<a href="source-class-Passbook.Pass.Field.html#60-66" title="Go to source code"><var>$changeMessage</var></a>
 		</td>
 		<td class="value"><code></code></td>
 		<td class="description"><div>
@@ -717,7 +974,7 @@ field’s new value. For example, “Gate changed to %@.”</p>
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-Passbook.Pass.Field.html#49-55" title="Go to source code"><var>$key</var></a>
+				<a href="source-class-Passbook.Pass.Field.html#68-73" title="Go to source code"><var>$key</var></a>
 		</td>
 		<td class="value"><code></code></td>
 		<td class="description"><div>
@@ -746,7 +1003,7 @@ field’s new value. For example, “Gate changed to %@.”</p>
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-Passbook.Pass.Field.html#57-62" title="Go to source code"><var>$label</var></a>
+				<a href="source-class-Passbook.Pass.Field.html#75-79" title="Go to source code"><var>$label</var></a>
 		</td>
 		<td class="value"><code></code></td>
 		<td class="description"><div>
@@ -773,7 +1030,7 @@ field’s new value. For example, “Gate changed to %@.”</p>
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-Passbook.Pass.Field.html#64-75" title="Go to source code"><var>$textAlignment</var></a>
+				<a href="source-class-Passbook.Pass.Field.html#81-89" title="Go to source code"><var>$textAlignment</var></a>
 		</td>
 		<td class="value"><code></code></td>
 		<td class="description"><div>
@@ -783,7 +1040,9 @@ field’s new value. For example, “Gate changed to %@.”</p>
 				
 <p>Alignment for the field’s contents. Must be one of the following values:
 PKTextAlignmentLeft, PKTextAlignmentCenter, PKTextAlignmentRight,
-PKTextAlignmentNatural</p>
+PKTextAlignmentNatural The default value is natural alignment, which aligns the
+text appropriately based on its script direction. This key is not allowed for
+primary fields.</p>
 
 			</div>
 
@@ -791,12 +1050,9 @@ PKTextAlignmentNatural</p>
 				
 <p>Alignment for the field’s contents. Must be one of the following values:
 PKTextAlignmentLeft, PKTextAlignmentCenter, PKTextAlignmentRight,
-PKTextAlignmentNatural</p>
-
-<p>The default value is natural alignment, which aligns the text appropriately
-based on its script direction.</p>
-
-<p>This key is not allowed for primary fields.</p>
+PKTextAlignmentNatural The default value is natural alignment, which aligns the
+text appropriately based on its script direction. This key is not allowed for
+primary fields.</p>
 
 
 			</div>
@@ -809,7 +1065,7 @@ based on its script direction.</p>
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-Passbook.Pass.Field.html#77-81" title="Go to source code"><var>$value</var></a>
+				<a href="source-class-Passbook.Pass.Field.html#91-95" title="Go to source code"><var>$value</var></a>
 		</td>
 		<td class="value"><code></code></td>
 		<td class="description"><div>
@@ -824,6 +1080,68 @@ based on its script direction.</p>
 			<div class="description detailed hidden">
 				
 <p>Value of the field. For example, 42.</p>
+
+
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="dataDetectorTypes" id="$dataDetectorTypes">
+		<td class="attributes"><code>
+			protected  
+			array
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-Passbook.Pass.Field.html#97-104" title="Go to source code"><var>$dataDetectorTypes</var></a>
+		</td>
+		<td class="value"><code></code></td>
+		<td class="description"><div>
+			<a href="#$dataDetectorTypes" class="anchor">#</a>
+
+			<div class="description short">
+				
+<p>Array of strings The default value is all data detectors. Provide an empty
+array to use no data detectors. Data detectors are applied only to back
+fields.</p>
+
+			</div>
+
+			<div class="description detailed hidden">
+				
+<p>Array of strings The default value is all data detectors. Provide an empty
+array to use no data detectors. Data detectors are applied only to back
+fields.</p>
+
+
+					<h4>Link</h4>
+					<div class="list">
+							<a href="https://developer.apple.com/library/ios/documentation/userexperience/Reference/PassKit_Bundle/Chapters/FieldDictionary.html#//apple_ref/doc/uid/TP40012026-CH4-SW1">https://developer.apple.com/library/ios/documentation/userexperience/Reference/PassKit_Bundle/Chapters/FieldDictionary.html#//apple_ref/doc/uid/TP40012026-CH4-SW1</a><br />
+					</div>
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="attributedValue" id="$attributedValue">
+		<td class="attributes"><code>
+			protected  
+			string
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-Passbook.Pass.Field.html#106-110" title="Go to source code"><var>$attributedValue</var></a>
+		</td>
+		<td class="value"><code></code></td>
+		<td class="description"><div>
+			<a href="#$attributedValue" class="anchor">#</a>
+
+			<div class="description short">
+				
+<p>Localizable string, ISO 8601 date as a string, or number</p>
+
+			</div>
+
+			<div class="description detailed hidden">
+				
+<p>Localizable string, ISO 8601 date as a string, or number</p>
 
 
 			</div>

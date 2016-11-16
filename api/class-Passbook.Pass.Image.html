@@ -6,8 +6,8 @@
 
 	<title>Class Passbook\Pass\Image | PHP-Passbook</title>
 
-	<script type="text/javascript" src="resources/combined.js?1177154521"></script>
-	<script type="text/javascript" src="elementlist.js?1730068341"></script>
+	<script type="text/javascript" src="resources/combined.js?2966811159"></script>
+	<script type="text/javascript" src="elementlist.js?232615948"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 </head>
@@ -45,9 +45,12 @@
 			<ul>
 				<li><a href="class-Passbook.Pass.Barcode.html">Barcode</a></li>
 				<li><a href="class-Passbook.Pass.Beacon.html">Beacon</a></li>
+				<li><a href="class-Passbook.Pass.DateField.html">DateField</a></li>
 				<li><a href="class-Passbook.Pass.Field.html">Field</a></li>
 				<li class="active"><a href="class-Passbook.Pass.Image.html">Image</a></li>
+				<li><a href="class-Passbook.Pass.Localization.html">Localization</a></li>
 				<li><a href="class-Passbook.Pass.Location.html">Location</a></li>
+				<li><a href="class-Passbook.Pass.NumberField.html">NumberField</a></li>
 				<li><a href="class-Passbook.Pass.Structure.html">Structure</a></li>
 			</ul>
 
@@ -57,6 +60,7 @@
 				<li><a href="class-Passbook.Pass.BeaconInterface.html">BeaconInterface</a></li>
 				<li><a href="class-Passbook.Pass.FieldInterface.html">FieldInterface</a></li>
 				<li><a href="class-Passbook.Pass.ImageInterface.html">ImageInterface</a></li>
+				<li><a href="class-Passbook.Pass.LocalizationInterface.html">LocalizationInterface</a></li>
 				<li><a href="class-Passbook.Pass.LocationInterface.html">LocationInterface</a></li>
 				<li><a href="class-Passbook.Pass.StructureInterface.html">StructureInterface</a></li>
 			</ul>
@@ -285,7 +289,7 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 		</div>
 		</div></td>
 	</tr>
-	<tr data-order="setIsRetina" id="_setIsRetina">
+	<tr data-order="setDensity" id="_setDensity">
 
 		<td class="attributes"><code>
 			 public 
@@ -295,25 +299,25 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 		</td>
 
 		<td class="name"><div>
-		<a class="anchor" href="#_setIsRetina">#</a>
-		<code><a href="source-class-Passbook.Pass.Image.html#69-77" title="Go to source code">setIsRetina</a>( <span>boolean <var>$isRetina</var></span> )</code>
+		<a class="anchor" href="#_setDensity">#</a>
+		<code><a href="source-class-Passbook.Pass.Image.html#69-77" title="Go to source code">setDensity</a>( <span>integer <var>$density</var></span> )</code>
 
 		<div class="description short">
 			
-<p>Sets image is retina</p>
+<p>Sets image density</p>
 
 		</div>
 
 		<div class="description detailed hidden">
 			
-<p>Sets image is retina</p>
+<p>Sets image density</p>
 
 
 
 				<h4>Parameters</h4>
 				<div class="list"><dl>
-					<dt><var>$isRetina</var></dt>
-					<dd><code>boolean</code></dd>
+					<dt><var>$density</var></dt>
+					<dd><code>integer</code></dd>
 				</dl></div>
 
 
@@ -321,11 +325,11 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 
 
 				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-Passbook.Pass.ImageInterface.html#_setIsRetina">Passbook\Pass\ImageInterface::setIsRetina()</a></code></div>
+				<div class="list"><code><a href="class-Passbook.Pass.ImageInterface.html#_setDensity">Passbook\Pass\ImageInterface::setDensity()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
-	<tr data-order="isRetina" id="_isRetina">
+	<tr data-order="getDensity" id="_getDensity">
 
 		<td class="attributes"><code>
 			 public 
@@ -335,18 +339,18 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 		</td>
 
 		<td class="name"><div>
-		<a class="anchor" href="#_isRetina">#</a>
-		<code><a href="source-class-Passbook.Pass.Image.html#79-85" title="Go to source code">isRetina</a>( )</code>
+		<a class="anchor" href="#_getDensity">#</a>
+		<code><a href="source-class-Passbook.Pass.Image.html#79-85" title="Go to source code">getDensity</a>( )</code>
 
 		<div class="description short">
 			
-<p>Returns image is retina</p>
+<p>Returns image density</p>
 
 		</div>
 
 		<div class="description detailed hidden">
 			
-<p>Returns image is retina</p>
+<p>Returns image density</p>
 
 
 
@@ -356,7 +360,7 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 
 
 				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-Passbook.Pass.ImageInterface.html#_isRetina">Passbook\Pass\ImageInterface::isRetina()</a></code></div>
+				<div class="list"><code><a href="class-Passbook.Pass.ImageInterface.html#_getDensity">Passbook\Pass\ImageInterface::getDensity()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -488,32 +492,32 @@ background, logo, footer, strip</p>
 			</div>
 		</div></td>
 	</tr>
-	<tr data-order="isRetina" id="$isRetina">
+	<tr data-order="density" id="$density">
 		<td class="attributes"><code>
 			protected  
-			boolean
+			integer
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-Passbook.Pass.Image.html#36-41" title="Go to source code"><var>$isRetina</var></a>
+				<a href="source-class-Passbook.Pass.Image.html#36-41" title="Go to source code"><var>$density</var></a>
 		</td>
 		<td class="value"><code></code></td>
 		<td class="description"><div>
-			<a href="#$isRetina" class="anchor">#</a>
+			<a href="#$density" class="anchor">#</a>
 
 			<div class="description short">
 				
 <p>All of the pass’s images are loaded using standard UIImage image-loading
-methods. This means, for example, the file name of high resolution version of
-the image ends with @2x.png.</p>
+methods. This means, for example, the file name of high resolution versions of
+the image ends with @2x.png/@3x.png.</p>
 
 			</div>
 
 			<div class="description detailed hidden">
 				
 <p>All of the pass’s images are loaded using standard UIImage image-loading
-methods. This means, for example, the file name of high resolution version of
-the image ends with @2x.png.</p>
+methods. This means, for example, the file name of high resolution versions of
+the image ends with @2x.png/@3x.png.</p>
 
 
 			</div>

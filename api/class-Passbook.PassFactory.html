@@ -6,8 +6,8 @@
 
 	<title>Class Passbook\PassFactory | PHP-Passbook</title>
 
-	<script type="text/javascript" src="resources/combined.js?1177154521"></script>
-	<script type="text/javascript" src="elementlist.js?1730068341"></script>
+	<script type="text/javascript" src="resources/combined.js?2966811159"></script>
+	<script type="text/javascript" src="elementlist.js?232615948"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 </head>
@@ -45,11 +45,14 @@
 			<ul>
 				<li><a href="class-Passbook.Pass.html">Pass</a></li>
 				<li class="active"><a href="class-Passbook.PassFactory.html">PassFactory</a></li>
+				<li><a href="class-Passbook.PassValidator.html">PassValidator</a></li>
 			</ul>
 
 			<h3>Interfaces</h3>
 			<ul>
+				<li><a href="class-Passbook.ArrayableInterface.html">ArrayableInterface</a></li>
 				<li><a href="class-Passbook.PassInterface.html">PassInterface</a></li>
+				<li><a href="class-Passbook.PassValidatorInterface.html">PassValidatorInterface</a></li>
 			</ul>
 
 
@@ -123,7 +126,7 @@
 				<b>Author:</b>
 				Eymen Gunay &lt;<a
 href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
-		<b>Located at</b> <a href="source-class-Passbook.PassFactory.html#21-252" title="Go to source code">Passbook/PassFactory.php</a><br />
+		<b>Located at</b> <a href="source-class-Passbook.PassFactory.html#26-529" title="Go to source code">Passbook/PassFactory.php</a><br />
 	</div>
 
 
@@ -141,7 +144,7 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#___construct">#</a>
-		<code><a href="source-class-Passbook.PassFactory.html#76-85" title="Go to source code">__construct</a>( <span>mixed <var>$passTypeIdentifier</var></span>, <span>mixed <var>$teamIdentifier</var></span>, <span>mixed <var>$organizationName</var></span>, <span>mixed <var>$p12File</var></span>, <span>mixed <var>$p12Pass</var></span>, <span>mixed <var>$wwdrFile</var></span> )</code>
+		<code><a href="source-class-Passbook.PassFactory.html#99-112" title="Go to source code">__construct</a>( <span>mixed <var>$passTypeIdentifier</var></span>, <span>mixed <var>$teamIdentifier</var></span>, <span>mixed <var>$organizationName</var></span>, <span>mixed <var>$p12File</var></span>, <span>mixed <var>$p12Pass</var></span>, <span>mixed <var>$wwdrFile</var></span> )</code>
 
 		<div class="description short">
 			
@@ -163,14 +166,14 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 
 		<td class="attributes"><code>
 			 public 
-			
+			mixed
 			
 			</code>
 		</td>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_setOutputPath">#</a>
-		<code><a href="source-class-Passbook.PassFactory.html#87-96" title="Go to source code">setOutputPath</a>( <span>string <var>$outputPath</var></span> )</code>
+		<code><a href="source-class-Passbook.PassFactory.html#114-126" title="Go to source code">setOutputPath</a>( <span>string <var>$outputPath</var></span> )</code>
 
 		<div class="description short">
 			
@@ -190,6 +193,10 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 					<dd><code>string</code></dd>
 				</dl></div>
 
+				<h4>Returns</h4>
+				<div class="list">
+					<code>mixed</code><br>$this<br />
+				</div>
 
 
 
@@ -208,7 +215,7 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getOutputPath">#</a>
-		<code><a href="source-class-Passbook.PassFactory.html#98-105" title="Go to source code">getOutputPath</a>( )</code>
+		<code><a href="source-class-Passbook.PassFactory.html#128-136" title="Go to source code">getOutputPath</a>( )</code>
 
 		<div class="description short">
 			
@@ -234,18 +241,55 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 		</div>
 		</div></td>
 	</tr>
+	<tr data-order="getNormalizedOutputPath" id="_getNormalizedOutputPath">
+
+		<td class="attributes"><code>
+			 public 
+			string
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getNormalizedOutputPath">#</a>
+		<code><a href="source-class-Passbook.PassFactory.html#138-146" title="Go to source code">getNormalizedOutputPath</a>( )</code>
+
+		<div class="description short">
+			
+<p>The output path with a directory separator on the end.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>The output path with a directory separator on the end.</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>string</code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
 	<tr data-order="setOverwrite" id="_setOverwrite">
 
 		<td class="attributes"><code>
 			 public 
-			
+			mixed
 			
 			</code>
 		</td>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_setOverwrite">#</a>
-		<code><a href="source-class-Passbook.PassFactory.html#107-116" title="Go to source code">setOverwrite</a>( <span>boolean <var>$overwrite</var></span> )</code>
+		<code><a href="source-class-Passbook.PassFactory.html#148-160" title="Go to source code">setOverwrite</a>( <span>boolean <var>$overwrite</var></span> )</code>
 
 		<div class="description short">
 			
@@ -265,6 +309,10 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 					<dd><code>boolean</code></dd>
 				</dl></div>
 
+				<h4>Returns</h4>
+				<div class="list">
+					<code>mixed</code><br>$this<br />
+				</div>
 
 
 
@@ -283,7 +331,7 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_isOverwrite">#</a>
-		<code><a href="source-class-Passbook.PassFactory.html#118-125" title="Go to source code">isOverwrite</a>( )</code>
+		<code><a href="source-class-Passbook.PassFactory.html#162-170" title="Go to source code">isOverwrite</a>( )</code>
 
 		<div class="description short">
 			
@@ -309,6 +357,167 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 		</div>
 		</div></td>
 	</tr>
+	<tr data-order="setSkipSignature" id="_setSkipSignature">
+
+		<td class="attributes"><code>
+			 public 
+			mixed
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_setSkipSignature">#</a>
+		<code><a href="source-class-Passbook.PassFactory.html#172-187" title="Go to source code">setSkipSignature</a>( <span>boolean <var>$skipSignature</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Set skip signature</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Set skip signature</p>
+
+<p>When set, the pass will not be signed when packaged. This should only be used
+for testing.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$skipSignature</var></dt>
+					<dd><code>boolean</code></dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>mixed</code><br>$this<br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getSkipSignature" id="_getSkipSignature">
+
+		<td class="attributes"><code>
+			 public 
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getSkipSignature">#</a>
+		<code><a href="source-class-Passbook.PassFactory.html#189-197" title="Go to source code">getSkipSignature</a>( )</code>
+
+		<div class="description short">
+			
+<p>Get skip signature</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Get skip signature</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>boolean</code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="setPassValidator" id="_setPassValidator">
+
+		<td class="attributes"><code>
+			 public 
+			mixed
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_setPassValidator">#</a>
+		<code><a href="source-class-Passbook.PassFactory.html#199-213" title="Go to source code">setPassValidator</a>( <span><code><a href="class-Passbook.PassValidatorInterface.html">Passbook\PassValidatorInterface</a></code> <var>$passValidator</var> = <span class="php-keyword1">null</span></span> )</code>
+
+		<div class="description short">
+			
+<p>Set an implementation of PassValidatorInterface to validate the pass before
+packaging. When set to null, no validation is performed when packaging the
+pass.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Set an implementation of PassValidatorInterface to validate the pass before
+packaging. When set to null, no validation is performed when packaging the
+pass.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$passValidator</var></dt>
+					<dd><code><code><a href="class-Passbook.PassValidatorInterface.html">Passbook\PassValidatorInterface</a></code>|null</code><br>$passValidator</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>mixed</code><br>$this<br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getPassValidator" id="_getPassValidator">
+
+		<td class="attributes"><code>
+			 public 
+			<code><a href="class-Passbook.PassValidatorInterface.html">Passbook\PassValidatorInterface</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getPassValidator">#</a>
+		<code><a href="source-class-Passbook.PassFactory.html#215-221" title="Go to source code">getPassValidator</a>( )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><code><a href="class-Passbook.PassValidatorInterface.html">Passbook\PassValidatorInterface</a></code></code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
 	<tr data-order="serialize" id="_serialize">
 
 		<td class="attributes"><code>
@@ -320,7 +529,7 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_serialize">#</a>
-		<code><a href="source-class-Passbook.PassFactory.html#127-136" title="Go to source code">serialize</a>( <span><code><a href="class-Passbook.PassInterface.html">Passbook\PassInterface</a></code> <var>$pass</var></span> )</code>
+		<code><a href="source-class-Passbook.PassFactory.html#223-233" title="Go to source code">serialize</a>( <span><code><a href="class-Passbook.PassInterface.html">Passbook\PassInterface</a></code> <var>$pass</var></span> )</code>
 
 		<div class="description short">
 			
@@ -362,7 +571,7 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_package">#</a>
-		<code><a href="source-class-Passbook.PassFactory.html#138-236" title="Go to source code">package</a>( <span><code><a href="class-Passbook.PassInterface.html">Passbook\PassInterface</a></code> <var>$pass</var></span> )</code>
+		<code><a href="source-class-Passbook.PassFactory.html#235-283" title="Go to source code">package</a>( <span><code><a href="class-Passbook.PassInterface.html">Passbook\PassInterface</a></code> <var>$pass</var></span>, <span>string <var>$passName</var> = <span class="php-quote">''</span></span> )</code>
 
 		<div class="description short">
 			
@@ -379,18 +588,61 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$pass</var></dt>
+					<dd><code><code><a href="class-Passbook.PassInterface.html">Passbook\PassInterface</a></code></code><br>$pass - the pass to be packaged into a .pkpass file</dd>
+					<dt><var>$passName</var></dt>
+					<dd><code>string</code><br>$passName - filename to be used for the pass; if blank the serial number will be
+used</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><code><a href="class-SplFileObject.html">SplFileObject</a></code></code><br>If an IO error occurred<br />
+				</div>
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><code><a href="class-Exception.html">Exception</a></code></code><br />
+				</div>
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getPassName" id="_getPassName">
+
+		<td class="attributes"><code>
+			 public 
+			string
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getPassName">#</a>
+		<code><a href="source-class-Passbook.PassFactory.html#420-430" title="Go to source code">getPassName</a>( <span>mixed <var>$passName</var></span>, <span><code><a href="class-Passbook.PassInterface.html">Passbook\PassInterface</a></code> <var>$pass</var></span> )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$passName</var></dt>
+					<dd><code>mixed</code><br>$passName</dd>
+					<dt><var>$pass</var></dt>
 					<dd><code><code><a href="class-Passbook.PassInterface.html">Passbook\PassInterface</a></code></code><br>$pass</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
 				<div class="list">
-					<code><code><a href="class-SplFileObject.html">SplFileObject</a></code></code><br />
+					<code>string</code><br />
 				</div>
 
-				<h4>Throws</h4>
-				<div class="list">
-					<code><code><a href="class-Passbook.Exception.FileException.html">Passbook\Exception\FileException</a></code></code><br>If an IO error occurred<br />
-				</div>
 
 
 
@@ -412,7 +664,7 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 
 		<td class="attributes"><code>string</code></td>
 		<td class="name"><code>
-				<a href="source-class-Passbook.PassFactory.html#70-74" title="Go to source code"><b>PASS_EXTENSION</b></a>
+				<a href="source-class-Passbook.PassFactory.html#92-97" title="Go to source code"><b>PASS_EXTENSION</b></a>
 		</code></td>
 		<td class="value"><code><span class="php-quote">'.pkpass'</span></code></td>
 		<td class="description"><div>
@@ -446,7 +698,7 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-Passbook.PassFactory.html#28-32" title="Go to source code"><var>$outputPath</var></a>
+				<a href="source-class-Passbook.PassFactory.html#33-38" title="Go to source code"><var>$outputPath</var></a>
 		</td>
 		<td class="value"><code><span class="php-quote">''</span></code></td>
 		<td class="description"><div>
@@ -473,7 +725,7 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-Passbook.PassFactory.html#34-38" title="Go to source code"><var>$overwrite</var></a>
+				<a href="source-class-Passbook.PassFactory.html#40-45" title="Go to source code"><var>$overwrite</var></a>
 		</td>
 		<td class="value"><code><span class="php-keyword1">false</span></code></td>
 		<td class="description"><div>
@@ -500,7 +752,7 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-Passbook.PassFactory.html#40-44" title="Go to source code"><var>$passTypeIdentifier</var></a>
+				<a href="source-class-Passbook.PassFactory.html#47-52" title="Go to source code"><var>$passTypeIdentifier</var></a>
 		</td>
 		<td class="value"><code></code></td>
 		<td class="description"><div>
@@ -527,7 +779,7 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-Passbook.PassFactory.html#46-50" title="Go to source code"><var>$teamIdentifier</var></a>
+				<a href="source-class-Passbook.PassFactory.html#54-59" title="Go to source code"><var>$teamIdentifier</var></a>
 		</td>
 		<td class="value"><code></code></td>
 		<td class="description"><div>
@@ -554,7 +806,7 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-Passbook.PassFactory.html#52-56" title="Go to source code"><var>$organizationName</var></a>
+				<a href="source-class-Passbook.PassFactory.html#61-66" title="Go to source code"><var>$organizationName</var></a>
 		</td>
 		<td class="value"><code></code></td>
 		<td class="description"><div>
@@ -577,11 +829,11 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 	<tr data-order="p12" id="$p12">
 		<td class="attributes"><code>
 			protected  
-			<code><a href="class-Passbook.Certificate.P12.html">Passbook\Certificate\P12</a></code>
+			<code><a href="class-Passbook.Certificate.P12Interface.html">Passbook\Certificate\P12Interface</a></code>
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-Passbook.PassFactory.html#58-62" title="Go to source code"><var>$p12</var></a>
+				<a href="source-class-Passbook.PassFactory.html#68-73" title="Go to source code"><var>$p12</var></a>
 		</td>
 		<td class="value"><code></code></td>
 		<td class="description"><div>
@@ -604,11 +856,11 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 	<tr data-order="wwdr" id="$wwdr">
 		<td class="attributes"><code>
 			protected  
-			<code><a href="class-Passbook.Certificate.WWDR.html">Passbook\Certificate\WWDR</a></code>
+			<code><a href="class-Passbook.Certificate.WWDRInterface.html">Passbook\Certificate\WWDRInterface</a></code>
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-Passbook.PassFactory.html#64-68" title="Go to source code"><var>$wwdr</var></a>
+				<a href="source-class-Passbook.PassFactory.html#75-80" title="Go to source code"><var>$wwdr</var></a>
 		</td>
 		<td class="value"><code></code></td>
 		<td class="description"><div>
@@ -623,6 +875,37 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 			<div class="description detailed hidden">
 				
 <p>WWDR file</p>
+
+
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="skipSignature" id="$skipSignature">
+		<td class="attributes"><code>
+			protected  
+			boolean
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-Passbook.PassFactory.html#82-85" title="Go to source code"><var>$skipSignature</var></a>
+		</td>
+		<td class="value"><code></code></td>
+		<td class="description"><div>
+			<a href="#$skipSignature" class="anchor">#</a>
+
+			<div class="description short">
+				
+<ul>
+	<li>skip signing the pass; should only be used for testing</li>
+</ul>
+
+			</div>
+
+			<div class="description detailed hidden">
+				
+<ul>
+	<li>skip signing the pass; should only be used for testing</li>
+</ul>
 
 
 			</div>

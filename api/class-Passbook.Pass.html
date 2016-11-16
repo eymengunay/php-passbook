@@ -6,8 +6,8 @@
 
 	<title>Class Passbook\Pass | PHP-Passbook</title>
 
-	<script type="text/javascript" src="resources/combined.js?1177154521"></script>
-	<script type="text/javascript" src="elementlist.js?1730068341"></script>
+	<script type="text/javascript" src="resources/combined.js?2966811159"></script>
+	<script type="text/javascript" src="elementlist.js?232615948"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 </head>
@@ -45,11 +45,14 @@
 			<ul>
 				<li class="active"><a href="class-Passbook.Pass.html">Pass</a></li>
 				<li><a href="class-Passbook.PassFactory.html">PassFactory</a></li>
+				<li><a href="class-Passbook.PassValidator.html">PassValidator</a></li>
 			</ul>
 
 			<h3>Interfaces</h3>
 			<ul>
+				<li><a href="class-Passbook.ArrayableInterface.html">ArrayableInterface</a></li>
 				<li><a href="class-Passbook.PassInterface.html">PassInterface</a></li>
+				<li><a href="class-Passbook.PassValidatorInterface.html">PassValidatorInterface</a></li>
 			</ul>
 
 
@@ -140,7 +143,11 @@
 				<b>Author:</b>
 				Eymen Gunay &lt;<a
 href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
-		<b>Located at</b> <a href="source-class-Passbook.Pass.html#20-601" title="Go to source code">Passbook/Pass.php</a><br />
+				<b>Author:</b>
+				Sotaro Omura &lt;<a href="http://omoon.org">http://omoon.org</a>&gt;<br />
+				<b>Author:</b>
+				Dzamir &lt;<a href="https://github.com/Dzamir">https://github.com/Dzamir</a>&gt;<br />
+		<b>Located at</b> <a href="source-class-Passbook.Pass.html#23-806" title="Go to source code">Passbook/Pass.php</a><br />
 	</div>
 
 
@@ -158,7 +165,7 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#___construct">#</a>
-		<code><a href="source-class-Passbook.Pass.html#163-168" title="Go to source code">__construct</a>( <span>mixed <var>$serialNumber</var></span>, <span>mixed <var>$description</var></span> )</code>
+		<code><a href="source-class-Passbook.Pass.html#240-245" title="Go to source code">__construct</a>( <span>mixed <var>$serialNumber</var></span>, <span>mixed <var>$description</var></span> )</code>
 
 		<div class="description short">
 			
@@ -182,28 +189,38 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 
 		<td class="attributes"><code>
 			 public 
-			
+			array
 			
 			</code>
 		</td>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_toArray">#</a>
-		<code><a href="source-class-Passbook.Pass.html#170-222" title="Go to source code">toArray</a>( )</code>
+		<code><a href="source-class-Passbook.Pass.html#247-314" title="Go to source code">toArray</a>( )</code>
 
 		<div class="description short">
 			
+<p>Get the instance as an array.</p>
+
 		</div>
 
 		<div class="description detailed hidden">
 			
+<p>Get the instance as an array.</p>
 
 
 
 
+				<h4>Returns</h4>
+				<div class="list">
+					<code>array</code><br />
+				</div>
 
 
 
+
+				<h4>Implementation of</h4>
+				<div class="list"><code><a href="class-Passbook.ArrayableInterface.html#_toArray">Passbook\ArrayableInterface::toArray()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -218,7 +235,7 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_setSerialNumber">#</a>
-		<code><a href="source-class-Passbook.Pass.html#224-232" title="Go to source code">setSerialNumber</a>( <span>mixed <var>$serialNumber</var></span> )</code>
+		<code><a href="source-class-Passbook.Pass.html#316-324" title="Go to source code">setSerialNumber</a>( <span>mixed <var>$serialNumber</var></span> )</code>
 
 		<div class="description short">
 			
@@ -249,7 +266,7 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getSerialNumber">#</a>
-		<code><a href="source-class-Passbook.Pass.html#234-240" title="Go to source code">getSerialNumber</a>( )</code>
+		<code><a href="source-class-Passbook.Pass.html#326-332" title="Go to source code">getSerialNumber</a>( )</code>
 
 		<div class="description short">
 			
@@ -280,7 +297,7 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_setDescription">#</a>
-		<code><a href="source-class-Passbook.Pass.html#242-250" title="Go to source code">setDescription</a>( <span>mixed <var>$description</var></span> )</code>
+		<code><a href="source-class-Passbook.Pass.html#334-342" title="Go to source code">setDescription</a>( <span>mixed <var>$description</var></span> )</code>
 
 		<div class="description short">
 			
@@ -311,7 +328,7 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getDescription">#</a>
-		<code><a href="source-class-Passbook.Pass.html#252-258" title="Go to source code">getDescription</a>( )</code>
+		<code><a href="source-class-Passbook.Pass.html#344-350" title="Go to source code">getDescription</a>( )</code>
 
 		<div class="description short">
 			
@@ -342,7 +359,7 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getFormatVersion">#</a>
-		<code><a href="source-class-Passbook.Pass.html#260-266" title="Go to source code">getFormatVersion</a>( )</code>
+		<code><a href="source-class-Passbook.Pass.html#352-358" title="Go to source code">getFormatVersion</a>( )</code>
 
 		<div class="description short">
 			
@@ -373,7 +390,7 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_setFormatVersion">#</a>
-		<code><a href="source-class-Passbook.Pass.html#268-276" title="Go to source code">setFormatVersion</a>( <span>mixed <var>$formatVersion</var></span> )</code>
+		<code><a href="source-class-Passbook.Pass.html#360-368" title="Go to source code">setFormatVersion</a>( <span>mixed <var>$formatVersion</var></span> )</code>
 
 		<div class="description short">
 			
@@ -404,7 +421,7 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getType">#</a>
-		<code><a href="source-class-Passbook.Pass.html#278-284" title="Go to source code">getType</a>( )</code>
+		<code><a href="source-class-Passbook.Pass.html#370-376" title="Go to source code">getType</a>( )</code>
 
 		<div class="description short">
 			
@@ -435,7 +452,7 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_setType">#</a>
-		<code><a href="source-class-Passbook.Pass.html#286-294" title="Go to source code">setType</a>( <span>mixed <var>$type</var></span> )</code>
+		<code><a href="source-class-Passbook.Pass.html#378-386" title="Go to source code">setType</a>( <span>mixed <var>$type</var></span> )</code>
 
 		<div class="description short">
 			
@@ -466,7 +483,7 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_setStructure">#</a>
-		<code><a href="source-class-Passbook.Pass.html#296-304" title="Go to source code">setStructure</a>( <span><code><a href="class-Passbook.Pass.StructureInterface.html">Passbook\Pass\StructureInterface</a></code> <var>$structure</var></span> )</code>
+		<code><a href="source-class-Passbook.Pass.html#388-396" title="Go to source code">setStructure</a>( <span><code><a href="class-Passbook.Pass.StructureInterface.html">Passbook\Pass\StructureInterface</a></code> <var>$structure</var></span> )</code>
 
 		<div class="description short">
 			
@@ -497,7 +514,7 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getStructure">#</a>
-		<code><a href="source-class-Passbook.Pass.html#306-312" title="Go to source code">getStructure</a>( )</code>
+		<code><a href="source-class-Passbook.Pass.html#398-404" title="Go to source code">getStructure</a>( )</code>
 
 		<div class="description short">
 			
@@ -528,7 +545,7 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_addImage">#</a>
-		<code><a href="source-class-Passbook.Pass.html#314-322" title="Go to source code">addImage</a>( <span><code><a href="class-Passbook.Pass.ImageInterface.html">Passbook\Pass\ImageInterface</a></code> <var>$image</var></span> )</code>
+		<code><a href="source-class-Passbook.Pass.html#406-414" title="Go to source code">addImage</a>( <span><code><a href="class-Passbook.Pass.ImageInterface.html">Passbook\Pass\ImageInterface</a></code> <var>$image</var></span> )</code>
 
 		<div class="description short">
 			
@@ -552,14 +569,14 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 
 		<td class="attributes"><code>
 			 public 
-			
+			Image[]
 			
 			</code>
 		</td>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getImages">#</a>
-		<code><a href="source-class-Passbook.Pass.html#324-330" title="Go to source code">getImages</a>( )</code>
+		<code><a href="source-class-Passbook.Pass.html#416-422" title="Go to source code">getImages</a>( )</code>
 
 		<div class="description short">
 			
@@ -570,12 +587,91 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 
 
 
+				<h4>Returns</h4>
+				<div class="list">
+					<code>Image[]</code><br />
+				</div>
 
 
 
 
 				<h4>Implementation of</h4>
 				<div class="list"><code><a href="class-Passbook.PassInterface.html#_getImages">Passbook\PassInterface::getImages()</a></code></div>
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="addLocalization" id="_addLocalization">
+
+		<td class="attributes"><code>
+			 public 
+			<code><a href="class-Passbook.PassInterface.html">Passbook\PassInterface</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_addLocalization">#</a>
+		<code><a href="source-class-Passbook.Pass.html#424-432" title="Go to source code">addLocalization</a>( <span><code><a href="class-Passbook.Pass.LocalizationInterface.html">Passbook\Pass\LocalizationInterface</a></code> <var>$localization</var></span> )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$localization</var></dt>
+					<dd><code><code><a href="class-Passbook.Pass.LocalizationInterface.html">Passbook\Pass\LocalizationInterface</a></code></code><br>$localization</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><code><a href="class-Passbook.PassInterface.html">Passbook\PassInterface</a></code></code><br />
+				</div>
+
+
+
+
+				<h4>Implementation of</h4>
+				<div class="list"><code><a href="class-Passbook.PassInterface.html#_addLocalization">Passbook\PassInterface::addLocalization()</a></code></div>
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getLocalizations" id="_getLocalizations">
+
+		<td class="attributes"><code>
+			 public 
+			<code><a href="class-Passbook.Pass.LocalizationInterface.html">Passbook\Pass\LocalizationInterface</a>[]</code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getLocalizations">#</a>
+		<code><a href="source-class-Passbook.Pass.html#434-440" title="Go to source code">getLocalizations</a>( )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><code><a href="class-Passbook.Pass.LocalizationInterface.html">Passbook\Pass\LocalizationInterface</a>[]</code></code><br />
+				</div>
+
+
+
+
+				<h4>Implementation of</h4>
+				<div class="list"><code><a href="class-Passbook.PassInterface.html#_getLocalizations">Passbook\PassInterface::getLocalizations()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -590,7 +686,7 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_addAssociatedStoreIdentifier">#</a>
-		<code><a href="source-class-Passbook.Pass.html#332-340" title="Go to source code">addAssociatedStoreIdentifier</a>( <span>mixed <var>$associatedStoreIdentifier</var></span> )</code>
+		<code><a href="source-class-Passbook.Pass.html#442-450" title="Go to source code">addAssociatedStoreIdentifier</a>( <span>mixed <var>$associatedStoreIdentifier</var></span> )</code>
 
 		<div class="description short">
 			
@@ -621,7 +717,7 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getAssociatedStoreIdentifiers">#</a>
-		<code><a href="source-class-Passbook.Pass.html#342-348" title="Go to source code">getAssociatedStoreIdentifiers</a>( )</code>
+		<code><a href="source-class-Passbook.Pass.html#452-458" title="Go to source code">getAssociatedStoreIdentifiers</a>( )</code>
 
 		<div class="description short">
 			
@@ -652,7 +748,7 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_addLocation">#</a>
-		<code><a href="source-class-Passbook.Pass.html#350-358" title="Go to source code">addLocation</a>( <span><code><a href="class-Passbook.Pass.LocationInterface.html">Passbook\Pass\LocationInterface</a></code> <var>$location</var></span> )</code>
+		<code><a href="source-class-Passbook.Pass.html#460-468" title="Go to source code">addLocation</a>( <span><code><a href="class-Passbook.Pass.LocationInterface.html">Passbook\Pass\LocationInterface</a></code> <var>$location</var></span> )</code>
 
 		<div class="description short">
 			
@@ -683,7 +779,7 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getLocations">#</a>
-		<code><a href="source-class-Passbook.Pass.html#360-366" title="Go to source code">getLocations</a>( )</code>
+		<code><a href="source-class-Passbook.Pass.html#470-476" title="Go to source code">getLocations</a>( )</code>
 
 		<div class="description short">
 			
@@ -714,7 +810,7 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_addBeacon">#</a>
-		<code><a href="source-class-Passbook.Pass.html#368-376" title="Go to source code">addBeacon</a>( <span><code><a href="class-Passbook.Pass.BeaconInterface.html">Passbook\Pass\BeaconInterface</a></code> <var>$beacon</var></span> )</code>
+		<code><a href="source-class-Passbook.Pass.html#478-486" title="Go to source code">addBeacon</a>( <span><code><a href="class-Passbook.Pass.BeaconInterface.html">Passbook\Pass\BeaconInterface</a></code> <var>$beacon</var></span> )</code>
 
 		<div class="description short">
 			
@@ -745,7 +841,7 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getBeacons">#</a>
-		<code><a href="source-class-Passbook.Pass.html#378-384" title="Go to source code">getBeacons</a>( )</code>
+		<code><a href="source-class-Passbook.Pass.html#488-494" title="Go to source code">getBeacons</a>( )</code>
 
 		<div class="description short">
 			
@@ -776,7 +872,7 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_setRelevantDate">#</a>
-		<code><a href="source-class-Passbook.Pass.html#386-394" title="Go to source code">setRelevantDate</a>( <span><code><a href="class-DateTime.html">DateTime</a></code> <var>$relevantDate</var></span> )</code>
+		<code><a href="source-class-Passbook.Pass.html#496-504" title="Go to source code">setRelevantDate</a>( <span><code><a href="class-DateTime.html">DateTime</a></code> <var>$relevantDate</var></span> )</code>
 
 		<div class="description short">
 			
@@ -807,7 +903,7 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getRelevantDate">#</a>
-		<code><a href="source-class-Passbook.Pass.html#396-402" title="Go to source code">getRelevantDate</a>( )</code>
+		<code><a href="source-class-Passbook.Pass.html#506-512" title="Go to source code">getRelevantDate</a>( )</code>
 
 		<div class="description short">
 			
@@ -827,7 +923,7 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 		</div>
 		</div></td>
 	</tr>
-	<tr data-order="setBarcode" id="_setBarcode">
+	<tr data-order="setMaxDistance" id="_setMaxDistance">
 
 		<td class="attributes"><code>
 			 public 
@@ -837,8 +933,8 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 		</td>
 
 		<td class="name"><div>
-		<a class="anchor" href="#_setBarcode">#</a>
-		<code><a href="source-class-Passbook.Pass.html#404-412" title="Go to source code">setBarcode</a>( <span><code><a href="class-Passbook.Pass.BarcodeInterface.html">Passbook\Pass\BarcodeInterface</a></code> <var>$barcode</var></span> )</code>
+		<a class="anchor" href="#_setMaxDistance">#</a>
+		<code><a href="source-class-Passbook.Pass.html#514-522" title="Go to source code">setMaxDistance</a>( <span>mixed <var>$maxDistance</var></span> )</code>
 
 		<div class="description short">
 			
@@ -854,7 +950,76 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 
 
 				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-Passbook.PassInterface.html#_setBarcode">Passbook\PassInterface::setBarcode()</a></code></div>
+				<div class="list"><code><a href="class-Passbook.PassInterface.html#_setMaxDistance">Passbook\PassInterface::setMaxDistance()</a></code></div>
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getMaxDistance" id="_getMaxDistance">
+
+		<td class="attributes"><code>
+			 public 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getMaxDistance">#</a>
+		<code><a href="source-class-Passbook.Pass.html#524-530" title="Go to source code">getMaxDistance</a>( )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+
+
+
+
+
+				<h4>Implementation of</h4>
+				<div class="list"><code><a href="class-Passbook.PassInterface.html#_getMaxDistance">Passbook\PassInterface::getMaxDistance()</a></code></div>
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="setBarcode" id="_setBarcode">
+
+		<td class="attributes"><code>
+			 public 
+			mixed
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_setBarcode">#</a>
+		<code><a href="source-class-Passbook.Pass.html#532-541" title="Go to source code">setBarcode</a>( <span><code><a href="class-Passbook.Pass.BarcodeInterface.html">Passbook\Pass\BarcodeInterface</a></code> <var>$barcode</var></span> )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$barcode</var></dt>
+					<dd><code><code><a href="class-Passbook.Pass.BarcodeInterface.html">Passbook\Pass\BarcodeInterface</a></code></code><br>$barcode</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>mixed</code><br>$this<br />
+				</div>
+
+
+
+
 		</div>
 		</div></td>
 	</tr>
@@ -862,14 +1027,14 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 
 		<td class="attributes"><code>
 			 public 
-			
+			<code><a href="class-Passbook.Pass.BarcodeInterface.html">Passbook\Pass\BarcodeInterface</a></code>
 			
 			</code>
 		</td>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getBarcode">#</a>
-		<code><a href="source-class-Passbook.Pass.html#414-420" title="Go to source code">getBarcode</a>( )</code>
+		<code><a href="source-class-Passbook.Pass.html#543-549" title="Go to source code">getBarcode</a>( )</code>
 
 		<div class="description short">
 			
@@ -880,12 +1045,89 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 
 
 
+				<h4>Returns</h4>
+				<div class="list">
+					<code><code><a href="class-Passbook.Pass.BarcodeInterface.html">Passbook\Pass\BarcodeInterface</a></code></code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="addBarcode" id="_addBarcode">
+
+		<td class="attributes"><code>
+			 public 
+			mixed
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_addBarcode">#</a>
+		<code><a href="source-class-Passbook.Pass.html#551-563" title="Go to source code">addBarcode</a>( <span><code><a href="class-Passbook.Pass.BarcodeInterface.html">Passbook\Pass\BarcodeInterface</a></code> <var>$barcode</var></span> )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$barcode</var></dt>
+					<dd><code><code><a href="class-Passbook.Pass.BarcodeInterface.html">Passbook\Pass\BarcodeInterface</a></code></code><br>$barcode - barcode to add to the pass</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>mixed</code><br>$this<br />
+				</div>
 
 
 
 
 				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-Passbook.PassInterface.html#_getBarcode">Passbook\PassInterface::getBarcode()</a></code></div>
+				<div class="list"><code><a href="class-Passbook.PassInterface.html#_addBarcode">Passbook\PassInterface::addBarcode()</a></code></div>
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getBarcodes" id="_getBarcodes">
+
+		<td class="attributes"><code>
+			 public 
+			<code><a href="class-Passbook.Pass.BarcodeInterface.html">Passbook\Pass\BarcodeInterface</a>[]</code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getBarcodes">#</a>
+		<code><a href="source-class-Passbook.Pass.html#565-571" title="Go to source code">getBarcodes</a>( )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><code><a href="class-Passbook.Pass.BarcodeInterface.html">Passbook\Pass\BarcodeInterface</a>[]</code></code><br />
+				</div>
+
+
+
+
+				<h4>Implementation of</h4>
+				<div class="list"><code><a href="class-Passbook.PassInterface.html#_getBarcodes">Passbook\PassInterface::getBarcodes()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -900,7 +1142,7 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_setBackgroundColor">#</a>
-		<code><a href="source-class-Passbook.Pass.html#422-430" title="Go to source code">setBackgroundColor</a>( <span>mixed <var>$backgroundColor</var></span> )</code>
+		<code><a href="source-class-Passbook.Pass.html#573-581" title="Go to source code">setBackgroundColor</a>( <span>mixed <var>$backgroundColor</var></span> )</code>
 
 		<div class="description short">
 			
@@ -931,7 +1173,7 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getBackgroundColor">#</a>
-		<code><a href="source-class-Passbook.Pass.html#432-438" title="Go to source code">getBackgroundColor</a>( )</code>
+		<code><a href="source-class-Passbook.Pass.html#583-589" title="Go to source code">getBackgroundColor</a>( )</code>
 
 		<div class="description short">
 			
@@ -962,7 +1204,7 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_setForegroundColor">#</a>
-		<code><a href="source-class-Passbook.Pass.html#440-448" title="Go to source code">setForegroundColor</a>( <span>mixed <var>$foregroundColor</var></span> )</code>
+		<code><a href="source-class-Passbook.Pass.html#591-599" title="Go to source code">setForegroundColor</a>( <span>mixed <var>$foregroundColor</var></span> )</code>
 
 		<div class="description short">
 			
@@ -993,7 +1235,7 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getForegroundColor">#</a>
-		<code><a href="source-class-Passbook.Pass.html#450-456" title="Go to source code">getForegroundColor</a>( )</code>
+		<code><a href="source-class-Passbook.Pass.html#601-607" title="Go to source code">getForegroundColor</a>( )</code>
 
 		<div class="description short">
 			
@@ -1024,7 +1266,7 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_setLabelColor">#</a>
-		<code><a href="source-class-Passbook.Pass.html#458-466" title="Go to source code">setLabelColor</a>( <span>mixed <var>$labelColor</var></span> )</code>
+		<code><a href="source-class-Passbook.Pass.html#609-617" title="Go to source code">setLabelColor</a>( <span>mixed <var>$labelColor</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1055,7 +1297,7 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getLabelColor">#</a>
-		<code><a href="source-class-Passbook.Pass.html#468-474" title="Go to source code">getLabelColor</a>( )</code>
+		<code><a href="source-class-Passbook.Pass.html#619-625" title="Go to source code">getLabelColor</a>( )</code>
 
 		<div class="description short">
 			
@@ -1086,7 +1328,7 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_setLogoText">#</a>
-		<code><a href="source-class-Passbook.Pass.html#476-484" title="Go to source code">setLogoText</a>( <span>mixed <var>$logoText</var></span> )</code>
+		<code><a href="source-class-Passbook.Pass.html#627-635" title="Go to source code">setLogoText</a>( <span>mixed <var>$logoText</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1117,7 +1359,7 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getLogoText">#</a>
-		<code><a href="source-class-Passbook.Pass.html#486-492" title="Go to source code">getLogoText</a>( )</code>
+		<code><a href="source-class-Passbook.Pass.html#637-643" title="Go to source code">getLogoText</a>( )</code>
 
 		<div class="description short">
 			
@@ -1148,7 +1390,7 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_setSuppressStripShine">#</a>
-		<code><a href="source-class-Passbook.Pass.html#494-502" title="Go to source code">setSuppressStripShine</a>( <span>mixed <var>$suppressStripShine</var></span> )</code>
+		<code><a href="source-class-Passbook.Pass.html#645-653" title="Go to source code">setSuppressStripShine</a>( <span>mixed <var>$suppressStripShine</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1179,7 +1421,7 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getSuppressStripShine">#</a>
-		<code><a href="source-class-Passbook.Pass.html#504-510" title="Go to source code">getSuppressStripShine</a>( )</code>
+		<code><a href="source-class-Passbook.Pass.html#655-661" title="Go to source code">getSuppressStripShine</a>( )</code>
 
 		<div class="description short">
 			
@@ -1210,7 +1452,7 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_setAuthenticationToken">#</a>
-		<code><a href="source-class-Passbook.Pass.html#512-520" title="Go to source code">setAuthenticationToken</a>( <span>mixed <var>$authenticationToken</var></span> )</code>
+		<code><a href="source-class-Passbook.Pass.html#663-671" title="Go to source code">setAuthenticationToken</a>( <span>mixed <var>$authenticationToken</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1241,7 +1483,7 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getAuthenticationToken">#</a>
-		<code><a href="source-class-Passbook.Pass.html#522-528" title="Go to source code">getAuthenticationToken</a>( )</code>
+		<code><a href="source-class-Passbook.Pass.html#673-679" title="Go to source code">getAuthenticationToken</a>( )</code>
 
 		<div class="description short">
 			
@@ -1272,7 +1514,7 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_setWebServiceURL">#</a>
-		<code><a href="source-class-Passbook.Pass.html#530-538" title="Go to source code">setWebServiceURL</a>( <span>mixed <var>$webServiceURL</var></span> )</code>
+		<code><a href="source-class-Passbook.Pass.html#681-689" title="Go to source code">setWebServiceURL</a>( <span>mixed <var>$webServiceURL</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1303,7 +1545,7 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getWebServiceURL">#</a>
-		<code><a href="source-class-Passbook.Pass.html#540-546" title="Go to source code">getWebServiceURL</a>( )</code>
+		<code><a href="source-class-Passbook.Pass.html#691-697" title="Go to source code">getWebServiceURL</a>( )</code>
 
 		<div class="description short">
 			
@@ -1334,7 +1576,7 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_setPassTypeIdentifier">#</a>
-		<code><a href="source-class-Passbook.Pass.html#548-556" title="Go to source code">setPassTypeIdentifier</a>( <span>mixed <var>$passTypeIdentifier</var></span> )</code>
+		<code><a href="source-class-Passbook.Pass.html#699-707" title="Go to source code">setPassTypeIdentifier</a>( <span>mixed <var>$passTypeIdentifier</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1365,7 +1607,7 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getPassTypeIdentifier">#</a>
-		<code><a href="source-class-Passbook.Pass.html#558-564" title="Go to source code">getPassTypeIdentifier</a>( )</code>
+		<code><a href="source-class-Passbook.Pass.html#709-715" title="Go to source code">getPassTypeIdentifier</a>( )</code>
 
 		<div class="description short">
 			
@@ -1396,7 +1638,7 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_setTeamIdentifier">#</a>
-		<code><a href="source-class-Passbook.Pass.html#566-574" title="Go to source code">setTeamIdentifier</a>( <span>mixed <var>$teamIdentifier</var></span> )</code>
+		<code><a href="source-class-Passbook.Pass.html#717-725" title="Go to source code">setTeamIdentifier</a>( <span>mixed <var>$teamIdentifier</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1427,7 +1669,7 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getTeamIdentifier">#</a>
-		<code><a href="source-class-Passbook.Pass.html#576-582" title="Go to source code">getTeamIdentifier</a>( )</code>
+		<code><a href="source-class-Passbook.Pass.html#727-733" title="Go to source code">getTeamIdentifier</a>( )</code>
 
 		<div class="description short">
 			
@@ -1458,7 +1700,7 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_setOrganizationName">#</a>
-		<code><a href="source-class-Passbook.Pass.html#584-592" title="Go to source code">setOrganizationName</a>( <span>mixed <var>$organizationName</var></span> )</code>
+		<code><a href="source-class-Passbook.Pass.html#735-743" title="Go to source code">setOrganizationName</a>( <span>mixed <var>$organizationName</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1489,7 +1731,7 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getOrganizationName">#</a>
-		<code><a href="source-class-Passbook.Pass.html#594-600" title="Go to source code">getOrganizationName</a>( )</code>
+		<code><a href="source-class-Passbook.Pass.html#745-751" title="Go to source code">getOrganizationName</a>( )</code>
 
 		<div class="description short">
 			
@@ -1506,6 +1748,184 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 
 				<h4>Implementation of</h4>
 				<div class="list"><code><a href="class-Passbook.PassInterface.html#_getOrganizationName">Passbook\PassInterface::getOrganizationName()</a></code></div>
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="setExpirationDate" id="_setExpirationDate">
+
+		<td class="attributes"><code>
+			 public 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_setExpirationDate">#</a>
+		<code><a href="source-class-Passbook.Pass.html#753-761" title="Go to source code">setExpirationDate</a>( <span><code><a href="class-DateTime.html">DateTime</a></code> <var>$expirationDate</var></span> )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getExpirationDate" id="_getExpirationDate">
+
+		<td class="attributes"><code>
+			 public 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getExpirationDate">#</a>
+		<code><a href="source-class-Passbook.Pass.html#763-769" title="Go to source code">getExpirationDate</a>( )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="setVoided" id="_setVoided">
+
+		<td class="attributes"><code>
+			 public 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_setVoided">#</a>
+		<code><a href="source-class-Passbook.Pass.html#771-779" title="Go to source code">setVoided</a>( <span>mixed <var>$voided</var></span> )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getVoided" id="_getVoided">
+
+		<td class="attributes"><code>
+			 public 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getVoided">#</a>
+		<code><a href="source-class-Passbook.Pass.html#781-787" title="Go to source code">getVoided</a>( )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="setAppLaunchURL" id="_setAppLaunchURL">
+
+		<td class="attributes"><code>
+			 public 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_setAppLaunchURL">#</a>
+		<code><a href="source-class-Passbook.Pass.html#789-797" title="Go to source code">setAppLaunchURL</a>( <span>mixed <var>$appLaunchURL</var></span> )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+
+
+
+
+
+				<h4>Implementation of</h4>
+				<div class="list"><code><a href="class-Passbook.PassInterface.html#_setAppLaunchURL">Passbook\PassInterface::setAppLaunchURL()</a></code></div>
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getAppLaunchURL" id="_getAppLaunchURL">
+
+		<td class="attributes"><code>
+			 public 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getAppLaunchURL">#</a>
+		<code><a href="source-class-Passbook.Pass.html#799-805" title="Go to source code">getAppLaunchURL</a>( )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+
+
+
+
+
+				<h4>Implementation of</h4>
+				<div class="list"><code><a href="class-Passbook.PassInterface.html#_getAppLaunchURL">Passbook\PassInterface::getAppLaunchURL()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -1531,7 +1951,7 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-Passbook.Pass.html#27-33" title="Go to source code"><var>$serialNumber</var></a>
+				<a href="source-class-Passbook.Pass.html#32-39" title="Go to source code"><var>$serialNumber</var></a>
 		</td>
 		<td class="value"><code></code></td>
 		<td class="description"><div>
@@ -1560,7 +1980,7 @@ pass type identifier may have the same serial number.</p>
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-Passbook.Pass.html#35-40" title="Go to source code"><var>$description</var></a>
+				<a href="source-class-Passbook.Pass.html#41-47" title="Go to source code"><var>$description</var></a>
 		</td>
 		<td class="value"><code></code></td>
 		<td class="description"><div>
@@ -1589,7 +2009,7 @@ technologies.</p>
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-Passbook.Pass.html#42-47" title="Go to source code"><var>$formatVersion</var></a>
+				<a href="source-class-Passbook.Pass.html#49-55" title="Go to source code"><var>$formatVersion</var></a>
 		</td>
 		<td class="value"><code><span class="php-num">1</span></code></td>
 		<td class="description"><div>
@@ -1616,7 +2036,7 @@ technologies.</p>
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-Passbook.Pass.html#49-53" title="Go to source code"><var>$type</var></a>
+				<a href="source-class-Passbook.Pass.html#57-62" title="Go to source code"><var>$type</var></a>
 		</td>
 		<td class="value"><code></code></td>
 		<td class="description"><div>
@@ -1639,11 +2059,11 @@ technologies.</p>
 	<tr data-order="structure" id="$structure">
 		<td class="attributes"><code>
 			protected  
-			Structure
+			<code><a href="class-Passbook.Pass.Structure.html">Passbook\Pass\Structure</a></code>
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-Passbook.Pass.html#55-59" title="Go to source code"><var>$structure</var></a>
+				<a href="source-class-Passbook.Pass.html#64-69" title="Go to source code"><var>$structure</var></a>
 		</td>
 		<td class="value"><code></code></td>
 		<td class="description"><div>
@@ -1666,11 +2086,11 @@ technologies.</p>
 	<tr data-order="images" id="$images">
 		<td class="attributes"><code>
 			protected  
-			string
+			<code><a href="class-Passbook.Pass.ImageInterface.html">Passbook\Pass\ImageInterface</a>[]</code>
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-Passbook.Pass.html#61-65" title="Go to source code"><var>$images</var></a>
+				<a href="source-class-Passbook.Pass.html#71-76" title="Go to source code"><var>$images</var></a>
 		</td>
 		<td class="value"><code><span class="php-keyword1">array</span>()</code></td>
 		<td class="description"><div>
@@ -1697,7 +2117,7 @@ technologies.</p>
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-Passbook.Pass.html#67-71" title="Go to source code"><var>$beacons</var></a>
+				<a href="source-class-Passbook.Pass.html#78-83" title="Go to source code"><var>$beacons</var></a>
 		</td>
 		<td class="value"><code><span class="php-keyword1">array</span>()</code></td>
 		<td class="description"><div>
@@ -1720,11 +2140,11 @@ technologies.</p>
 	<tr data-order="associatedStoreIdentifiers" id="$associatedStoreIdentifiers">
 		<td class="attributes"><code>
 			protected  
-			array
+			int[]
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-Passbook.Pass.html#73-78" title="Go to source code"><var>$associatedStoreIdentifiers</var></a>
+				<a href="source-class-Passbook.Pass.html#85-96" title="Go to source code"><var>$associatedStoreIdentifiers</var></a>
 		</td>
 		<td class="value"><code><span class="php-keyword1">array</span>()</code></td>
 		<td class="description"><div>
@@ -1742,6 +2162,11 @@ associated apps.</p>
 <p>A list of iTunes Store item identifiers (also known as Adam IDs) for the
 associated apps.</p>
 
+<p>Only one item in the list is used—the first item identifier for an app
+compatible with the current device. If the app is not installed, the link opens
+the App Store and shows the app. If the app is already installed, the link
+launches the app.</p>
+
 
 			</div>
 		</div></td>
@@ -1753,7 +2178,7 @@ associated apps.</p>
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-Passbook.Pass.html#80-85" title="Go to source code"><var>$locations</var></a>
+				<a href="source-class-Passbook.Pass.html#98-104" title="Go to source code"><var>$locations</var></a>
 		</td>
 		<td class="value"><code><span class="php-keyword1">array</span>()</code></td>
 		<td class="description"><div>
@@ -1775,6 +2200,33 @@ store.</p>
 			</div>
 		</div></td>
 	</tr>
+	<tr data-order="localizations" id="$localizations">
+		<td class="attributes"><code>
+			protected  
+			<code><a href="class-Passbook.Pass.LocalizationInterface.html">Passbook\Pass\LocalizationInterface</a>[]</code>
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-Passbook.Pass.html#106-111" title="Go to source code"><var>$localizations</var></a>
+		</td>
+		<td class="value"><code><span class="php-keyword1">array</span>()</code></td>
+		<td class="description"><div>
+			<a href="#$localizations" class="anchor">#</a>
+
+			<div class="description short">
+				
+<p>List of localizations</p>
+
+			</div>
+
+			<div class="description detailed hidden">
+				
+<p>List of localizations</p>
+
+
+			</div>
+		</div></td>
+	</tr>
 	<tr data-order="relevantDate" id="$relevantDate">
 		<td class="attributes"><code>
 			protected  
@@ -1782,7 +2234,7 @@ store.</p>
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-Passbook.Pass.html#87-92" title="Go to source code"><var>$relevantDate</var></a>
+				<a href="source-class-Passbook.Pass.html#113-119" title="Go to source code"><var>$relevantDate</var></a>
 		</td>
 		<td class="value"><code></code></td>
 		<td class="description"><div>
@@ -1804,14 +2256,74 @@ a movie.</p>
 			</div>
 		</div></td>
 	</tr>
-	<tr data-order="barcode" id="$barcode">
+	<tr data-order="maxDistance" id="$maxDistance">
 		<td class="attributes"><code>
 			protected  
-			Barcode
+			integer
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-Passbook.Pass.html#94-99" title="Go to source code"><var>$barcode</var></a>
+				<a href="source-class-Passbook.Pass.html#121-128" title="Go to source code"><var>$maxDistance</var></a>
+		</td>
+		<td class="value"><code></code></td>
+		<td class="description"><div>
+			<a href="#$maxDistance" class="anchor">#</a>
+
+			<div class="description short">
+				
+<p>Maximum distance in meters from a relevant latitude and longitude that the
+pass is relevant. This number is compared to the pass’s default distance and
+the smaller value is used. Available in iOS 7.0.</p>
+
+			</div>
+
+			<div class="description detailed hidden">
+				
+<p>Maximum distance in meters from a relevant latitude and longitude that the
+pass is relevant. This number is compared to the pass’s default distance and
+the smaller value is used. Available in iOS 7.0.</p>
+
+
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="barcodes" id="$barcodes">
+		<td class="attributes"><code>
+			protected  
+			<code><a href="class-Passbook.Pass.BarcodeInterface.html">Passbook\Pass\BarcodeInterface</a>[]</code>
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-Passbook.Pass.html#130-135" title="Go to source code"><var>$barcodes</var></a>
+		</td>
+		<td class="value"><code><span class="php-keyword1">array</span>()</code></td>
+		<td class="description"><div>
+			<a href="#$barcodes" class="anchor">#</a>
+
+			<div class="description short">
+				
+<p>Barcodes available to be displayed of iOS 9 and later. The system uses the
+first valid barcode in the array.</p>
+
+			</div>
+
+			<div class="description detailed hidden">
+				
+<p>Barcodes available to be displayed of iOS 9 and later. The system uses the
+first valid barcode in the array.</p>
+
+
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="barcode" id="$barcode">
+		<td class="attributes"><code>
+			protected  
+			<code><a href="class-Passbook.Pass.BarcodeInterface.html">Passbook\Pass\BarcodeInterface</a></code>
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-Passbook.Pass.html#137-141" title="Go to source code"><var>$barcode</var></a>
 		</td>
 		<td class="value"><code></code></td>
 		<td class="description"><div>
@@ -1819,15 +2331,13 @@ a movie.</p>
 
 			<div class="description short">
 				
-<p>Date and time when the pass becomes relevant. For example, the start time of
-a movie.</p>
+<p>Barcode to be displayed for iOS 8 and earlier.</p>
 
 			</div>
 
 			<div class="description detailed hidden">
 				
-<p>Date and time when the pass becomes relevant. For example, the start time of
-a movie.</p>
+<p>Barcode to be displayed for iOS 8 and earlier.</p>
 
 
 			</div>
@@ -1840,7 +2350,7 @@ a movie.</p>
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-Passbook.Pass.html#101-105" title="Go to source code"><var>$backgroundColor</var></a>
+				<a href="source-class-Passbook.Pass.html#143-148" title="Go to source code"><var>$backgroundColor</var></a>
 		</td>
 		<td class="value"><code></code></td>
 		<td class="description"><div>
@@ -1867,7 +2377,7 @@ a movie.</p>
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-Passbook.Pass.html#107-111" title="Go to source code"><var>$foregroundColor</var></a>
+				<a href="source-class-Passbook.Pass.html#150-155" title="Go to source code"><var>$foregroundColor</var></a>
 		</td>
 		<td class="value"><code></code></td>
 		<td class="description"><div>
@@ -1894,7 +2404,7 @@ a movie.</p>
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-Passbook.Pass.html#113-117" title="Go to source code"><var>$labelColor</var></a>
+				<a href="source-class-Passbook.Pass.html#157-162" title="Go to source code"><var>$labelColor</var></a>
 		</td>
 		<td class="value"><code></code></td>
 		<td class="description"><div>
@@ -1921,7 +2431,7 @@ a movie.</p>
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-Passbook.Pass.html#119-123" title="Go to source code"><var>$logoText</var></a>
+				<a href="source-class-Passbook.Pass.html#164-169" title="Go to source code"><var>$logoText</var></a>
 		</td>
 		<td class="value"><code></code></td>
 		<td class="description"><div>
@@ -1948,7 +2458,7 @@ a movie.</p>
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-Passbook.Pass.html#125-129" title="Go to source code"><var>$suppressStripShine</var></a>
+				<a href="source-class-Passbook.Pass.html#171-176" title="Go to source code"><var>$suppressStripShine</var></a>
 		</td>
 		<td class="value"><code></code></td>
 		<td class="description"><div>
@@ -1975,7 +2485,7 @@ a movie.</p>
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-Passbook.Pass.html#131-136" title="Go to source code"><var>$authenticationToken</var></a>
+				<a href="source-class-Passbook.Pass.html#178-184" title="Go to source code"><var>$authenticationToken</var></a>
 		</td>
 		<td class="value"><code></code></td>
 		<td class="description"><div>
@@ -2004,7 +2514,7 @@ characters or longer.</p>
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-Passbook.Pass.html#138-143" title="Go to source code"><var>$webServiceURL</var></a>
+				<a href="source-class-Passbook.Pass.html#186-192" title="Go to source code"><var>$webServiceURL</var></a>
 		</td>
 		<td class="value"><code></code></td>
 		<td class="description"><div>
@@ -2035,7 +2545,7 @@ href="http://developer.apple.com/library/ios/documentation/PassKit/Reference/Pas
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-Passbook.Pass.html#145-149" title="Go to source code"><var>$passTypeIdentifier</var></a>
+				<a href="source-class-Passbook.Pass.html#194-199" title="Go to source code"><var>$passTypeIdentifier</var></a>
 		</td>
 		<td class="value"><code></code></td>
 		<td class="description"><div>
@@ -2062,7 +2572,7 @@ href="http://developer.apple.com/library/ios/documentation/PassKit/Reference/Pas
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-Passbook.Pass.html#151-155" title="Go to source code"><var>$teamIdentifier</var></a>
+				<a href="source-class-Passbook.Pass.html#201-206" title="Go to source code"><var>$teamIdentifier</var></a>
 		</td>
 		<td class="value"><code></code></td>
 		<td class="description"><div>
@@ -2089,7 +2599,7 @@ href="http://developer.apple.com/library/ios/documentation/PassKit/Reference/Pas
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-Passbook.Pass.html#157-161" title="Go to source code"><var>$organizationName</var></a>
+				<a href="source-class-Passbook.Pass.html#208-213" title="Go to source code"><var>$organizationName</var></a>
 		</td>
 		<td class="value"><code></code></td>
 		<td class="description"><div>
@@ -2104,6 +2614,90 @@ href="http://developer.apple.com/library/ios/documentation/PassKit/Reference/Pas
 			<div class="description detailed hidden">
 				
 <p>Organization name</p>
+
+
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="expirationDate" id="$expirationDate">
+		<td class="attributes"><code>
+			protected  
+			<code><a href="class-DateTime.html">DateTime</a></code>
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-Passbook.Pass.html#215-220" title="Go to source code"><var>$expirationDate</var></a>
+		</td>
+		<td class="value"><code></code></td>
+		<td class="description"><div>
+			<a href="#$expirationDate" class="anchor">#</a>
+
+			<div class="description short">
+				
+<p>Date and time when the pass expires.</p>
+
+			</div>
+
+			<div class="description detailed hidden">
+				
+<p>Date and time when the pass expires.</p>
+
+
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="voided" id="$voided">
+		<td class="attributes"><code>
+			protected  
+			boolean
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-Passbook.Pass.html#222-228" title="Go to source code"><var>$voided</var></a>
+		</td>
+		<td class="value"><code></code></td>
+		<td class="description"><div>
+			<a href="#$voided" class="anchor">#</a>
+
+			<div class="description short">
+				
+<p>Indicates that the pass is void—for example, a one time use coupon that has
+been redeemed. The default value is false.</p>
+
+			</div>
+
+			<div class="description detailed hidden">
+				
+<p>Indicates that the pass is void—for example, a one time use coupon that has
+been redeemed. The default value is false.</p>
+
+
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="appLaunchURL" id="$appLaunchURL">
+		<td class="attributes"><code>
+			protected  
+			string
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-Passbook.Pass.html#230-238" title="Go to source code"><var>$appLaunchURL</var></a>
+		</td>
+		<td class="value"><code></code></td>
+		<td class="description"><div>
+			<a href="#$appLaunchURL" class="anchor">#</a>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+<p>A URL to be passed to the associated app when launching it. The app receives
+this URL in the application:didFinishLaunchingWithOptions: and
+application:handleOpenURL: methods of its app delegate. If this key is present,
+the associatedStoreIdentifiers key must also be present.</p>
 
 
 			</div>

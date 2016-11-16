@@ -6,8 +6,8 @@
 
 	<title>Class Passbook\Pass\Barcode | PHP-Passbook</title>
 
-	<script type="text/javascript" src="resources/combined.js?1177154521"></script>
-	<script type="text/javascript" src="elementlist.js?1730068341"></script>
+	<script type="text/javascript" src="resources/combined.js?2966811159"></script>
+	<script type="text/javascript" src="elementlist.js?232615948"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 </head>
@@ -45,9 +45,12 @@
 			<ul>
 				<li class="active"><a href="class-Passbook.Pass.Barcode.html">Barcode</a></li>
 				<li><a href="class-Passbook.Pass.Beacon.html">Beacon</a></li>
+				<li><a href="class-Passbook.Pass.DateField.html">DateField</a></li>
 				<li><a href="class-Passbook.Pass.Field.html">Field</a></li>
 				<li><a href="class-Passbook.Pass.Image.html">Image</a></li>
+				<li><a href="class-Passbook.Pass.Localization.html">Localization</a></li>
 				<li><a href="class-Passbook.Pass.Location.html">Location</a></li>
+				<li><a href="class-Passbook.Pass.NumberField.html">NumberField</a></li>
 				<li><a href="class-Passbook.Pass.Structure.html">Structure</a></li>
 			</ul>
 
@@ -57,6 +60,7 @@
 				<li><a href="class-Passbook.Pass.BeaconInterface.html">BeaconInterface</a></li>
 				<li><a href="class-Passbook.Pass.FieldInterface.html">FieldInterface</a></li>
 				<li><a href="class-Passbook.Pass.ImageInterface.html">ImageInterface</a></li>
+				<li><a href="class-Passbook.Pass.LocalizationInterface.html">LocalizationInterface</a></li>
 				<li><a href="class-Passbook.Pass.LocationInterface.html">LocationInterface</a></li>
 				<li><a href="class-Passbook.Pass.StructureInterface.html">StructureInterface</a></li>
 			</ul>
@@ -141,7 +145,7 @@
 				<b>Author:</b>
 				Eymen Gunay &lt;<a
 href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
-		<b>Located at</b> <a href="source-class-Passbook.Pass.Barcode.html#14-156" title="Go to source code">Passbook/Pass/Barcode.php</a><br />
+		<b>Located at</b> <a href="source-class-Passbook.Pass.Barcode.html#14-167" title="Go to source code">Passbook/Pass/Barcode.php</a><br />
 	</div>
 
 
@@ -159,7 +163,7 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#___construct">#</a>
-		<code><a href="source-class-Passbook.Pass.Barcode.html#62-68" title="Go to source code">__construct</a>( <span>mixed <var>$format</var></span>, <span>mixed <var>$message</var></span>, <span>mixed <var>$messageEncoding</var> = <span class="php-quote">'iso-8859-1'</span></span> )</code>
+		<code><a href="source-class-Passbook.Pass.Barcode.html#73-79" title="Go to source code">__construct</a>( <span>mixed <var>$format</var></span>, <span>mixed <var>$message</var></span>, <span>mixed <var>$messageEncoding</var> = <span class="php-quote">'iso-8859-1'</span></span> )</code>
 
 		<div class="description short">
 			
@@ -181,28 +185,38 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 
 		<td class="attributes"><code>
 			 public 
-			
+			array
 			
 			</code>
 		</td>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_toArray">#</a>
-		<code><a href="source-class-Passbook.Pass.Barcode.html#70-83" title="Go to source code">toArray</a>( )</code>
+		<code><a href="source-class-Passbook.Pass.Barcode.html#81-94" title="Go to source code">toArray</a>( )</code>
 
 		<div class="description short">
 			
+<p>Get the instance as an array.</p>
+
 		</div>
 
 		<div class="description detailed hidden">
 			
+<p>Get the instance as an array.</p>
 
 
 
 
+				<h4>Returns</h4>
+				<div class="list">
+					<code>array</code><br />
+				</div>
 
 
 
+
+				<h4>Implementation of</h4>
+				<div class="list"><code><a href="class-Passbook.ArrayableInterface.html#_toArray">Passbook\ArrayableInterface::toArray()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -217,7 +231,7 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_setFormat">#</a>
-		<code><a href="source-class-Passbook.Pass.Barcode.html#85-93" title="Go to source code">setFormat</a>( <span>string <var>$format</var></span> )</code>
+		<code><a href="source-class-Passbook.Pass.Barcode.html#96-104" title="Go to source code">setFormat</a>( <span>string <var>$format</var></span> )</code>
 
 		<div class="description short">
 			
@@ -257,7 +271,7 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getFormat">#</a>
-		<code><a href="source-class-Passbook.Pass.Barcode.html#95-101" title="Go to source code">getFormat</a>( )</code>
+		<code><a href="source-class-Passbook.Pass.Barcode.html#106-112" title="Go to source code">getFormat</a>( )</code>
 
 		<div class="description short">
 			
@@ -296,7 +310,7 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_setMessage">#</a>
-		<code><a href="source-class-Passbook.Pass.Barcode.html#103-111" title="Go to source code">setMessage</a>( <span>string <var>$message</var></span> )</code>
+		<code><a href="source-class-Passbook.Pass.Barcode.html#114-122" title="Go to source code">setMessage</a>( <span>string <var>$message</var></span> )</code>
 
 		<div class="description short">
 			
@@ -336,7 +350,7 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getMessage">#</a>
-		<code><a href="source-class-Passbook.Pass.Barcode.html#113-119" title="Go to source code">getMessage</a>( )</code>
+		<code><a href="source-class-Passbook.Pass.Barcode.html#124-130" title="Go to source code">getMessage</a>( )</code>
 
 		<div class="description short">
 			
@@ -375,7 +389,7 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_setMessageEncoding">#</a>
-		<code><a href="source-class-Passbook.Pass.Barcode.html#121-129" title="Go to source code">setMessageEncoding</a>( <span>string <var>$messageEncoding</var></span> )</code>
+		<code><a href="source-class-Passbook.Pass.Barcode.html#132-140" title="Go to source code">setMessageEncoding</a>( <span>string <var>$messageEncoding</var></span> )</code>
 
 		<div class="description short">
 			
@@ -415,7 +429,7 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getMessageEncoding">#</a>
-		<code><a href="source-class-Passbook.Pass.Barcode.html#131-137" title="Go to source code">getMessageEncoding</a>( )</code>
+		<code><a href="source-class-Passbook.Pass.Barcode.html#142-148" title="Go to source code">getMessageEncoding</a>( )</code>
 
 		<div class="description short">
 			
@@ -454,7 +468,7 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_setAltText">#</a>
-		<code><a href="source-class-Passbook.Pass.Barcode.html#139-147" title="Go to source code">setAltText</a>( <span>string <var>$altText</var></span> )</code>
+		<code><a href="source-class-Passbook.Pass.Barcode.html#150-158" title="Go to source code">setAltText</a>( <span>string <var>$altText</var></span> )</code>
 
 		<div class="description short">
 			
@@ -494,7 +508,7 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getAltText">#</a>
-		<code><a href="source-class-Passbook.Pass.Barcode.html#149-155" title="Go to source code">getAltText</a>( )</code>
+		<code><a href="source-class-Passbook.Pass.Barcode.html#160-166" title="Go to source code">getAltText</a>( )</code>
 
 		<div class="description short">
 			
@@ -593,6 +607,30 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 			</div>
 		</div></td>
 	</tr>
+	<tr data-order="TYPE_CODE_128" id="TYPE_CODE_128">
+
+		<td class="attributes"><code>string</code></td>
+		<td class="name"><code>
+				<a href="source-class-Passbook.Pass.Barcode.html#36-40" title="Go to source code"><b>TYPE_CODE_128</b></a>
+		</code></td>
+		<td class="value"><code><span class="php-quote">'PKBarcodeFormatCode128'</span></code></td>
+		<td class="description"><div>
+			<a href="#TYPE_CODE_128" class="anchor">#</a>
+
+			<div class="description short">
+				
+<p>Available starting with iOS 9.</p>
+
+			</div>
+
+			<div class="description detailed hidden">
+				
+<p>Available starting with iOS 9.</p>
+
+
+			</div>
+		</div></td>
+	</tr>
 	</table>
 
 
@@ -607,7 +645,7 @@ href="mailto:eymen&#64;egunay.com">eymen&#64;<!---->egunay.com</a>&gt;<br />
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-Passbook.Pass.Barcode.html#36-41" title="Go to source code"><var>$format</var></a>
+				<a href="source-class-Passbook.Pass.Barcode.html#42-47" title="Go to source code"><var>$format</var></a>
 		</td>
 		<td class="value"><code></code></td>
 		<td class="description"><div>
@@ -636,7 +674,7 @@ PKBarcodeFormatPDF417, PKBarcodeFormatAztec.</p>
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-Passbook.Pass.Barcode.html#43-47" title="Go to source code"><var>$message</var></a>
+				<a href="source-class-Passbook.Pass.Barcode.html#49-53" title="Go to source code"><var>$message</var></a>
 		</td>
 		<td class="value"><code></code></td>
 		<td class="description"><div>
@@ -663,7 +701,7 @@ PKBarcodeFormatPDF417, PKBarcodeFormatAztec.</p>
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-Passbook.Pass.Barcode.html#49-53" title="Go to source code"><var>$messageEncoding</var></a>
+				<a href="source-class-Passbook.Pass.Barcode.html#55-63" title="Go to source code"><var>$messageEncoding</var></a>
 		</td>
 		<td class="value"><code></code></td>
 		<td class="description"><div>
@@ -671,13 +709,19 @@ PKBarcodeFormatPDF417, PKBarcodeFormatAztec.</p>
 
 			<div class="description short">
 				
-<p>Message or payload to be displayed as a barcode.</p>
+<p>Text encoding that is used to convert the message from the string
+representation to a data representation to render the barcode. The value is
+typically iso-8859-1, but you may use another encoding that is supported by your
+barcode scanning infrastructure.</p>
 
 			</div>
 
 			<div class="description detailed hidden">
 				
-<p>Message or payload to be displayed as a barcode.</p>
+<p>Text encoding that is used to convert the message from the string
+representation to a data representation to render the barcode. The value is
+typically iso-8859-1, but you may use another encoding that is supported by your
+barcode scanning infrastructure.</p>
 
 
 			</div>
@@ -690,7 +734,7 @@ PKBarcodeFormatPDF417, PKBarcodeFormatAztec.</p>
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-Passbook.Pass.Barcode.html#55-60" title="Go to source code"><var>$altText</var></a>
+				<a href="source-class-Passbook.Pass.Barcode.html#65-71" title="Go to source code"><var>$altText</var></a>
 		</td>
 		<td class="value"><code></code></td>
 		<td class="description"><div>
@@ -698,15 +742,15 @@ PKBarcodeFormatPDF417, PKBarcodeFormatAztec.</p>
 
 			<div class="description short">
 				
-<p>Text encoding that is used to convert the message from the string
-representation to a data representation to render the barcode.</p>
+<p>Text displayed near the barcode. For example, a human-readable version of the
+barcode data in case the barcode doesn’t scan.</p>
 
 			</div>
 
 			<div class="description detailed hidden">
 				
-<p>Text encoding that is used to convert the message from the string
-representation to a data representation to render the barcode.</p>
+<p>Text displayed near the barcode. For example, a human-readable version of the
+barcode data in case the barcode doesn’t scan.</p>
 
 
 			</div>
