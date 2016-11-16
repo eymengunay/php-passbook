@@ -17,11 +17,9 @@ PHP-Passbook is a library for creating and packaging passes inside your applicat
 
 ## Breaking changes
 
-### Version 1.1.0
+### Version 2.0.0
 
-* Pass setRelevantDate now accepts a DateTime object instead of string
-* `PassFactory:override` property renamed to `PassFactory:overwrite`
-* JMS Serializer dependency removed
+* `Image` class `setRetina`/`isRetina` methods replaced with `setDensity`/`getDensity`.
 
 ## Installing
 
@@ -46,7 +44,7 @@ This example will create a pass of type Ticket and will save the pkpass file in 
 * [Create a P12 Certificate file](#p12-certificate) 
 * [Download Apple’s World Wide Developer Relations (WWDR) certificate](#wwdr-certificate) 
 * [Obtain a Pass Type Identifier and Team Identifier from Apple](#obtaining-the-pass-type-identifier-and-team-id)
- * Get an icon (29x29 png file) for the pass  
+ * Get an icon (29x29 png file) for the pass 
 * Specify a name for your organization 
 * Specify the output path where the pass will be saved 
 
@@ -179,7 +177,7 @@ Make sure you download composer.phar in the same folder where the composer.json 
 
 Step 2: Install vendors
 ```
-php composer.phar --dev install
+php composer.phar install
 ```
 
 > Note that the script takes some time to finish.

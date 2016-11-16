@@ -67,14 +67,14 @@ class PassFactory
 
     /**
      * P12 file
-     * 
+     *
      * @var \Passbook\Certificate\P12Interface
      */
     protected $p12;
 
     /**
      * WWDR file
-     * 
+     *
      * @var \Passbook\Certificate\WWDRInterface
      */
     protected $wwdr;
@@ -106,7 +106,7 @@ class PassFactory
         // Create certificate objects
         $this->p12 = new P12($p12File, $p12Pass);
         $this->wwdr = new WWDR($wwdrFile);
-        
+
         // By default use the PassValidator
         $this->passValidator = new PassValidator();
     }
@@ -348,7 +348,7 @@ class PassFactory
         if (!is_dir($source)) {
             throw new FileException("Source must be a directory.");
         }
-        
+
         $zip = new ZipArchive();
         $shouldOverwrite = $this->isOverwrite() ? ZipArchive::OVERWRITE : 0;
         if (!$zip->open($destination, ZipArchive::CREATE | $shouldOverwrite)) {
@@ -416,7 +416,7 @@ class PassFactory
         $options = defined('JSON_UNESCAPED_SLASHES') ? JSON_UNESCAPED_SLASHES : 0;
         return json_encode($array, $options);
     }
-    
+
     /**
      * @param $passName
      * @param PassInterface $pass
@@ -486,8 +486,10 @@ class PassFactory
         /** @var Image $image */
         foreach ($pass->getImages() as $image) {
             $fileName = $passDir . $image->getContext();
-            if ($image->isRetina()) {
+            if ($image->getDensity() === 2) {
                 $fileName .= '@2x';
+            } else if ($image->getDensity() === 3) {
+                $fileName .= '@3x';
             }
             $fileName .= '.' . $image->getExtension();
             copy($image->getPathname(), $fileName);
@@ -512,8 +514,10 @@ class PassFactory
             // Localization images
             foreach ($localization->getImages() as $image) {
                 $fileName = $localizationDir . $image->getContext();
-                if ($image->isRetina()) {
+                if ($image->getDensity() === 2) {
                     $fileName .= '@2x';
+                } else if ($image->getDensity() === 3) {
+                    $fileName .= '@3x';
                 }
                 $fileName .= '.' . $image->getExtension();
                 copy($image->getPathname(), $fileName);

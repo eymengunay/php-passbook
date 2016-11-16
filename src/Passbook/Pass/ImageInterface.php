@@ -31,14 +31,14 @@ interface ImageInterface
     public function getContext();
 
     /**
-     * Sets image is retina
-     * @param boolean
+     * Sets image density
+     * @param integer
      */
-    public function setIsRetina($isRetina);
+    public function setDensity($density);
 
     /**
-     * Returns image is retina
-     * @param boolean
+     * Returns image density
+     * @param integer
      */
-    public function isRetina();
+    public function getDensity();
 }

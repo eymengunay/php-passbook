@@ -35,10 +35,10 @@ class Image extends \SplFileObject implements ImageInterface
 
     /**
      * All of the pass’s images are loaded using standard UIImage image-loading methods.
-     * This means, for example, the file name of high resolution version of the image ends with @2x.png.
-     * @var bool
+     * This means, for example, the file name of high resolution versions of the image ends with @2x.png/@3x.png.
+     * @var integer
      */
-    protected $isRetina;
+    protected $density;
 
     public function __construct($filename, $context)
     {
@@ -69,9 +69,9 @@ class Image extends \SplFileObject implements ImageInterface
     /**
      * {@inheritdoc}
      */
-    public function setIsRetina($isRetina)
+    public function setDensity($density)
     {
-        $this->isRetina = $isRetina;
+        $this->density = $density;
 
         return $this;
     }
@@ -79,8 +79,8 @@ class Image extends \SplFileObject implements ImageInterface
     /**
      * {@inheritdoc}
      */
-    public function isRetina()
+    public function getDensity()
     {
-        return $this->isRetina;
+        return $this->density;
     }
 }
