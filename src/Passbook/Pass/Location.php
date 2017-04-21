@@ -84,7 +84,7 @@ class Location implements LocationInterface
      */
     public function getAltitude()
     {
-        return $this->altitude;
+        return floatval($this->altitude);
     }
 
     /**
@@ -102,7 +102,7 @@ class Location implements LocationInterface
      */
     public function getLatitude()
     {
-        return $this->latitude;
+        return floatval($this->latitude);
     }
 
     /**
@@ -120,7 +120,7 @@ class Location implements LocationInterface
      */
     public function getLongitude()
     {
-        return $this->longitude;
+        return floatval($this->longitude);
     }
 
     /**
