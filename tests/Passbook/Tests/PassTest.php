@@ -173,6 +173,9 @@ class PassTest extends \PHPUnit_Framework_TestCase
         // Set pass structure
         $this->eventTicket->setStructure($structure);
 
+        // Set grouping
+        $this->eventTicket->setGroupingIdentifier('group1');
+
         // Add barcode
         $barcode = new Barcode('PKBarcodeFormatQR', 'barcodeMessage');
         $this->eventTicket->setBarcode($barcode);
@@ -187,6 +190,7 @@ class PassTest extends \PHPUnit_Framework_TestCase
         $this->assertArrayHasKey('backgroundColor', $array);
         $this->assertArrayHasKey('eventTicket', $array);
         $this->assertArrayHasKey('relevantDate', $array);
+        $this->assertArrayHasKey('groupingIdentifier', $array);
     }
 
     /**
@@ -247,6 +251,7 @@ class PassTest extends \PHPUnit_Framework_TestCase
             ->setBackgroundColor('rgb(0, 255, 0)')
             ->setLabelColor('rgb(0, 255, 0)')
             ->setAuthenticationToken('123')
+            ->setGroupingIdentifier('group1')
             ->setType('generic')
             ->setSuppressStripShine(false)
             ->setAppLaunchURL('http://app.launch.url')
@@ -259,6 +264,7 @@ class PassTest extends \PHPUnit_Framework_TestCase
             'backgroundColor',
             'labelColor',
             'authenticationToken',
+            'groupingIdentifier',
             'suppressStripShine',
             'associatedStoreIdentifiers',
             'appLaunchURL',
