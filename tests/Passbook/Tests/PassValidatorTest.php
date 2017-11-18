@@ -231,6 +231,25 @@ class PassValidatorTest extends \PHPUnit_Framework_TestCase
         $this->pass->addImage($jpg);
         $this->assertFails($this->pass, PassValidator::IMAGE_TYPE_INVALID);
     }
+
+    public function testGroupingIdentity()
+    {
+        $this->pass->setType('boardingPass');
+        $this->pass->setGroupingIdentifier('group1');
+        $this->assertPasses($this->pass, PassValidator::GROUPING_IDENTITY_INVALID);
+
+        $this->pass->setType('eventTicket');
+        $this->pass->setGroupingIdentifier('group1');
+        $this->assertPasses($this->pass, PassValidator::GROUPING_IDENTITY_INVALID);
+
+        $this->pass->setType('coupon');
+        $this->pass->setGroupingIdentifier('group1');
+        $this->assertFails($this->pass, PassValidator::GROUPING_IDENTITY_INVALID);
+
+        $this->pass->setType('storeCard');
+        $this->pass->setGroupingIdentifier('group1');
+        $this->assertFails($this->pass, PassValidator::GROUPING_IDENTITY_INVALID);
+    }
     
     private function assertFails($pass, $expectedError)
     {
