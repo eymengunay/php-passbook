@@ -84,7 +84,7 @@ class Location implements LocationInterface
      */
     public function getAltitude()
     {
-        return $this->altitude !== null ? floatval($this->altitude) : null;
+        return is_numeric($this->altitude) ? floatval($this->altitude) : null;
     }
 
     /**
@@ -102,7 +102,7 @@ class Location implements LocationInterface
      */
     public function getLatitude()
     {
-        return $this->latitude !== null ? floatval($this->latitude) : null;
+        return is_numeric($this->latitude) ? floatval($this->latitude) : null;
     }
 
     /**
@@ -120,7 +120,7 @@ class Location implements LocationInterface
      */
     public function getLongitude()
     {
-        return $this->longitude !== null ? floatval($this->longitude) : null;
+        return is_numeric($this->longitude) ? floatval($this->longitude) : null;
     }
 
     /**
