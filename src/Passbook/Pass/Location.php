@@ -120,7 +120,7 @@ class Location implements LocationInterface
      */
     public function getLongitude()
     {
-        return $this-longitude !== null ? floatval($this->longitude) : null;
+        return $this->longitude !== null ? floatval($this->longitude) : null;
     }
 
     /**
