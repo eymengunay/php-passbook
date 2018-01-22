@@ -479,7 +479,7 @@ class PassFactory
 
     /**
      * @param PassInterface $pass
-     * @param $passDir
+     * @param string        $passDir
      */
     private function prepareImages(PassInterface $pass, $passDir)
     {
@@ -491,14 +491,16 @@ class PassFactory
             } else if ($image->getDensity() === 3) {
                 $fileName .= '@3x';
             }
-            $fileName .= '.' . $image->getExtension();
+
+            // Image pathname can be URL not only local file location
+            $fileName .= '.' . pathinfo(parse_url($image->getPathname(), PHP_URL_PATH), PATHINFO_EXTENSION);
             copy($image->getPathname(), $fileName);
         }
     }
 
     /**
      * @param PassInterface $pass
-     * @param $passDir
+     * @param string        $passDir
      */
     private function prepareLocalizations(PassInterface $pass, $passDir)
     {
@@ -524,6 +526,4 @@ class PassFactory
             }
         }
     }
-
-
 }
