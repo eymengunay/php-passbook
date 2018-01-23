@@ -49,7 +49,7 @@ class Image extends \SplFileObject implements ImageInterface
 
     public function __construct($filename, $context, $forceExtension = false)
     {
-        parent::__construct($filename, $context);
+        parent::__construct($filename);
 
         $this->context = $context;
         $this->forceExtension = $forceExtension;
