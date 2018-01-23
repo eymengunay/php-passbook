@@ -40,12 +40,19 @@ class Image extends \SplFileObject implements ImageInterface
      */
     protected $density;
 
-    public function __construct($filename, $context)
+    /**
+     * Force "png" extension in case of dynamic conversion of the file, i.e. by CDN.
+     *
+     * @var bool
+     */
+    protected $forceExtension;
+
+    public function __construct($filename, $context, $forceExtension = false)
     {
-        // Call parent
-        parent::__construct($filename);
-        // Pass image context
-        $this->setContext($context);
+        parent::__construct($filename, $context);
+
+        $this->context = $context;
+        $this->forceExtension = $forceExtension;
     }
 
     /**
@@ -82,5 +89,18 @@ class Image extends \SplFileObject implements ImageInterface
     public function getDensity()
     {
         return $this->density;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getExtension()
+    {
+        if ($this->forceExtension) {
+            return 'png';
+        }
+
+        // Image pathname can be URL not only local file location
+        return pathinfo(parse_url($this->getPathname(), PHP_URL_PATH), PATHINFO_EXTENSION);
     }
 }
