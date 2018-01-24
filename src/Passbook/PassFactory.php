@@ -492,8 +492,7 @@ class PassFactory
                 $fileName .= '@3x';
             }
 
-            // Image pathname can be URL not only local file location
-            $fileName .= '.' . pathinfo(parse_url($image->getPathname(), PHP_URL_PATH), PATHINFO_EXTENSION);
+            $fileName .= '.' . $image->getExtension();
             copy($image->getPathname(), $fileName);
         }
     }
