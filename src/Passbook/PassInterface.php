@@ -299,4 +299,14 @@ interface PassInterface extends ArrayableInterface
      */
     public function getAppLaunchURL();
 
+	/**
+	 * {@inheritdoc}
+	 */
+	public function setUserInfo($userInfo);
+
+	/**
+	 * {@inheritdoc}
+	 */
+	public function getUserInfo();
+
 }
