@@ -217,7 +217,7 @@ class PassValidator implements PassValidatorInterface
             }
         }
     }
-    
+
     private function validateAssociatedStoreIdentifiers(PassInterface $pass)
     {
         //appLaunchURL
@@ -240,7 +240,7 @@ class PassValidator implements PassValidatorInterface
 
     private function validateGroupingIdentity(PassInterface $pass)
     {
-        if (null !== $pass->getType() && !in_array($pass->getType(), ['boardingPass', 'eventTicket'])) {
+        if (null !== $pass->getGroupingIdentifier() && !in_array($pass->getType(), ['boardingPass', 'eventTicket'])) {
             $this->addError(self::GROUPING_IDENTITY_INVALID);
 
             return;
