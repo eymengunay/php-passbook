@@ -246,6 +246,13 @@ class Pass implements PassInterface
      */
     protected $appLaunchURL;
 
+	/**
+	 * Pass userInfo
+	 *
+	 * @var mixed
+	 */
+	protected $userInfo;
+
     public function __construct($serialNumber, $description)
     {
         // Required
@@ -287,6 +294,7 @@ class Pass implements PassInterface
             'voided',
             'appLaunchURL',
             'associatedStoreIdentifiers',
+	        'userInfo'
         );
         foreach ($properties as $property) {
             $method = 'is' . ucfirst($property);
@@ -306,12 +314,12 @@ class Pass implements PassInterface
                 $array[$property] = $val;
             } elseif (is_array($val)) {
                 // Array
-                foreach ($val as $v) {
+                foreach ($val as $k => $v) {
                     if (is_object($v)) {
                         /* @var ArrayableInterface $v */
-                        $array[$property][] = $v->toArray();
+                        $array[$property][$k] = $v->toArray();
                     } else {
-                        $array[$property][] = $v;
+                        $array[$property][$k] = $v;
                     }
                 }
             }
@@ -831,4 +839,21 @@ class Pass implements PassInterface
     {
         return $this->appLaunchURL;
     }
+
+	/**
+	 * {@inheritdoc}
+	 */
+	public function setUserInfo($userInfo) {
+		$this->userInfo = $userInfo;
+
+		return $this;
+	}
+
+	/**
+	 * {@inheritdoc}
+	 */
+	public function getUserInfo() {
+		return $this->userInfo;
+	}
+
 }
