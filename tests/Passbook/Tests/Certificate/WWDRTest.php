@@ -1,21 +1,22 @@
 <?php
 
-namespace Passbook\Tests\Pass;
+namespace Passbook\Tests\Certificate;
 
 use Passbook\Certificate\WWDR;
 use Passbook\Exception\FileNotFoundException;
+use PHPUnit\Framework\TestCase;
 
-class WWDRTest extends \PHPUnit_Framework_TestCase
+class WWDRTest extends TestCase
 {
     public function testWWDR()
     {
-        $wwdr = new WWDR(__DIR__.'/../../../cert/dummy.wwdr');
+        $wwdr = new WWDR(__DIR__.'/../../../cert/wwdr.pem');
+        $this->assertInstanceOf(WWDR::class, $wwdr);
     }
 
     public function testWWDRException()
     {
-        $this->setExpectedException('Passbook\Exception\FileNotFoundException');
-
-        $wwdr = new WWDR(__DIR__.'/non-existing-file');
+        $this->expectException(FileNotFoundException::class);
+        new WWDR(__DIR__.'/non-existing-file');
     }
 }

@@ -3,8 +3,9 @@
 namespace Passbook\Tests\Pass;
 
 use Passbook\Pass\Image;
+use PHPUnit\Framework\TestCase;
 
-class ImageTest extends \PHPUnit_Framework_TestCase
+class ImageTest extends TestCase
 {
     public function testImage()
     {
@@ -20,7 +21,7 @@ class ImageTest extends \PHPUnit_Framework_TestCase
         $image = new Image(__DIR__.'/../../../img/icon.png', 'thumbnail');
         $image->setDensity(3);
 
-        $this->assertEquals($image->getContext(), 'thumbnail');
-        $this->assertEquals($image->getDensity(), 3);
+        $this->assertEquals('thumbnail', $image->getContext());
+        $this->assertEquals(3, $image->getDensity());
     }
 }

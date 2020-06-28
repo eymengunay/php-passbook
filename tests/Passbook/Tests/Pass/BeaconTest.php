@@ -3,8 +3,9 @@
 namespace Passbook\Tests\Pass;
 
 use Passbook\Pass\Beacon;
+use PHPUnit\Framework\TestCase;
 
-class BeaconTest extends \PHPUnit_Framework_TestCase
+class BeaconTest extends TestCase
 {
     public function testBeacon()
     {
@@ -18,6 +19,14 @@ class BeaconTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals($beacon->getMajor(), 1);
         $this->assertEquals($beacon->getMinor(), 2);
-        $array = $beacon->toArray();
+
+        $expected = [
+            'proximityUUID' => 'abcdef01-2345-6789-abcd-ef0123456789',
+            'major' => 1,
+            'minor' => 2,
+            'relevantText' => 'relevant'
+        ];
+
+        $this->assertEquals($expected, $beacon->toArray());
     }
 }

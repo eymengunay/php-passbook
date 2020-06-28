@@ -11,6 +11,8 @@
 
 namespace Passbook\Pass;
 
+use InvalidArgumentException;
+
 /**
  * Class NumberField
  *
@@ -45,6 +47,21 @@ class NumberField extends Field
      * @var string
      */
     protected $numberStyle = null;
+
+    /**
+     * NumberField constructor.
+     * @param $key
+     * @param $value
+     * @throws InvalidArgumentException
+     */
+    public function __construct($key, $value)
+    {
+        if (!is_numeric($value)) {
+            throw new InvalidArgumentException("Value has to be numeric. '$value' given!");
+        }
+
+        parent::__construct($key, $value);
+    }
 
     /**
      * @return array
@@ -110,6 +127,6 @@ class NumberField extends Field
     public function getValue()
     {
         // Ensure value is int or float; adding 0 will convert type from string
-        return 0+parent::getValue();
+        return 0 + parent::getValue();
     }
 }

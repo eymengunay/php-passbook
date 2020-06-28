@@ -3,8 +3,9 @@
 namespace Passbook\Tests\Exception;
 
 use Passbook\Exception\PassInvalidException;
+use PHPUnit\Framework\TestCase;
 
-class PassInvalidExceptionTest extends \PHPUnit_Framework_TestCase
+class PassInvalidExceptionTest extends TestCase
 {
     public function testNewExceptionWithoutErrorsArray()
     {

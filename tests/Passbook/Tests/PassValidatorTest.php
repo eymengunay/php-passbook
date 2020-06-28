@@ -9,8 +9,9 @@ use Passbook\Pass\Image;
 use Passbook\Pass\Location;
 use Passbook\PassValidator;
 use Passbook\Type\Generic;
+use PHPUnit\Framework\TestCase;
 
-class PassValidatorTest extends \PHPUnit_Framework_TestCase
+class PassValidatorTest extends TestCase
 {
     const SERIAL_NUMBER = '123';
     const DESCRIPTION = 'description';
@@ -250,7 +251,7 @@ class PassValidatorTest extends \PHPUnit_Framework_TestCase
         $this->pass->setGroupingIdentifier('group1');
         $this->assertFails($this->pass, PassValidator::GROUPING_IDENTITY_INVALID);
     }
-    
+
     private function assertFails($pass, $expectedError)
     {
         $validator = new PassValidator();
@@ -265,7 +266,7 @@ class PassValidatorTest extends \PHPUnit_Framework_TestCase
         self::assertNotContains($unexpectedError, $validator->getErrors());
     }
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->pass = new Generic(self::SERIAL_NUMBER, self::DESCRIPTION);
     }

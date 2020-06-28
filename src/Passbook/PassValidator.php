@@ -50,7 +50,7 @@ class PassValidator implements PassValidatorInterface
      */
     public function validate(PassInterface $pass)
     {
-        $this->errors = array();
+        $this->errors = [];
 
         $this->validateRequiredFields($pass);
         $this->validateBeaconKeys($pass);
