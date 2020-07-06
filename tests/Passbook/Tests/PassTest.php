@@ -2,6 +2,7 @@
 
 namespace Passbook\Tests;
 
+use DateTime;
 use Passbook\Pass;
 use Passbook\PassFactory;
 use Passbook\Pass\Field;
@@ -14,8 +15,9 @@ use Passbook\Type\Coupon;
 use Passbook\Type\EventTicket;
 use Passbook\Type\Generic;
 use Passbook\Type\StoreCard;
+use PHPUnit\Framework\TestCase;
 
-class PassTest extends \PHPUnit_Framework_TestCase
+class PassTest extends TestCase
 {
     /**
      * @var BoardingPass
@@ -47,12 +49,12 @@ class PassTest extends \PHPUnit_Framework_TestCase
      */
     protected $pass;
 
-    public static function setUpBeforeClass()
+    public static function setUpBeforeClass(): void
     {
         // Avoid warnings when system does not have timezone set
         date_default_timezone_set(date_default_timezone_get());
     }
-    
+
     /**
      * Boarding Pass
      */
@@ -68,7 +70,7 @@ class PassTest extends \PHPUnit_Framework_TestCase
         $boardingPass->setLogoText('Skyport Airways');
 
         // Relevant date
-        $boardingPass->setRelevantDate(new \DateTime());
+        $boardingPass->setRelevantDate(new DateTime());
 
         // Add location
         $location = new Location(-122.3748889, 37.6189722);
@@ -132,7 +134,7 @@ class PassTest extends \PHPUnit_Framework_TestCase
     public function testStoreCard()
     {
         $json = PassFactory::serialize($this->storeCard);
-        json_decode($json, true);
+        $this->assertJson($json);
     }
 
     /**
@@ -168,7 +170,7 @@ class PassTest extends \PHPUnit_Framework_TestCase
         $structure->addAuxiliaryField($auxiliary);
 
         // Relevant date
-        $this->eventTicket->setRelevantDate(new \DateTime());
+        $this->eventTicket->setRelevantDate(new DateTime());
 
         // Set pass structure
         $this->eventTicket->setStructure($structure);
@@ -318,7 +320,7 @@ class PassTest extends \PHPUnit_Framework_TestCase
     /**
      * {@inheritdoc}
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->coupon       = new Coupon(uniqid(), 'Lorem ipsum');
         $this->eventTicket  = new EventTicket(uniqid(), 'Lorem ipsum');

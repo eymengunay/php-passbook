@@ -18,24 +18,22 @@ class Localization implements LocalizationInterface
 {
     /**
      * Language of the localization
-     *
-     * @var string
      */
-    protected $language;
+    protected string $language;
 
     /**
      * Localized images
      *
      * @var ImageInterface[]
      */
-    protected $images = array();
+    protected array $images = [];
 
     /**
      * Localized texts (token=>value)
      *
      * @var string[]
      */
-    protected $strings = array();
+    protected array $strings = [];
 
     public function __construct($language)
     {
@@ -45,7 +43,7 @@ class Localization implements LocalizationInterface
     /**
      * {@inheritdoc}
      */
-    public function setLanguage($language)
+    public function setLanguage($language): void
     {
         $this->language = $language;
     }

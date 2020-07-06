@@ -13,6 +13,7 @@ namespace Passbook;
 
 use Exception;
 use FilesystemIterator;
+use InvalidArgumentException;
 use Passbook\Certificate\P12;
 use Passbook\Certificate\WWDR;
 use Passbook\Exception\FileException;
@@ -239,12 +240,12 @@ class PassFactory
      * @param string $passName - filename to be used for the pass; if blank the serial number will be used
      *
      * @return SplFileObject If an IO error occurred
-     * @throws Exception
+     * @throws InvalidArgumentException|PassInvalidException|Exception
      */
     public function package(PassInterface $pass, $passName = '')
     {
         if ($pass->getSerialNumber() == '') {
-            throw new \InvalidArgumentException('Pass must have a serial number to be packaged');
+            throw new InvalidArgumentException('Pass must have a serial number to be packaged');
         }
 
         $this->populateRequiredInformation($pass);
@@ -286,7 +287,7 @@ class PassFactory
      * @param $passDir
      * @param $manifestJSONFile
      */
-    private function sign($passDir, $manifestJSONFile)
+    private function sign($passDir, $manifestJSONFile): void
     {
         if ($this->getSkipSignature()) {
             return;
@@ -294,8 +295,8 @@ class PassFactory
 
         $signatureFile = $passDir . 'signature';
         $p12 = file_get_contents($this->p12->getRealPath());
-        $certs = array();
-        if (openssl_pkcs12_read($p12, $certs, $this->p12->getPassword()) == true) {
+        $certs = [];
+        if (openssl_pkcs12_read($p12, $certs, $this->p12->getPassword()) === true) {
             $certdata = openssl_x509_read($certs['cert']);
             $privkey = openssl_pkey_get_private($certs['pkey'], $this->p12->getPassword());
             openssl_pkcs7_sign(
@@ -390,7 +391,7 @@ class PassFactory
     /**
      * @param PassInterface $pass
      */
-    private function populateRequiredInformation(PassInterface $pass)
+    private function populateRequiredInformation(PassInterface $pass): void
     {
         if (!$pass->getPassTypeIdentifier()) {
             $pass->setPassTypeIdentifier($this->passTypeIdentifier);
@@ -437,7 +438,7 @@ class PassFactory
     private function prepareManifest($passDir)
     {
         $manifestJSONFile = $passDir . 'manifest.json';
-        $manifest = array();
+        $manifest = [];
         $files = new RecursiveIteratorIterator(
             new RecursiveDirectoryIterator($passDir),
             RecursiveIteratorIterator::SELF_FIRST
@@ -481,7 +482,7 @@ class PassFactory
      * @param PassInterface $pass
      * @param string        $passDir
      */
-    private function prepareImages(PassInterface $pass, $passDir)
+    private function prepareImages(PassInterface $pass, $passDir): void
     {
         /** @var Image $image */
         foreach ($pass->getImages() as $image) {
@@ -501,7 +502,7 @@ class PassFactory
      * @param PassInterface $pass
      * @param string        $passDir
      */
-    private function prepareLocalizations(PassInterface $pass, $passDir)
+    private function prepareLocalizations(PassInterface $pass, $passDir): void
     {
         foreach ($pass->getLocalizations() as $localization) {
             // Create dir (LANGUAGE.lproj)

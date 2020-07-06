@@ -4,16 +4,27 @@ namespace Passbook\Tests\Pass;
 
 use Passbook\Pass\Structure;
 use Passbook\Pass\Field;
+use PHPUnit\Framework\TestCase;
 
-class StructureTest extends \PHPUnit_Framework_TestCase
+class StructureTest extends TestCase
 {
     public function testStructure()
     {
-        $structure = new Structure(0, 0);
+        $structure = new Structure();
 
-        $structure->addHeaderField(new Field('key', 'val'));
-        $structure->addBackField(new Field('key', 'val'));
+        $structure->addHeaderField(new Field('balance', '13.50 USD'));
+        $structure->addBackField(new Field('publisher', 'Passbook Limited'));
 
-        $array = $structure->toArray();
+        $actual = $structure->toArray();
+        $expected = [
+            "headerFields" => [
+                ["key" => "balance", "value" => "13.50 USD"],
+            ],
+            "backFields" => [
+                ["key" => "publisher", "value" => "Passbook Limited"]
+            ]
+        ];
+
+        $this->assertEquals($expected, $actual);
     }
 }

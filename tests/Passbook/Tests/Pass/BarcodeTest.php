@@ -3,8 +3,9 @@
 namespace Passbook\Tests\Pass;
 
 use Passbook\Pass\Barcode;
+use PHPUnit\Framework\TestCase;
 
-class BarcodeTest extends \PHPUnit_Framework_TestCase
+class BarcodeTest extends TestCase
 {
     public function testBarcode()
     {
@@ -17,9 +18,9 @@ class BarcodeTest extends \PHPUnit_Framework_TestCase
             ->setAltText('hello world')
         ;
 
-        $this->assertEquals($barcode->getFormat(), Barcode::TYPE_PDF_417);
-        $this->assertEquals($barcode->getMessage(), 'hello');
-        $this->assertEquals($barcode->getAltText(), 'hello world');
+        $this->assertEquals(Barcode::TYPE_PDF_417, $barcode->getFormat());
+        $this->assertEquals('hello', $barcode->getMessage());
+        $this->assertEquals('hello world', $barcode->getAltText());
         $array = $barcode->toArray();
     }
 
@@ -28,15 +29,15 @@ class BarcodeTest extends \PHPUnit_Framework_TestCase
         $barcode = new Barcode(Barcode::TYPE_QR, 123);
         $barcode->setAltText(456);
 
-        $this->assertInternalType('string', $barcode->getMessage());
-        $this->assertInternalType('string', $barcode->getAltText());
+        $this->assertIsString($barcode->getMessage());
+        $this->assertIsString($barcode->getAltText());
 
         $barcodeDetails = $barcode->toArray();
-        $this->assertInternalType('string', $barcodeDetails['message']);
-        $this->assertInternalType('string', $barcodeDetails['altText']);
+        $this->assertIsString($barcodeDetails['message']);
+        $this->assertIsString($barcodeDetails['altText']);
 
         $barcode->setMessage(789);
-        $this->assertInternalType('string', $barcode->getMessage());
+        $this->assertIsString($barcode->getMessage());
 
         $barcode->setMessage(null);
         $this->assertEquals('', $barcode->getMessage());

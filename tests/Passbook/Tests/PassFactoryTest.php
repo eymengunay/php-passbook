@@ -2,6 +2,9 @@
 
 namespace Passbook\Tests;
 
+use Exception;
+use InvalidArgumentException;
+use Passbook\Exception\PassInvalidException;
 use Passbook\Pass;
 use Passbook\Pass\Localization;
 use Passbook\PassFactory;
@@ -11,8 +14,13 @@ use Passbook\Pass\Field;
 use Passbook\Pass\Barcode;
 use Passbook\Pass\Image;
 use Passbook\Pass\Structure;
+use PHPUnit\Framework\TestCase;
 
-class PassFactoryTest extends \PHPUnit_Framework_TestCase
+/**
+ * Class PassFactoryTest
+ * @package Passbook\Tests
+ */
+class PassFactoryTest extends TestCase
 {
     /**
      * @var PassFactory
@@ -23,6 +31,24 @@ class PassFactoryTest extends \PHPUnit_Framework_TestCase
      * @var boolean
      */
     private $skipPackageTest = false;
+
+    /**
+     * @inheritDoc
+     */
+    protected function setUp(): void
+    {
+        // The PassFactory defaults can be overwritten by setting environment
+        // variables or through phpunit configuration when testing.
+
+        $p12File = getenv('P12_CERT_PATH') ?: __DIR__ . '/../../cert/pass.com.example.testpass.p12';
+        $p12Pass = getenv('P12_CERT_PASS') ?: '123456';
+        $wwdrFile = getenv('WWDR_CERT_PATH') ?: __DIR__ . '/../../cert/wwdr.pem';
+        $passTypeIdentifier = getenv('PASS_TYPE_ID') ?: 'pass-type-identifier';
+        $teamIdentifier = getenv('TEAM_ID') ?: 'team-identifier';
+        $orgName = getenv('ORG_NAME') ?: 'organization-name';
+
+        $this->factory = new PassFactory($passTypeIdentifier, $teamIdentifier, $orgName, $p12File, $p12Pass, $wwdrFile);
+    }
 
     /**
      * Factory methods
@@ -38,15 +64,10 @@ class PassFactoryTest extends \PHPUnit_Framework_TestCase
 
     /**
      * Factory package
+     * @throws Exception
      */
     public function testFactoryPackage()
     {
-        if ($this->skipPackageTest) {
-            $this->markTestSkipped(
-                'P12 and/or WWDR certificate(s) not found'
-            );
-        }
-
         // Create an event ticket
         $pass = new EventTicket(time(), 'The Beat Goes On');
         $pass->setBackgroundColor('rgb(60, 65, 76)');
@@ -76,7 +97,7 @@ class PassFactoryTest extends \PHPUnit_Framework_TestCase
         $structure->addAuxiliaryField($auxiliary);
 
         // Add icon image
-        $icon = new Image(__DIR__.'/../../img/icon.png', 'icon');
+        $icon = new Image(__DIR__ . '/../../img/icon.png', 'icon');
         $pass->addImage($icon);
 
         // Set pass structure
@@ -94,7 +115,7 @@ class PassFactoryTest extends \PHPUnit_Framework_TestCase
         $spanishText = array(
             'created_by' => 'Pase producido por php-passbook'
         );
-        
+
         $es = new Localization('es');
         $es->addStrings($spanishText);
         $pass->addLocalization($es);
@@ -102,26 +123,36 @@ class PassFactoryTest extends \PHPUnit_Framework_TestCase
         $en = new Localization('en');
         $en->addStrings($englishText);
         $pass->addLocalization($en);
-        
+
         $field = new Field('exclusive_card', 'created_by');
         $structure->addBackField($field);
-        
-        $this->factory->setOutputPath(__DIR__.'/../../../www/passes');
+
+        if ($this->skipPackageTest) {
+            $this->markTestIncomplete(
+                'P12 and/or WWDR certificate(s) not found'
+            );
+        }
+
+        $this->factory->setOutputPath(__DIR__ . '/../../../www/passes');
         $file = $this->factory->package($pass);
         $this->assertInstanceOf('SplFileObject', $file);
     }
 
     /**
-     * @expectedException \InvalidArgumentException
+     * @throws InvalidArgumentException|Exception
      */
     public function testPackagePassWithoutSerialNumberThrowsException()
     {
+        $this->expectException(InvalidArgumentException::class);
         $pass = new Pass('', 'pass without a serial number');
 
         $this->factory->setOutputPath('/tmp');
         $this->factory->package($pass);
     }
 
+    /**
+     * @throws Exception
+     */
     public function testRequiredInformationInPassNotOverwrittenByFactory()
     {
         $passOrganizationName = 'organization name in pass';
@@ -132,9 +163,9 @@ class PassFactoryTest extends \PHPUnit_Framework_TestCase
         $pass->setOrganizationName($passOrganizationName);
         $pass->setTeamIdentifier($passTeamIdentifier);
         $pass->setPassTypeIdentifier($passPassTypeIdentifier);
-        
+
         // Icon is required
-        $icon = new Image(__DIR__.'/../../img/icon.png', 'icon');
+        $icon = new Image(__DIR__ . '/../../img/icon.png', 'icon');
         $pass->addImage($icon);
 
         $this->factory->setOutputPath('/tmp');
@@ -147,6 +178,9 @@ class PassFactoryTest extends \PHPUnit_Framework_TestCase
         self::assertEquals($passPassTypeIdentifier, $pass->getPassTypeIdentifier());
     }
 
+    /**
+     *
+     */
     public function testNormalizedOutputPath()
     {
         $s = DIRECTORY_SEPARATOR;
@@ -162,63 +196,37 @@ class PassFactoryTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException \Passbook\Exception\PassInvalidException
+     * @throws PassInvalidException|Exception
      */
     public function testPassThatFailsValidationThrowsException()
     {
+        $this->expectException(PassInvalidException::class);
         $this->factory->setPassValidator(new PassValidator());
 
         $invalidPass = new Pass('serial number', 'description');
         $this->factory->package($invalidPass);
     }
-    
+
+    /**
+     * @throws Exception
+     */
     public function testSpecifyPassName()
     {
         // Make sure the file doesn't already exist as that would invalidate the test.
         if (file_exists('/tmp/passname.pkpass')) {
-            unlink('/tmp/passname.pkpass');    
+            unlink('/tmp/passname.pkpass');
         }
-        
+
         $pass = new Pass('serial number', 'description');
 
         // Icon is required
-        $icon = new Image(__DIR__.'/../../img/icon.png', 'icon');
+        $icon = new Image(__DIR__ . '/../../img/icon.png', 'icon');
         $pass->addImage($icon);
-        
+
         $this->factory->setOutputPath('/tmp');
         $this->factory->setSkipSignature(true);
         $this->factory->package($pass, 'pass name');
-        
+
         self::assertTrue(file_exists('/tmp/passname.pkpass'));
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    protected function setUp()
-    {
-        // The configuration for the PassFactory can set using environment
-        // variables in your own phpunit.xml configuration file. Copy the
-        // phpunit.xml.dist file to phpunit.xml. Uncomment the following lines
-        // and add the values for your certificates and organization.
-        //
-        //<env name="PASSBOOK_TEST_P12" value="pass.com.example.testpass.p12" />
-        //<env name="PASSBOOK_TEST_PASS" value="123456" />
-        //<env name="PASSBOOK_TEST_WWDR" value="wwdr.pem" />
-        //<env name="PASSBOOK_TEST_TYPE_ID" value="pass.com.example.testpass" />
-        //<env name="PASSBOOK_TEST_TEAM_ID" value="ABCDE12345" />
-        //<env name="PASSBOOK_TEST_ORG_NAME" value="Organization Name" />
-
-        $p12File = getenv('PASSBOOK_TEST_P12') ?: __DIR__.'/../../cert/dummy.p12';
-        $wwdrFile = getenv('PASSBOOK_TEST_WWDR') ?: __DIR__.'/../../cert/dummy.wwdr';
-        $p12Password = getenv('PASSBOOK_TEST_P12_PASS') ?: '';
-        $passTypeIdentifier = getenv('PASSBOOK_TEST_TYPE_ID') ?: 'pass-type-identifier';
-        $teamIdentifier = getenv('PASSBOOK_TEST_TEAM_ID') ?: 'team-identifier';
-        $organizationName = getenv('PASSBOOK_TEST_ORG_NAME') ?: 'organization-name';
-
-        // We can't package without the certificates.
-        $this->skipPackageTest = !getenv('PASSBOOK_TEST_P12') || !getenv('PASSBOOK_TEST_WWDR');
-
-        $this->factory = new PassFactory($passTypeIdentifier, $teamIdentifier, $organizationName, $p12File, $p12Password, $wwdrFile);
     }
 }

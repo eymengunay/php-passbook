@@ -2,11 +2,13 @@
 
 namespace Passbook\Tests\Pass;
 
+use DateTime;
 use Passbook\Pass\Field;
 use Passbook\Pass\DateField;
 use Passbook\Pass\NumberField;
+use PHPUnit\Framework\TestCase;
 
-class FieldTest extends \PHPUnit_Framework_TestCase
+class FieldTest extends TestCase
 {
 	public function testField()
 	{
@@ -22,7 +24,7 @@ class FieldTest extends \PHPUnit_Framework_TestCase
 
     public function testDateField()
     {
-        $field = new DateField('key', new \DateTime('2014-01-01 00:00:00 UTC'));
+        $field = new DateField('key', new DateTime('2014-01-01 00:00:00 UTC'));
 
         $array = $field->toArray();
         $this->assertArrayHasKey('value', $array);
@@ -31,13 +33,12 @@ class FieldTest extends \PHPUnit_Framework_TestCase
 
 	public function testNumberField()
 	{
-		$field = new NumberField('key', 'val');
+		$field = new NumberField('key', 0);
 		$field
 			->setNumberStyle(NumberField::PKNumberStyleDecimal)
 			->setCurrencyCode('EUR')
 		;
 
-		$array = $field->toArray();
-		$this->assertArrayHasKey('currencyCode', $array);
+		$this->assertArrayHasKey('currencyCode', $field->toArray());
 	}
 }

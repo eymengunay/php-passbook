@@ -22,36 +22,36 @@ class Structure implements StructureInterface
      * Fields to be displayed in the header on the front of the pass.
      * @var array
      */
-    public $headerFields = array();
+    public $headerFields = [];
 
     /**
      * Fields to be displayed prominently on the front of the pass.
      * @var array
      */
-    public $primaryFields = array();
+    public $primaryFields = [];
 
     /**
      * Fields to be displayed on the front of the pass.
      * @var array
      */
-    public $secondaryFields = array();
+    public $secondaryFields = [];
 
     /**
      * Additional fields to be displayed on the front of the pass.
      * @var array
      */
-    public $auxiliaryFields = array();
+    public $auxiliaryFields = [];
 
     /**
      * Fields to be on the back of the pass.
      * @var array
      */
-    public $backFields = array();
+    public $backFields = [];
 
     public function toArray()
     {
-        $array = array();
-        
+        $array = [];
+
         foreach ($this->getHeaderFields() as $headerField) {
             $array['headerFields'][] = $headerField->toArray();
         }

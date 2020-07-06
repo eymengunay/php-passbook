@@ -11,7 +11,7 @@ if (preg_match('/\.(?:pkpass)$/', $_SERVER["REQUEST_URI"])) {
 }
 
 $dir = './passes/';
-$passes = array();
+$passes = [];
 if ($handle = opendir($dir)) {
     while (false !== ($entry = readdir($handle))) {
         if ($entry != "." && $entry != ".." && strpos($entry, '.pkpass')) {

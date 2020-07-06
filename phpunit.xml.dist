@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<phpunit bootstrap="tests/bootstrap.php" colors="true">
+<phpunit bootstrap="vendor/autoload.php" colors="true">
 
     <php>
         <!--
-        <env name="PASSBOOK_TEST_P12" value="pass.com.example.testpass.p12" />
-        <env name="PASSBOOK_TEST_PASS" value="123456" />
-        <env name="PASSBOOK_TEST_WWDR" value="wwdr.pem" />
-        <env name="PASSBOOK_TEST_TYPE_ID" value="pass.com.example.testpass" />
-        <env name="PASSBOOK_TEST_TEAM_ID" value="ABCDE12345" />
-        <env name="PASSBOOK_TEST_ORG_NAME" value="Organization Name" />
+        <env name="P12_CERT_PATH" value="./../../cert/pass.com.example.testpass.p12" />
+        <env name="P12_CERT_PASS" value="123456" />
+        <env name="WWDR_CERT_PATH" value="./../../cert/wwdr.pem" />
+        <env name="PASS_TYPE_ID" value="pass.com.example.testpass" />
+        <env name="TEAM_ID" value="ABCDE12345" />
+        <env name="ORG_NAME" value="Organization Name" />
         -->
     </php>
 

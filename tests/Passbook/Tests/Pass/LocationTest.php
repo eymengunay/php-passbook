@@ -3,8 +3,9 @@
 namespace Passbook\Tests\Pass;
 
 use Passbook\Pass\Location;
+use PHPUnit\Framework\TestCase;
 
-class LocationTest extends \PHPUnit_Framework_TestCase
+class LocationTest extends TestCase
 {
     public function testBarcode()
     {
@@ -15,8 +16,16 @@ class LocationTest extends \PHPUnit_Framework_TestCase
             ->setRelevantText('text')
         ;
 
-        $this->assertEquals($location->getLatitude(), 0);
-        $this->assertEquals($location->getLongitude(), 0);
-        $array = $location->toArray();
+        $this->assertEquals(0, $location->getLatitude());
+        $this->assertEquals(0, $location->getLongitude());
+
+        $expected = [
+            'latitude' => 0,
+            'longitude' => 0,
+            'altitude' => 100,
+            'relevantText' => 'text'
+        ];
+
+        $this->assertEquals($expected, $location->toArray());
     }
 }

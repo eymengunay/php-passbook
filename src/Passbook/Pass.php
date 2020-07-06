@@ -73,14 +73,14 @@ class Pass implements PassInterface
      *
      * @var ImageInterface[]
      */
-    protected $images = array();
+    protected $images = [];
 
     /**
      * Beacons where the pass is relevant.
      *
      * @var array
      */
-    protected $beacons = array();
+    protected $beacons = [];
 
     /**
      * A list of iTunes Store item identifiers (also known as Adam IDs) for the
@@ -93,7 +93,7 @@ class Pass implements PassInterface
      *
      * @var int[]
      */
-    protected $associatedStoreIdentifiers = array();
+    protected $associatedStoreIdentifiers = [];
 
     /**
      * Locations where the pass is relevant.
@@ -101,14 +101,14 @@ class Pass implements PassInterface
      *
      * @var array
      */
-    protected $locations = array();
+    protected $locations = [];
 
     /**
      * List of localizations
      *
      * @var LocalizationInterface[]
      */
-    protected $localizations = array();
+    protected $localizations = [];
 
     /**
      * Date and time when the pass becomes relevant.
@@ -132,7 +132,7 @@ class Pass implements PassInterface
      * the first valid barcode in the array.
      * @var BarcodeInterface[]
      */
-    protected $barcodes = array();
+    protected $barcodes = [];
 
     /**
      * Barcode to be displayed for iOS 8 and earlier.
@@ -155,8 +155,8 @@ class Pass implements PassInterface
     protected $foregroundColor;
 
     /**
-     * Identifier used to group related passes. 
-     * If a grouping identifier is specified, passes with the same style, pass type identifier, 
+     * Identifier used to group related passes.
+     * If a grouping identifier is specified, passes with the same style, pass type identifier,
      * and grouping identifier are displayed as a group. Otherwise, passes are grouped automatically.
      *
      * @var string
@@ -253,6 +253,15 @@ class Pass implements PassInterface
 	 */
 	protected $userInfo;
 
+    /**
+     *
+     * Flag to decide if the pass can be shared or not.
+     *
+     * @var bool
+     *
+     */
+	protected bool $sharingProhibited = false;
+
     public function __construct($serialNumber, $description)
     {
         // Required
@@ -262,7 +271,7 @@ class Pass implements PassInterface
 
     public function toArray()
     {
-        $array = array();
+        $array = [];
 
         // Structure
         if ($this->getStructure()) {
@@ -294,7 +303,8 @@ class Pass implements PassInterface
             'voided',
             'appLaunchURL',
             'associatedStoreIdentifiers',
-	        'userInfo'
+	        'userInfo',
+            'sharingProhibited'
         );
         foreach ($properties as $property) {
             $method = 'is' . ucfirst($property);
@@ -302,7 +312,7 @@ class Pass implements PassInterface
                 $method = 'get' . ucfirst($property);
             }
             $val = $this->$method();
-            if ($val instanceof \DateTime) {
+            if ($val instanceof DateTime) {
                 // Date
                 $array[$property] = $val->format('c');
             } elseif (is_object($val)) {
@@ -514,7 +524,7 @@ class Pass implements PassInterface
     /**
      * {@inheritdoc}
      */
-    public function setRelevantDate(\DateTime $relevantDate)
+    public function setRelevantDate(DateTime $relevantDate)
     {
         $this->relevantDate = $relevantDate;
 
@@ -789,7 +799,7 @@ class Pass implements PassInterface
     /**
      * {@inheritdoc}
      */
-    public function setExpirationDate(\DateTime $expirationDate)
+    public function setExpirationDate(DateTime $expirationDate)
     {
         $this->expirationDate = $expirationDate;
 
@@ -855,5 +865,16 @@ class Pass implements PassInterface
 	public function getUserInfo() {
 		return $this->userInfo;
 	}
+
+	public function setSharingProhibited(bool $value): self
+    {
+	    $this->sharingProhibited = $value;
+
+	    return $this;
+    }
+
+    public function getSharingProhibited(): bool {
+	    return $this->sharingProhibited;
+    }
 
 }
