@@ -40,12 +40,13 @@ Search by class, method name, or package: http://eymengunay.github.io/php-passbo
 
 ## Usage Example
 
-This example will create a pass of type Ticket and will save the pkpass file in the output path specified. To use this example, you will need to do the following and set the constants accordingly: 
-* [Create a P12 Certificate file](#p12-certificate) 
-* [Download Apple’s World Wide Developer Relations (WWDR) certificate](#wwdr-certificate) 
+This example will create a pass of type Ticket and will save the pkpass file in the output path specified. To use this example, you will need to do the following and set the constants accordingly:
+
+* [Create a P12 Certificate file](#p12-certificate)
+* [Download Apple’s World Wide Developer Relations (WWDR) certificate](#wwdr-certificate)
 * [Obtain a Pass Type Identifier and Team Identifier from Apple](#obtaining-the-pass-type-identifier-and-team-id)
- * Get an icon (29x29 png file) for the pass 
-* Specify a name for your organization 
+* Get an icon (29x29 png file) for the pass
+* Specify a name for your organization
 * Specify the output path where the pass will be saved 
 
 ```php
@@ -58,14 +59,14 @@ use Passbook\Pass\Barcode;
 use Passbook\Pass\Structure;
 use Passbook\Type\EventTicket;
 
-// Set these constants with your values 
+// Set these constants with your values
 define('P12_FILE', '/path/to/p12/certificate.p12');
- define('P12_PASSWORD', 'password_for_p12_file');
- define('WWDR_FILE', '/path/to/wwdr.pem'); 
+define('P12_PASSWORD', 'password_for_p12_file');
+define('WWDR_FILE', '/path/to/wwdr.pem');
 define('PASS_TYPE_IDENTIFIER', 'pass.com.example.yourpass');
- define('TEAM_IDENTIFIER', 'IDFROMAPPLE'); 
+define('TEAM_IDENTIFIER', 'IDFROMAPPLE');
 define('ORGANIZATION_NAME', 'Your Organization Name');
- define('OUTPUT_PATH', '/path/to/output/path'); 
+define('OUTPUT_PATH', '/path/to/output/path');
 define('ICON_FILE', '/path/to/icon.png');
 
 // Create an event ticket
