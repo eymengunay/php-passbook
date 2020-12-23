@@ -17,6 +17,10 @@ PHP-Passbook is a library for creating and packaging passes inside your applicat
 
 ## Breaking changes
 
+### Version 3.0.0
+
+* Requires PHP >= 7.4
+
 ### Version 2.0.0
 
 * `Image` class `setRetina`/`isRetina` methods replaced with `setDensity`/`getDensity`.
