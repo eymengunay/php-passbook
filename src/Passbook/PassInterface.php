@@ -13,6 +13,7 @@ namespace Passbook;
 
 use Passbook\Pass\BarcodeInterface;
 use Passbook\Pass\BeaconInterface;
+use Passbook\Pass\NfcInterface;
 use Passbook\Pass\Image;
 use Passbook\Pass\ImageInterface;
 use Passbook\Pass\LocalizationInterface;
@@ -118,6 +119,17 @@ interface PassInterface extends ArrayableInterface
      * {@inheritdoc}
      */
     public function getBeacons();
+    
+    /**
+     * {@inheritdoc}
+     */
+    public function addNfc(NfcInterface $nfc);
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getNfc();
+  
 
     /**
      * {@inheritdoc}
@@ -216,6 +228,16 @@ interface PassInterface extends ArrayableInterface
      * {@inheritdoc}
      */
     public function getLogoText();
+    
+    /**
+     * {@inheritdoc}
+     */
+    public function setSharingProhibited($sharingProhibited);
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getSharingProhibited();    
 
     /**
      * {@inheritdoc}

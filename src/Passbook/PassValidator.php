@@ -4,6 +4,7 @@ namespace Passbook;
 
 use Passbook\Pass\Barcode;
 use Passbook\Pass\Beacon;
+use Passbook\Pass\Nfc;
 use Passbook\Pass\Location;
 
 /**
@@ -37,6 +38,8 @@ class PassValidator implements PassValidatorInterface
     const BEACON_PROXIMITY_UUID_REQUIRED = 'beacon proximityUUID is required';
     const BEACON_MAJOR_INVALID = 'beacon major is invalid; must be 16-bit unsigned integer';
     const BEACON_MINOR_INVALID = 'beacon minor is invalid; must be 16-bit unsigned integer';
+    const NFC_MESSAGE_REQUIRED = 'NFC message is required';
+    const NFC_ENCRYPTION_PUBLIC_KEY_REQUIRED = 'NFC encryption public key is required';
     const WEB_SERVICE_URL_INVALID = 'webServiceURL is invalid; must start with https (or http for development)';
     const WEB_SERVICE_AUTHENTICATION_TOKEN_REQUIRED = 'authenticationToken required with webServiceURL and cannot be blank';
     const WEB_SERVICE_AUTHENTICATION_TOKEN_INVALID = 'authenticationToken is invalid; must be at least 16 characters';
@@ -54,6 +57,7 @@ class PassValidator implements PassValidatorInterface
 
         $this->validateRequiredFields($pass);
         $this->validateBeaconKeys($pass);
+        $this->validateNfcKeys($pass);
         $this->validateLocationKeys($pass);
         $this->validateBarcodeKeys($pass);
         $this->validateWebServiceKeys($pass);
@@ -109,6 +113,14 @@ class PassValidator implements PassValidatorInterface
         }
     }
 
+    private function validateNfcKeys(PassInterface $pass)
+    {
+        $nfcs = $pass->getNfc();
+        foreach ($nfcs as $nfc) {
+            $this->validateNfc($nfc);
+        }
+    }
+
     private function validateBeacon(Beacon $beacon)
     {
         if ($this->isBlankOrNull($beacon->getProximityUUID())) {
@@ -125,6 +137,17 @@ class PassValidator implements PassValidatorInterface
             if (!is_int($beacon->getMinor()) || $beacon->getMinor() < 0 || $beacon->getMinor() > 65535) {
                 $this->addError(self::BEACON_MINOR_INVALID);
             }
+        }
+    }
+
+    private function validateNfc(Nfc $nfc)
+    {
+        if ($this->isBlankOrNull($nfc->getMessage())) {
+            $this->addError(self::NFC_MESSAGE_REQUIRED);
+        }
+
+        if ($this->isBlankOrNull($nfc->getEncryptionPublicKey())) {
+            $this->addError(self::NFC_ENCRYPTION_PUBLIC_KEY_REQUIRED);
         }
     }
 

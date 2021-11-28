@@ -14,6 +14,7 @@ namespace Passbook;
 use DateTime;
 use Passbook\Pass\BarcodeInterface;
 use Passbook\Pass\BeaconInterface;
+use Passbook\Pass\NfcInterface;
 use Passbook\Pass\ImageInterface;
 use Passbook\Pass\LocalizationInterface;
 use Passbook\Pass\LocationInterface;
@@ -73,7 +74,7 @@ class Pass implements PassInterface
      *
      * @var ImageInterface[]
      */
-    protected $images = [];
+    protected $images = array();
 
     /**
      * Beacons where the pass is relevant.
@@ -81,6 +82,14 @@ class Pass implements PassInterface
      * @var array
      */
     protected $beacons = [];
+    
+    /**
+     * NFC where the pass is relevant.
+     *
+     * @var array
+     */
+    protected $nfc = [];
+    
 
     /**
      * A list of iTunes Store item identifiers (also known as Adam IDs) for the
@@ -176,6 +185,8 @@ class Pass implements PassInterface
      * @var string
      */
     protected $logoText;
+    
+    
 
     /**
      * If true, the strip image is displayed without a shine effect.
@@ -283,6 +294,7 @@ class Pass implements PassInterface
             'description',
             'formatVersion',
             'beacons',
+            'nfc',
             'locations',
             'maxDistance',
             'relevantDate',
@@ -524,6 +536,24 @@ class Pass implements PassInterface
     /**
      * {@inheritdoc}
      */
+    public function addNfc(NfcInterface $nfc)
+    {
+        $this->nfc[] = $nfc;
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getNfc()
+    {
+        return $this->nfc;
+    }
+
+
+    /**
+     * {@inheritdoc}
+     */
     public function setRelevantDate(DateTime $relevantDate)
     {
         $this->relevantDate = $relevantDate;
@@ -567,6 +597,16 @@ class Pass implements PassInterface
 
         return $this;
     }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setNfc(NfcInterface $nfc)
+    {
+        $this->nfc = $nfc;
+        return $this;
+    }
+
 
     /**
      * {@inheritdoc}
