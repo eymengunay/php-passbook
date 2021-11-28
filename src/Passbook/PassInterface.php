@@ -232,7 +232,7 @@ interface PassInterface extends ArrayableInterface
     /**
      * {@inheritdoc}
      */
-    public function setSharingProhibited($sharingProhibited);
+    public function setSharingProhibited(bool $sharingProhibited);
 
     /**
      * {@inheritdoc}
