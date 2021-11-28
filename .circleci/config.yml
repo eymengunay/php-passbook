@@ -1,0 +1,32 @@
+version: 2
+
+workflows:
+  version: 2
+  workflow:
+    jobs:
+      - test
+
+jobs:
+  test:
+    docker:
+      - image: circleci/php:7.4
+
+    steps:
+      - checkout
+
+      - run: sudo apt update
+      - run: sudo docker-php-ext-install zip
+
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "composer.json" }}
+            - v1-dependencies-
+
+      - run: composer install -n --prefer-dist
+
+      - save_cache:
+          key: v1-dependencies-{{ checksum "composer.json" }}
+          paths:
+            - ./vendor
+
+      - run: ./vendor/bin/phpunit

@@ -1,6 +1,6 @@
 # PHP PASSBOOK LIBRARY
 
-[![Build Status](https://travis-ci.org/eymengunay/php-passbook.png?branch=master)](https://travis-ci.org/eymengunay/php-passbook)
+[![CircleCI](https://circleci.com/gh/eymengunay/php-passbook.svg?style=shield)](https://circleci.com/gh/eymengunay/php-passbook)
 [![Total Downloads](https://img.shields.io/packagist/dt/eo/passbook.svg)](https://packagist.org/packages/eo/passbook)
 [![Latest Stable Version](https://img.shields.io/packagist/v/eo/passbook.svg)](https://packagist.org/packages/eo/passbook)
 
