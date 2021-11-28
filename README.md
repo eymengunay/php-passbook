@@ -1,8 +1,6 @@
 # PHP PASSBOOK LIBRARY
 
 [![Build Status](https://travis-ci.org/eymengunay/php-passbook.png?branch=master)](https://travis-ci.org/eymengunay/php-passbook)
-[![Tip me with Gratipay](https://img.shields.io/gratipay/eymengunay.svg)](https://gratipay.com/eymengunay)
-[![Tip me with ChangeTip](https://img.shields.io/badge/changetip-donate-green.svg)](http://eymengunay.tip.me)
 [![Total Downloads](https://img.shields.io/packagist/dt/eo/passbook.svg)](https://packagist.org/packages/eo/passbook)
 [![Latest Stable Version](https://img.shields.io/packagist/v/eo/passbook.svg)](https://packagist.org/packages/eo/passbook)
 
