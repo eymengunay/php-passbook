@@ -507,7 +507,12 @@ class PassFactory
         foreach ($pass->getLocalizations() as $localization) {
             // Create dir (LANGUAGE.lproj)
             $localizationDir = $passDir . $localization->getLanguage() . '.lproj' . DIRECTORY_SEPARATOR;
-            mkdir($localizationDir, 0777, true);
+            $localizationDirExists = file_exists($localizationDir);
+            if ($localizationDirExists && !$this->isOverwrite()) {
+                throw new FileException("Temporary pass localization directory already exists ({$localization->getLanguage()})");
+            } elseif (!$localizationDirExists && !mkdir($localizationDir, 0777, true)) {
+                throw new FileException("Couldn't create temporary pass localization directory ({$localization->getLanguage()})");
+            }
 
             // pass.strings File (Format: "token" = "value")
             $localizationStringsFile = $localizationDir . 'pass.strings';
