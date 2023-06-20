@@ -94,6 +94,7 @@ class Image extends \SplFileObject implements ImageInterface
     /**
      * {@inheritdoc}
      */
+    #[\ReturnTypeWillChange]
     public function getExtension()
     {
         if ($this->forceExtension) {
