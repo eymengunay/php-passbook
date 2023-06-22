@@ -82,14 +82,14 @@ class Pass implements PassInterface
      * @var array
      */
     protected $beacons = [];
-    
+
     /**
      * NFC where the pass is relevant.
      *
      * @var array
      */
     protected $nfc = [];
-    
+
 
     /**
      * A list of iTunes Store item identifiers (also known as Adam IDs) for the
@@ -185,8 +185,8 @@ class Pass implements PassInterface
      * @var string
      */
     protected $logoText;
-    
-    
+
+
 
     /**
      * If true, the strip image is displayed without a shine effect.
@@ -761,7 +761,7 @@ class Pass implements PassInterface
      */
     public function getAuthenticationToken()
     {
-        return $this->authenticationToken;
+        return (string) $this->authenticationToken;
     }
 
     /**

@@ -84,7 +84,7 @@ class DateField extends Field
      */
     public function getDateStyle()
     {
-        return $this->dateStyle;
+        return (string) $this->dateStyle;
     }
 
     /**
@@ -139,7 +139,7 @@ class DateField extends Field
      */
     public function getTimeStyle()
     {
-        return $this->timeStyle;
+        return (string) $this->timeStyle;
     }
 
     /**
