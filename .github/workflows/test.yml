@@ -1,6 +1,13 @@
 name: PHPUnit
 
-on: [push, pull_request]
+on:
+  push:
+    branches:
+      - master
+    paths-ignore:
+      - README.md
+  pull_request:
+  workflow_dispatch:
         
 jobs:
     run:
@@ -8,7 +15,7 @@ jobs:
       strategy:
         matrix:
           php-version: ['7.4', '8.0', '8.1', '8.2']
-      name: PHPUnit w/ PHP ${{ matrix.php-version }}
+      name: PHP ${{ matrix.php-version }}
       steps:
       - uses: actions/checkout@v4
 
