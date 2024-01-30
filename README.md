@@ -1,6 +1,8 @@
 # PHP PASSBOOK LIBRARY
 
-[![CircleCI](https://circleci.com/gh/eymengunay/php-passbook.svg?style=shield)](https://circleci.com/gh/eymengunay/php-passbook)
+[![Code Coverage](https://scrutinizer-ci.com/g/eymengunay/php-passbook/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/eymengunay/php-passbook/?branch=master)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/eymengunay/php-passbook/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/eymengunay/php-passbook/?branch=master)
+[![Build Status](https://scrutinizer-ci.com/g/eymengunay/php-passbook/badges/build.png?b=master)](https://scrutinizer-ci.com/g/eymengunay/php-passbook/build-status/master)
 [![Total Downloads](https://img.shields.io/packagist/dt/eo/passbook.svg)](https://packagist.org/packages/eo/passbook)
 [![Latest Stable Version](https://img.shields.io/packagist/v/eo/passbook.svg)](https://packagist.org/packages/eo/passbook)
 
@@ -49,7 +51,7 @@ This example will create a pass of type Ticket and will save the pkpass file in 
 * [Obtain a Pass Type Identifier and Team Identifier from Apple](#obtaining-the-pass-type-identifier-and-team-id)
 * Get an icon (29x29 png file) for the pass
 * Specify a name for your organization
-* Specify the output path where the pass will be saved 
+* Specify the output path where the pass will be saved
 
 ```php
 <?php

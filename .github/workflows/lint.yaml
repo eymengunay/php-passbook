@@ -1,0 +1,26 @@
+name: PHP code quality
+
+on:
+  push:
+    branches:
+      - master
+    paths-ignore:
+      - README.md
+  pull_request:
+  workflow_dispatch:
+        
+jobs:
+    run:
+      runs-on: ubuntu-latest
+      name: PHP_CodeSniffer
+      steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+            php-version: '8.2'
+            tools: cs2pr, phpcs
+
+      - name: Run phpcs
+        run: phpcs -q --report=checkstyle . | cs2pr
