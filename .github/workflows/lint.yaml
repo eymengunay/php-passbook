@@ -1,4 +1,4 @@
-name: PHP code quality
+name: Code Quality
 
 on:
   push:
@@ -20,7 +20,10 @@ jobs:
         uses: shivammathur/setup-php@v2
         with:
             php-version: '8.2'
-            tools: cs2pr, phpcs
+            tools: cs2pr, phpcs, phpstan
 
       - name: Run phpcs
         run: phpcs -q --report=checkstyle . | cs2pr
+
+      - name: Run PHPStan
+        run: phpstan analyse --level=2 src tests

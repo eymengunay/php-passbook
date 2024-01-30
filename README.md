@@ -2,7 +2,7 @@
 
 [![Code Coverage](https://scrutinizer-ci.com/g/eymengunay/php-passbook/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/eymengunay/php-passbook/?branch=master)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/eymengunay/php-passbook/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/eymengunay/php-passbook/?branch=master)
-[![Build Status](https://scrutinizer-ci.com/g/eymengunay/php-passbook/badges/build.png?b=master)](https://scrutinizer-ci.com/g/eymengunay/php-passbook/build-status/master)
+[![PHPUnit](https://github.com/eymengunay/php-passbook/actions/workflows/test.yml/badge.svg)](https://github.com/eymengunay/php-passbook/actions/workflows/test.yml)
 [![Total Downloads](https://img.shields.io/packagist/dt/eo/passbook.svg)](https://packagist.org/packages/eo/passbook)
 [![Latest Stable Version](https://img.shields.io/packagist/v/eo/passbook.svg)](https://packagist.org/packages/eo/passbook)
 
