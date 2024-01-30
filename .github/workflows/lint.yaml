@@ -10,7 +10,7 @@ on:
   workflow_dispatch:
         
 jobs:
-    run:
+    phpcs:
       runs-on: ubuntu-latest
       name: PHP_CodeSniffer
       steps:
@@ -20,10 +20,22 @@ jobs:
         uses: shivammathur/setup-php@v2
         with:
             php-version: '8.2'
-            tools: cs2pr, phpcs, phpstan
+            tools: cs2pr, phpcs
 
       - name: Run phpcs
         run: phpcs -q --report=checkstyle . | cs2pr
+
+    phpstan:
+      runs-on: ubuntu-latest
+      name: PHPStan
+      steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+            php-version: '8.2'
+            tools: phpstan
 
       - name: Run PHPStan
         run: phpstan analyse --level=2 src tests
