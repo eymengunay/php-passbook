@@ -200,9 +200,18 @@ The output should display OK. If not, you need to figure out what's going on and
 ## Reporting an issue or a feature request
 Issues and feature requests related to this library are tracked in the Github issue tracker: https://github.com/eymengunay/php-passbook/issues
 
+## Contributing
+
+Contributions are welcome and will be fully credited. We accept contributions via Pull Requests here on GitHub.
+
+Please note that this project adhered to [PSR-12 Extended Coding Style Guide](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-12-extended-coding-style-guide.md), so your changes need to:
+- Have PHPUnit-test coverage and tests must pass with all supported PHP versions
+- Pass PHPStan & PHP_CodeSniffer static analysis checks
+- Be documented in `README.md` for any change in behaviour
+
 ## Donating
 
-If you want to support the project, please consider to donate a small amount using my [Gratipay](https://gratipay.com/eymengunay) or [Changetip](http://eymengunay.tip.me) page. Thank you for your support!
+If you want to support the project, please consider to donate a small amount using GitHub Sponsors button. Thank you for your support!
 
 ## See also
 [PassbookBundle](https://github.com/eymengunay/PassbookBundle): PHP-Passbook library integration for Symfony2
