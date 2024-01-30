@@ -65,7 +65,7 @@ class Pass implements PassInterface
     /**
      * Pass structure
      *
-     * @var Structure
+     * @var StructureInterface
      */
     protected $structure;
 
@@ -74,7 +74,7 @@ class Pass implements PassInterface
      *
      * @var ImageInterface[]
      */
-    protected $images = array();
+    protected $images = [];
 
     /**
      * Beacons where the pass is relevant.
@@ -86,10 +86,9 @@ class Pass implements PassInterface
     /**
      * NFC where the pass is relevant.
      *
-     * @var array
+     * @var NfcInterface[]
      */
     protected $nfc = [];
-
 
     /**
      * A list of iTunes Store item identifiers (also known as Adam IDs) for the
@@ -186,8 +185,6 @@ class Pass implements PassInterface
      */
     protected $logoText;
 
-
-
     /**
      * If true, the strip image is displayed without a shine effect.
      *
@@ -257,12 +254,12 @@ class Pass implements PassInterface
      */
     protected $appLaunchURL;
 
-	/**
-	 * Pass userInfo
-	 *
-	 * @var mixed
-	 */
-	protected $userInfo;
+    /**
+     * Pass userInfo
+     *
+     * @var mixed
+     */
+    protected $userInfo;
 
     /**
      *
@@ -271,7 +268,7 @@ class Pass implements PassInterface
      * @var bool
      *
      */
-	protected bool $sharingProhibited = false;
+    protected bool $sharingProhibited = false;
 
     public function __construct($serialNumber, $description)
     {
@@ -289,7 +286,7 @@ class Pass implements PassInterface
             $array[$this->getType()] = $this->getStructure()->toArray();
         }
 
-        $properties = array(
+        $properties = [
             'serialNumber',
             'description',
             'formatVersion',
@@ -315,9 +312,9 @@ class Pass implements PassInterface
             'voided',
             'appLaunchURL',
             'associatedStoreIdentifiers',
-	        'userInfo',
+            'userInfo',
             'sharingProhibited'
-        );
+        ];
         foreach ($properties as $property) {
             $method = 'is' . ucfirst($property);
             if (!method_exists($this, $method)) {
@@ -539,6 +536,7 @@ class Pass implements PassInterface
     public function addNfc(NfcInterface $nfc)
     {
         $this->nfc[] = $nfc;
+
         return $this;
     }
 
@@ -549,7 +547,6 @@ class Pass implements PassInterface
     {
         return $this->nfc;
     }
-
 
     /**
      * {@inheritdoc}
@@ -599,14 +596,14 @@ class Pass implements PassInterface
     }
 
     /**
-     * {@inheritdoc}
+     * @deprecated please use addNfc() instead.
      */
-    public function setNfc(NfcInterface $nfc)
+    public function setNfc(array $nfc)
     {
         $this->nfc = $nfc;
+
         return $this;
     }
-
 
     /**
      * {@inheritdoc}
@@ -890,31 +887,33 @@ class Pass implements PassInterface
         return $this->appLaunchURL;
     }
 
-	/**
-	 * {@inheritdoc}
-	 */
-	public function setUserInfo($userInfo) {
-		$this->userInfo = $userInfo;
-
-		return $this;
-	}
-
-	/**
-	 * {@inheritdoc}
-	 */
-	public function getUserInfo() {
-		return $this->userInfo;
-	}
-
-	public function setSharingProhibited(bool $value): self
+    /**
+     * {@inheritdoc}
+     */
+    public function setUserInfo($userInfo)
     {
-	    $this->sharingProhibited = $value;
+        $this->userInfo = $userInfo;
 
-	    return $this;
+        return $this;
     }
 
-    public function getSharingProhibited(): bool {
-	    return $this->sharingProhibited;
+    /**
+     * {@inheritdoc}
+     */
+    public function getUserInfo()
+    {
+        return $this->userInfo;
     }
 
+    public function setSharingProhibited(bool $value): self
+    {
+        $this->sharingProhibited = $value;
+
+        return $this;
+    }
+
+    public function getSharingProhibited(): bool
+    {
+        return $this->sharingProhibited;
+    }
 }

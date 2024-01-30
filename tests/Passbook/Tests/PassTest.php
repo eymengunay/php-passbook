@@ -260,7 +260,7 @@ class PassTest extends TestCase
             ->addAssociatedStoreIdentifier(123)
         ;
 
-        $properties = array(
+        $properties = [
             'webServiceURL',
             'foregroundColor',
             'backgroundColor',
@@ -270,7 +270,7 @@ class PassTest extends TestCase
             'suppressStripShine',
             'associatedStoreIdentifiers',
             'appLaunchURL',
-        );
+        ];
         $array = $this->pass->toArray();
         foreach ($properties as $property) {
             $this->assertTrue(isset($array[$property]));

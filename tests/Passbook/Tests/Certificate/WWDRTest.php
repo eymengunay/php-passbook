@@ -10,13 +10,13 @@ class WWDRTest extends TestCase
 {
     public function testWWDR()
     {
-        $wwdr = new WWDR(__DIR__.'/../../../cert/wwdr.pem');
+        $wwdr = new WWDR(__DIR__ . '/../../../cert/wwdr.pem');
         $this->assertInstanceOf(WWDR::class, $wwdr);
     }
 
     public function testWWDRException()
     {
         $this->expectException(FileNotFoundException::class);
-        new WWDR(__DIR__.'/non-existing-file');
+        new WWDR(__DIR__ . '/non-existing-file');
     }
 }

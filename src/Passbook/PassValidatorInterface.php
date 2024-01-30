@@ -20,5 +20,4 @@ interface PassValidatorInterface
      * @return string[]
      */
     public function getErrors();
-
 }

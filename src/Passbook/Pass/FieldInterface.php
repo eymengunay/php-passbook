@@ -23,77 +23,77 @@ interface FieldInterface extends ArrayableInterface
     /**
      * Sets change message
      *
-     * @param string
+     * @param string $changeMessage
      */
     public function setChangeMessage($changeMessage);
 
     /**
      * Returns change message
      *
-     * @param string
+     * @return string
      */
     public function getChangeMessage();
 
     /**
      * Sets key
      *
-     * @param string
+     * @param string $key
      */
     public function setKey($key);
 
     /**
      * Returns key
      *
-     * @param string
+     * @return string
      */
     public function getKey();
 
     /**
      * Sets label
      *
-     * @param string
+     * @param string $label
      */
     public function setLabel($label);
 
     /**
      * Returns label
      *
-     * @param string
+     * @return string
      */
     public function getLabel();
 
     /**
      * Sets text alignment
      *
-     * @param string
+     * @param string $textAlignment
      */
     public function setTextAlignment($textAlignment);
 
     /**
      * Returns text alignment
      *
-     * @param string
+     * @return string
      */
     public function getTextAlignment();
 
     /**
      * Sets value
      *
-     * @param string
+     * @param string $value
      */
     public function setValue($value);
 
     /**
      * Returns value
      *
-     * @param string|int|float
+     * @return string|int|float
      */
     public function getValue();
 
     /**
      * Sets Attributed Value
      *
-     * @param string $attributedValue
+     * @param string $attributedValue $attributedValue
      */
     public function setAttributedValue($attributedValue);
 

@@ -33,6 +33,11 @@
         </properties>
     </rule>
 
+    <rule ref="Generic.Arrays.DisallowLongArraySyntax"/>
+
+    <!-- If string doesn't contain variables or single quotes, use single quotes. -->
+    <rule ref="Squiz.Strings.DoubleQuoteUsage.NotRequired"/>
+
     <exclude-pattern>/vendor/*</exclude-pattern>
 
 </ruleset>

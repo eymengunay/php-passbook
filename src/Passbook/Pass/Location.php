@@ -53,10 +53,10 @@ class Location implements LocationInterface
 
     public function toArray()
     {
-        $array = array(
+        $array = [
             'latitude' => $this->getLatitude(),
             'longitude' => $this->getLongitude()
-        );
+        ];
 
         if ($altitude = $this->getAltitude()) {
             $array['altitude'] = $altitude;

@@ -23,7 +23,7 @@ interface StructureInterface extends ArrayableInterface
     /**
      * Adds header field
      *
-     * @param Field
+     * @param Field $headerField
      */
     public function addHeaderField(FieldInterface $headerField);
 
@@ -37,7 +37,7 @@ interface StructureInterface extends ArrayableInterface
     /**
      * Adds primary field
      *
-     * @param Field
+     * @param Field $primaryField
      */
     public function addPrimaryField(FieldInterface $primaryField);
 
@@ -51,7 +51,7 @@ interface StructureInterface extends ArrayableInterface
     /**
      * Adds secondary field
      *
-     * @param Field
+     * @param Field $secondaryField
      */
     public function addSecondaryField(FieldInterface $secondaryField);
 
@@ -65,7 +65,7 @@ interface StructureInterface extends ArrayableInterface
     /**
      * Adds auxiliary field
      *
-     * @param Field
+     * @param Field $auxiliaryField
      */
     public function addAuxiliaryField(FieldInterface $auxiliaryField);
 
@@ -79,7 +79,7 @@ interface StructureInterface extends ArrayableInterface
     /**
      * Adds back field
      *
-     * @param Field
+     * @param Field $backField
      */
     public function addBackField(FieldInterface $backField);
 

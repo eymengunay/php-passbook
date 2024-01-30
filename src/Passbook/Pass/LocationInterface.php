@@ -23,7 +23,7 @@ interface LocationInterface extends ArrayableInterface
     /**
      * Sets location altitude
      *
-     * @param float
+     * @param float $altitude
      */
     public function setAltitude($altitude);
 
@@ -37,7 +37,7 @@ interface LocationInterface extends ArrayableInterface
     /**
      * Sets location latitude
      *
-     * @param float
+     * @param float $latitude
      */
     public function setLatitude($latitude);
 
@@ -51,7 +51,7 @@ interface LocationInterface extends ArrayableInterface
     /**
      * Sets location longitude
      *
-     * @param float
+     * @param float $longitude
      */
     public function setLongitude($longitude);
 
@@ -65,14 +65,14 @@ interface LocationInterface extends ArrayableInterface
     /**
      * Sets location relevant text
      *
-     * @param float
+     * @param string $relevantText
      */
     public function setRelevantText($relevantText);
 
     /**
      * Gets location relevant text
      *
-     * @return float
+     * @return string
      */
     public function getRelevantText();
 }

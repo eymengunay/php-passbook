@@ -18,23 +18,39 @@ use InvalidArgumentException;
  *
  * @package Passbook\Pass
  * @author Florian Morello <florian@morello.fr>
+ * @phpcs:disable Generic.NamingConventions.UpperCaseConstantName
  */
 class NumberField extends Field
 {
     /**
-     * @var string
+     * @deprecated please use ::NUMBER_STYLE_DECIMAL instead.
      */
-    const PKNumberStyleDecimal = 'PKNumberStyleDecimal';
+    public const PKNumberStyleDecimal = 'PKNumberStyleDecimal';
+
+    /**
+     * @deprecated please use ::NUMBER_STYLE_PERCENT instead.
+     */
+    public const PKNumberStylePercent = 'PKNumberStylePercent';
+
+    /**
+     * @deprecated please use ::NUMBER_STYLE_SCIENTIFIC instead.
+     */
+    public const PKNumberStyleScientific = 'PKNumberStyleScientific';
 
     /**
      * @var string
      */
-    const PKNumberStylePercent = 'PKNumberStylePercent';
+    public const NUMBER_STYLE_DECIMAL = 'PKNumberStyleDecimal';
 
     /**
      * @var string
      */
-    const PKNumberStyleScientific = 'PKNumberStyleScientific';
+    public const NUMBER_STYLE_PERCENT = 'PKNumberStylePercent';
+
+    /**
+     * @var string
+     */
+    public const NUMBER_STYLE_SCIENTIFIC = 'PKNumberStyleScientific';
 
     /**
      * ISO 4217

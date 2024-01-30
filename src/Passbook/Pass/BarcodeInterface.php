@@ -23,7 +23,7 @@ interface BarcodeInterface extends ArrayableInterface
     /**
      * Sets barcode format
      *
-     * @param string
+     * @param string $format
      */
     public function setFormat($format);
 
@@ -37,7 +37,7 @@ interface BarcodeInterface extends ArrayableInterface
     /**
      * Sets barcode message
      *
-     * @param string
+     * @param string $message
      */
     public function setMessage($message);
 
@@ -51,7 +51,7 @@ interface BarcodeInterface extends ArrayableInterface
     /**
      * Sets barcode message encoding
      *
-     * @param string
+     * @param string $messageEncoding
      */
     public function setMessageEncoding($messageEncoding);
 
@@ -65,7 +65,7 @@ interface BarcodeInterface extends ArrayableInterface
     /**
      * Sets barcode alt text
      *
-     * @param string
+     * @param string $altText
      */
     public function setAltText($altText);
 

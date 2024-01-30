@@ -35,7 +35,7 @@ interface P12Interface
     /**
      * Sets p12 password
      *
-     * @param string
+     * @param string $password
      */
     public function setPassword($password);
 }

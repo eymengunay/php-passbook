@@ -13,8 +13,8 @@ use PHPUnit\Framework\TestCase;
 
 class PassValidatorTest extends TestCase
 {
-    const SERIAL_NUMBER = '123';
-    const DESCRIPTION = 'description';
+    protected const SERIAL_NUMBER = '123';
+    protected const DESCRIPTION = 'description';
 
     /**
      * @var Pass
@@ -114,7 +114,7 @@ class PassValidatorTest extends TestCase
         $this->assertPasses($this->pass, PassValidator::LOCATION_LATITUDE_REQUIRED);
         $this->assertPasses($this->pass, PassValidator::LOCATION_ALTITUDE_INVALID);
 
-        $location = new Location(0,0);
+        $location = new Location(0, 0);
         $this->pass->addLocation($location);
         $this->assertPasses($this->pass, PassValidator::LOCATION_LONGITUDE_REQUIRED);
         $this->assertPasses($this->pass, PassValidator::LOCATION_LATITUDE_REQUIRED);
@@ -197,7 +197,7 @@ class PassValidatorTest extends TestCase
         self::assertArrayNotHasKey('icon', $this->pass->getImages(), 'pass must not have an icon for test to be valid');
         $this->assertFails($this->pass, PassValidator::ICON_REQUIRED);
 
-        $icon = new Image(__DIR__.'/../../img/icon.png', 'icon');
+        $icon = new Image(__DIR__ . '/../../img/icon.png', 'icon');
         $this->pass->addImage($icon);
         $this->assertPasses($this->pass, PassValidator::ICON_REQUIRED);
     }

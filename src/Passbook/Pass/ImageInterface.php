@@ -20,25 +20,37 @@ interface ImageInterface
 {
     /**
      * Set image context
-     * @param boolean
+     * @param string $context
      */
     public function setContext($context);
 
     /**
      * Get image context
-     * @param string
+     * @return string
      */
     public function getContext();
 
     /**
      * Sets image density
-     * @param integer
+     * @param integer $density
      */
     public function setDensity($density);
 
     /**
      * Returns image density
-     * @param integer
+     * @return integer
      */
     public function getDensity();
+
+    /**
+     * Implemented in \SplFileObject
+     * @return string
+     */
+    public function getExtension();
+
+    /**
+     * Implemented in \SplFileObject
+     * @return string
+     */
+    public function getPathname();
 }

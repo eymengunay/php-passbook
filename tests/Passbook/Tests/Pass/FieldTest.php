@@ -10,17 +10,17 @@ use PHPUnit\Framework\TestCase;
 
 class FieldTest extends TestCase
 {
-	public function testField()
-	{
-		$field = new Field('key', 'val');
-		$field
-			->setChangeMessage('change-message')
-			->setTextAlignment(Field::ALIGN_RIGHT)
-		;
+    public function testField()
+    {
+        $field = new Field('key', 'val');
+        $field
+            ->setChangeMessage('change-message')
+            ->setTextAlignment(Field::ALIGN_RIGHT)
+        ;
 
-		$array = $field->toArray();
-		$this->assertArrayHasKey('key', $array);
-	}
+        $array = $field->toArray();
+        $this->assertArrayHasKey('key', $array);
+    }
 
     public function testDateField()
     {
@@ -31,14 +31,14 @@ class FieldTest extends TestCase
         $this->assertEquals('2014-01-01T00:00:00+00:00', $array['value']);
     }
 
-	public function testNumberField()
-	{
-		$field = new NumberField('key', 0);
-		$field
-			->setNumberStyle(NumberField::PKNumberStyleDecimal)
-			->setCurrencyCode('EUR')
-		;
+    public function testNumberField()
+    {
+        $field = new NumberField('key', 0);
+        $field
+            ->setNumberStyle(NumberField::NUMBER_STYLE_DECIMAL)
+            ->setCurrencyCode('EUR')
+        ;
 
-		$this->assertArrayHasKey('currencyCode', $field->toArray());
-	}
+        $this->assertArrayHasKey('currencyCode', $field->toArray());
+    }
 }

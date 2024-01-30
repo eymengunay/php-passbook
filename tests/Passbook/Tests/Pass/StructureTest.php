@@ -17,11 +17,11 @@ class StructureTest extends TestCase
 
         $actual = $structure->toArray();
         $expected = [
-            "headerFields" => [
-                ["key" => "balance", "value" => "13.50 USD"],
+            'headerFields' => [
+                ['key' => 'balance', 'value' => '13.50 USD'],
             ],
-            "backFields" => [
-                ["key" => "publisher", "value" => "Passbook Limited"]
+            'backFields' => [
+                ['key' => 'publisher', 'value' => 'Passbook Limited']
             ]
         ];
 

@@ -17,7 +17,7 @@ class PassInvalidExceptionTest extends TestCase
 
     public function testNewExceptionWithErrorsArray()
     {
-        $errors = array('error 1', 'error 2');
+        $errors = ['error 1', 'error 2'];
         $exception = new PassInvalidException('', $errors);
 
         self::assertTrue(is_array($exception->getErrors()));
@@ -26,12 +26,11 @@ class PassInvalidExceptionTest extends TestCase
 
     public function testNewExceptionWithMessageAndArray()
     {
-        $errors = array('error 1', 'error 2');
+        $errors = ['error 1', 'error 2'];
         $exception = new PassInvalidException('Exception message', $errors);
 
         self::assertTrue(is_array($exception->getErrors()));
         self::assertEquals($errors, $exception->getErrors());
         self::assertSame('Exception message', $exception->getMessage());
     }
-
 }
