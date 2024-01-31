@@ -1,0 +1,46 @@
+name: PHPUnit
+
+on:
+  push:
+    branches:
+      - master
+    paths-ignore:
+      - README.md
+  pull_request:
+  workflow_dispatch:
+        
+jobs:
+    run:
+      runs-on: ubuntu-latest
+      strategy:
+        matrix:
+          php-version: ['7.4', '8.0', '8.1', '8.2']
+      name: PHP ${{ matrix.php-version }}
+      steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+            php-version: ${{ matrix.php-version }}
+            tools: composer:v2
+
+      - name: Setup problem matchers for PHPUnit
+        run: echo "::add-matcher::${{ runner.tool_cache }}/phpunit.json"
+
+      - name: Get composer cache directory
+        id: composer-cache
+        run: echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
+
+      - name: Cache dependencies
+        uses: actions/cache@v3
+        with:
+            path: ${{ steps.composer-cache.outputs.dir }}
+            key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+            restore-keys: ${{ runner.os }}-composer-
+
+      - name: Install dependencies
+        run: composer install --prefer-dist
+
+      - name: Run PHPUnit
+        run: vendor/bin/phpunit --color=always

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ruleset name="Passbook">
+
+    <rule ref="PSR12">
+        <!-- We don't have line length (line width) limits. -->
+        <exclude name="Generic.Files.LineLength"/>
+    </rule>
+
+    <!-- display progress -->
+    <arg value="p"/>
+    <arg name="colors"/>
+
+    <!-- No lines with only whitespace -->
+    <rule ref="Squiz.WhiteSpace.SuperfluousWhitespace">
+        <properties>
+            <property name="ignoreBlankLines" value="false"/>
+        </properties>
+    </rule>
+
+    <!-- Ensure 1 blank line before and after functions, except at the top and bottom. -->
+    <rule ref="Squiz.WhiteSpace.FunctionSpacing">
+        <properties>
+            <property name="spacing" value="1" />
+            <property name="spacingBeforeFirst" value="0" />
+            <property name="spacingAfterLast" value="0" />
+        </properties>
+    </rule>
+
+    <rule ref="Squiz.WhiteSpace.MemberVarSpacing">
+        <properties>
+            <property name="spacing" value="1"/>
+            <property name="spacingBeforeFirst" value="0" />
+        </properties>
+    </rule>
+
+    <rule ref="Generic.Arrays.DisallowLongArraySyntax"/>
+
+    <!-- If string doesn't contain variables or single quotes, use single quotes. -->
+    <rule ref="Squiz.Strings.DoubleQuoteUsage.NotRequired"/>
+
+    <exclude-pattern>/vendor/*</exclude-pattern>
+
+</ruleset>

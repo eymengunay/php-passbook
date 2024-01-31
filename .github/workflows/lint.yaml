@@ -1,0 +1,55 @@
+name: Code Quality
+
+on:
+  push:
+    branches:
+      - master
+    paths-ignore:
+      - README.md
+  pull_request:
+  workflow_dispatch:
+        
+jobs:
+    phpcs:
+      runs-on: ubuntu-latest
+      name: PHP_CodeSniffer
+      steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+            php-version: '8.2'
+            tools: cs2pr, phpcs
+
+      - name: Run phpcs
+        run: phpcs -q --report=checkstyle . | cs2pr
+
+    phpstan:
+      runs-on: ubuntu-latest
+      name: PHPStan
+      steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+            php-version: '8.2'
+            tools: phpstan
+
+      - name: Get composer cache directory
+        id: composer-cache
+        run: echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
+
+      - name: Cache dependencies
+        uses: actions/cache@v3
+        with:
+            path: ${{ steps.composer-cache.outputs.dir }}
+            key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+            restore-keys: ${{ runner.os }}-composer-
+
+      - name: Install dependencies
+        run: composer install --prefer-dist
+
+      - name: Run PHPStan
+        run: phpstan analyse --level=3 src tests

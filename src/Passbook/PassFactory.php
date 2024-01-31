@@ -95,7 +95,7 @@ class PassFactory
      *
      * @var string
      */
-    const PASS_EXTENSION = '.pkpass';
+    public const PASS_EXTENSION = '.pkpass';
 
     public function __construct($passTypeIdentifier, $teamIdentifier, $organizationName, $p12File, $p12Pass, $wwdrFile)
     {
@@ -115,7 +115,7 @@ class PassFactory
     /**
      * Set outputPath
      *
-     * @param string
+     * @param string $outputPath
      *
      * @return $this
      */
@@ -149,7 +149,7 @@ class PassFactory
     /**
      * Set overwrite
      *
-     * @param boolean
+     * @param boolean $overwrite
      *
      * @return $this
      */
@@ -176,7 +176,7 @@ class PassFactory
      * When set, the pass will not be signed when packaged. This should only
      * be used for testing.
      *
-     * @param boolean
+     * @param boolean $skipSignature
      *
      * @return $this
      */
@@ -251,7 +251,7 @@ class PassFactory
         $this->populateRequiredInformation($pass);
 
         if ($this->passValidator) {
-            if (!$this->passValidator->validate($pass)){
+            if (!$this->passValidator->validate($pass)) {
                 throw new PassInvalidException('Failed to validate passbook', $this->passValidator->getErrors());
             };
         }
@@ -304,7 +304,7 @@ class PassFactory
                 $signatureFile,
                 $certdata,
                 $privkey,
-                array(),
+                [],
                 PKCS7_BINARY | PKCS7_DETACHED,
                 $this->wwdr->getRealPath()
             );
@@ -326,7 +326,7 @@ class PassFactory
                 throw new FileException("Couldn't write signature file.");
             }
         } else {
-            throw new FileException("Error reading certificate file");
+            throw new FileException('Error reading certificate file');
         }
     }
 
@@ -342,12 +342,12 @@ class PassFactory
     private function zip($source, $destination)
     {
         if (!extension_loaded('zip')) {
-            throw new Exception("ZIP extension not available");
+            throw new Exception('ZIP extension not available');
         }
 
         $source = realpath($source);
         if (!is_dir($source)) {
-            throw new FileException("Source must be a directory.");
+            throw new FileException('Source must be a directory.');
         }
 
         $zip = new ZipArchive();
@@ -362,7 +362,7 @@ class PassFactory
         while ($iterator->valid()) {
             if ($iterator->isDir()) {
                 $zip->addEmptyDir($iterator->getSubPathName());
-            } else if ($iterator->isFile()) {
+            } elseif ($iterator->isFile()) {
                 $zip->addFromString($iterator->getSubPathName(), file_get_contents($iterator->key()));
             }
             $iterator->next();
@@ -380,7 +380,7 @@ class PassFactory
      */
     private function rrmdir($dir)
     {
-        $files = array_diff(scandir($dir), array('.', '..'));
+        $files = array_diff(scandir($dir), ['.', '..']);
         foreach ($files as $file) {
             is_dir("$dir/$file") ? $this->rrmdir("$dir/$file") : unlink("$dir/$file");
         }
@@ -426,7 +426,7 @@ class PassFactory
      */
     public function getPassName($passName, PassInterface $pass)
     {
-        $passNameSanitised = preg_replace("/[^a-zA-Z0-9]+/", "", $passName);
+        $passNameSanitised = preg_replace('/[^a-zA-Z0-9]+/', '', $passName);
         return strlen($passNameSanitised) != 0 ? $passNameSanitised : $pass->getSerialNumber();
     }
 
@@ -445,7 +445,7 @@ class PassFactory
         );
         foreach ($files as $file) {
             // Ignore "." and ".." folders
-            if (in_array(substr($file, strrpos($file, '/') + 1), array('.', '..'))) {
+            if (in_array(substr($file, strrpos($file, '/') + 1), ['.', '..'])) {
                 continue;
             }
             //
@@ -470,7 +470,7 @@ class PassFactory
         $passDir = $this->getNormalizedOutputPath() . $pass->getSerialNumber() . DIRECTORY_SEPARATOR;
         $passDirExists = file_exists($passDir);
         if ($passDirExists && !$this->isOverwrite()) {
-            throw new FileException("Temporary pass directory already exists");
+            throw new FileException('Temporary pass directory already exists');
         } elseif (!$passDirExists && !mkdir($passDir, 0777, true)) {
             throw new FileException("Couldn't create temporary pass directory");
         }
@@ -489,7 +489,7 @@ class PassFactory
             $fileName = $passDir . $image->getContext();
             if ($image->getDensity() === 2) {
                 $fileName .= '@2x';
-            } else if ($image->getDensity() === 3) {
+            } elseif ($image->getDensity() === 3) {
                 $fileName .= '@3x';
             }
 
@@ -523,7 +523,7 @@ class PassFactory
                 $fileName = $localizationDir . $image->getContext();
                 if ($image->getDensity() === 2) {
                     $fileName .= '@2x';
-                } else if ($image->getDensity() === 3) {
+                } elseif ($image->getDensity() === 3) {
                     $fileName .= '@3x';
                 }
                 $fileName .= '.' . $image->getExtension();

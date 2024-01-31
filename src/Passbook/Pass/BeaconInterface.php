@@ -23,7 +23,7 @@ interface BeaconInterface extends ArrayableInterface
     /**
      * Sets proximity UUID
      *
-     * @param string
+     * @param string $uuid
      */
     public function setProximityUUID($uuid);
 
@@ -37,7 +37,7 @@ interface BeaconInterface extends ArrayableInterface
     /**
      * Sets major
      *
-     * @param integer
+     * @param integer $major
      */
     public function setMajor($major);
 
@@ -51,7 +51,7 @@ interface BeaconInterface extends ArrayableInterface
     /**
      * Sets minor
      *
-     * @param integer
+     * @param integer $minor
      */
     public function setMinor($minor);
 
@@ -72,9 +72,7 @@ interface BeaconInterface extends ArrayableInterface
     /**
      * Sets relevant text
      *
-     * @param string
+     * @param string $relevantText
      */
     public function setRelevantText($relevantText);
-
 }
-

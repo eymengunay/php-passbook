@@ -19,6 +19,11 @@
       "email": "eymen@egunay.com"
     }
   ],
+  "config": {
+    "allow-plugins": {
+        "dealerdirect/phpcodesniffer-composer-installer": true
+    }
+  },
   "require": {
     "php": ">=7.4",
     "ext-zip": "*",
@@ -26,7 +31,9 @@
   },
   "require-dev": {
     "phpunit/phpunit": "^9.0",
-    "nunomaduro/phpinsights": "dev-master"
+    "nunomaduro/phpinsights": "dev-master",
+    "squizlabs/php_codesniffer": "3.*",
+    "phpstan/phpstan": "^1.10"
   },
   "autoload": {
     "psr-4": {

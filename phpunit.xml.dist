@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" bootstrap="vendor/autoload.php" colors="true" xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.3/phpunit.xsd">
 
-<phpunit bootstrap="vendor/autoload.php" colors="true">
-
-    <php>
+  <php>
         <!--
         <env name="P12_CERT_PATH" value="./../../cert/pass.com.example.testpass.p12" />
         <env name="P12_CERT_PASS" value="123456" />
@@ -11,17 +10,17 @@
         <env name="TEAM_ID" value="ABCDE12345" />
         <env name="ORG_NAME" value="Organization Name" />
         -->
-    </php>
+  </php>
 
-    <testsuites>
-        <testsuite name="PHP-Passbook Test Suite">
-            <directory>tests/Passbook/Tests/</directory>
-        </testsuite>
-    </testsuites>
+  <testsuites>
+    <testsuite name="PHP-Passbook Test Suite">
+      <directory>tests/Passbook/Tests/</directory>
+    </testsuite>
+  </testsuites>
 
-    <filter>
-        <whitelist>
-            <directory suffix=".php">src/Passbook/</directory>
-        </whitelist>
-    </filter>
+  <coverage cacheDirectory=".cache/code-coverage" processUncoveredFiles="true">
+    <include>
+      <directory suffix=".php">src/Passbook/</directory>
+    </include>
+  </coverage>
 </phpunit>

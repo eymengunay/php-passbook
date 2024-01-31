@@ -75,4 +75,3 @@ class Nfc implements NfcInterface
         return $this->encryptionPublicKey;
     }
 }
-

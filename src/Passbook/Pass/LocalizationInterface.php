@@ -19,14 +19,14 @@ interface LocalizationInterface
     /**
      * Sets language
      *
-     * @param string
+     * @param string $language
      */
     public function setLanguage($language);
 
     /**
      * Returns language
      *
-     * @param string
+     * @return string
      */
     public function getLanguage();
 
@@ -75,7 +75,7 @@ interface LocalizationInterface
     public function addImage(Image $image);
 
     /**
-     * @return Image[]
+     * @return ImageInterface[]
      */
     public function getImages();
 }

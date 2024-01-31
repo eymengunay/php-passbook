@@ -108,13 +108,13 @@ class PassFactoryTest extends TestCase
         $pass->setBarcode($barcode);
 
         // Add Localizations (this also tests zipping subdirectories)
-        $englishText = array(
+        $englishText = [
             'created_by' => 'Pass produced by php-passbook'
-        );
+        ];
 
-        $spanishText = array(
+        $spanishText = [
             'created_by' => 'Pase producido por php-passbook'
-        );
+        ];
 
         $es = new Localization('es');
         $es->addStrings($spanishText);
@@ -188,7 +188,7 @@ class PassFactoryTest extends TestCase
         $this->factory->setOutputPath("path-ending-with-separator{$s}");
         self::assertEquals("path-ending-with-separator{$s}", $this->factory->getNormalizedOutputPath());
 
-        $this->factory->setOutputPath("path-not-ending-with-separator");
+        $this->factory->setOutputPath('path-not-ending-with-separator');
         self::assertEquals("path-not-ending-with-separator{$s}", $this->factory->getNormalizedOutputPath());
 
         $this->factory->setOutputPath("path-ending-with-multiple-separators{$s}{$s}");

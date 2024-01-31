@@ -21,7 +21,7 @@ class PassInvalidException extends \RuntimeException
     public function __construct($message = '', array $errors = null)
     {
         parent::__construct($message);
-        $this->errors = $errors ? $errors : array();
+        $this->errors = $errors ? $errors : [];
     }
 
     /**

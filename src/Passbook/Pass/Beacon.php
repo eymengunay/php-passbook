@@ -52,9 +52,9 @@ class Beacon implements BeaconInterface
 
     public function toArray()
     {
-        $array = array(
+        $array = [
             'proximityUUID' => $this->getProximityUUID()
-        );
+        ];
 
         if ($major = $this->getMajor()) {
             $array['major'] = $major;
@@ -143,4 +143,3 @@ class Beacon implements BeaconInterface
         return $this->relevantText;
     }
 }
-

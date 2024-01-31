@@ -21,32 +21,32 @@ class PassValidator implements PassValidatorInterface
 {
     private $errors;
 
-    const DESCRIPTION_REQUIRED = 'description is required and cannot be blank';
-    const FORMAT_VERSION_REQUIRED = 'formatVersion is required and must be 1';
-    const ORGANIZATION_NAME_REQUIRED = 'organizationName is required and cannot be blank';
-    const PASS_TYPE_IDENTIFIER_REQUIRED = 'passTypeIdentifier is required and cannot be blank';
-    const SERIAL_NUMBER_REQUIRED = 'serialNumber is required and cannot be blank';
-    const TEAM_IDENTIFIER_REQUIRED = 'teamIdentifier is required and cannot be blank';
-    const ICON_REQUIRED = 'pass must have an icon image';
-    const BARCODE_FORMAT_INVALID = 'barcode format is invalid';
-    const BARCODE_MESSAGE_INVALID = 'barcode message is invalid; must be a string';
-    const LOCATION_LATITUDE_REQUIRED = 'location latitude is required';
-    const LOCATION_LONGITUDE_REQUIRED = 'location longitude is required';
-    const LOCATION_LATITUDE_INVALID = 'location latitude is invalid; must be numeric';
-    const LOCATION_LONGITUDE_INVALID = 'location longitude is invalid; must be numeric';
-    const LOCATION_ALTITUDE_INVALID = 'location altitude is invalid; must be numeric';
-    const BEACON_PROXIMITY_UUID_REQUIRED = 'beacon proximityUUID is required';
-    const BEACON_MAJOR_INVALID = 'beacon major is invalid; must be 16-bit unsigned integer';
-    const BEACON_MINOR_INVALID = 'beacon minor is invalid; must be 16-bit unsigned integer';
-    const NFC_MESSAGE_REQUIRED = 'NFC message is required';
-    const NFC_ENCRYPTION_PUBLIC_KEY_REQUIRED = 'NFC encryption public key is required';
-    const WEB_SERVICE_URL_INVALID = 'webServiceURL is invalid; must start with https (or http for development)';
-    const WEB_SERVICE_AUTHENTICATION_TOKEN_REQUIRED = 'authenticationToken required with webServiceURL and cannot be blank';
-    const WEB_SERVICE_AUTHENTICATION_TOKEN_INVALID = 'authenticationToken is invalid; must be at least 16 characters';
-    const ASSOCIATED_STORE_IDENTIFIER_INVALID = 'associatedStoreIdentifiers is invalid; must be an integer';
-    const ASSOCIATED_STORE_IDENTIFIER_REQUIRED = 'appLaunchURL is required when associatedStoreIdentifiers is present';
-    const IMAGE_TYPE_INVALID = 'image files must be PNG format';
-    const GROUPING_IDENTITY_INVALID = 'the grouping identity may only be used on boarding pass and event ticket types';
+    public const DESCRIPTION_REQUIRED = 'description is required and cannot be blank';
+    public const FORMAT_VERSION_REQUIRED = 'formatVersion is required and must be 1';
+    public const ORGANIZATION_NAME_REQUIRED = 'organizationName is required and cannot be blank';
+    public const PASS_TYPE_IDENTIFIER_REQUIRED = 'passTypeIdentifier is required and cannot be blank';
+    public const SERIAL_NUMBER_REQUIRED = 'serialNumber is required and cannot be blank';
+    public const TEAM_IDENTIFIER_REQUIRED = 'teamIdentifier is required and cannot be blank';
+    public const ICON_REQUIRED = 'pass must have an icon image';
+    public const BARCODE_FORMAT_INVALID = 'barcode format is invalid';
+    public const BARCODE_MESSAGE_INVALID = 'barcode message is invalid; must be a string';
+    public const LOCATION_LATITUDE_REQUIRED = 'location latitude is required';
+    public const LOCATION_LONGITUDE_REQUIRED = 'location longitude is required';
+    public const LOCATION_LATITUDE_INVALID = 'location latitude is invalid; must be numeric';
+    public const LOCATION_LONGITUDE_INVALID = 'location longitude is invalid; must be numeric';
+    public const LOCATION_ALTITUDE_INVALID = 'location altitude is invalid; must be numeric';
+    public const BEACON_PROXIMITY_UUID_REQUIRED = 'beacon proximityUUID is required';
+    public const BEACON_MAJOR_INVALID = 'beacon major is invalid; must be 16-bit unsigned integer';
+    public const BEACON_MINOR_INVALID = 'beacon minor is invalid; must be 16-bit unsigned integer';
+    public const NFC_MESSAGE_REQUIRED = 'NFC message is required';
+    public const NFC_ENCRYPTION_PUBLIC_KEY_REQUIRED = 'NFC encryption public key is required';
+    public const WEB_SERVICE_URL_INVALID = 'webServiceURL is invalid; must start with https (or http for development)';
+    public const WEB_SERVICE_AUTHENTICATION_TOKEN_REQUIRED = 'authenticationToken required with webServiceURL and cannot be blank';
+    public const WEB_SERVICE_AUTHENTICATION_TOKEN_INVALID = 'authenticationToken is invalid; must be at least 16 characters';
+    public const ASSOCIATED_STORE_IDENTIFIER_INVALID = 'associatedStoreIdentifiers is invalid; must be an integer';
+    public const ASSOCIATED_STORE_IDENTIFIER_REQUIRED = 'appLaunchURL is required when associatedStoreIdentifiers is present';
+    public const IMAGE_TYPE_INVALID = 'image files must be PNG format';
+    public const GROUPING_IDENTITY_INVALID = 'the grouping identity may only be used on boarding pass and event ticket types';
 
     /**
      * {@inheritdoc}
@@ -185,7 +185,7 @@ class PassValidator implements PassValidatorInterface
 
     private function validateBarcodeKeys(PassInterface $pass)
     {
-        $validBarcodeFormats = array(Barcode::TYPE_QR, Barcode::TYPE_AZTEC, Barcode::TYPE_PDF_417, Barcode::TYPE_CODE_128);
+        $validBarcodeFormats = [Barcode::TYPE_QR, Barcode::TYPE_AZTEC, Barcode::TYPE_PDF_417, Barcode::TYPE_CODE_128];
 
         $barcode = $pass->getBarcode();
 
@@ -279,5 +279,4 @@ class PassValidator implements PassValidatorInterface
     {
         $this->errors[] = $string;
     }
-
 }

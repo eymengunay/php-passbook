@@ -14,48 +14,69 @@ namespace Passbook\Pass;
 /**
  * Field
  * @author Eymen Gunay <eymen@egunay.com>
+ * @phpcs:disable Generic.NamingConventions.UpperCaseConstantName
  */
 class Field implements FieldInterface
 {
     /**
      * @var string
      */
-    const ALIGN_LEFT = 'PKTextAlignmentLeft';
+    public const ALIGN_LEFT = 'PKTextAlignmentLeft';
 
     /**
      * @var string
      */
-    const ALIGN_CENTER = 'PKTextAlignmentCenter';
+    public const ALIGN_CENTER = 'PKTextAlignmentCenter';
 
     /**
      * @var string
      */
-    const ALIGN_RIGHT = 'PKTextAlignmentRight';
+    public const ALIGN_RIGHT = 'PKTextAlignmentRight';
 
     /**
      * @var string
      */
-    const ALIGN_NATURAL = 'PKTextAlignmentNatural';
+    public const ALIGN_NATURAL = 'PKTextAlignmentNatural';
+
+    /**
+     * @deprecated please use ::DATA_DETECTOR_TYPE_PHONE_NUMBER instead.
+     */
+    public const PKDataDetectorTypePhoneNumber = 'PKDataDetectorTypePhoneNumber';
+
+    /**
+     * @deprecated please use ::DATA_DETECTOR_TYPE_LINK instead.
+     */
+    public const PKDataDetectorTypeLink = 'PKDataDetectorTypeLink';
+
+    /**
+     * @deprecated please use ::DATA_DETECTOR_TYPE_ADDRESS instead.
+     */
+    public const PKDataDetectorTypeAddress = 'PKDataDetectorTypeAddress';
+
+    /**
+     * @deprecated please use ::DATA_DETECTOR_TYPE_CALENDAR_EVENT instead.
+     */
+    public const PKDataDetectorTypeCalendarEvent = 'PKDataDetectorTypeCalendarEvent';
 
     /**
      * @var string
      */
-    const PKDataDetectorTypePhoneNumber = 'PKDataDetectorTypePhoneNumber';
+    public const DATA_DETECTOR_TYPE_PHONE_NUMBER = 'PKDataDetectorTypePhoneNumber';
 
     /**
      * @var string
      */
-    const PKDataDetectorTypeLink = 'PKDataDetectorTypeLink';
+    public const DATA_DETECTOR_TYPE_LINK = 'PKDataDetectorTypeLink';
 
     /**
      * @var string
      */
-    const PKDataDetectorTypeAddress = 'PKDataDetectorTypeAddress';
+    public const DATA_DETECTOR_TYPE_ADDRESS = 'PKDataDetectorTypeAddress';
 
     /**
      * @var string
      */
-    const PKDataDetectorTypeCalendarEvent = 'PKDataDetectorTypeCalendarEvent';
+    public const DATA_DETECTOR_TYPE_CALENDAR_EVENT = 'PKDataDetectorTypeCalendarEvent';
 
     /**
      * Format string for the alert text that is displayed when the pass is updated.
@@ -68,7 +89,7 @@ class Field implements FieldInterface
     /**
      * The key must be unique within the scope of the entire pass.
      * For example, “departure-gate”.
-     * @var array
+     * @var string
      */
     protected $key;
 
@@ -118,10 +139,10 @@ class Field implements FieldInterface
 
     public function toArray()
     {
-        $array = array(
+        $array = [
             'key' => $this->getKey(),
             'value' => $this->getValue()
-        );
+        ];
 
         if ($this->getChangeMessage()) {
             $array['changeMessage'] = $this->getChangeMessage();

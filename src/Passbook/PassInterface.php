@@ -86,7 +86,7 @@ interface PassInterface extends ArrayableInterface
     public function addImage(ImageInterface $image);
 
     /**
-     * @return Image[]
+     * @return ImageInterface[]
      */
     public function getImages();
 
@@ -119,17 +119,16 @@ interface PassInterface extends ArrayableInterface
      * {@inheritdoc}
      */
     public function getBeacons();
-    
+
     /**
      * {@inheritdoc}
      */
     public function addNfc(NfcInterface $nfc);
 
     /**
-     * {@inheritdoc}
+     * @return NfcInterface[]
      */
     public function getNfc();
-  
 
     /**
      * {@inheritdoc}
@@ -228,7 +227,7 @@ interface PassInterface extends ArrayableInterface
      * {@inheritdoc}
      */
     public function getLogoText();
-    
+
     /**
      * {@inheritdoc}
      */
@@ -237,7 +236,7 @@ interface PassInterface extends ArrayableInterface
     /**
      * {@inheritdoc}
      */
-    public function getSharingProhibited();    
+    public function getSharingProhibited();
 
     /**
      * {@inheritdoc}
@@ -310,25 +309,24 @@ interface PassInterface extends ArrayableInterface
      * @return LocalizationInterface[]
      */
     public function getLocalizations();
-    
+
     /**
      * {@inheritdoc}
      */
     public function setAppLaunchURL($appLaunchURL);
-    
+
     /**
      * {@inheritdoc}
      */
     public function getAppLaunchURL();
 
-	/**
-	 * {@inheritdoc}
-	 */
-	public function setUserInfo($userInfo);
+    /**
+     * {@inheritdoc}
+     */
+    public function setUserInfo($userInfo);
 
-	/**
-	 * {@inheritdoc}
-	 */
-	public function getUserInfo();
-
+    /**
+     * {@inheritdoc}
+     */
+    public function getUserInfo();
 }

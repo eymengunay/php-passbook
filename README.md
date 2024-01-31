@@ -1,6 +1,8 @@
 # PHP PASSBOOK LIBRARY
 
-[![CircleCI](https://circleci.com/gh/eymengunay/php-passbook.svg?style=shield)](https://circleci.com/gh/eymengunay/php-passbook)
+[![Code Coverage](https://scrutinizer-ci.com/g/eymengunay/php-passbook/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/eymengunay/php-passbook/?branch=master)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/eymengunay/php-passbook/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/eymengunay/php-passbook/?branch=master)
+[![PHPUnit](https://github.com/eymengunay/php-passbook/actions/workflows/test.yml/badge.svg)](https://github.com/eymengunay/php-passbook/actions/workflows/test.yml)
 [![Total Downloads](https://img.shields.io/packagist/dt/eo/passbook.svg)](https://packagist.org/packages/eo/passbook)
 [![Latest Stable Version](https://img.shields.io/packagist/v/eo/passbook.svg)](https://packagist.org/packages/eo/passbook)
 
@@ -49,7 +51,7 @@ This example will create a pass of type Ticket and will save the pkpass file in 
 * [Obtain a Pass Type Identifier and Team Identifier from Apple](#obtaining-the-pass-type-identifier-and-team-id)
 * Get an icon (29x29 png file) for the pass
 * Specify a name for your organization
-* Specify the output path where the pass will be saved 
+* Specify the output path where the pass will be saved
 
 ```php
 <?php
@@ -198,9 +200,18 @@ The output should display OK. If not, you need to figure out what's going on and
 ## Reporting an issue or a feature request
 Issues and feature requests related to this library are tracked in the Github issue tracker: https://github.com/eymengunay/php-passbook/issues
 
+## Contributing
+
+Contributions are welcome and will be fully credited. We accept contributions via Pull Requests here on GitHub.
+
+Please note that this project adhered to [PSR-12 Extended Coding Style Guide](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-12-extended-coding-style-guide.md), so your changes need to:
+- Have PHPUnit-test coverage and tests must pass with all supported PHP versions
+- Pass PHPStan & PHP_CodeSniffer static analysis checks
+- Be documented in `README.md` for any change in behaviour
+
 ## Donating
 
-If you want to support the project, please consider to donate a small amount using my [Gratipay](https://gratipay.com/eymengunay) or [Changetip](http://eymengunay.tip.me) page. Thank you for your support!
+If you want to support the project, please consider to donate a small amount using GitHub Sponsors button. Thank you for your support!
 
 ## See also
 [PassbookBundle](https://github.com/eymengunay/PassbookBundle): PHP-Passbook library integration for Symfony2

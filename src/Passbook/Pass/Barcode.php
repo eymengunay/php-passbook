@@ -21,23 +21,23 @@ class Barcode implements BarcodeInterface
     /**
      * @var string
      */
-    const TYPE_QR = 'PKBarcodeFormatQR';
+    public const TYPE_QR = 'PKBarcodeFormatQR';
 
     /**
      * @var string
      */
-    const TYPE_PDF_417 = 'PKBarcodeFormatPDF417';
+    public const TYPE_PDF_417 = 'PKBarcodeFormatPDF417';
 
     /**
      * @var string
      */
-    const TYPE_AZTEC = 'PKBarcodeFormatAztec';
+    public const TYPE_AZTEC = 'PKBarcodeFormatAztec';
 
     /**
      * Available starting with iOS 9.
      * @var string
      */
-    const TYPE_CODE_128 = 'PKBarcodeFormatCode128';
+    public const TYPE_CODE_128 = 'PKBarcodeFormatCode128';
 
     /**
      * Barcode format. Must be one of the following values:
@@ -80,11 +80,11 @@ class Barcode implements BarcodeInterface
 
     public function toArray()
     {
-        $array = array(
+        $array = [
             'format' => $this->getFormat(),
             'message' => $this->getMessage(),
             'messageEncoding' => $this->getMessageEncoding()
-        );
+        ];
 
         if ($this->getAltText()) {
             $array['altText'] = $this->getAltText();

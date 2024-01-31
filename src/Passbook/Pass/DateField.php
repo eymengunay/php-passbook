@@ -16,14 +16,58 @@ namespace Passbook\Pass;
  * @package Passbook\Pass
  * @link https://developer.apple.com/library/ios/documentation/userexperience/Reference/PassKit_Bundle/Chapters/FieldDictionary.html#//apple_ref/doc/uid/TP40012026-CH4-SW1
  * @author Florian Morello <florian@morello.fr>
+ * @phpcs:disable Generic.NamingConventions.UpperCaseConstantName
  */
 class DateField extends Field
 {
-    const PKDateStyleNone = "PKDateStyleNone";
-    const PKDateStyleShort = "PKDateStyleShort";
-    const PKDateStyleMedium = "PKDateStyleMedium";
-    const PKDateStyleLong = "PKDateStyleLong";
-    const PKDateStyleFull = "PKDateStyleFull";
+    /**
+     * @deprecated please use ::DATE_STYLE_NONE instead.
+     */
+    public const PKDateStyleNone = 'PKDateStyleNone';
+
+    /**
+     * @deprecated please use ::DATE_STYLE_SHORT instead.
+     */
+    public const PKDateStyleShort = 'PKDateStyleShort';
+
+    /**
+     * @deprecated please use ::DATE_STYLE_MEDIUM instead.
+     */
+    public const PKDateStyleMedium = 'PKDateStyleMedium';
+
+    /**
+     * @deprecated please use ::DATE_STYLE_LONG instead.
+     */
+    public const PKDateStyleLong = 'PKDateStyleLong';
+
+    /**
+     * @deprecated please use ::DATE_STYLE_FULL instead.
+     */
+    public const PKDateStyleFull = 'PKDateStyleFull';
+
+    /**
+     * @var string
+     */
+    public const DATE_STYLE_NONE = 'PKDateStyleNone';
+
+    /**
+     * @var string
+     */
+    public const DATE_STYLE_SHORT = 'PKDateStyleShort';
+    /**
+     * @var string
+     */
+    public const DATE_STYLE_MEDIUM = 'PKDateStyleMedium';
+
+    /**
+     * @var string
+     */
+    public const DATE_STYLE_LONG = 'PKDateStyleLong';
+
+    /**
+     * @var string
+     */
+    public const DATE_STYLE_FULL = 'PKDateStyleFull';
 
     /**
      * @var string
@@ -147,7 +191,8 @@ class DateField extends Field
      * @param string|\DateTime $value
      * @return $this
      */
-    public function setValue($value){
+    public function setValue($value)
+    {
         if ($value instanceof \DateTime) {
             $value = $value->format('c');
         }

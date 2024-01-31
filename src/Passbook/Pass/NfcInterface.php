@@ -19,7 +19,7 @@ interface NfcInterface extends ArrayableInterface
     /**
      * Sets NFC message
      *
-     * @param string
+     * @param string $message
      */
     public function setMessage($message);
 
@@ -33,7 +33,7 @@ interface NfcInterface extends ArrayableInterface
     /**
      * Sets encryption Public Key
      *
-     * @param string
+     * @param string $encryptionPublicKey
      */
     public function setEncryptionPublicKey($encryptionPublicKey);
 

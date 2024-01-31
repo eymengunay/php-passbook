@@ -43,27 +43,27 @@ class BoardingPass extends Pass
     /**
      * @var string
      */
-    const TYPE_AIR = 'PKTransitTypeAir';
+    public const TYPE_AIR = 'PKTransitTypeAir';
 
     /**
      * @var string
      */
-    const TYPE_BOAT = 'PKTransitTypeBoat';
+    public const TYPE_BOAT = 'PKTransitTypeBoat';
 
     /**
      * @var string
      */
-    const TYPE_BUS = 'PKTransitTypeBus';
+    public const TYPE_BUS = 'PKTransitTypeBus';
 
     /**
      * @var string
      */
-    const TYPE_GENERIC = 'PKTransitTypeGeneric';
+    public const TYPE_GENERIC = 'PKTransitTypeGeneric';
 
     /**
      * @var string
      */
-    const TYPE_TRAIN = 'PKTransitTypeTrain';
+    public const TYPE_TRAIN = 'PKTransitTypeTrain';
 
     /**
      * Class constructor
