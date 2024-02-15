@@ -1,3 +1,6 @@
 vendor
+composer.lock
+www/passes/*.pkpass
+!www/passes/sample.pkpass
 .idea/
 .phpunit.result.cache

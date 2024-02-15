@@ -25,11 +25,11 @@ use SplFileObject;
 use ZipArchive;
 
 /**
- * PassFactory - Creates .pkpass files
+ * ApplePassFactory - Creates (signed) .pkpass files
  *
  * @author Eymen Gunay <eymen@egunay.com>
  */
-class PassFactory
+class ApplePassFactory
 {
     /**
      * Output path for generated pass files

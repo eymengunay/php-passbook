@@ -39,6 +39,19 @@ To add PHP-Passbook as a local, per-project dependency to your project, simply a
 }
 ```
 
+## Supported pass types
+
+The following table<sup>[link](https://github.com/google-wallet/pass-converter?tab=readme-ov-file#supported-pass-types)</sup> shows the mapping of pass types between each supported wallet platform.
+
+| Type          | Google Wallet                                                                                                | Apple Wallet                                                                                                         |
+| ------------- | ------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------- |
+| Boarding pass | [`FlightObject`](https://developers.google.com/wallet/tickets/boarding-passes/rest/v1/flightobject)          | [`Pass.BoardingPass` (`PKTransitTypeAir`)](https://developer.apple.com/documentation/walletpasses/pass/boardingpass) |
+| Transit pass  | [`TransitObject`](https://developers.google.com/wallet/tickets/transit-passes/qr-code/rest/v1/transitobject) | [`Pass.BoardingPass` (other types)](https://developer.apple.com/documentation/walletpasses/pass/boardingpass)        |
+| Offer/Coupon  | [`OfferObject`](https://developers.google.com/wallet/retail/offers/rest/v1/offerobject)                      | [`Pass.Coupon`](https://developer.apple.com/documentation/walletpasses/pass/coupon)                                  |
+| Event ticket  | [`EventTicketObject`](https://developers.google.com/wallet/tickets/events/rest/v1/eventticketobject)         | [`Pass.EventTicket`](https://developer.apple.com/documentation/walletpasses/pass/eventticket)                        |
+| Loyalty card  | [`LoyaltyObject`](https://developers.google.com/wallet/retail/loyalty-cards/rest/v1/loyaltyobject)           | [`Pass.StoreCard`](https://developer.apple.com/documentation/walletpasses/pass/storecard)                            |
+| Generic       | [`GenericObject`](https://developers.google.com/wallet/generic/rest/v1/genericobject)                        | [`Pass.Generic`](https://developer.apple.com/documentation/walletpasses/pass/generic)          
+
 ## API Doc
 Search by class, method name, or package: http://eymengunay.github.io/php-passbook/api
 
@@ -120,9 +133,11 @@ $factory->package($pass);
 
 Version 1.2.0 is the last release to support PHP 5.3.
 
-## Obtaining the Pass Type Identifier and Team ID
+## Obtaining the Pass Type Identifier, Team ID and Issuer ID
 
-You can find more information from Apple on [Setting the Pass Type Identifier and Team ID](https://developer.apple.com/library/ios/documentation/UserExperience/Conceptual/PassKit_PG/YourFirst.html#//apple_ref/doc/uid/TP40012195-CH2-SW27).
+You can find more information from Apple on [setting the Pass Type Identifier and Team ID](https://developer.apple.com/library/ios/documentation/UserExperience/Conceptual/PassKit_PG/YourFirst.html#//apple_ref/doc/uid/TP40012195-CH2-SW27).
+
+Check [Google Wallet prerequisites](https://developers.google.com/wallet/generic/web/prerequisites) for creating your Google Wallet API Issuer account.
 
 ## Requesting Certificates
 
