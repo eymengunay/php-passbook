@@ -28,8 +28,8 @@
     "php": ">=7.4",
     "ext-zip": "*",
     "ext-openssl": "*",
-    "google/apiclient": "^2.15.0",
-    "google/apiclient-services": "~0.300"
+    "google/apiclient": "^2.14.0",
+    "google/apiclient-services": "~0.336"
   },
   "require-dev": {
     "phpunit/phpunit": "^9.0",

@@ -2,7 +2,7 @@
 
 namespace Passbook\Tests\Pass;
 
-use Passbook\Pass\Barcode;
+use Passbook\Apple\Barcode;
 use PHPUnit\Framework\TestCase;
 
 class BarcodeTest extends TestCase

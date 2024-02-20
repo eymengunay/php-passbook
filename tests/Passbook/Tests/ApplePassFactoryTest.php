@@ -6,24 +6,26 @@ use Exception;
 use InvalidArgumentException;
 use Passbook\Exception\PassInvalidException;
 use Passbook\Pass;
-use Passbook\Pass\Localization;
-use Passbook\PassFactory;
+use Passbook\Apple\Localization;
+use Passbook\ApplePassFactory;
 use Passbook\PassValidator;
 use Passbook\Type\EventTicket;
-use Passbook\Pass\Field;
-use Passbook\Pass\Barcode;
-use Passbook\Pass\Image;
-use Passbook\Pass\Structure;
+use Passbook\Apple\Field;
+use Passbook\Apple\NumberField;
+use Passbook\Apple\Barcode;
+use Passbook\Apple\Image;
+use Passbook\Apple\PassFields;
+use Passbook\Apple\Structure;
 use PHPUnit\Framework\TestCase;
 
 /**
- * Class PassFactoryTest
+ * Class ApplePassFactoryTest
  * @package Passbook\Tests
  */
-class PassFactoryTest extends TestCase
+class ApplePassFactoryTest extends TestCase
 {
     /**
-     * @var PassFactory
+     * @var ApplePassFactory
      */
     protected $factory;
 
@@ -47,7 +49,7 @@ class PassFactoryTest extends TestCase
         $teamIdentifier = getenv('TEAM_ID') ?: 'team-identifier';
         $orgName = getenv('ORG_NAME') ?: 'organization-name';
 
-        $this->factory = new PassFactory($passTypeIdentifier, $teamIdentifier, $orgName, $p12File, $p12Pass, $wwdrFile);
+        $this->factory = new ApplePassFactory($passTypeIdentifier, $teamIdentifier, $orgName, $p12File, $p12Pass, $wwdrFile);
     }
 
     /**
@@ -74,6 +76,7 @@ class PassFactoryTest extends TestCase
         $pass->setLogoText('Apple Inc.');
 
         // Create pass structure
+        // $structure = new PassFields();
         $structure = new Structure();
 
         // Add primary field
@@ -91,7 +94,7 @@ class PassFactoryTest extends TestCase
         $auxiliary->setLabel('Date & Time');
         $structure->addAuxiliaryField($auxiliary);
 
-        $auxiliary = new Pass\NumberField('price', '12.34');
+        $auxiliary = new NumberField('price', '12.34');
         $auxiliary->setLabel('Price');
         $auxiliary->setCurrencyCode('USD');
         $structure->addAuxiliaryField($auxiliary);

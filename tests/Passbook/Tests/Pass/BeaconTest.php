@@ -2,7 +2,7 @@
 
 namespace Passbook\Tests\Pass;
 
-use Passbook\Pass\Beacon;
+use Passbook\Apple\Beacon;
 use PHPUnit\Framework\TestCase;
 
 class BeaconTest extends TestCase

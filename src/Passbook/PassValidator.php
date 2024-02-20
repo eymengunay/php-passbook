@@ -2,10 +2,10 @@
 
 namespace Passbook;
 
-use Passbook\Pass\Barcode;
-use Passbook\Pass\Beacon;
-use Passbook\Pass\Nfc;
-use Passbook\Pass\Location;
+use Passbook\Apple\Barcode;
+use Passbook\Apple\Beacon;
+use Passbook\Apple\Nfc;
+use Passbook\Apple\Location;
 
 /**
  * Validates the contents of a pass

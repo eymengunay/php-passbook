@@ -12,7 +12,6 @@
 namespace Passbook\Type;
 
 use Passbook\Pass;
-use Passbook\Pass\Structure;
 
 /**
  * Coupon
@@ -26,10 +25,4 @@ class Coupon extends Pass
      * @var string
      */
     protected $type = 'coupon';
-
-    /**
-     * Pass structure
-     * @var Structure
-     */
-    protected $structure;
 }

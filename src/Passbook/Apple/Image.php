@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Passbook\Pass;
+namespace Passbook\Apple;
 
 /**
  * Image
@@ -94,8 +94,7 @@ class Image extends \SplFileObject implements ImageInterface
     /**
      * {@inheritdoc}
      */
-    #[\ReturnTypeWillChange]
-    public function getExtension()
+    public function getExtension(): string
     {
         if ($this->forceExtension) {
             return 'png';

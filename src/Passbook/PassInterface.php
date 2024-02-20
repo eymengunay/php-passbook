@@ -11,14 +11,14 @@
 
 namespace Passbook;
 
-use Passbook\Pass\BarcodeInterface;
-use Passbook\Pass\BeaconInterface;
-use Passbook\Pass\NfcInterface;
-use Passbook\Pass\Image;
-use Passbook\Pass\ImageInterface;
-use Passbook\Pass\LocalizationInterface;
-use Passbook\Pass\LocationInterface;
-use Passbook\Pass\StructureInterface;
+use Passbook\Apple\PassFields;
+use Passbook\Apple\BarcodeInterface;
+use Passbook\Apple\BeaconInterface;
+use Passbook\Apple\NfcInterface;
+use Passbook\Apple\Image;
+use Passbook\Apple\ImageInterface;
+use Passbook\Apple\LocalizationInterface;
+use Passbook\Apple\LocationInterface;
 
 /**
  * PassInterface
@@ -73,12 +73,12 @@ interface PassInterface extends ArrayableInterface
     /**
      * {@inheritdoc}
      */
-    public function setStructure(StructureInterface $structure);
+    public function setPassFields(PassFields $structure);
 
     /**
      * {@inheritdoc}
      */
-    public function getStructure();
+    public function getPassFields();
 
     /**
      * {@inheritdoc}

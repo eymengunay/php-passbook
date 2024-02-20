@@ -2,7 +2,7 @@
 
 namespace Passbook\Tests\Pass;
 
-use Passbook\Pass\Image;
+use Passbook\Apple\Image;
 use PHPUnit\Framework\TestCase;
 
 class ImageTest extends TestCase

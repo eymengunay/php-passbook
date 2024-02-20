@@ -18,7 +18,7 @@ use Passbook\Certificate\P12;
 use Passbook\Certificate\WWDR;
 use Passbook\Exception\FileException;
 use Passbook\Exception\PassInvalidException;
-use Passbook\Pass\Image;
+use Passbook\Apple\Image;
 use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;
 use SplFileObject;

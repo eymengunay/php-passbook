@@ -2,7 +2,7 @@
 
 namespace Passbook\Tests\Pass;
 
-use Passbook\Pass\NumberField;
+use Passbook\Apple\NumberField;
 use PHPUnit\Framework\TestCase;
 
 class NumberFieldTest extends TestCase

@@ -9,20 +9,14 @@
  * file that was distributed with this source code.
  */
 
-namespace Passbook\Type;
-
-use Passbook\Pass;
+namespace Passbook\Apple;
 
 /**
- * StoreCard
+ * Vanity class for PassFields
  *
- * @author Eymen Gunay <eymen@egunay.com>
+ * @author Razvan Grigore <razvan.grigore@vampirebyte.ro>
+ * @deprecated please use PassFields class instead.
  */
-class StoreCard extends Pass
+class Structure extends PassFields
 {
-    /**
-     * Pass type
-     * @var string
-     */
-    protected $type = 'storeCard';
 }

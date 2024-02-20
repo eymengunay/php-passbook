@@ -7,7 +7,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Passbook\Pass;
+namespace Passbook\Apple;
 
 use Passbook\ArrayableInterface;
 

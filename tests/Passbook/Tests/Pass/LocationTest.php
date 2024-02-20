@@ -2,7 +2,7 @@
 
 namespace Passbook\Tests\Pass;
 
-use Passbook\Pass\Location;
+use Passbook\Apple\Location;
 use PHPUnit\Framework\TestCase;
 
 class LocationTest extends TestCase

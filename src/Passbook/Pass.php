@@ -12,14 +12,13 @@
 namespace Passbook;
 
 use DateTime;
-use Passbook\Pass\BarcodeInterface;
-use Passbook\Pass\BeaconInterface;
-use Passbook\Pass\NfcInterface;
-use Passbook\Pass\ImageInterface;
-use Passbook\Pass\LocalizationInterface;
-use Passbook\Pass\LocationInterface;
-use Passbook\Pass\Structure;
-use Passbook\Pass\StructureInterface;
+use Passbook\Apple\BarcodeInterface;
+use Passbook\Apple\BeaconInterface;
+use Passbook\Apple\NfcInterface;
+use Passbook\Apple\ImageInterface;
+use Passbook\Apple\LocalizationInterface;
+use Passbook\Apple\LocationInterface;
+use Passbook\Apple\PassFields;
 
 /**
  * Pass
@@ -65,9 +64,9 @@ class Pass implements PassInterface
     /**
      * Pass structure
      *
-     * @var StructureInterface
+     * @var PassFields
      */
-    protected $structure;
+    protected $passFields;
 
     /**
      * Pass images
@@ -282,8 +281,8 @@ class Pass implements PassInterface
         $array = [];
 
         // Structure
-        if ($this->getStructure()) {
-            $array[$this->getType()] = $this->getStructure()->toArray();
+        if ($this->getPassFields()) {
+            $array[$this->getType()] = $this->getPassFields()->toArray();
         }
 
         $properties = [
@@ -423,11 +422,29 @@ class Pass implements PassInterface
     }
 
     /**
+     * @deprecated please use setPassFields() instead.
+     */
+    public function setStructure(PassFields $passFields)
+    {
+        $this->passFields = $passFields;
+
+        return $this;
+    }
+
+    /**
+     * @deprecated please use getPassFields() instead.
+     */
+    public function getStructure()
+    {
+        return $this->passFields;
+    }
+
+    /**
      * {@inheritdoc}
      */
-    public function setStructure(StructureInterface $structure)
+    public function setPassFields(PassFields $structure)
     {
-        $this->structure = $structure;
+        $this->passFields = $structure;
 
         return $this;
     }
@@ -435,9 +452,9 @@ class Pass implements PassInterface
     /**
      * {@inheritdoc}
      */
-    public function getStructure()
+    public function getPassFields()
     {
-        return $this->structure;
+        return $this->passFields;
     }
 
     /**

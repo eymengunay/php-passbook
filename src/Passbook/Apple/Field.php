@@ -9,20 +9,13 @@
  * file that was distributed with this source code.
  */
 
-namespace Passbook\Type;
-
-use Passbook\Pass;
+namespace Passbook\Apple;
 
 /**
- * StoreCard
- *
+ * Field
  * @author Eymen Gunay <eymen@egunay.com>
+ * @see https://developer.apple.com/documentation/walletpasses/passfieldcontent
  */
-class StoreCard extends Pass
+class Field extends PassFieldContent
 {
-    /**
-     * Pass type
-     * @var string
-     */
-    protected $type = 'storeCard';
 }

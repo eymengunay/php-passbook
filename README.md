@@ -69,11 +69,11 @@ This example will create a pass of type Ticket and will save the pkpass file in 
 ```php
 <?php
 
-use Passbook\Pass\Field;
-use Passbook\Pass\Image;
-use Passbook\PassFactory;
-use Passbook\Pass\Barcode;
-use Passbook\Pass\Structure;
+use Passbook\Apple\Field;
+use Passbook\Apple\Image;
+use Passbook\ApplePassFactory;
+use Passbook\Apple\Barcode;
+use Passbook\Apple\PassFields;
 use Passbook\Type\EventTicket;
 
 // Set these constants with your values
@@ -92,7 +92,7 @@ $pass->setBackgroundColor('rgb(60, 65, 76)');
 $pass->setLogoText('Apple Inc.');
 
 // Create pass structure
-$structure = new Structure();
+$structure = new PassFields();
 
 // Add primary field
 $primary = new Field('event', 'The Beat Goes On');
@@ -114,14 +114,14 @@ $icon = new Image(ICON_FILE, 'icon');
 $pass->addImage($icon);
 
 // Set pass structure
-$pass->setStructure($structure);
+$pass->setPassFields($structure);
 
 // Add barcode
 $barcode = new Barcode(Barcode::TYPE_QR, 'barcodeMessage');
 $pass->setBarcode($barcode);
 
 // Create pass factory instance
-$factory = new PassFactory(PASS_TYPE_IDENTIFIER, TEAM_IDENTIFIER, ORGANIZATION_NAME, P12_FILE, P12_PASSWORD, WWDR_FILE);
+$factory = new ApplePassFactory(PASS_TYPE_IDENTIFIER, TEAM_IDENTIFIER, ORGANIZATION_NAME, P12_FILE, P12_PASSWORD, WWDR_FILE);
 $factory->setOutputPath(OUTPUT_PATH);
 $factory->package($pass);
 ```

@@ -12,7 +12,6 @@
 namespace Passbook\Type;
 
 use Passbook\Pass;
-use Passbook\Pass\Structure;
 
 /**
  * EventTicket
@@ -26,10 +25,4 @@ class EventTicket extends Pass
      * @var string
      */
     protected $type = 'eventTicket';
-
-    /**
-     * Pass structure
-     * @var Structure
-     */
-    protected $structure;
 }

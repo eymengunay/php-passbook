@@ -12,7 +12,6 @@
 namespace Passbook\Type;
 
 use Passbook\Pass;
-use Passbook\Pass\Structure;
 
 /**
  * BoardingPass
@@ -26,12 +25,6 @@ class BoardingPass extends Pass
      * @var string
      */
     protected $type = 'boardingPass';
-
-    /**
-     * Pass structure
-     * @var Structure
-     */
-    protected $structure;
 
     /**
      * Type of transit. Must be one of the following values:

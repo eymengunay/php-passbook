@@ -3,9 +3,9 @@
 namespace Passbook\Tests\Pass;
 
 use DateTime;
-use Passbook\Pass\Field;
-use Passbook\Pass\DateField;
-use Passbook\Pass\NumberField;
+use Passbook\Apple\Field;
+use Passbook\Apple\DateField;
+use Passbook\Apple\NumberField;
 use PHPUnit\Framework\TestCase;
 
 class FieldTest extends TestCase

@@ -9,14 +9,14 @@
  * file that was distributed with this source code.
  */
 
-namespace Passbook\Pass;
+namespace Passbook\Apple;
 
 /**
  * Field
  * @author Eymen Gunay <eymen@egunay.com>
- * @phpcs:disable Generic.NamingConventions.UpperCaseConstantName
+ * @see https://developer.apple.com/documentation/walletpasses/passfieldcontent
  */
-class Field implements FieldInterface
+abstract class PassFieldContent implements FieldInterface
 {
     /**
      * @var string
@@ -37,26 +37,6 @@ class Field implements FieldInterface
      * @var string
      */
     public const ALIGN_NATURAL = 'PKTextAlignmentNatural';
-
-    /**
-     * @deprecated please use ::DATA_DETECTOR_TYPE_PHONE_NUMBER instead.
-     */
-    public const PKDataDetectorTypePhoneNumber = 'PKDataDetectorTypePhoneNumber';
-
-    /**
-     * @deprecated please use ::DATA_DETECTOR_TYPE_LINK instead.
-     */
-    public const PKDataDetectorTypeLink = 'PKDataDetectorTypeLink';
-
-    /**
-     * @deprecated please use ::DATA_DETECTOR_TYPE_ADDRESS instead.
-     */
-    public const PKDataDetectorTypeAddress = 'PKDataDetectorTypeAddress';
-
-    /**
-     * @deprecated please use ::DATA_DETECTOR_TYPE_CALENDAR_EVENT instead.
-     */
-    public const PKDataDetectorTypeCalendarEvent = 'PKDataDetectorTypeCalendarEvent';
 
     /**
      * @var string

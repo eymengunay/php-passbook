@@ -12,7 +12,6 @@
 namespace Passbook\Type;
 
 use Passbook\Pass;
-use Passbook\Pass\Structure;
 
 /**
  * Generic
@@ -26,10 +25,4 @@ class Generic extends Pass
      * @var string
      */
     protected $type = 'generic';
-
-    /**
-     * Pass structure
-     * @var Structure
-     */
-    protected $structure;
 }

@@ -3,10 +3,10 @@
 namespace Passbook\Tests;
 
 use Passbook\Pass;
-use Passbook\Pass\Barcode;
-use Passbook\Pass\Beacon;
-use Passbook\Pass\Image;
-use Passbook\Pass\Location;
+use Passbook\Apple\Barcode;
+use Passbook\Apple\Beacon;
+use Passbook\Apple\Image;
+use Passbook\Apple\Location;
 use Passbook\PassValidator;
 use Passbook\Type\Generic;
 use PHPUnit\Framework\TestCase;

@@ -9,42 +9,16 @@
  * file that was distributed with this source code.
  */
 
-namespace Passbook\Pass;
+namespace Passbook\Apple;
 
 /**
  * Class DateField
  * @package Passbook\Pass
  * @link https://developer.apple.com/library/ios/documentation/userexperience/Reference/PassKit_Bundle/Chapters/FieldDictionary.html#//apple_ref/doc/uid/TP40012026-CH4-SW1
  * @author Florian Morello <florian@morello.fr>
- * @phpcs:disable Generic.NamingConventions.UpperCaseConstantName
  */
 class DateField extends Field
 {
-    /**
-     * @deprecated please use ::DATE_STYLE_NONE instead.
-     */
-    public const PKDateStyleNone = 'PKDateStyleNone';
-
-    /**
-     * @deprecated please use ::DATE_STYLE_SHORT instead.
-     */
-    public const PKDateStyleShort = 'PKDateStyleShort';
-
-    /**
-     * @deprecated please use ::DATE_STYLE_MEDIUM instead.
-     */
-    public const PKDateStyleMedium = 'PKDateStyleMedium';
-
-    /**
-     * @deprecated please use ::DATE_STYLE_LONG instead.
-     */
-    public const PKDateStyleLong = 'PKDateStyleLong';
-
-    /**
-     * @deprecated please use ::DATE_STYLE_FULL instead.
-     */
-    public const PKDateStyleFull = 'PKDateStyleFull';
-
     /**
      * @var string
      */
@@ -54,6 +28,7 @@ class DateField extends Field
      * @var string
      */
     public const DATE_STYLE_SHORT = 'PKDateStyleShort';
+
     /**
      * @var string
      */

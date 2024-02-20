@@ -9,20 +9,13 @@
  * file that was distributed with this source code.
  */
 
-namespace Passbook\Type;
-
-use Passbook\Pass;
+namespace Passbook\Google;
 
 /**
- * StoreCard
+ * ImageHandler helper class for image operations via Google Storage API
  *
- * @author Eymen Gunay <eymen@egunay.com>
+ * @author Razvan Grigore <razvan.grigore@vampirebyte.ro>
  */
-class StoreCard extends Pass
+class ImageHandler
 {
-    /**
-     * Pass type
-     * @var string
-     */
-    protected $type = 'storeCard';
 }

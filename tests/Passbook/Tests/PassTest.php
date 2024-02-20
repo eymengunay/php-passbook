@@ -4,12 +4,12 @@ namespace Passbook\Tests;
 
 use DateTime;
 use Passbook\Pass;
-use Passbook\PassFactory;
-use Passbook\Pass\Field;
-use Passbook\Pass\Barcode;
-use Passbook\Pass\Beacon;
-use Passbook\Pass\Location;
-use Passbook\Pass\Structure;
+use Passbook\ApplePassFactory;
+use Passbook\Apple\Field;
+use Passbook\Apple\Barcode;
+use Passbook\Apple\Beacon;
+use Passbook\Apple\Location;
+use Passbook\Apple\PassFields;
 use Passbook\Type\BoardingPass;
 use Passbook\Type\Coupon;
 use Passbook\Type\EventTicket;
@@ -77,7 +77,7 @@ class PassTest extends TestCase
         $boardingPass->addLocation($location);
 
         // Create pass structure
-        $structure = new Structure();
+        $structure = new PassFields();
 
         // Add header field
         $header = new Field('gate', '23');
@@ -116,13 +116,13 @@ class PassTest extends TestCase
         $structure->addAuxiliaryField($auxiliary);
 
         // Set pass structure
-        $boardingPass->setStructure($structure);
+        $boardingPass->setPassFields($structure);
 
         // Add barcode
         $barcode = new Barcode(Barcode::TYPE_PDF_417, 'SFOJFK JOHN APPLESEED LH451 2012-07-22T14:25-08:00');
         $boardingPass->setBarcode($barcode);
 
-        $json = PassFactory::serialize($boardingPass);
+        $json = ApplePassFactory::serialize($boardingPass);
         $array = json_decode($json, true);
 
         $this->assertArrayHasKey('transitType', $array[$boardingPass->getType()]);
@@ -133,7 +133,7 @@ class PassTest extends TestCase
      */
     public function testStoreCard()
     {
-        $json = PassFactory::serialize($this->storeCard);
+        $json = ApplePassFactory::serialize($this->storeCard);
         $this->assertJson($json);
     }
 
@@ -152,7 +152,7 @@ class PassTest extends TestCase
         $this->eventTicket->addLocation($location);
 
         // Create pass structure
-        $structure = new Structure();
+        $structure = new PassFields();
 
         // Add primary field
         $primary = new Field('event', 'The Beat Goes On');
@@ -173,7 +173,7 @@ class PassTest extends TestCase
         $this->eventTicket->setRelevantDate(new DateTime());
 
         // Set pass structure
-        $this->eventTicket->setStructure($structure);
+        $this->eventTicket->setPassFields($structure);
 
         // Set grouping
         $this->eventTicket->setGroupingIdentifier('group1');
@@ -182,7 +182,7 @@ class PassTest extends TestCase
         $barcode = new Barcode('PKBarcodeFormatQR', 'barcodeMessage');
         $this->eventTicket->setBarcode($barcode);
 
-        $json = PassFactory::serialize($this->eventTicket);
+        $json = ApplePassFactory::serialize($this->eventTicket);
         $array = json_decode($json, true);
 
         $this->assertArrayHasKey('eventTicket', $array);
@@ -211,7 +211,7 @@ class PassTest extends TestCase
         ;
 
         // Create pass structure
-        $structure = new Structure();
+        $structure = new PassFields();
 
         // Add primary field
         $primary = new Field('event', 'The Beat Goes On');
@@ -229,13 +229,13 @@ class PassTest extends TestCase
         $structure->addAuxiliaryField($auxiliary);
 
         // Set pass structure
-        $this->generic->setStructure($structure);
+        $this->generic->setPassFields($structure);
 
         // Add beacon
         $beacon = new Beacon('abcdef01-2345-6789-abcd-ef0123456789');
         $this->generic->addBeacon($beacon);
 
-        $json = PassFactory::serialize($this->generic);
+        $json = ApplePassFactory::serialize($this->generic);
         $array = json_decode($json, true);
 
         $this->assertArrayHasKey('beacons', $array);
@@ -279,7 +279,7 @@ class PassTest extends TestCase
 
     public function testPassWithEmptyStructureSerializesAsEmptyObject()
     {
-        $this->storeCard->setStructure(new Structure());
+        $this->storeCard->setPassFields(new PassFields());
         $array = $this->storeCard->toArray();
         self::assertTrue(is_object($array['storeCard']));
     }

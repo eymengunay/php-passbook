@@ -2,20 +2,20 @@
 
 namespace Passbook\Tests\Pass;
 
-use Passbook\Pass\Structure;
-use Passbook\Pass\Field;
+use Passbook\Apple\PassFields;
+use Passbook\Apple\Field;
 use PHPUnit\Framework\TestCase;
 
-class StructureTest extends TestCase
+class PassFieldsTest extends TestCase
 {
-    public function testStructure()
+    public function testpassFields()
     {
-        $structure = new Structure();
+        $passFields = new PassFields();
 
-        $structure->addHeaderField(new Field('balance', '13.50 USD'));
-        $structure->addBackField(new Field('publisher', 'Passbook Limited'));
+        $passFields->addHeaderField(new Field('balance', '13.50 USD'));
+        $passFields->addBackField(new Field('publisher', 'Passbook Limited'));
 
-        $actual = $structure->toArray();
+        $actual = $passFields->toArray();
         $expected = [
             'headerFields' => [
                 ['key' => 'balance', 'value' => '13.50 USD'],

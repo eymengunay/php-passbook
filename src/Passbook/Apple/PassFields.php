@@ -9,44 +9,47 @@
  * file that was distributed with this source code.
  */
 
-namespace Passbook\Pass;
+namespace Passbook\Apple;
+
+use Passbook\ArrayableInterface;
 
 /**
  * Pass Structure
  *
  * @author Eymen Gunay <eymen@egunay.com>
+ * @see https://developer.apple.com/documentation/walletpasses/passfields
  */
-class Structure implements StructureInterface
+class PassFields implements ArrayableInterface
 {
     /**
      * Fields to be displayed in the header on the front of the pass.
-     * @var array
+     * @var FieldInterface[]
      */
-    public $headerFields = [];
+    public array $headerFields = [];
 
     /**
      * Fields to be displayed prominently on the front of the pass.
-     * @var array
+     * @var FieldInterface[]
      */
-    public $primaryFields = [];
+    public array $primaryFields = [];
 
     /**
      * Fields to be displayed on the front of the pass.
-     * @var array
+     * @var FieldInterface[]
      */
-    public $secondaryFields = [];
+    public array $secondaryFields = [];
 
     /**
      * Additional fields to be displayed on the front of the pass.
-     * @var array
+     * @var FieldInterface[]
      */
-    public $auxiliaryFields = [];
+    public array $auxiliaryFields = [];
 
     /**
      * Fields to be on the back of the pass.
-     * @var array
+     * @var FieldInterface[]
      */
-    public $backFields = [];
+    public array $backFields = [];
 
     public function toArray()
     {
@@ -86,9 +89,9 @@ class Structure implements StructureInterface
     }
 
     /**
-     * {@inheritdoc}
+     * @return FieldInterface[]
      */
-    public function getHeaderFields()
+    public function getHeaderFields(): array
     {
         return $this->headerFields;
     }
@@ -104,9 +107,9 @@ class Structure implements StructureInterface
     }
 
     /**
-     * {@inheritdoc}
+     * @return FieldInterface[]
      */
-    public function getPrimaryFields()
+    public function getPrimaryFields(): array
     {
         return $this->primaryFields;
     }
@@ -122,9 +125,9 @@ class Structure implements StructureInterface
     }
 
     /**
-     * {@inheritdoc}
+     * @return FieldInterface[]
      */
-    public function getSecondaryFields()
+    public function getSecondaryFields(): array
     {
         return $this->secondaryFields;
     }
@@ -140,9 +143,9 @@ class Structure implements StructureInterface
     }
 
     /**
-     * {@inheritdoc}
+     * @return FieldInterface[]
      */
-    public function getAuxiliaryFields()
+    public function getAuxiliaryFields(): array
     {
         return $this->auxiliaryFields;
     }
@@ -158,9 +161,9 @@ class Structure implements StructureInterface
     }
 
     /**
-     * {@inheritdoc}
+     * @return FieldInterface[]
      */
-    public function getBackFields()
+    public function getBackFields(): array
     {
         return $this->backFields;
     }

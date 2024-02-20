@@ -9,34 +9,17 @@
  * file that was distributed with this source code.
  */
 
-namespace Passbook\Pass;
+namespace Passbook\Apple;
 
 use InvalidArgumentException;
 
 /**
  * Class NumberField
  *
- * @package Passbook\Pass
  * @author Florian Morello <florian@morello.fr>
- * @phpcs:disable Generic.NamingConventions.UpperCaseConstantName
  */
 class NumberField extends Field
 {
-    /**
-     * @deprecated please use ::NUMBER_STYLE_DECIMAL instead.
-     */
-    public const PKNumberStyleDecimal = 'PKNumberStyleDecimal';
-
-    /**
-     * @deprecated please use ::NUMBER_STYLE_PERCENT instead.
-     */
-    public const PKNumberStylePercent = 'PKNumberStylePercent';
-
-    /**
-     * @deprecated please use ::NUMBER_STYLE_SCIENTIFIC instead.
-     */
-    public const PKNumberStyleScientific = 'PKNumberStyleScientific';
-
     /**
      * @var string
      */
