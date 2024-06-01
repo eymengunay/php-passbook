@@ -16,6 +16,6 @@ namespace Passbook\Certificate;
  *
  * @author Eymen Gunay <eymen@egunay.com>
  */
-class WWDR extends Certificate implements WWDRInterface
+class WWDR extends Certificate
 {
 }
