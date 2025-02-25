@@ -8,22 +8,25 @@
 
 ## What is Passbook?
 
-> Passbook is an application in iOS that allows users to store coupons, boarding passes, event tickets,
-> store cards, 'generic' cards and other forms of mobile payment.
+Passbook ~~is~~ was an application in iOS that got renamed to Wallet in both Apple/iOS and Google/Android OS. It allows users to store coupons, boarding passes, event tickets, store cards, 'generic' cards and other forms of mobile payment in native wallet apps preinstalled in 95% of the smartphones today.
 
 ## What does this library do?
 
-PHP-Passbook is a library for creating and packaging passes inside your application. Distribution of generated pass files can be done by attaching the file in an e-mail or serving it from your web server.
+PHP-Passbook is a library for creating and packaging passes inside your application. Distribution of generated Apple pass files can be done by attaching the file in an e-mail or serving it from your web server. In contrast, the newly added Google Wallet support works via API calls. This means that instead of creating and packaging passes, you can interact with the Google Wallet API via the SDK to generate and manage passes programmatically.
+
+## Requirements
+* PHP 8.1+
+* [zip](http://php.net/manual/en/book.zip.php)
+* [OpenSSL](http://www.php.net/manual/en/book.openssl.php)
 
 ## Breaking changes
 
-### Version 3.0.0
-
-* Requires PHP >= 7.4
-
-### Version 2.0.0
-
-* `Image` class `setRetina`/`isRetina` methods replaced with `setDensity`/`getDensity`.
+| Version | Minimum PHP Version | Observations                                                                                  |
+|---------|---------------------|-----------------------------------------------------------------------------------------------|
+| 4.0.0   | >= 8.1              | Google Wallet support was added and `Passbook\Apple` namespace is used for Pass classes.      |
+| 3.0.0   | >= 7.4              | PHP version 8.1+ higly recommended.                                                           |
+| 2.0.0   | >= 5.4              | `Image` class `setRetina`/`isRetina` methods replaced with `setDensity`/`getDensity`.         |
+| 1.2.0   | >= 5.3              | Last release to support PHP version 5.3.                                                      |
 
 ## Installing
 
@@ -56,6 +59,8 @@ The following table<sup>[link](https://github.com/google-wallet/pass-converter?t
 Search by class, method name, or package: http://eymengunay.github.io/php-passbook/api
 
 ## Usage Example
+
+### Apple Wallet
 
 This example will create a pass of type Ticket and will save the pkpass file in the output path specified. To use this example, you will need to do the following and set the constants accordingly:
 
@@ -126,12 +131,31 @@ $factory->setOutputPath(OUTPUT_PATH);
 $factory->package($pass);
 ```
 
-## Requirements
-* PHP 5.4+
-* [zip](http://php.net/manual/en/book.zip.php)
-* [OpenSSL](http://www.php.net/manual/en/book.openssl.php)
+### Google Wallet
 
-Version 1.2.0 is the last release to support PHP 5.3.
+This example will create a pass of type Ticket and will output the `Add to Google Wallet` link. To use this example, you will need to do the following and set the constants accordingly:
+
+* Follow the steps outlined in the [Google Wallet prerequisites](https://developers.google.com/wallet/generic/web/prerequisites) to create the Google Wallet issuer account and Google Cloud service account
+* Decide on the `$classSuffix` parameter of `GooglePassFactory` to namespace your passes
+* Prepare the JSON credentials file by [generating a Google Cloud service account key](https://developers.google.com/wallet/generic/getting-started/auth/rest)
+
+```php
+<?php
+
+use Passbook\GooglePassFactory;
+
+// Set these constants with your values
+define('GOOGLE_ISSUER_ID', '3388000000000000000');
+define('GOOGLE_CLASS_SUFFIX', 'class_suffix');
+define('GOOGLE_APPLICATION_CREDENTIALS', '/path/to/key.json');
+
+// Create pass factory instance
+$googleFactory = new GooglePassFactory(GOOGLE_ISSUER_ID, GOOGLE_CLASS_SUFFIX, GOOGLE_APPLICATION_CREDENTIALS);
+echo $factory->package($pass);
+
+// @TODO
+
+```
 
 ## Obtaining the Pass Type Identifier, Team ID and Issuer ID
 
@@ -148,8 +172,8 @@ Once you have downloaded the Apple iPhone certificate from Apple, export it to t
 
 1. Open the Keychain Access application (in the Applications/Utilities folder).
 2. If you have not already added the certificate to Keychain, select File > Import. Then navigate to the certificate file (the .cer file) you obtained from Apple.
-3. Select the Keys category in Keychain Access.
-4. Select the private key associated with your iPhone Development Certificate. The private key is identified by the iPhone Developer: <First Name> <Last Name> public certificate that is paired with it.
+3. Select the `login` Keychain and then `Keys` category in Keychain Access.
+4. Select the private key associated with your iPhone Development Certificate. The private key is identified by the iPhone Developer: <First Name> <Last Name> public certificate that is paired with it or by the string you specified as `Common Name` in the CSR.
 5. Select File > Export Items.
 6. Save your key in the Personal Information Exchange (.p12) file format.
 7. You will be prompted to create a password that is used when you attempt to import this key on another computer.
@@ -177,7 +201,7 @@ openssl pkcs12 -export -inkey mykey.key -in developer_identity.pem -out iphone_d
 If you are using a key from the Mac OS keychain, use the PEM version you generated in the previous step. Otherwise, use the OpenSSL key you generated earlier (on Windows).
 
 ### WWDR Certificate
-Apple’s World Wide Developer Relations (WWDR) certificate is available from Apple at <http://developer.apple.com/certificationauthority/AppleWWDRCA.cer>. You will have to add this to your Keychain Access and export it in .pem format to use it with the library. The WWDR certificate links your development certificate to Apple, completing the trust chain for your application.
+Apple’s World Wide Developer Relations (WWDR) certificate is available from Apple at <https://www.apple.com/certificateauthority/AppleWWDRCAG4.cer>. You will have to add this to your Keychain Access and export it in .pem format to use it with the library. The WWDR certificate links your development certificate to Apple, completing the trust chain for your application.
 
 ## Running Tests
 Before submitting a patch for inclusion, you need to run the test suite to check that you have not broken anything.
@@ -230,3 +254,7 @@ If you want to support the project, please consider to donate a small amount usi
 
 ## See also
 [PassbookBundle](https://github.com/eymengunay/PassbookBundle): PHP-Passbook library integration for Symfony2
+
+## Disclaimer
+
+This project is not endorsed by or related to Apple Inc. or Google LLC in any way. The use of Apple and Google trademarks is solely for informational purposes and does not imply any endorsement or affiliation with the respective companies.
