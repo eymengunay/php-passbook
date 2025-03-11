@@ -533,16 +533,6 @@ class Pass implements PassInterface
     /**
      * {@inheritdoc}
      */
-    public function addNfc(NfcInterface $nfc)
-    {
-        $this->nfc = $nfc;
-
-        return $this;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
     public function getNfc()
     {
         return $this->nfc;
@@ -596,12 +586,12 @@ class Pass implements PassInterface
     }
 
     /**
-     * @deprecated please use addNfc() instead.
+     * @param NfcInterface $nfc
+     * @return $this
      */
-    public function setNfc(array $nfc)
+    public function setNfc(NfcInterface $nfc)
     {
-        $this->nfc = $nfc[0] ?? null;
-
+        $this->nfc = $nfc;
         return $this;
     }
 

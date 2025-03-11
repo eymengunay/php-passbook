@@ -4,6 +4,7 @@ namespace Passbook\Tests;
 
 use DateTime;
 use Passbook\Pass;
+use Passbook\Pass\Nfc;
 use Passbook\PassFactory;
 use Passbook\Pass\Field;
 use Passbook\Pass\Barcode;
@@ -207,8 +208,7 @@ class PassTest extends TestCase
 
         $this->generic
             ->setFormatVersion(1)
-            ->setDescription('description')
-        ;
+            ->setDescription('description');
 
         // Create pass structure
         $structure = new Structure();
@@ -257,8 +257,7 @@ class PassTest extends TestCase
             ->setType('generic')
             ->setSuppressStripShine(false)
             ->setAppLaunchURL('http://app.launch.url')
-            ->addAssociatedStoreIdentifier(123)
-        ;
+            ->addAssociatedStoreIdentifier(123);
 
         $properties = [
             'webServiceURL',
@@ -311,6 +310,19 @@ class PassTest extends TestCase
         self::assertEquals($barcode2, $barcodes[2]);
     }
 
+    public function testAddingNfcTag()
+    {
+        // Add nfc
+        $nfc = new Nfc("message", "encryptionPublicKey");
+        $this->pass->setNfc($nfc);
+        $this->assertInstanceOf(Pass\NfcInterface::class, $this->pass->getNfc());
+
+        $json = PassFactory::serialize($this->pass);
+        $array = json_decode($json, true);
+
+        $this->assertArrayHasKey('nfc', $array);
+    }
+
     public function testMaxDistance()
     {
         $this->storeCard->setMaxDistance(100);
@@ -322,10 +334,10 @@ class PassTest extends TestCase
      */
     protected function setUp(): void
     {
-        $this->coupon       = new Coupon(uniqid(), 'Lorem ipsum');
-        $this->eventTicket  = new EventTicket(uniqid(), 'Lorem ipsum');
-        $this->generic      = new Generic(uniqid(), 'Lorem ipsum');
-        $this->storeCard    = new StoreCard(uniqid(), 'Lorem ipsum');
-        $this->pass         = new Pass(uniqid(), 'Lorem ipsum');
+        $this->coupon = new Coupon(uniqid(), 'Lorem ipsum');
+        $this->eventTicket = new EventTicket(uniqid(), 'Lorem ipsum');
+        $this->generic = new Generic(uniqid(), 'Lorem ipsum');
+        $this->storeCard = new StoreCard(uniqid(), 'Lorem ipsum');
+        $this->pass = new Pass(uniqid(), 'Lorem ipsum');
     }
 }

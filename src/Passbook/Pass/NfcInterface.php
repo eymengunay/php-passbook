@@ -43,4 +43,18 @@ interface NfcInterface extends ArrayableInterface
      * @return string
      */
     public function getEncryptionPublicKey();
+
+    /**
+     * Sets requires authentication
+     *
+     * @param bool $requiresAuthentication
+     */
+    public function setRequiresAuthentication(bool $requiresAuthentication);
+
+    /**
+     * Gets requires authentication
+     *
+     * @return bool
+     */
+    public function getRequiresAuthentication();
 }
