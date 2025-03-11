@@ -115,10 +115,11 @@ class PassValidator implements PassValidatorInterface
 
     private function validateNfcKeys(PassInterface $pass)
     {
-        $nfcs = $pass->getNfc();
-        foreach ($nfcs as $nfc) {
-            $this->validateNfc($nfc);
+        $nfc = $pass->getNfc();
+        if (!$nfc) {
+            return;
         }
+        $this->validateNfc($nfc);
     }
 
     private function validateBeacon(Beacon $beacon)

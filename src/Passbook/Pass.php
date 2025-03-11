@@ -86,9 +86,9 @@ class Pass implements PassInterface
     /**
      * NFC where the pass is relevant.
      *
-     * @var NfcInterface[]
+     * @var NfcInterface
      */
-    protected $nfc = [];
+    protected $nfc;
 
     /**
      * A list of iTunes Store item identifiers (also known as Adam IDs) for the
@@ -533,16 +533,6 @@ class Pass implements PassInterface
     /**
      * {@inheritdoc}
      */
-    public function addNfc(NfcInterface $nfc)
-    {
-        $this->nfc[] = $nfc;
-
-        return $this;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
     public function getNfc()
     {
         return $this->nfc;
@@ -596,9 +586,10 @@ class Pass implements PassInterface
     }
 
     /**
-     * @deprecated please use addNfc() instead.
+     * @param NfcInterface $nfc
+     * @return $this
      */
-    public function setNfc(array $nfc)
+    public function setNfc(NfcInterface $nfc)
     {
         $this->nfc = $nfc;
 

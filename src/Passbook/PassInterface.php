@@ -123,10 +123,10 @@ interface PassInterface extends ArrayableInterface
     /**
      * {@inheritdoc}
      */
-    public function addNfc(NfcInterface $nfc);
+    public function setNfc(NfcInterface $nfc);
 
     /**
-     * @return NfcInterface[]
+     * @return NfcInterface
      */
     public function getNfc();
 

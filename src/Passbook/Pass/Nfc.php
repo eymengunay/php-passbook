@@ -26,10 +26,16 @@ class Nfc implements NfcInterface
      */
     protected $encryptionPublicKey = '';
 
-    public function __construct($message, $encryptionPublicKey)
+    /**
+     * @var boolean
+     */
+    protected $requiresAuthentication = false;
+
+    public function __construct($message, $encryptionPublicKey, $requiresAuthentication = false)
     {
         $this->setMessage($message);
         $this->setEncryptionPublicKey($encryptionPublicKey);
+        $this->setRequiresAuthentication($requiresAuthentication);
     }
 
     /**
@@ -50,11 +56,21 @@ class Nfc implements NfcInterface
         return $this;
     }
 
+    /**
+     * {@inheritdoc}
+     */
+    public function setRequiresAuthentication(bool $requiresAuthentication)
+    {
+        $this->requiresAuthentication = $requiresAuthentication;
+        return $this;
+    }
+
     public function toArray()
     {
         $array = [
             'message' => $this->getMessage(),
-            'encryptionPublicKey' => $this->getEncryptionPublicKey()
+            'encryptionPublicKey' => $this->getEncryptionPublicKey(),
+            'requiresAuthentication' => $this->getRequiresAuthentication()
         ];
         return $array;
     }
@@ -73,5 +89,13 @@ class Nfc implements NfcInterface
     public function getEncryptionPublicKey()
     {
         return $this->encryptionPublicKey;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getRequiresAuthentication()
+    {
+        return $this->requiresAuthentication;
     }
 }
