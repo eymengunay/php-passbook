@@ -313,7 +313,7 @@ class PassTest extends TestCase
     public function testAddingNfcTag()
     {
         // Add nfc
-        $nfc = new Nfc("message", "encryptionPublicKey");
+        $nfc = new Nfc('message', 'encryptionPublicKey');
         $this->pass->setNfc($nfc);
         $this->assertInstanceOf(Pass\NfcInterface::class, $this->pass->getNfc());
 

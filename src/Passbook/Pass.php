@@ -592,6 +592,7 @@ class Pass implements PassInterface
     public function setNfc(NfcInterface $nfc)
     {
         $this->nfc = $nfc;
+
         return $this;
     }
 

@@ -7,7 +7,6 @@ use PHPUnit\Framework\TestCase;
 
 class NfcTest extends TestCase
 {
-
     /**
      * @return void
      */
@@ -19,11 +18,9 @@ class NfcTest extends TestCase
         $this->assertEquals('encryptionPublicKey', $nfc->getEncryptionPublicKey());
         $this->assertEquals(true, $nfc->getRequiresAuthentication());
 
-        $nfc
-            ->setMessage('hello')
+        $nfc->setMessage('hello')
             ->setEncryptionPublicKey('publicKey')
-            ->setRequiresAuthentication(false)
-        ;
+            ->setRequiresAuthentication(false);
 
         $this->assertEquals('hello', $nfc->getMessage());
         $this->assertEquals('publicKey', $nfc->getEncryptionPublicKey());
