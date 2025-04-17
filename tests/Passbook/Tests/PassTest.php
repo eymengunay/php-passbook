@@ -252,6 +252,7 @@ class PassTest extends TestCase
             ->setForegroundColor('rgb(0, 255, 0)')
             ->setBackgroundColor('rgb(0, 255, 0)')
             ->setLabelColor('rgb(0, 255, 0)')
+            ->setStripColor('rgb(0, 255, 0)')
             ->setAuthenticationToken('123')
             ->setGroupingIdentifier('group1')
             ->setType('generic')
@@ -264,6 +265,7 @@ class PassTest extends TestCase
             'foregroundColor',
             'backgroundColor',
             'labelColor',
+            'stripColor',
             'authenticationToken',
             'groupingIdentifier',
             'suppressStripShine',
@@ -321,6 +323,59 @@ class PassTest extends TestCase
         $array = json_decode($json, true);
 
         $this->assertArrayHasKey('nfc', $array);
+    }
+
+    public function testStripColor()
+    {
+        // Coupon
+        $this->coupon->setStripColor('rgb(0, 0, 0)');
+        $this->assertSame('rgb(0, 0, 0)', $this->coupon->getStripColor());
+
+        $json = PassFactory::serialize($this->coupon);
+        $array = json_decode($json, true);
+
+        $this->assertArrayHasKey('stripColor', $array);
+        $this->assertSame('rgb(0, 0, 0)', $array['stripColor']);
+
+        // Event Ticket
+        $this->eventTicket->setStripColor('rgb(0, 0, 0)');
+        $this->assertSame('rgb(0, 0, 0)', $this->eventTicket->getStripColor());
+
+        $json = PassFactory::serialize($this->eventTicket);
+        $array = json_decode($json, true);
+
+        $this->assertArrayHasKey('stripColor', $array);
+        $this->assertSame('rgb(0, 0, 0)', $array['stripColor']);
+
+        // Generic
+        $this->generic->setStripColor('rgb(0, 0, 0)');
+        $this->assertSame('rgb(0, 0, 0)', $this->generic->getStripColor());
+
+        $json = PassFactory::serialize($this->generic);
+        $array = json_decode($json, true);
+
+        $this->assertArrayHasKey('stripColor', $array);
+        $this->assertSame('rgb(0, 0, 0)', $array['stripColor']);
+
+        // Storecard
+        $this->storeCard->setStripColor('rgb(0, 0, 0)');
+        $this->assertSame('rgb(0, 0, 0)', $this->storeCard->getStripColor());
+
+        $json = PassFactory::serialize($this->storeCard);
+        $array = json_decode($json, true);
+
+        $this->assertArrayHasKey('stripColor', $array);
+        $this->assertSame('rgb(0, 0, 0)', $array['stripColor']);
+
+        // Pass
+        $this->pass->setStripColor('rgb(0, 0, 0)');
+        $this->assertSame('rgb(0, 0, 0)', $this->pass->getStripColor());
+
+        $json = PassFactory::serialize($this->pass);
+        $array = json_decode($json, true);
+
+        $this->assertArrayHasKey('stripColor', $array);
+        $this->assertSame('rgb(0, 0, 0)', $array['stripColor']);
     }
 
     public function testMaxDistance()
