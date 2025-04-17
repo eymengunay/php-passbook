@@ -221,6 +221,16 @@ interface PassInterface extends ArrayableInterface
     /**
      * {@inheritdoc}
      */
+    public function setStripColor($stripColor): self;
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getStripColor(): ?string;
+
+    /**
+     * {@inheritdoc}
+     */
     public function setLogoText($logoText);
 
     /**

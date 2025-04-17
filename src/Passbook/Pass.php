@@ -179,6 +179,13 @@ class Pass implements PassInterface
     protected $labelColor;
 
     /**
+     * Color of the strip text if strip image is defined, specified as a CSS-style RGB triple.
+     *
+     * @var string rgb(255, 255, 255)
+     */
+    protected $stripColor;
+
+    /**
      * Text displayed next to the logo on the pass.
      *
      * @var string
@@ -301,6 +308,7 @@ class Pass implements PassInterface
             'foregroundColor',
             'groupingIdentifier',
             'labelColor',
+            'stripColor',
             'logoText',
             'suppressStripShine',
             'authenticationToken',
@@ -696,6 +704,24 @@ class Pass implements PassInterface
     public function getLabelColor()
     {
         return $this->labelColor;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setStripColor($stripColor): self
+    {
+        $this->stripColor = $stripColor;
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getStripColor(): ?string
+    {
+        return $this->stripColor;
     }
 
     /**
