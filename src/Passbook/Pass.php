@@ -180,6 +180,8 @@ class Pass implements PassInterface
 
     /**
      * Color of the strip text if strip image is defined, specified as a CSS-style RGB triple.
+     * this property is not officially documented.
+     * https://stackoverflow.com/a/22587039
      *
      * @var string rgb(255, 255, 255)
      */
