@@ -24,6 +24,7 @@
             <property name="spacingBeforeFirst" value="0" />
             <property name="spacingAfterLast" value="0" />
         </properties>
+        <exclude-pattern>src/Google/*</exclude-pattern>
     </rule>
 
     <rule ref="Squiz.WhiteSpace.MemberVarSpacing">
@@ -31,12 +32,15 @@
             <property name="spacing" value="1"/>
             <property name="spacingBeforeFirst" value="0" />
         </properties>
+        <exclude-pattern>src/Google/*</exclude-pattern>
     </rule>
 
     <rule ref="Generic.Arrays.DisallowLongArraySyntax"/>
 
     <!-- If string doesn't contain variables or single quotes, use single quotes. -->
-    <rule ref="Squiz.Strings.DoubleQuoteUsage.NotRequired"/>
+    <rule ref="Squiz.Strings.DoubleQuoteUsage.NotRequired">
+        <exclude-pattern>src/Google/*</exclude-pattern>
+    </rule>
 
     <exclude-pattern>/vendor/*</exclude-pattern>
 

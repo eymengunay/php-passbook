@@ -3,4 +3,5 @@ composer.lock
 www/passes/*.pkpass
 !www/passes/sample.pkpass
 .idea/
+.phpunit.cache
 .phpunit.result.cache
