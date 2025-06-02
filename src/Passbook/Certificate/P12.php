@@ -16,33 +16,21 @@ namespace Passbook\Certificate;
  *
  * @author Eymen Gunay <eymen@egunay.com>
  */
-class P12 extends Certificate implements P12Interface
+class P12 extends Certificate
 {
     /**
-     * P12 certificate password
-     * @var string
+     * @param string $filename P12 certificate filename
+     * @param string $password P12 certificate password
      */
-    protected $password;
-
-    public function __construct($filename, $password)
-    {
+    public function __construct(
+        string $filename,
+        private readonly string $password
+    ) {
         parent::__construct($filename);
-
-        $this->setPassword($password);
     }
 
     /**
-     * {@inheritdoc}
-     */
-    public function setPassword($password)
-    {
-        $this->password = $password;
-
-        return $this;
-    }
-
-    /**
-     * {@inheritdoc}
+     * @var string
      */
     public function getPassword()
     {

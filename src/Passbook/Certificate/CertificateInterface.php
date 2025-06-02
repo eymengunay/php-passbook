@@ -23,5 +23,5 @@ interface CertificateInterface
      *
      * @return string
      */
-    public function getRealPath();
+    public function getRealPath(): string|false;
 }

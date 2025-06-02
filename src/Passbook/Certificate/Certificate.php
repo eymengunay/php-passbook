@@ -20,7 +20,7 @@ use Passbook\Exception\FileNotFoundException;
  */
 abstract class Certificate extends \SplFileObject implements CertificateInterface
 {
-    public function __construct($filename)
+    public function __construct(string $filename)
     {
         try {
             parent::__construct($filename);
