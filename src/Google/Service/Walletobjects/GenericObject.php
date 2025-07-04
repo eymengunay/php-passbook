@@ -18,6 +18,8 @@
 
 namespace Google\Service\Walletobjects;
 
+use Passbook\Interface\ObjectInterface;
+
 /**
  * Generic Object
  *
@@ -25,7 +27,7 @@ namespace Google\Service\Walletobjects;
  *
  * @phpcs:disable Generic.NamingConventions.UpperCaseConstantName
  */
-class GenericObject extends \Google\Collection
+class GenericObject extends \Google\Collection implements ObjectInterface
 {
     /**
      * Unspecified generic type.
