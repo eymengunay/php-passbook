@@ -28,13 +28,17 @@ class AuthenticationKey extends \Google\Model
     /**
      * Available only to Smart Tap enabled partners. Contact support for
      * additional guidance.
+     *
+     * @var int
      */
-    public int $id;
+    public $id;
     /**
      * Available only to Smart Tap enabled partners. Contact support for
      * additional guidance.
+     *
+     * @var string
      */
-    public string $publicKeyPem;
+    public $publicKeyPem;
 
     /**
      * Available only to Smart Tap enabled partners. Contact support for

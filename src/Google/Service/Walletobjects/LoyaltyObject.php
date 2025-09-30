@@ -84,14 +84,18 @@ class LoyaltyObject extends \Google\Collection implements ObjectInterface
     /**
      * The loyalty account identifier. Recommended maximum length is 20
      * characters.
+     *
+     * @var string
      */
-    public string $accountId;
+    public $accountId;
     /**
      * The loyalty account holder name, such as "John Smith." Recommended maximum
      * length is 20 characters to ensure full string is displayed on smaller
      * screens.
+     *
+     * @var string
      */
-    public string $accountName;
+    public $accountName;
     protected $appLinkDataType = AppLinkData::class;
     protected $appLinkDataDataType = '';
     protected $barcodeType = Barcode::class;
@@ -101,8 +105,10 @@ class LoyaltyObject extends \Google\Collection implements ObjectInterface
      * same type as this object, must already exist, and must be approved. Class
      * IDs should follow the format issuer ID.identifier where the former is
      * issued by Google and latter is chosen by you.
+     *
+     * @var string
      */
-    public string $classId;
+    public $classId;
     protected $classReferenceType = LoyaltyClass::class;
     protected $classReferenceDataType = '';
     /**
@@ -110,8 +116,10 @@ class LoyaltyObject extends \Google\Collection implements ObjectInterface
      * is set to true, regardless of the `messages` field, expiration
      * notifications to the user will be suppressed. By default, this field is set
      * to false. Currently, this can only be set for offers.
+     *
+     * @var bool
      */
-    public bool $disableExpirationNotification;
+    public $disableExpirationNotification;
     protected $groupingInfoType = GroupingInfo::class;
     protected $groupingInfoDataType = '';
     /**
@@ -119,12 +127,16 @@ class LoyaltyObject extends \Google\Collection implements ObjectInterface
      * set by the platform when a user saves the object, linking it to their
      * device. Intended for use by select partners. Contact support for additional
      * information.
+     *
+     * @var bool
      */
-    public bool $hasLinkedDevice;
+    public $hasLinkedDevice;
     /**
      * Indicates if the object has users. This field is set by the platform.
+     *
+     * @var bool
      */
-    public bool $hasUsers;
+    public $hasUsers;
     protected $heroImageType = Image::class;
     protected $heroImageDataType = '';
     /**
@@ -133,8 +145,10 @@ class LoyaltyObject extends \Google\Collection implements ObjectInterface
      * issuer ID.identifier where the former is issued by Google and latter is
      * chosen by you. The unique identifier should only include alphanumeric
      * characters, '.', '_', or '-'.
+     *
+     * @var string
      */
-    public string $id;
+    public $id;
     protected $imageModulesDataType = ImageModuleData::class;
     protected $imageModulesDataDataType = 'array';
     protected $infoModuleDataType = InfoModuleData::class;
@@ -142,9 +156,11 @@ class LoyaltyObject extends \Google\Collection implements ObjectInterface
     /**
      * Identifies what kind of resource this is. Value: the fixed string
      * `"walletobjects#loyaltyObject"`.
+     *
      * @deprecated
+     * @var string
      */
-    public string $kind;
+    public $kind;
     /**
      * linked_object_ids are a list of other objects such as event ticket,
      * loyalty, offer, generic, giftcard, transit and boarding pass that should be
@@ -162,7 +178,7 @@ class LoyaltyObject extends \Google\Collection implements ObjectInterface
      *
      * @var string[]
      */
-    public array $linkedObjectIds;
+    public $linkedObjectIds;
     /**
      * A list of offer objects linked to this loyalty card. The offer objects must
      * already exist. Offer object IDs should follow the format issuer ID.
@@ -171,7 +187,7 @@ class LoyaltyObject extends \Google\Collection implements ObjectInterface
      *
      * @var string[]
      */
-    public array $linkedOfferIds;
+    public $linkedOfferIds;
     protected $linksModuleDataType = LinksModuleData::class;
     protected $linksModuleDataDataType = '';
     protected $locationsType = LatLongPoint::class;
@@ -190,8 +206,10 @@ class LoyaltyObject extends \Google\Collection implements ObjectInterface
      * NOTIFICATION_SETTINGS_UNSPECIFIED, no notification will be triggered. This
      * setting is ephemeral and needs to be set with each PATCH or UPDATE request,
      * otherwise a notification will not be triggered.
+     *
+     * @var string
      */
-    public string $notifyPreference;
+    public $notifyPreference;
     protected $passConstraintsType = PassConstraints::class;
     protected $passConstraintsDataType = '';
     protected $rotatingBarcodeType = RotatingBarcode::class;
@@ -208,14 +226,18 @@ class LoyaltyObject extends \Google\Collection implements ObjectInterface
      * not set but the class level fields `enableSmartTap` and `redemptionIssuers`
      * are set up correctly, the `barcode.value` or the `accountId` fields are
      * used as fallback if present.
+     *
+     * @var string
      */
-    public string $smartTapRedemptionValue;
+    public $smartTapRedemptionValue;
     /**
      * Required. The state of the object. This field is used to determine how an
      * object is displayed in the app. For example, an `inactive` object is moved
      * to the "Expired passes" section.
+     *
+     * @var string
      */
-    public string $state;
+    public $state;
     protected $textModulesDataType = TextModuleData::class;
     protected $textModulesDataDataType = 'array';
     protected $validTimeIntervalType = TimeInterval::class;
@@ -224,9 +246,11 @@ class LoyaltyObject extends \Google\Collection implements ObjectInterface
     protected $valueAddedModuleDataDataType = 'array';
     /**
      * Deprecated
+     *
      * @deprecated
+     * @var string
      */
-    public string $version;
+    public $version;
 
     /**
      * The loyalty account identifier. Recommended maximum length is 20
@@ -478,16 +502,16 @@ class LoyaltyObject extends \Google\Collection implements ObjectInterface
      * Identifies what kind of resource this is. Value: the fixed string
      * `"walletobjects#loyaltyObject"`.
      *
-     * @param string $kind
      * @deprecated
+     * @param string $kind
      */
     public function setKind($kind)
     {
         $this->kind = $kind;
     }
     /**
-     * @return string
      * @deprecated
+     * @return string
      */
     public function getKind()
     {
@@ -560,16 +584,16 @@ class LoyaltyObject extends \Google\Collection implements ObjectInterface
     /**
      * Note: This field is currently not supported to trigger geo notifications.
      *
-     * @param LatLongPoint[] $locations
      * @deprecated
+     * @param LatLongPoint[] $locations
      */
     public function setLocations($locations)
     {
         $this->locations = $locations;
     }
     /**
-     * @return LatLongPoint[]
      * @deprecated
+     * @return LatLongPoint[]
      */
     public function getLocations()
     {
@@ -819,16 +843,16 @@ class LoyaltyObject extends \Google\Collection implements ObjectInterface
     /**
      * Deprecated
      *
-     * @param string $version
      * @deprecated
+     * @param string $version
      */
     public function setVersion($version)
     {
         $this->version = $version;
     }
     /**
-     * @return string
      * @deprecated
+     * @return string
      */
     public function getVersion()
     {

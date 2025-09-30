@@ -31,12 +31,16 @@ class RotatingBarcodeTotpDetailsTotpParameters extends \Google\Model
     /**
      * The secret key used for the TOTP value generation, encoded as a Base16
      * string.
+     *
+     * @var string
      */
-    public string $key;
+    public $key;
     /**
      * The length of the TOTP value in decimal digits.
+     *
+     * @var int
      */
-    public int $valueLength;
+    public $valueLength;
 
     /**
      * The secret key used for the TOTP value generation, encoded as a Base16

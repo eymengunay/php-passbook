@@ -208,9 +208,11 @@ class EventTicketClass extends \Google\Collection implements ClassInterface
     protected $collection_key = 'valueAddedModuleData';
     /**
      * Deprecated. Use `multipleDevicesAndHoldersAllowedStatus` instead.
+     *
      * @deprecated
+     * @var bool
      */
-    public bool $allowMultipleUsersPerObject;
+    public $allowMultipleUsersPerObject;
     protected $appLinkDataType = AppLinkData::class;
     protected $appLinkDataDataType = '';
     protected $callbackOptionsType = CallbackOptions::class;
@@ -226,14 +228,18 @@ class EventTicketClass extends \Google\Collection implements ClassInterface
      * If neither is set, the label will default to "Confirmation Code",
      * localized. If the confirmation code field is unset, this label will not be
      * used.
+     *
+     * @var string
      */
-    public string $confirmationCodeLabel;
+    public $confirmationCodeLabel;
     /**
      * Country code used to display the card's country (when the user is not in
      * that country), as well as to display localized content when content is not
      * available in the user's locale.
+     *
+     * @var string
      */
-    public string $countryCode;
+    public $countryCode;
     protected $customConfirmationCodeLabelType = LocalizedString::class;
     protected $customConfirmationCodeLabelDataType = '';
     protected $customGateLabelType = LocalizedString::class;
@@ -250,8 +256,10 @@ class EventTicketClass extends \Google\Collection implements ClassInterface
      * Identifies whether this class supports Smart Tap. The `redemptionIssuers`
      * and object level `smartTapRedemptionLevel` fields must also be set up
      * correctly in order for a pass to support Smart Tap.
+     *
+     * @var bool
      */
-    public bool $enableSmartTap;
+    public $enableSmartTap;
     /**
      * The ID of the event. This ID should be unique for every event in an
      * account. It is used to group tickets together if the user has saved
@@ -261,8 +269,10 @@ class EventTicketClass extends \Google\Collection implements ClassInterface
      * class per event, you can simply set this to the `classId` (with or without
      * the issuer ID portion). If not provided, the platform will attempt to use
      * other data to group tickets (potentially unstable).
+     *
+     * @var string
      */
-    public string $eventId;
+    public $eventId;
     protected $eventNameType = LocalizedString::class;
     protected $eventNameDataType = '';
     protected $finePrintType = LocalizedString::class;
@@ -274,8 +284,10 @@ class EventTicketClass extends \Google\Collection implements ClassInterface
      * Both `gateLabel` and `customGateLabel` may not be set. If neither is set,
      * the label will default to "Gate", localized. If the gate field is unset,
      * this label will not be used.
+     *
+     * @var string
      */
-    public string $gateLabel;
+    public $gateLabel;
     protected $heroImageType = Image::class;
     protected $heroImageDataType = '';
     /**
@@ -284,8 +296,10 @@ class EventTicketClass extends \Google\Collection implements ClassInterface
      * logo is used. The format is #rrggbb where rrggbb is a hex RGB triplet, such
      * as `#ffcc00`. You can also use the shorthand version of the RGB triplet
      * which is #rgb, such as `#fc0`.
+     *
+     * @var string
      */
-    public string $hexBackgroundColor;
+    public $hexBackgroundColor;
     protected $homepageUriType = Uri::class;
     protected $homepageUriDataType = '';
     /**
@@ -294,8 +308,10 @@ class EventTicketClass extends \Google\Collection implements ClassInterface
      * identifier where the former is issued by Google and latter is chosen by
      * you. Your unique identifier should only include alphanumeric characters,
      * '.', '_', or '-'.
+     *
+     * @var string
      */
-    public string $id;
+    public $id;
     protected $imageModulesDataType = ImageModuleData::class;
     protected $imageModulesDataDataType = 'array';
     protected $infoModuleDataType = InfoModuleData::class;
@@ -303,14 +319,18 @@ class EventTicketClass extends \Google\Collection implements ClassInterface
     /**
      * Required. The issuer name. Recommended maximum length is 20 characters to
      * ensure full string is displayed on smaller screens.
+     *
+     * @var string
      */
-    public string $issuerName;
+    public $issuerName;
     /**
      * Identifies what kind of resource this is. Value: the fixed string
      * `"walletobjects#eventTicketClass"`.
+     *
      * @deprecated
+     * @var string
      */
-    public string $kind;
+    public $kind;
     protected $linksModuleDataType = LinksModuleData::class;
     protected $linksModuleDataDataType = '';
     protected $localizedIssuerNameType = LocalizedString::class;
@@ -326,8 +346,10 @@ class EventTicketClass extends \Google\Collection implements ClassInterface
     /**
      * Identifies whether multiple users and devices will save the same object
      * referencing this class.
+     *
+     * @var string
      */
-    public string $multipleDevicesAndHoldersAllowedStatus;
+    public $multipleDevicesAndHoldersAllowedStatus;
     /**
      * Whether or not field updates to this class should trigger notifications.
      * When set to NOTIFY, we will attempt to trigger a field update notification
@@ -335,8 +357,10 @@ class EventTicketClass extends \Google\Collection implements ClassInterface
      * part of an allowlist. If not specified, no notification will be triggered.
      * This setting is ephemeral and needs to be set with each PATCH or UPDATE
      * request, otherwise a notification will not be triggered.
+     *
+     * @var string
      */
-    public string $notifyPreference;
+    public $notifyPreference;
     /**
      * Identifies which redemption issuers can redeem the pass over Smart Tap.
      * Redemption issuers are identified by their issuer ID. Redemption issuers
@@ -346,7 +370,7 @@ class EventTicketClass extends \Google\Collection implements ClassInterface
      *
      * @var string[]
      */
-    public array $redemptionIssuers;
+    public $redemptionIssuers;
     protected $reviewType = Review::class;
     protected $reviewDataType = '';
     /**
@@ -359,8 +383,10 @@ class EventTicketClass extends \Google\Collection implements ClassInterface
      * platform will automatically set this field to `approved` and it can be
      * immediately used to create or migrate objects. When updating an already
      * `approved` class you should keep setting this field to `underReview`.
+     *
+     * @var string
      */
-    public string $reviewStatus;
+    public $reviewStatus;
     /**
      * The label to use for the row value (`eventTicketObject.seatInfo.row`) on
      * the card detail view. Each available option maps to a set of localized
@@ -368,8 +394,10 @@ class EventTicketClass extends \Google\Collection implements ClassInterface
      * Both `rowLabel` and `customRowLabel` may not be set. If neither is set, the
      * label will default to "Row", localized. If the row field is unset, this
      * label will not be used.
+     *
+     * @var string
      */
-    public string $rowLabel;
+    public $rowLabel;
     /**
      * The label to use for the seat value (`eventTicketObject.seatInfo.seat`) on
      * the card detail view. Each available option maps to a set of localized
@@ -377,8 +405,10 @@ class EventTicketClass extends \Google\Collection implements ClassInterface
      * Both `seatLabel` and `customSeatLabel` may not be set. If neither is set,
      * the label will default to "Seat", localized. If the seat field is unset,
      * this label will not be used.
+     *
+     * @var string
      */
-    public string $seatLabel;
+    public $seatLabel;
     /**
      * The label to use for the section value
      * (`eventTicketObject.seatInfo.section`) on the card detail view. Each
@@ -387,8 +417,10 @@ class EventTicketClass extends \Google\Collection implements ClassInterface
      * `customSectionLabel` may not be set. If neither is set, the label will
      * default to "Section", localized. If the section field is unset, this label
      * will not be used.
+     *
+     * @var string
      */
-    public string $sectionLabel;
+    public $sectionLabel;
     protected $securityAnimationType = SecurityAnimation::class;
     protected $securityAnimationDataType = '';
     protected $textModulesDataType = TextModuleData::class;
@@ -399,13 +431,17 @@ class EventTicketClass extends \Google\Collection implements ClassInterface
     protected $venueDataType = '';
     /**
      * Deprecated
+     *
      * @deprecated
+     * @var string
      */
-    public string $version;
+    public $version;
     /**
      * View Unlock Requirement options for the event ticket.
+     *
+     * @var string
      */
-    public string $viewUnlockRequirement;
+    public $viewUnlockRequirement;
     protected $wideLogoType = Image::class;
     protected $wideLogoDataType = '';
     protected $wordMarkType = Image::class;
@@ -414,16 +450,16 @@ class EventTicketClass extends \Google\Collection implements ClassInterface
     /**
      * Deprecated. Use `multipleDevicesAndHoldersAllowedStatus` instead.
      *
-     * @param bool $allowMultipleUsersPerObject
      * @deprecated
+     * @param bool $allowMultipleUsersPerObject
      */
     public function setAllowMultipleUsersPerObject($allowMultipleUsersPerObject)
     {
         $this->allowMultipleUsersPerObject = $allowMultipleUsersPerObject;
     }
     /**
-     * @return bool
      * @deprecated
+     * @return bool
      */
     public function getAllowMultipleUsersPerObject()
     {
@@ -843,16 +879,16 @@ class EventTicketClass extends \Google\Collection implements ClassInterface
     /**
      * Deprecated. Use textModulesData instead.
      *
-     * @param InfoModuleData $infoModuleData
      * @deprecated
+     * @param InfoModuleData $infoModuleData
      */
     public function setInfoModuleData(InfoModuleData $infoModuleData)
     {
         $this->infoModuleData = $infoModuleData;
     }
     /**
-     * @return InfoModuleData
      * @deprecated
+     * @return InfoModuleData
      */
     public function getInfoModuleData()
     {
@@ -879,16 +915,16 @@ class EventTicketClass extends \Google\Collection implements ClassInterface
      * Identifies what kind of resource this is. Value: the fixed string
      * `"walletobjects#eventTicketClass"`.
      *
-     * @param string $kind
      * @deprecated
+     * @param string $kind
      */
     public function setKind($kind)
     {
         $this->kind = $kind;
     }
     /**
-     * @return string
      * @deprecated
+     * @return string
      */
     public function getKind()
     {
@@ -931,16 +967,16 @@ class EventTicketClass extends \Google\Collection implements ClassInterface
     /**
      * Note: This field is currently not supported to trigger geo notifications.
      *
-     * @param LatLongPoint[] $locations
      * @deprecated
+     * @param LatLongPoint[] $locations
      */
     public function setLocations($locations)
     {
         $this->locations = $locations;
     }
     /**
-     * @return LatLongPoint[]
      * @deprecated
+     * @return LatLongPoint[]
      */
     public function getLocations()
     {
@@ -1250,16 +1286,16 @@ class EventTicketClass extends \Google\Collection implements ClassInterface
     /**
      * Deprecated
      *
-     * @param string $version
      * @deprecated
+     * @param string $version
      */
     public function setVersion($version)
     {
         $this->version = $version;
     }
     /**
-     * @return string
      * @deprecated
+     * @return string
      */
     public function getVersion()
     {
@@ -1304,16 +1340,16 @@ class EventTicketClass extends \Google\Collection implements ClassInterface
     /**
      * Deprecated.
      *
-     * @param Image $wordMark
      * @deprecated
+     * @param Image $wordMark
      */
     public function setWordMark(Image $wordMark)
     {
         $this->wordMark = $wordMark;
     }
     /**
-     * @return Image
      * @deprecated
+     * @return Image
      */
     public function getWordMark()
     {

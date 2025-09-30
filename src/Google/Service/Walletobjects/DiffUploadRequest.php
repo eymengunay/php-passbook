@@ -35,8 +35,10 @@ class DiffUploadRequest extends \Google\Model
     /**
      * The object version of the object that is the base version the incoming diff
      * script will be applied to. This field will always be filled in.
+     *
+     * @var string
      */
-    public string $objectVersion;
+    public $objectVersion;
 
     /**
      * The location of the checksums for the new object. Agents must clone the

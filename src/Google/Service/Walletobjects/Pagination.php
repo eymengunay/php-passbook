@@ -28,32 +28,38 @@ class Pagination extends \Google\Model
     /**
      * Identifies what kind of resource this is. Value: the fixed string
      * `"walletobjects#pagination"`.
+     *
      * @deprecated
+     * @var string
      */
-    public string $kind;
+    public $kind;
     /**
      * Page token to send to fetch the next page.
+     *
+     * @var string
      */
-    public string $nextPageToken;
+    public $nextPageToken;
     /**
      * Number of results returned in this page.
+     *
+     * @var int
      */
-    public int $resultsPerPage;
+    public $resultsPerPage;
 
     /**
      * Identifies what kind of resource this is. Value: the fixed string
      * `"walletobjects#pagination"`.
      *
-     * @param string $kind
      * @deprecated
+     * @param string $kind
      */
     public function setKind($kind)
     {
         $this->kind = $kind;
     }
     /**
-     * @return string
      * @deprecated
+     * @return string
      */
     public function getKind()
     {

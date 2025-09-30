@@ -31,19 +31,25 @@ class ObjectId extends \Google\Model
 {
     /**
      * The name of the bucket to which this object belongs.
+     *
+     * @var string
      */
-    public string $bucketName;
+    public $bucketName;
     /**
      * Generation of the object. Generations are monotonically increasing across
      * writes, allowing them to be be compared to determine which generation is
      * newer. If this is omitted in a request, then you are requesting the live
      * object. See http://go/bigstore-versions
+     *
+     * @var string
      */
-    public string $generation;
+    public $generation;
     /**
      * The name of the object.
+     *
+     * @var string
      */
-    public string $objectName;
+    public $objectName;
 
     /**
      * The name of the bucket to which this object belongs.

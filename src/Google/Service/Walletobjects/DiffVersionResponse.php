@@ -30,12 +30,16 @@ class DiffVersionResponse extends \Google\Model
 {
     /**
      * The total size of the server object.
+     *
+     * @var string
      */
-    public string $objectSizeBytes;
+    public $objectSizeBytes;
     /**
      * The version of the object stored at the server.
+     *
+     * @var string
      */
-    public string $objectVersion;
+    public $objectVersion;
 
     /**
      * The total size of the server object.

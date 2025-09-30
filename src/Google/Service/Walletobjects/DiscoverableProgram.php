@@ -66,8 +66,10 @@ class DiscoverableProgram extends \Google\Model
     protected $merchantSignupInfoDataType = '';
     /**
      * Visibility state of the discoverable program.
+     *
+     * @var string
      */
-    public string $state;
+    public $state;
 
     /**
      * Information about the ability to signin and add a valuable for this program

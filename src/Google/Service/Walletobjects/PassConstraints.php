@@ -47,11 +47,13 @@ class PassConstraints extends \Google\Collection
      *
      * @var string[]
      */
-    public array $nfcConstraint;
+    public $nfcConstraint;
     /**
      * The screenshot eligibility for the pass.
+     *
+     * @var string
      */
-    public string $screenshotEligibility;
+    public $screenshotEligibility;
 
     /**
      * The NFC constraints for the pass.

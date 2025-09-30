@@ -92,30 +92,38 @@ class Media extends \Google\Collection
      * Deprecated, use one of explicit hash type fields instead. Algorithm used
      * for calculating the hash. As of 2011/01/21, "MD5" is the only possible
      * value for this field. New values may be added at any time.
+     *
      * @deprecated
+     * @var string
      */
-    public string $algorithm;
+    public $algorithm;
     /**
      * Use object_id instead.
+     *
      * @deprecated
+     * @var string
      */
-    public string $bigstoreObjectRef;
+    public $bigstoreObjectRef;
     /**
      * Blobstore v1 reference, set if reference_type is BLOBSTORE_REF This should
      * be the byte representation of a blobstore.BlobRef. Since Blobstore is
      * deprecating v1, use blobstore2_info instead. For now, any v2 blob will also
      * be represented in this field as v1 BlobRef.
+     *
      * @deprecated
+     * @var string
      */
-    public string $blobRef;
+    public $blobRef;
     protected $blobstore2InfoType = Blobstore2Info::class;
     protected $blobstore2InfoDataType = '';
     protected $compositeMediaType = CompositeMedia::class;
     protected $compositeMediaDataType = 'array';
     /**
      * MIME type of the data
+     *
+     * @var string
      */
-    public string $contentType;
+    public $contentType;
     protected $contentTypeInfoType = ContentTypeInfo::class;
     protected $contentTypeInfoDataType = '';
     /**
@@ -125,16 +133,20 @@ class Media extends \Google\Collection
      * hack to get around the fact that the cosmo proto (as well as others it
      * includes) doesn't support JavaScript. This prevents us from including the
      * actual type of this field.
+     *
+     * @var string
      */
-    public string $cosmoBinaryReference;
+    public $cosmoBinaryReference;
     /**
      * For Scotty Uploads: Scotty-provided hashes for uploads For Scotty
      * Downloads: (WARNING: DO NOT USE WITHOUT PERMISSION FROM THE SCOTTY TEAM.) A
      * Hash provided by the agent to be used to verify the data being downloaded.
      * Currently only supported for inline payloads. Further, only crc32c_hash is
      * currently supported.
+     *
+     * @var string
      */
-    public string $crc32cHash;
+    public $crc32cHash;
     protected $diffChecksumsResponseType = DiffChecksumsResponse::class;
     protected $diffChecksumsResponseDataType = '';
     protected $diffDownloadResponseType = DiffDownloadResponse::class;
@@ -149,93 +161,121 @@ class Media extends \Google\Collection
     protected $downloadParametersDataType = '';
     /**
      * Original file name
+     *
+     * @var string
      */
-    public string $filename;
+    public $filename;
     /**
      * Deprecated, use one of explicit hash type fields instead. These two hash
      * related fields will only be populated on Scotty based media uploads and
      * will contain the content of the hash group in the NotificationRequest: http
      * ://cs/#google3/blobstore2/api/scotty/service/proto/upload_listener.proto&q=
      * class:Hash Hex encoded hash value of the uploaded media.
+     *
      * @deprecated
+     * @var string
      */
-    public string $hash;
+    public $hash;
     /**
      * For Scotty uploads only. If a user sends a hash code and the backend has
      * requested that Scotty verify the upload against the client hash, Scotty
      * will perform the check on behalf of the backend and will reject it if the
      * hashes don't match. This is set to true if Scotty performed this
      * verification.
+     *
+     * @var bool
      */
-    public bool $hashVerified;
+    public $hashVerified;
     /**
      * Media data, set if reference_type is INLINE
+     *
+     * @var string
      */
-    public string $inline;
+    public $inline;
     /**
      * |is_potential_retry| is set false only when Scotty is certain that it has
      * not sent the request before. When a client resumes an upload, this field
      * must be set true in agent calls, because Scotty cannot be certain that it
      * has never sent the request before due to potential failure in the session
      * state persistence.
+     *
+     * @var bool
      */
-    public bool $isPotentialRetry;
+    public $isPotentialRetry;
     /**
      * Size of the data, in bytes
+     *
+     * @var string
      */
-    public string $length;
+    public $length;
     /**
      * Scotty-provided MD5 hash for an upload.
+     *
+     * @var string
      */
-    public string $md5Hash;
+    public $md5Hash;
     /**
      * Media id to forward to the operation GetMedia. Can be set if reference_type
      * is GET_MEDIA.
+     *
+     * @var string
      */
-    public string $mediaId;
+    public $mediaId;
     protected $objectIdType = ObjectId::class;
     protected $objectIdDataType = '';
     /**
      * Path to the data, set if reference_type is PATH
+     *
+     * @var string
      */
-    public string $path;
+    public $path;
     /**
      * Describes what the field reference contains.
+     *
+     * @var string
      */
-    public string $referenceType;
+    public $referenceType;
     /**
      * Scotty-provided SHA1 hash for an upload.
+     *
+     * @var string
      */
-    public string $sha1Hash;
+    public $sha1Hash;
     /**
      * Scotty-provided SHA256 hash for an upload.
+     *
+     * @var string
      */
-    public string $sha256Hash;
+    public $sha256Hash;
     /**
      * Time at which the media data was last updated, in milliseconds since UNIX
      * epoch
+     *
+     * @var string
      */
-    public string $timestamp;
+    public $timestamp;
     /**
      * A unique fingerprint/version id for the media data
+     *
+     * @var string
      */
-    public string $token;
+    public $token;
 
     /**
      * Deprecated, use one of explicit hash type fields instead. Algorithm used
      * for calculating the hash. As of 2011/01/21, "MD5" is the only possible
      * value for this field. New values may be added at any time.
      *
-     * @param string $algorithm
      * @deprecated
+     * @param string $algorithm
      */
     public function setAlgorithm($algorithm)
     {
         $this->algorithm = $algorithm;
     }
     /**
-     * @return string
      * @deprecated
+     * @return string
      */
     public function getAlgorithm()
     {
@@ -244,16 +284,16 @@ class Media extends \Google\Collection
     /**
      * Use object_id instead.
      *
-     * @param string $bigstoreObjectRef
      * @deprecated
+     * @param string $bigstoreObjectRef
      */
     public function setBigstoreObjectRef($bigstoreObjectRef)
     {
         $this->bigstoreObjectRef = $bigstoreObjectRef;
     }
     /**
-     * @return string
      * @deprecated
+     * @return string
      */
     public function getBigstoreObjectRef()
     {
@@ -265,16 +305,16 @@ class Media extends \Google\Collection
      * deprecating v1, use blobstore2_info instead. For now, any v2 blob will also
      * be represented in this field as v1 BlobRef.
      *
-     * @param string $blobRef
      * @deprecated
+     * @param string $blobRef
      */
     public function setBlobRef($blobRef)
     {
         $this->blobRef = $blobRef;
     }
     /**
-     * @return string
      * @deprecated
+     * @return string
      */
     public function getBlobRef()
     {
@@ -508,16 +548,16 @@ class Media extends \Google\Collection
      * ://cs/#google3/blobstore2/api/scotty/service/proto/upload_listener.proto&q=
      * class:Hash Hex encoded hash value of the uploaded media.
      *
-     * @param string $hash
      * @deprecated
+     * @param string $hash
      */
     public function setHash($hash)
     {
         $this->hash = $hash;
     }
     /**
-     * @return string
      * @deprecated
+     * @return string
      */
     public function getHash()
     {

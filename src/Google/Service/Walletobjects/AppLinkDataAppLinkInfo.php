@@ -37,16 +37,16 @@ class AppLinkDataAppLinkInfo extends \Google\Model
     /**
      * Deprecated. Image isn't supported in the app link module.
      *
-     * @param Image $appLogoImage
      * @deprecated
+     * @param Image $appLogoImage
      */
     public function setAppLogoImage(Image $appLogoImage)
     {
         $this->appLogoImage = $appLogoImage;
     }
     /**
-     * @return Image
      * @deprecated
+     * @return Image
      */
     public function getAppLogoImage()
     {
@@ -72,16 +72,16 @@ class AppLinkDataAppLinkInfo extends \Google\Model
     /**
      * Deprecated. Description isn't supported in the app link module.
      *
-     * @param LocalizedString $description
      * @deprecated
+     * @param LocalizedString $description
      */
     public function setDescription(LocalizedString $description)
     {
         $this->description = $description;
     }
     /**
-     * @return LocalizedString
      * @deprecated
+     * @return LocalizedString
      */
     public function getDescription()
     {
@@ -90,16 +90,16 @@ class AppLinkDataAppLinkInfo extends \Google\Model
     /**
      * Deprecated. Title isn't supported in the app link module.
      *
-     * @param LocalizedString $title
      * @deprecated
+     * @param LocalizedString $title
      */
     public function setTitle(LocalizedString $title)
     {
         $this->title = $title;
     }
     /**
-     * @return LocalizedString
      * @deprecated
+     * @return LocalizedString
      */
     public function getTitle()
     {

@@ -36,14 +36,18 @@ class RotatingBarcodeTotpDetails extends \Google\Collection
     protected $collection_key = 'parameters';
     /**
      * The TOTP algorithm used to generate the OTP.
+     *
+     * @var string
      */
-    public string $algorithm;
+    public $algorithm;
     protected $parametersType = RotatingBarcodeTotpDetailsTotpParameters::class;
     protected $parametersDataType = 'array';
     /**
      * The time interval used for the TOTP value generation, in milliseconds.
+     *
+     * @var string
      */
-    public string $periodMillis;
+    public $periodMillis;
 
     /**
      * The TOTP algorithm used to generate the OTP.

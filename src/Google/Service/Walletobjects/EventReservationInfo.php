@@ -29,14 +29,18 @@ class EventReservationInfo extends \Google\Model
      * The confirmation code of the event reservation. This may also take the form
      * of an "order number", "confirmation number", "reservation number", or other
      * equivalent.
+     *
+     * @var string
      */
-    public string $confirmationCode;
+    public $confirmationCode;
     /**
      * Identifies what kind of resource this is. Value: the fixed string
      * `"walletobjects#eventReservationInfo"`.
+     *
      * @deprecated
+     * @var string
      */
-    public string $kind;
+    public $kind;
 
     /**
      * The confirmation code of the event reservation. This may also take the form
@@ -60,16 +64,16 @@ class EventReservationInfo extends \Google\Model
      * Identifies what kind of resource this is. Value: the fixed string
      * `"walletobjects#eventReservationInfo"`.
      *
-     * @param string $kind
      * @deprecated
+     * @param string $kind
      */
     public function setKind($kind)
     {
         $this->kind = $kind;
     }
     /**
-     * @return string
      * @deprecated
+     * @return string
      */
     public function getKind()
     {

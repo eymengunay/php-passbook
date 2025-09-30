@@ -28,30 +28,34 @@ class ImageUri extends \Google\Model
     /**
      * Additional information about the image, which is unused and retained only
      * for backward compatibility.
+     *
      * @deprecated
+     * @var string
      */
-    public string $description;
+    public $description;
     protected $localizedDescriptionType = LocalizedString::class;
     protected $localizedDescriptionDataType = '';
     /**
      * The location of the image. URIs must have a scheme.
+     *
+     * @var string
      */
-    public string $uri;
+    public $uri;
 
     /**
      * Additional information about the image, which is unused and retained only
      * for backward compatibility.
      *
-     * @param string $description
      * @deprecated
+     * @param string $description
      */
     public function setDescription($description)
     {
         $this->description = $description;
     }
     /**
-     * @return string
      * @deprecated
+     * @return string
      */
     public function getDescription()
     {
@@ -61,16 +65,16 @@ class ImageUri extends \Google\Model
      * Translated strings for the description, which are unused and retained only
      * for backward compatibility.
      *
-     * @param LocalizedString $localizedDescription
      * @deprecated
+     * @param LocalizedString $localizedDescription
      */
     public function setLocalizedDescription(LocalizedString $localizedDescription)
     {
         $this->localizedDescription = $localizedDescription;
     }
     /**
-     * @return LocalizedString
      * @deprecated
+     * @return LocalizedString
      */
     public function getLocalizedDescription()
     {

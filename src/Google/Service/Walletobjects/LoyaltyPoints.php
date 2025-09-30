@@ -30,8 +30,10 @@ class LoyaltyPoints extends \Google\Model
     /**
      * The loyalty points label, such as "Points". Recommended maximum length is 9
      * characters.
+     *
+     * @var string
      */
-    public string $label;
+    public $label;
     protected $localizedLabelType = LocalizedString::class;
     protected $localizedLabelDataType = '';
 

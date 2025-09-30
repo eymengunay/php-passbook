@@ -31,13 +31,13 @@ class ModifyLinkedOfferObjects extends \Google\Collection
      *
      * @var string[]
      */
-    public array $addLinkedOfferObjectIds;
+    public $addLinkedOfferObjectIds;
     /**
      * The linked offer object ids to remove from the object.
      *
      * @var string[]
      */
-    public array $removeLinkedOfferObjectIds;
+    public $removeLinkedOfferObjectIds;
 
     /**
      * The linked offer object ids to add to the object.

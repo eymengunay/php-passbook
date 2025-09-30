@@ -33,8 +33,10 @@ class DiffUploadResponse extends \Google\Model
      * notification response. The version in the end notification response must
      * correspond to the new version of the object that is now stored at the
      * server, after the upload.
+     *
+     * @var string
      */
-    public string $objectVersion;
+    public $objectVersion;
     protected $originalObjectType = CompositeMedia::class;
     protected $originalObjectDataType = '';
 

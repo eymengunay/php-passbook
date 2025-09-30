@@ -31,17 +31,23 @@ class Issuer extends \Google\Model
     protected $contactInfoDataType = '';
     /**
      * URL for the issuer's home page.
+     *
+     * @var string
      */
-    public string $homepageUrl;
+    public $homepageUrl;
     /**
      * The unique identifier for an issuer account. This is automatically
      * generated when the issuer is inserted.
+     *
+     * @var string
      */
-    public string $issuerId;
+    public $issuerId;
     /**
      * The account name of the issuer.
+     *
+     * @var string
      */
-    public string $name;
+    public $name;
     protected $smartTapMerchantDataType = SmartTapMerchantData::class;
     protected $smartTapMerchantDataDataType = '';
 

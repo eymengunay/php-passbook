@@ -31,19 +31,25 @@ class IssuerContactInfo extends \Google\Collection
      *
      * @var string[]
      */
-    public array $alertsEmails;
+    public $alertsEmails;
     /**
      * The primary contact email address.
+     *
+     * @var string
      */
-    public string $email;
+    public $email;
     /**
      * The primary contact name.
+     *
+     * @var string
      */
-    public string $name;
+    public $name;
     /**
      * The primary contact phone number.
+     *
+     * @var string
      */
-    public string $phone;
+    public $phone;
 
     /**
      * Email addresses which will receive alerts.

@@ -29,30 +29,40 @@ class Blobstore2Info extends \Google\Model
 {
     /**
      * The blob generation id.
+     *
+     * @var string
      */
-    public string $blobGeneration;
+    public $blobGeneration;
     /**
      * The blob id, e.g., /blobstore/prod/playground/scotty
+     *
+     * @var string
      */
-    public string $blobId;
+    public $blobId;
     /**
      * Read handle passed from Bigstore -> Scotty for a GCS download. This is a
      * signed, serialized blobstore2.ReadHandle proto which must never be set
      * outside of Bigstore, and is not applicable to non-GCS media downloads.
+     *
+     * @var string
      */
-    public string $downloadReadHandle;
+    public $downloadReadHandle;
     /**
      * The blob read token. Needed to read blobs that have not been replicated.
      * Might not be available until the final call.
+     *
+     * @var string
      */
-    public string $readToken;
+    public $readToken;
     /**
      * Metadata passed from Blobstore -> Scotty for a new GCS upload. This is a
      * signed, serialized blobstore2.BlobMetadataContainer proto which must never
      * be consumed outside of Bigstore, and is not applicable to non-GCS media
      * uploads.
+     *
+     * @var string
      */
-    public string $uploadMetadataContainer;
+    public $uploadMetadataContainer;
 
     /**
      * The blob generation id.

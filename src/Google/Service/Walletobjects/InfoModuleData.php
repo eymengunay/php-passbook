@@ -30,8 +30,9 @@ class InfoModuleData extends \Google\Collection
     protected $labelValueRowsDataType = 'array';
     /**
      * @deprecated
+     * @var bool
      */
-    public bool $showLastUpdateTime;
+    public $showLastUpdateTime;
 
     /**
      * A list of collections of labels and values. These will be displayed one
@@ -51,16 +52,16 @@ class InfoModuleData extends \Google\Collection
         return $this->labelValueRows;
     }
     /**
-     * @param bool $showLastUpdateTime
      * @deprecated
+     * @param bool $showLastUpdateTime
      */
     public function setShowLastUpdateTime($showLastUpdateTime)
     {
         $this->showLastUpdateTime = $showLastUpdateTime;
     }
     /**
-     * @return bool
      * @deprecated
+     * @return bool
      */
     public function getShowLastUpdateTime()
     {

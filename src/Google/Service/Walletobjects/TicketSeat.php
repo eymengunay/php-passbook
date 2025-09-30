@@ -50,19 +50,25 @@ class TicketSeat extends \Google\Model
     /**
      * The identifier of the train car or coach in which the ticketed seat is
      * located. Eg. "10"
+     *
+     * @var string
      */
-    public string $coach;
+    public $coach;
     protected $customFareClassType = LocalizedString::class;
     protected $customFareClassDataType = '';
     /**
      * The fare class of the ticketed seat.
+     *
+     * @var string
      */
-    public string $fareClass;
+    public $fareClass;
     /**
      * The identifier of where the ticketed seat is located. Eg. "42". If there is
      * no specific identifier, use `seatAssigment` instead.
+     *
+     * @var string
      */
-    public string $seat;
+    public $seat;
     protected $seatAssignmentType = LocalizedString::class;
     protected $seatAssignmentDataType = '';
 

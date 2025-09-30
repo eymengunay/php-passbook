@@ -38,8 +38,10 @@ class SecurityAnimation extends \Google\Model
     public const ANIMATION_TYPE_foilShimmer = 'foilShimmer';
     /**
      * Type of animation.
+     *
+     * @var string
      */
-    public string $animationType;
+    public $animationType;
 
     /**
      * Type of animation.

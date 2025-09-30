@@ -56,35 +56,45 @@ class Message extends \Google\Model
     public const MESSAGE_TYPE_TEXT_AND_NOTIFY = 'TEXT_AND_NOTIFY';
     /**
      * The message body.
+     *
+     * @var string
      */
-    public string $body;
+    public $body;
     protected $displayIntervalType = TimeInterval::class;
     protected $displayIntervalDataType = '';
     /**
      * The message header.
+     *
+     * @var string
      */
-    public string $header;
+    public $header;
     /**
      * The ID associated with a message. This field is here to enable ease of
      * management of messages. Notice ID values could possibly duplicate across
      * multiple messages in the same class/instance, and care must be taken to
      * select a reasonable ID for each message.
+     *
+     * @var string
      */
-    public string $id;
+    public $id;
     /**
      * Identifies what kind of resource this is. Value: the fixed string
      * `"walletobjects#walletObjectMessage"`.
+     *
      * @deprecated
+     * @var string
      */
-    public string $kind;
+    public $kind;
     protected $localizedBodyType = LocalizedString::class;
     protected $localizedBodyDataType = '';
     protected $localizedHeaderType = LocalizedString::class;
     protected $localizedHeaderDataType = '';
     /**
      * The message type.
+     *
+     * @var string
      */
-    public string $messageType;
+    public $messageType;
 
     /**
      * The message body.
@@ -161,16 +171,16 @@ class Message extends \Google\Model
      * Identifies what kind of resource this is. Value: the fixed string
      * `"walletobjects#walletObjectMessage"`.
      *
-     * @param string $kind
      * @deprecated
+     * @param string $kind
      */
     public function setKind($kind)
     {
         $this->kind = $kind;
     }
     /**
-     * @return string
      * @deprecated
+     * @return string
      */
     public function getKind()
     {

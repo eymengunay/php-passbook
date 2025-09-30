@@ -27,13 +27,17 @@ class PurchaseDetails extends \Google\Model
 {
     /**
      * ID of the account used to purchase the ticket.
+     *
+     * @var string
      */
-    public string $accountId;
+    public $accountId;
     /**
      * The confirmation code for the purchase. This may be the same for multiple
      * different tickets and is used to group tickets together.
+     *
+     * @var string
      */
-    public string $confirmationCode;
+    public $confirmationCode;
     /**
      * The purchase date/time of the ticket. This is an ISO 8601 extended format
      * date/time, with or without an offset. Time may be specified up to
@@ -49,13 +53,17 @@ class PurchaseDetails extends \Google\Model
      * `1985-04-12T19:20:50.52` would be 20 minutes and 50.52 seconds after the
      * 19th hour of April 12th, 1985 with no offset information. Without offset
      * information, some rich features may not be available.
+     *
+     * @var string
      */
-    public string $purchaseDateTime;
+    public $purchaseDateTime;
     /**
      * Receipt number/identifier for tracking the ticket purchase via the body
      * that sold the ticket.
+     *
+     * @var string
      */
-    public string $purchaseReceiptNumber;
+    public $purchaseReceiptNumber;
     protected $ticketCostType = TicketCost::class;
     protected $ticketCostDataType = '';
 

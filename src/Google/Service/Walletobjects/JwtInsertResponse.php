@@ -30,8 +30,10 @@ class JwtInsertResponse extends \Google\Model
     /**
      * A URI that, when opened, will allow the end user to save the object(s)
      * identified in the JWT to their Google account.
+     *
+     * @var string
      */
-    public string $saveUri;
+    public $saveUri;
 
     /**
      * Data that corresponds to the ids of the provided classes and objects in the

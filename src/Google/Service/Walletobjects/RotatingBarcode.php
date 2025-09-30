@@ -183,23 +183,29 @@ class RotatingBarcode extends \Google\Model
      * An optional text that will override the default text that shows under the
      * barcode. This field is intended for a human readable equivalent of the
      * barcode value, used when the barcode cannot be scanned.
+     *
+     * @var string
      */
-    public string $alternateText;
+    public $alternateText;
     protected $initialRotatingBarcodeValuesType = RotatingBarcodeValues::class;
     protected $initialRotatingBarcodeValuesDataType = '';
     /**
      * The render encoding for the barcode. When specified, barcode is rendered in
      * the given encoding. Otherwise best known encoding is chosen by Google.
+     *
+     * @var string
      */
-    public string $renderEncoding;
+    public $renderEncoding;
     protected $showCodeTextType = LocalizedString::class;
     protected $showCodeTextDataType = '';
     protected $totpDetailsType = RotatingBarcodeTotpDetails::class;
     protected $totpDetailsDataType = '';
     /**
      * The type of this barcode.
+     *
+     * @var string
      */
-    public string $type;
+    public $type;
     /**
      * String encoded barcode value. This string supports the following
      * substitutions: * {totp_value_n}: Replaced with the TOTP value (see
@@ -207,8 +213,10 @@ class RotatingBarcode extends \Google\Model
      * timestamp (millis since epoch) at which the barcode was generated. *
      * {totp_timestamp_seconds}: Replaced with the timestamp (seconds since epoch)
      * at which the barcode was generated.
+     *
+     * @var string
      */
-    public string $valuePattern;
+    public $valuePattern;
 
     /**
      * An optional text that will override the default text that shows under the

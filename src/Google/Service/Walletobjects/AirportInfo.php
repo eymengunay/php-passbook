@@ -28,24 +28,32 @@ class AirportInfo extends \Google\Model
     /**
      * Three character IATA airport code. This is a required field for `origin`
      * and `destination`. Eg: "SFO"
+     *
+     * @var string
      */
-    public string $airportIataCode;
+    public $airportIataCode;
     protected $airportNameOverrideType = LocalizedString::class;
     protected $airportNameOverrideDataType = '';
     /**
      * A name of the gate. Eg: "B59" or "59"
+     *
+     * @var string
      */
-    public string $gate;
+    public $gate;
     /**
      * Identifies what kind of resource this is. Value: the fixed string
      * `"walletobjects#airportInfo"`.
+     *
      * @deprecated
+     * @var string
      */
-    public string $kind;
+    public $kind;
     /**
      * Terminal name. Eg: "INTL" or "I"
+     *
+     * @var string
      */
-    public string $terminal;
+    public $terminal;
 
     /**
      * Three character IATA airport code. This is a required field for `origin`
@@ -107,16 +115,16 @@ class AirportInfo extends \Google\Model
      * Identifies what kind of resource this is. Value: the fixed string
      * `"walletobjects#airportInfo"`.
      *
-     * @param string $kind
      * @deprecated
+     * @param string $kind
      */
     public function setKind($kind)
     {
         $this->kind = $kind;
     }
     /**
-     * @return string
      * @deprecated
+     * @return string
      */
     public function getKind()
     {

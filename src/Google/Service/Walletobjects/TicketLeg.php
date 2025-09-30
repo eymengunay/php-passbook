@@ -47,12 +47,16 @@ class TicketLeg extends \Google\Collection
      * the local date/time at the destination station is 4 hours before UTC, an
      * offset of `-04:00` may be appended. Without offset information, some rich
      * features may not be available.
+     *
+     * @var string
      */
-    public string $arrivalDateTime;
+    public $arrivalDateTime;
     /**
      * The train or ship name/number that the passsenger needs to board.
+     *
+     * @var string
      */
-    public string $carriage;
+    public $carriage;
     /**
      * The date/time of departure. This is required if there is no validity time
      * interval set on the transit object. This is an ISO 8601 extended format
@@ -75,14 +79,18 @@ class TicketLeg extends \Google\Collection
      * date/time at the origin station is 4 hours before UTC, an offset of
      * `-04:00` may be appended. Without offset information, some rich features
      * may not be available.
+     *
+     * @var string
      */
-    public string $departureDateTime;
+    public $departureDateTime;
     protected $destinationNameType = LocalizedString::class;
     protected $destinationNameDataType = '';
     /**
      * The destination station code.
+     *
+     * @var string
      */
-    public string $destinationStationCode;
+    public $destinationStationCode;
     protected $fareNameType = LocalizedString::class;
     protected $fareNameDataType = '';
     protected $originNameType = LocalizedString::class;
@@ -90,12 +98,16 @@ class TicketLeg extends \Google\Collection
     /**
      * The origin station code. This is required if `destinationStationCode` is
      * present or if `originName` is not present.
+     *
+     * @var string
      */
-    public string $originStationCode;
+    public $originStationCode;
     /**
      * The platform or gate where the passenger can board the carriage.
+     *
+     * @var string
      */
-    public string $platform;
+    public $platform;
     protected $ticketSeatType = TicketSeat::class;
     protected $ticketSeatDataType = '';
     protected $ticketSeatsType = TicketSeat::class;
@@ -106,8 +118,10 @@ class TicketLeg extends \Google\Collection
     protected $transitTerminusNameDataType = '';
     /**
      * The zone of boarding within the platform.
+     *
+     * @var string
      */
-    public string $zone;
+    public $zone;
 
     /**
      * The date/time of arrival. This is an ISO 8601 extended format date/time,

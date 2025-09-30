@@ -90,8 +90,10 @@ class EventTicketObject extends \Google\Collection implements ObjectInterface
      * same type as this object, must already exist, and must be approved. Class
      * IDs should follow the format issuer ID.identifier where the former is
      * issued by Google and latter is chosen by you.
+     *
+     * @var string
      */
-    public string $classId;
+    public $classId;
     protected $classReferenceType = EventTicketClass::class;
     protected $classReferenceDataType = '';
     /**
@@ -99,8 +101,10 @@ class EventTicketObject extends \Google\Collection implements ObjectInterface
      * is set to true, regardless of the `messages` field, expiration
      * notifications to the user will be suppressed. By default, this field is set
      * to false. Currently, this can only be set for offers.
+     *
+     * @var bool
      */
-    public bool $disableExpirationNotification;
+    public $disableExpirationNotification;
     protected $faceValueType = Money::class;
     protected $faceValueDataType = '';
     protected $groupingInfoType = GroupingInfo::class;
@@ -110,12 +114,16 @@ class EventTicketObject extends \Google\Collection implements ObjectInterface
      * set by the platform when a user saves the object, linking it to their
      * device. Intended for use by select partners. Contact support for additional
      * information.
+     *
+     * @var bool
      */
-    public bool $hasLinkedDevice;
+    public $hasLinkedDevice;
     /**
      * Indicates if the object has users. This field is set by the platform.
+     *
+     * @var bool
      */
-    public bool $hasUsers;
+    public $hasUsers;
     protected $heroImageType = Image::class;
     protected $heroImageDataType = '';
     /**
@@ -124,16 +132,20 @@ class EventTicketObject extends \Google\Collection implements ObjectInterface
      * logo is used. The format is #rrggbb where rrggbb is a hex RGB triplet, such
      * as `#ffcc00`. You can also use the shorthand version of the RGB triplet
      * which is #rgb, such as `#fc0`.
+     *
+     * @var string
      */
-    public string $hexBackgroundColor;
+    public $hexBackgroundColor;
     /**
      * Required. The unique identifier for an object. This ID must be unique
      * across all objects from an issuer. This value should follow the format
      * issuer ID.identifier where the former is issued by Google and latter is
      * chosen by you. The unique identifier should only include alphanumeric
      * characters, '.', '_', or '-'.
+     *
+     * @var string
      */
-    public string $id;
+    public $id;
     protected $imageModulesDataType = ImageModuleData::class;
     protected $imageModulesDataDataType = 'array';
     protected $infoModuleDataType = InfoModuleData::class;
@@ -141,9 +153,11 @@ class EventTicketObject extends \Google\Collection implements ObjectInterface
     /**
      * Identifies what kind of resource this is. Value: the fixed string
      * `"walletobjects#eventTicketObject"`.
+     *
      * @deprecated
+     * @var string
      */
-    public string $kind;
+    public $kind;
     /**
      * linked_object_ids are a list of other objects such as event ticket,
      * loyalty, offer, generic, giftcard, transit and boarding pass that should be
@@ -161,7 +175,7 @@ class EventTicketObject extends \Google\Collection implements ObjectInterface
      *
      * @var string[]
      */
-    public array $linkedObjectIds;
+    public $linkedObjectIds;
     /**
      * A list of offer objects linked to this event ticket. The offer objects must
      * already exist. Offer object IDs should follow the format issuer ID.
@@ -170,7 +184,7 @@ class EventTicketObject extends \Google\Collection implements ObjectInterface
      *
      * @var string[]
      */
-    public array $linkedOfferIds;
+    public $linkedOfferIds;
     protected $linksModuleDataType = LinksModuleData::class;
     protected $linksModuleDataDataType = '';
     protected $locationsType = LatLongPoint::class;
@@ -187,8 +201,10 @@ class EventTicketObject extends \Google\Collection implements ObjectInterface
      * NOTIFICATION_SETTINGS_UNSPECIFIED, no notification will be triggered. This
      * setting is ephemeral and needs to be set with each PATCH or UPDATE request,
      * otherwise a notification will not be triggered.
+     *
+     * @var string
      */
-    public string $notifyPreference;
+    public $notifyPreference;
     protected $passConstraintsType = PassConstraints::class;
     protected $passConstraintsDataType = '';
     protected $reservationInfoType = EventReservationInfo::class;
@@ -204,27 +220,35 @@ class EventTicketObject extends \Google\Collection implements ObjectInterface
      * NFC for this object. The class level fields `enableSmartTap` and
      * `redemptionIssuers` must also be set up correctly in order for the pass to
      * support Smart Tap. Only ASCII characters are supported.
+     *
+     * @var string
      */
-    public string $smartTapRedemptionValue;
+    public $smartTapRedemptionValue;
     /**
      * Required. The state of the object. This field is used to determine how an
      * object is displayed in the app. For example, an `inactive` object is moved
      * to the "Expired passes" section.
+     *
+     * @var string
      */
-    public string $state;
+    public $state;
     protected $textModulesDataType = TextModuleData::class;
     protected $textModulesDataDataType = 'array';
     /**
      * Name of the ticket holder, if the ticket is assigned to a person. E.g.
      * "John Doe" or "Jane Doe".
+     *
+     * @var string
      */
-    public string $ticketHolderName;
+    public $ticketHolderName;
     /**
      * The number of the ticket. This can be a unique identifier across all
      * tickets in an issuer's system, all tickets for the event (e.g.
      * XYZ1234512345), or all tickets in the order (1, 2, 3, etc.).
+     *
+     * @var string
      */
-    public string $ticketNumber;
+    public $ticketNumber;
     protected $ticketTypeType = LocalizedString::class;
     protected $ticketTypeDataType = '';
     protected $validTimeIntervalType = TimeInterval::class;
@@ -233,9 +257,11 @@ class EventTicketObject extends \Google\Collection implements ObjectInterface
     protected $valueAddedModuleDataDataType = 'array';
     /**
      * Deprecated
+     *
      * @deprecated
+     * @var string
      */
-    public string $version;
+    public $version;
 
     /**
      * Optional app or website link that will be displayed as a button on the
@@ -489,16 +515,16 @@ class EventTicketObject extends \Google\Collection implements ObjectInterface
      * Identifies what kind of resource this is. Value: the fixed string
      * `"walletobjects#eventTicketObject"`.
      *
-     * @param string $kind
      * @deprecated
+     * @param string $kind
      */
     public function setKind($kind)
     {
         $this->kind = $kind;
     }
     /**
-     * @return string
      * @deprecated
+     * @return string
      */
     public function getKind()
     {
@@ -571,16 +597,16 @@ class EventTicketObject extends \Google\Collection implements ObjectInterface
     /**
      * Note: This field is currently not supported to trigger geo notifications.
      *
-     * @param LatLongPoint[] $locations
      * @deprecated
+     * @param LatLongPoint[] $locations
      */
     public function setLocations($locations)
     {
         $this->locations = $locations;
     }
     /**
-     * @return LatLongPoint[]
      * @deprecated
+     * @return LatLongPoint[]
      */
     public function getLocations()
     {
@@ -878,16 +904,16 @@ class EventTicketObject extends \Google\Collection implements ObjectInterface
     /**
      * Deprecated
      *
-     * @param string $version
      * @deprecated
+     * @param string $version
      */
     public function setVersion($version)
     {
         $this->version = $version;
     }
     /**
-     * @return string
      * @deprecated
+     * @return string
      */
     public function getVersion()
     {

@@ -30,9 +30,11 @@ class EventSeat extends \Google\Model
     /**
      * Identifies what kind of resource this is. Value: the fixed string
      * `"walletobjects#eventSeat"`.
+     *
      * @deprecated
+     * @var string
      */
-    public string $kind;
+    public $kind;
     protected $rowType = LocalizedString::class;
     protected $rowDataType = '';
     protected $seatType = LocalizedString::class;
@@ -62,16 +64,16 @@ class EventSeat extends \Google\Model
      * Identifies what kind of resource this is. Value: the fixed string
      * `"walletobjects#eventSeat"`.
      *
-     * @param string $kind
      * @deprecated
+     * @param string $kind
      */
     public function setKind($kind)
     {
         $this->kind = $kind;
     }
     /**
-     * @return string
      * @deprecated
+     * @return string
      */
     public function getKind()
     {

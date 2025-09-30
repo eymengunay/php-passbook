@@ -32,8 +32,10 @@ class LabelValue extends \Google\Model
      * The label for a specific row and column. Recommended maximum is 15
      * characters for a two-column layout and 30 characters for a one-column
      * layout.
+     *
+     * @var string
      */
-    public string $label;
+    public $label;
     protected $localizedLabelType = LocalizedString::class;
     protected $localizedLabelDataType = '';
     protected $localizedValueType = LocalizedString::class;
@@ -42,8 +44,10 @@ class LabelValue extends \Google\Model
      * The value for a specific row and column. Recommended maximum is 15
      * characters for a two-column layout and 30 characters for a one-column
      * layout.
+     *
+     * @var string
      */
-    public string $value;
+    public $value;
 
     /**
      * The label for a specific row and column. Recommended maximum is 15

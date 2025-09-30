@@ -45,8 +45,10 @@ class TemplateItem extends \Google\Model
     /**
      * A predefined item to display. Only one of `firstValue` or `predefinedItem`
      * may be set.
+     *
+     * @var string
      */
-    public string $predefinedItem;
+    public $predefinedItem;
     protected $secondValueType = FieldSelector::class;
     protected $secondValueDataType = '';
 

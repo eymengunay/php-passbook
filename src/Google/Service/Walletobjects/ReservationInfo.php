@@ -29,20 +29,26 @@ class ReservationInfo extends \Google\Model
      * Confirmation code needed to check into this flight. This is the number that
      * the passenger would enter into a kiosk at the airport to look up the flight
      * and print a boarding pass.
+     *
+     * @var string
      */
-    public string $confirmationCode;
+    public $confirmationCode;
     /**
      * E-ticket number.
+     *
+     * @var string
      */
-    public string $eticketNumber;
+    public $eticketNumber;
     protected $frequentFlyerInfoType = FrequentFlyerInfo::class;
     protected $frequentFlyerInfoDataType = '';
     /**
      * Identifies what kind of resource this is. Value: the fixed string
      * `"walletobjects#reservationInfo"`.
+     *
      * @deprecated
+     * @var string
      */
-    public string $kind;
+    public $kind;
 
     /**
      * Confirmation code needed to check into this flight. This is the number that
@@ -98,16 +104,16 @@ class ReservationInfo extends \Google\Model
      * Identifies what kind of resource this is. Value: the fixed string
      * `"walletobjects#reservationInfo"`.
      *
-     * @param string $kind
      * @deprecated
+     * @param string $kind
      */
     public function setKind($kind)
     {
         $this->kind = $kind;
     }
     /**
-     * @return string
      * @deprecated
+     * @return string
      */
     public function getKind()
     {

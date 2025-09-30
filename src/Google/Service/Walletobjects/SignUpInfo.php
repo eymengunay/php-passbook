@@ -27,8 +27,10 @@ class SignUpInfo extends \Google\Model
 {
     /**
      * ID of the class the user can sign up for.
+     *
+     * @var string
      */
-    public string $classId;
+    public $classId;
 
     /**
      * ID of the class the user can sign up for.

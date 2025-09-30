@@ -69,16 +69,16 @@ class AppLinkData extends \Google\Model
     /**
      * Deprecated. Links to open iOS apps are not supported.
      *
-     * @param AppLinkDataAppLinkInfo $iosAppLinkInfo
      * @deprecated
+     * @param AppLinkDataAppLinkInfo $iosAppLinkInfo
      */
     public function setIosAppLinkInfo(AppLinkDataAppLinkInfo $iosAppLinkInfo)
     {
         $this->iosAppLinkInfo = $iosAppLinkInfo;
     }
     /**
-     * @return AppLinkDataAppLinkInfo
      * @deprecated
+     * @return AppLinkDataAppLinkInfo
      */
     public function getIosAppLinkInfo()
     {

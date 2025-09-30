@@ -44,8 +44,10 @@ class SaveRestrictions extends \Google\Model
      * Sign in with Google integration
      * https://developers.google.com/identity/authentication. Please contact with
      * support before using Save Restrictions.
+     *
+     * @var string
      */
-    public string $restrictToEmailSha256;
+    public $restrictToEmailSha256;
 
     /**
      * Restrict the save of the referencing object to the given email address

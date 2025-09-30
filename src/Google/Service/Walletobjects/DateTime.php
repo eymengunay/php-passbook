@@ -49,8 +49,10 @@ class DateTime extends \Google\Model
      * user in New York and also 18:30:00 for a user in Los Angeles. This is
      * useful when the same local date/time should apply to many physical
      * locations across several time zones.
+     *
+     * @var string
      */
-    public string $date;
+    public $date;
 
     /**
      * An ISO 8601 extended format date/time. Offset may or may not be required

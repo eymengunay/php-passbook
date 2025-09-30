@@ -49,7 +49,10 @@ class ActivationStatus extends \Google\Model
      * @deprecated
      */
     public const STATE_activated = 'activated';
-    public string $state;
+    /**
+     * @var string
+     */
+    public $state;
 
     /**
      * @param self::STATE_* $state

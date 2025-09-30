@@ -46,43 +46,57 @@ class BoardingAndSeatingInfo extends \Google\Model
      * pass. Most airlines route their passengers to the right door or bridge by
      * refering to doors/bridges by the `seatClass`. In those cases `boardingDoor`
      * should not be set.
+     *
+     * @var string
      */
-    public string $boardingDoor;
+    public $boardingDoor;
     /**
      * The value of boarding group (or zone) this passenger shall board with. eg:
      * "B" The label for this value will be determined by the `boardingPolicy`
      * field in the `flightClass` referenced by this object.
+     *
+     * @var string
      */
-    public string $boardingGroup;
+    public $boardingGroup;
     /**
      * The value of boarding position. eg: "76"
+     *
+     * @var string
      */
-    public string $boardingPosition;
+    public $boardingPosition;
     protected $boardingPrivilegeImageType = Image::class;
     protected $boardingPrivilegeImageDataType = '';
     /**
      * Identifies what kind of resource this is. Value: the fixed string
      * `"walletobjects#boardingAndSeatingInfo"`.
+     *
      * @deprecated
+     * @var string
      */
-    public string $kind;
+    public $kind;
     protected $seatAssignmentType = LocalizedString::class;
     protected $seatAssignmentDataType = '';
     /**
      * The value of the seat class. eg: "Economy" or "Economy Plus"
+     *
+     * @var string
      */
-    public string $seatClass;
+    public $seatClass;
     /**
      * The value of passenger seat. If there is no specific identifier, use
      * `seatAssignment` instead. eg: "25A"
+     *
+     * @var string
      */
-    public string $seatNumber;
+    public $seatNumber;
     /**
      * The sequence number on the boarding pass. This usually matches the sequence
      * in which the passengers checked in. Airline might use the number for manual
      * boarding and bag tags. eg: "49"
+     *
+     * @var string
      */
-    public string $sequenceNumber;
+    public $sequenceNumber;
 
     /**
      * Set this field only if this flight boards through more than one door or
@@ -163,16 +177,16 @@ class BoardingAndSeatingInfo extends \Google\Model
      * Identifies what kind of resource this is. Value: the fixed string
      * `"walletobjects#boardingAndSeatingInfo"`.
      *
-     * @param string $kind
      * @deprecated
+     * @param string $kind
      */
     public function setKind($kind)
     {
         $this->kind = $kind;
     }
     /**
-     * @return string
      * @deprecated
+     * @return string
      */
     public function getKind()
     {

@@ -32,9 +32,19 @@ class Image extends \Google\Model
     /**
      * Identifies what kind of resource this is. Value: the fixed string
      * `"walletobjects#image"`.
+     *
      * @deprecated
+     * @var string
      */
-    public string $kind;
+    public $kind;
+    /**
+     * An ID for an already uploaded private image. Either this or source_uri
+     * should be set. Requests setting both or neither will be rejected. Please
+     * contact support to use private images.
+     *
+     * @var string
+     */
+    public $privateImageId;
     protected $sourceUriType = ImageUri::class;
     protected $sourceUriDataType = '';
 
@@ -58,23 +68,42 @@ class Image extends \Google\Model
      * Identifies what kind of resource this is. Value: the fixed string
      * `"walletobjects#image"`.
      *
-     * @param string $kind
      * @deprecated
+     * @param string $kind
      */
     public function setKind($kind)
     {
         $this->kind = $kind;
     }
     /**
-     * @return string
      * @deprecated
+     * @return string
      */
     public function getKind()
     {
         return $this->kind;
     }
     /**
-     * The URI for the image.
+     * An ID for an already uploaded private image. Either this or source_uri
+     * should be set. Requests setting both or neither will be rejected. Please
+     * contact support to use private images.
+     *
+     * @param string $privateImageId
+     */
+    public function setPrivateImageId($privateImageId)
+    {
+        $this->privateImageId = $privateImageId;
+    }
+    /**
+     * @return string
+     */
+    public function getPrivateImageId()
+    {
+        return $this->privateImageId;
+    }
+    /**
+     * A URI for the image. Either this or private_image_id should be set.
+     * Requests setting both or neither will be rejected.
      *
      * @param ImageUri $sourceUri
      */

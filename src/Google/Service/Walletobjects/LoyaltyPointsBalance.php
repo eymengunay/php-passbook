@@ -28,20 +28,26 @@ class LoyaltyPointsBalance extends \Google\Model
     /**
      * The double form of a balance. Only one of these subtypes (string, int,
      * double, money) should be populated.
+     *
+     * @var
      */
     public $double;
     /**
      * The integer form of a balance. Only one of these subtypes (string, int,
      * double, money) should be populated.
+     *
+     * @var int
      */
-    public int $int;
+    public $int;
     protected $moneyType = Money::class;
     protected $moneyDataType = '';
     /**
      * The string form of a balance. Only one of these subtypes (string, int,
      * double, money) should be populated.
+     *
+     * @var string
      */
-    public string $string;
+    public $string;
 
     public function setDouble($double)
     {

@@ -27,8 +27,10 @@ class AppLinkDataAppLinkInfoAppTarget extends \Google\Model
 {
     /**
      * Package name for AppTarget. For example: com.google.android.gm
+     *
+     * @var string
      */
-    public string $packageName;
+    public $packageName;
     protected $targetUriType = Uri::class;
     protected $targetUriDataType = '';
 

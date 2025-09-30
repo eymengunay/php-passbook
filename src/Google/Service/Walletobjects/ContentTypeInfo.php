@@ -33,29 +33,39 @@ class ContentTypeInfo extends \Google\Model
 {
     /**
      * Scotty's best guess of what the content type of the file is.
+     *
+     * @var string
      */
-    public string $bestGuess;
+    public $bestGuess;
     /**
      * The content type of the file derived by looking at specific bytes (i.e.
      * "magic bytes") of the actual file.
+     *
+     * @var string
      */
-    public string $fromBytes;
+    public $fromBytes;
     /**
      * The content type of the file derived from the file extension of the
      * original file name used by the client.
+     *
+     * @var string
      */
-    public string $fromFileName;
+    public $fromFileName;
     /**
      * The content type of the file as specified in the request headers, multipart
      * headers, or RUPIO start request.
+     *
+     * @var string
      */
-    public string $fromHeader;
+    public $fromHeader;
     /**
      * The content type of the file derived from the file extension of the URL
      * path. The URL path is assumed to represent a file name (which is typically
      * only true for agents that are providing a REST API).
+     *
+     * @var string
      */
-    public string $fromUrlPath;
+    public $fromUrlPath;
 
     /**
      * Scotty's best guess of what the content type of the file is.

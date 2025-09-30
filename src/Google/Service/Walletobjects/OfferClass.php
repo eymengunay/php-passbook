@@ -155,9 +155,11 @@ class OfferClass extends \Google\Collection implements ClassInterface
     protected $collection_key = 'valueAddedModuleData';
     /**
      * Deprecated. Use `multipleDevicesAndHoldersAllowedStatus` instead.
+     *
      * @deprecated
+     * @var bool
      */
-    public bool $allowMultipleUsersPerObject;
+    public $allowMultipleUsersPerObject;
     protected $appLinkDataType = AppLinkData::class;
     protected $appLinkDataDataType = '';
     protected $callbackOptionsType = CallbackOptions::class;
@@ -168,23 +170,31 @@ class OfferClass extends \Google\Collection implements ClassInterface
      * Country code used to display the card's country (when the user is not in
      * that country), as well as to display localized content when content is not
      * available in the user's locale.
+     *
+     * @var string
      */
-    public string $countryCode;
+    public $countryCode;
     /**
      * The details of the offer.
+     *
+     * @var string
      */
-    public string $details;
+    public $details;
     /**
      * Identifies whether this class supports Smart Tap. The `redemptionIssuers`
      * and object level `smartTapRedemptionLevel` fields must also be set up
      * correctly in order for a pass to support Smart Tap.
+     *
+     * @var bool
      */
-    public bool $enableSmartTap;
+    public $enableSmartTap;
     /**
      * The fine print or terms of the offer, such as "20% off any t-shirt at
      * Adam's Apparel."
+     *
+     * @var string
      */
-    public string $finePrint;
+    public $finePrint;
     protected $helpUriType = Uri::class;
     protected $helpUriDataType = '';
     protected $heroImageType = Image::class;
@@ -195,8 +205,10 @@ class OfferClass extends \Google\Collection implements ClassInterface
      * logo is used. The format is #rrggbb where rrggbb is a hex RGB triplet, such
      * as `#ffcc00`. You can also use the shorthand version of the RGB triplet
      * which is #rgb, such as `#fc0`.
+     *
+     * @var string
      */
-    public string $hexBackgroundColor;
+    public $hexBackgroundColor;
     protected $homepageUriType = Uri::class;
     protected $homepageUriDataType = '';
     /**
@@ -205,8 +217,10 @@ class OfferClass extends \Google\Collection implements ClassInterface
      * identifier where the former is issued by Google and latter is chosen by
      * you. Your unique identifier should only include alphanumeric characters,
      * '.', '_', or '-'.
+     *
+     * @var string
      */
-    public string $id;
+    public $id;
     protected $imageModulesDataType = ImageModuleData::class;
     protected $imageModulesDataDataType = 'array';
     protected $infoModuleDataType = InfoModuleData::class;
@@ -214,14 +228,18 @@ class OfferClass extends \Google\Collection implements ClassInterface
     /**
      * Required. The issuer name. Recommended maximum length is 20 characters to
      * ensure full string is displayed on smaller screens.
+     *
+     * @var string
      */
-    public string $issuerName;
+    public $issuerName;
     /**
      * Identifies what kind of resource this is. Value: the fixed string
      * `"walletobjects#offerClass"`.
+     *
      * @deprecated
+     * @var string
      */
-    public string $kind;
+    public $kind;
     protected $linksModuleDataType = LinksModuleData::class;
     protected $linksModuleDataDataType = '';
     protected $localizedDetailsType = LocalizedString::class;
@@ -245,8 +263,10 @@ class OfferClass extends \Google\Collection implements ClassInterface
     /**
      * Identifies whether multiple users and devices will save the same object
      * referencing this class.
+     *
+     * @var string
      */
-    public string $multipleDevicesAndHoldersAllowedStatus;
+    public $multipleDevicesAndHoldersAllowedStatus;
     /**
      * Whether or not field updates to this class should trigger notifications.
      * When set to NOTIFY, we will attempt to trigger a field update notification
@@ -254,18 +274,24 @@ class OfferClass extends \Google\Collection implements ClassInterface
      * part of an allowlist. If not specified, no notification will be triggered.
      * This setting is ephemeral and needs to be set with each PATCH or UPDATE
      * request, otherwise a notification will not be triggered.
+     *
+     * @var string
      */
-    public string $notifyPreference;
+    public $notifyPreference;
     /**
      * Required. The offer provider (either the aggregator name or merchant name).
      * Recommended maximum length is 12 characters to ensure full string is
      * displayed on smaller screens.
+     *
+     * @var string
      */
-    public string $provider;
+    public $provider;
     /**
      * Required. The redemption channels applicable to this offer.
+     *
+     * @var string
      */
-    public string $redemptionChannel;
+    public $redemptionChannel;
     /**
      * Identifies which redemption issuers can redeem the pass over Smart Tap.
      * Redemption issuers are identified by their issuer ID. Redemption issuers
@@ -275,7 +301,7 @@ class OfferClass extends \Google\Collection implements ClassInterface
      *
      * @var string[]
      */
-    public array $redemptionIssuers;
+    public $redemptionIssuers;
     protected $reviewType = Review::class;
     protected $reviewDataType = '';
     /**
@@ -289,37 +315,47 @@ class OfferClass extends \Google\Collection implements ClassInterface
      * will automatically set this field to `approved` and it can be immediately
      * used to create or migrate objects. When updating an already `approved`
      * class you should keep setting this field to `underReview`.
+     *
+     * @var string
      */
-    public string $reviewStatus;
+    public $reviewStatus;
     protected $securityAnimationType = SecurityAnimation::class;
     protected $securityAnimationDataType = '';
     /**
      * A shortened version of the title of the offer, such as "20% off," shown to
      * users as a quick reference to the offer contents. Recommended maximum
      * length is 20 characters.
+     *
+     * @var string
      */
-    public string $shortTitle;
+    public $shortTitle;
     protected $textModulesDataType = TextModuleData::class;
     protected $textModulesDataDataType = 'array';
     /**
      * Required. The title of the offer, such as "20% off any t-shirt."
      * Recommended maximum length is 60 characters to ensure full string is
      * displayed on smaller screens.
+     *
+     * @var string
      */
-    public string $title;
+    public $title;
     protected $titleImageType = Image::class;
     protected $titleImageDataType = '';
     protected $valueAddedModuleDataType = ValueAddedModuleData::class;
     protected $valueAddedModuleDataDataType = 'array';
     /**
      * Deprecated
+     *
      * @deprecated
+     * @var string
      */
-    public string $version;
+    public $version;
     /**
      * View Unlock Requirement options for the offer.
+     *
+     * @var string
      */
-    public string $viewUnlockRequirement;
+    public $viewUnlockRequirement;
     protected $wideTitleImageType = Image::class;
     protected $wideTitleImageDataType = '';
     protected $wordMarkType = Image::class;
@@ -328,16 +364,16 @@ class OfferClass extends \Google\Collection implements ClassInterface
     /**
      * Deprecated. Use `multipleDevicesAndHoldersAllowedStatus` instead.
      *
-     * @param bool $allowMultipleUsersPerObject
      * @deprecated
+     * @param bool $allowMultipleUsersPerObject
      */
     public function setAllowMultipleUsersPerObject($allowMultipleUsersPerObject)
     {
         $this->allowMultipleUsersPerObject = $allowMultipleUsersPerObject;
     }
     /**
-     * @return bool
      * @deprecated
+     * @return bool
      */
     public function getAllowMultipleUsersPerObject()
     {
@@ -577,16 +613,16 @@ class OfferClass extends \Google\Collection implements ClassInterface
     /**
      * Deprecated. Use textModulesData instead.
      *
-     * @param InfoModuleData $infoModuleData
      * @deprecated
+     * @param InfoModuleData $infoModuleData
      */
     public function setInfoModuleData(InfoModuleData $infoModuleData)
     {
         $this->infoModuleData = $infoModuleData;
     }
     /**
-     * @return InfoModuleData
      * @deprecated
+     * @return InfoModuleData
      */
     public function getInfoModuleData()
     {
@@ -613,16 +649,16 @@ class OfferClass extends \Google\Collection implements ClassInterface
      * Identifies what kind of resource this is. Value: the fixed string
      * `"walletobjects#offerClass"`.
      *
-     * @param string $kind
      * @deprecated
+     * @param string $kind
      */
     public function setKind($kind)
     {
         $this->kind = $kind;
     }
     /**
-     * @return string
      * @deprecated
+     * @return string
      */
     public function getKind()
     {
@@ -748,16 +784,16 @@ class OfferClass extends \Google\Collection implements ClassInterface
     /**
      * Note: This field is currently not supported to trigger geo notifications.
      *
-     * @param LatLongPoint[] $locations
      * @deprecated
+     * @param LatLongPoint[] $locations
      */
     public function setLocations($locations)
     {
         $this->locations = $locations;
     }
     /**
-     * @return LatLongPoint[]
      * @deprecated
+     * @return LatLongPoint[]
      */
     public function getLocations()
     {
@@ -1054,16 +1090,16 @@ class OfferClass extends \Google\Collection implements ClassInterface
     /**
      * Deprecated
      *
-     * @param string $version
      * @deprecated
+     * @param string $version
      */
     public function setVersion($version)
     {
         $this->version = $version;
     }
     /**
-     * @return string
      * @deprecated
+     * @return string
      */
     public function getVersion()
     {
@@ -1108,16 +1144,16 @@ class OfferClass extends \Google\Collection implements ClassInterface
     /**
      * Deprecated.
      *
-     * @param Image $wordMark
      * @deprecated
+     * @param Image $wordMark
      */
     public function setWordMark(Image $wordMark)
     {
         $this->wordMark = $wordMark;
     }
     /**
-     * @return Image
      * @deprecated
+     * @return Image
      */
     public function getWordMark()
     {

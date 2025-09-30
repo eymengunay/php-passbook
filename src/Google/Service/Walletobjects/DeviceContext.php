@@ -34,8 +34,10 @@ class DeviceContext extends \Google\Model
      * for the same device or even across different activations for the same
      * device. When setting this, callers must also set has_linked_device on the
      * object being activated.
+     *
+     * @var string
      */
-    public string $deviceToken;
+    public $deviceToken;
 
     /**
      * If set, redemption information will only be returned to the given device

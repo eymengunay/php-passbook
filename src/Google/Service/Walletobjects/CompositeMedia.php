@@ -56,9 +56,11 @@ class CompositeMedia extends \Google\Model
      * be the byte representation of a blobstore.BlobRef. Since Blobstore is
      * deprecating v1, use blobstore2_info instead. For now, any v2 blob will also
      * be represented in this field as v1 BlobRef.
+     *
      * @deprecated
+     * @var string
      */
-    public string $blobRef;
+    public $blobRef;
     protected $blobstore2InfoType = Blobstore2Info::class;
     protected $blobstore2InfoDataType = '';
     /**
@@ -68,38 +70,54 @@ class CompositeMedia extends \Google\Model
      * hack to get around the fact that the cosmo proto (as well as others it
      * includes) doesn't support JavaScript. This prevents us from including the
      * actual type of this field.
+     *
+     * @var string
      */
-    public string $cosmoBinaryReference;
+    public $cosmoBinaryReference;
     /**
      * crc32.c hash for the payload.
+     *
+     * @var string
      */
-    public string $crc32cHash;
+    public $crc32cHash;
     /**
      * Media data, set if reference_type is INLINE
+     *
+     * @var string
      */
-    public string $inline;
+    public $inline;
     /**
      * Size of the data, in bytes
+     *
+     * @var string
      */
-    public string $length;
+    public $length;
     /**
      * MD5 hash for the payload.
+     *
+     * @var string
      */
-    public string $md5Hash;
+    public $md5Hash;
     protected $objectIdType = ObjectId::class;
     protected $objectIdDataType = '';
     /**
      * Path to the data, set if reference_type is PATH
+     *
+     * @var string
      */
-    public string $path;
+    public $path;
     /**
      * Describes what the field reference contains.
+     *
+     * @var string
      */
-    public string $referenceType;
+    public $referenceType;
     /**
      * SHA-1 hash for the payload.
+     *
+     * @var string
      */
-    public string $sha1Hash;
+    public $sha1Hash;
 
     /**
      * Blobstore v1 reference, set if reference_type is BLOBSTORE_REF This should
@@ -107,16 +125,16 @@ class CompositeMedia extends \Google\Model
      * deprecating v1, use blobstore2_info instead. For now, any v2 blob will also
      * be represented in this field as v1 BlobRef.
      *
-     * @param string $blobRef
      * @deprecated
+     * @param string $blobRef
      */
     public function setBlobRef($blobRef)
     {
         $this->blobRef = $blobRef;
     }
     /**
-     * @return string
      * @deprecated
+     * @return string
      */
     public function getBlobRef()
     {

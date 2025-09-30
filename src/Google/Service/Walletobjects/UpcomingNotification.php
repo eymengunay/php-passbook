@@ -30,8 +30,10 @@ class UpcomingNotification extends \Google\Model
 {
     /**
      * Indicates if the object needs to have upcoming notification enabled.
+     *
+     * @var bool
      */
-    public bool $enableNotification;
+    public $enableNotification;
 
     /**
      * Indicates if the object needs to have upcoming notification enabled.

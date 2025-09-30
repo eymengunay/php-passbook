@@ -97,16 +97,20 @@ class GenericClass extends \Google\Collection implements ClassInterface
     /**
      * Available only to Smart Tap enabled partners. Contact support for
      * additional guidance.
+     *
+     * @var bool
      */
-    public bool $enableSmartTap;
+    public $enableSmartTap;
     /**
      * Required. The unique identifier for the class. This ID must be unique
      * across all from an issuer. This value needs to follow the format
      * `issuerID.identifier` where `issuerID` is issued by Google and `identifier`
      * is chosen by you. The unique identifier can only include alphanumeric
      * characters, `.`, `_`, or `-`.
+     *
+     * @var string
      */
-    public string $id;
+    public $id;
     protected $imageModulesDataType = ImageModuleData::class;
     protected $imageModulesDataDataType = 'array';
     protected $linksModuleDataType = LinksModuleData::class;
@@ -118,8 +122,10 @@ class GenericClass extends \Google\Collection implements ClassInterface
     /**
      * Identifies whether multiple users and devices will save the same object
      * referencing this class.
+     *
+     * @var string
      */
-    public string $multipleDevicesAndHoldersAllowedStatus;
+    public $multipleDevicesAndHoldersAllowedStatus;
     /**
      * Identifies which redemption issuers can redeem the pass over Smart Tap.
      * Redemption issuers are identified by their issuer ID. Redemption issuers
@@ -129,7 +135,7 @@ class GenericClass extends \Google\Collection implements ClassInterface
      *
      * @var string[]
      */
-    public array $redemptionIssuers;
+    public $redemptionIssuers;
     protected $securityAnimationType = SecurityAnimation::class;
     protected $securityAnimationDataType = '';
     protected $textModulesDataType = TextModuleData::class;
@@ -138,8 +144,10 @@ class GenericClass extends \Google\Collection implements ClassInterface
     protected $valueAddedModuleDataDataType = 'array';
     /**
      * View Unlock Requirement options for the generic pass.
+     *
+     * @var string
      */
-    public string $viewUnlockRequirement;
+    public $viewUnlockRequirement;
 
     /**
      * Optional app or website link that will be displayed as a button on the

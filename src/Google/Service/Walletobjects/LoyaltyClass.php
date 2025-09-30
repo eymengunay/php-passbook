@@ -127,18 +127,24 @@ class LoyaltyClass extends \Google\Collection implements ClassInterface
     /**
      * The account ID label, such as "Member ID." Recommended maximum length is 15
      * characters to ensure full string is displayed on smaller screens.
+     *
+     * @var string
      */
-    public string $accountIdLabel;
+    public $accountIdLabel;
     /**
      * The account name label, such as "Member Name." Recommended maximum length
      * is 15 characters to ensure full string is displayed on smaller screens.
+     *
+     * @var string
      */
-    public string $accountNameLabel;
+    public $accountNameLabel;
     /**
      * Deprecated. Use `multipleDevicesAndHoldersAllowedStatus` instead.
+     *
      * @deprecated
+     * @var bool
      */
-    public bool $allowMultipleUsersPerObject;
+    public $allowMultipleUsersPerObject;
     protected $appLinkDataType = AppLinkData::class;
     protected $appLinkDataDataType = '';
     protected $callbackOptionsType = CallbackOptions::class;
@@ -149,8 +155,10 @@ class LoyaltyClass extends \Google\Collection implements ClassInterface
      * Country code used to display the card's country (when the user is not in
      * that country), as well as to display localized content when content is not
      * available in the user's locale.
+     *
+     * @var string
      */
-    public string $countryCode;
+    public $countryCode;
     protected $discoverableProgramType = DiscoverableProgram::class;
     protected $discoverableProgramDataType = '';
     /**
@@ -158,8 +166,10 @@ class LoyaltyClass extends \Google\Collection implements ClassInterface
      * and one of object level `smartTapRedemptionLevel`, barcode.value`, or
      * `accountId` fields must also be set up correctly in order for a pass to
      * support Smart Tap.
+     *
+     * @var bool
      */
-    public bool $enableSmartTap;
+    public $enableSmartTap;
     protected $heroImageType = Image::class;
     protected $heroImageDataType = '';
     /**
@@ -168,8 +178,10 @@ class LoyaltyClass extends \Google\Collection implements ClassInterface
      * logo is used. The format is #rrggbb where rrggbb is a hex RGB triplet, such
      * as `#ffcc00`. You can also use the shorthand version of the RGB triplet
      * which is #rgb, such as `#fc0`.
+     *
+     * @var string
      */
-    public string $hexBackgroundColor;
+    public $hexBackgroundColor;
     protected $homepageUriType = Uri::class;
     protected $homepageUriDataType = '';
     /**
@@ -178,8 +190,10 @@ class LoyaltyClass extends \Google\Collection implements ClassInterface
      * identifier where the former is issued by Google and latter is chosen by
      * you. Your unique identifier should only include alphanumeric characters,
      * '.', '_', or '-'.
+     *
+     * @var string
      */
-    public string $id;
+    public $id;
     protected $imageModulesDataType = ImageModuleData::class;
     protected $imageModulesDataDataType = 'array';
     protected $infoModuleDataType = InfoModuleData::class;
@@ -187,14 +201,18 @@ class LoyaltyClass extends \Google\Collection implements ClassInterface
     /**
      * Required. The issuer name. Recommended maximum length is 20 characters to
      * ensure full string is displayed on smaller screens.
+     *
+     * @var string
      */
-    public string $issuerName;
+    public $issuerName;
     /**
      * Identifies what kind of resource this is. Value: the fixed string
      * `"walletobjects#loyaltyClass"`.
+     *
      * @deprecated
+     * @var string
      */
-    public string $kind;
+    public $kind;
     protected $linksModuleDataType = LinksModuleData::class;
     protected $linksModuleDataDataType = '';
     protected $localizedAccountIdLabelType = LocalizedString::class;
@@ -222,8 +240,10 @@ class LoyaltyClass extends \Google\Collection implements ClassInterface
     /**
      * Identifies whether multiple users and devices will save the same object
      * referencing this class.
+     *
+     * @var string
      */
-    public string $multipleDevicesAndHoldersAllowedStatus;
+    public $multipleDevicesAndHoldersAllowedStatus;
     /**
      * Whether or not field updates to this class should trigger notifications.
      * When set to NOTIFY, we will attempt to trigger a field update notification
@@ -231,16 +251,20 @@ class LoyaltyClass extends \Google\Collection implements ClassInterface
      * part of an allowlist. If not specified, no notification will be triggered.
      * This setting is ephemeral and needs to be set with each PATCH or UPDATE
      * request, otherwise a notification will not be triggered.
+     *
+     * @var string
      */
-    public string $notifyPreference;
+    public $notifyPreference;
     protected $programLogoType = Image::class;
     protected $programLogoDataType = '';
     /**
      * Required. The program name, such as "Adam's Apparel". The app may display
      * an ellipsis after the first 20 characters to ensure full string is
      * displayed on smaller screens.
+     *
+     * @var string
      */
-    public string $programName;
+    public $programName;
     /**
      * Identifies which redemption issuers can redeem the pass over Smart Tap.
      * Redemption issuers are identified by their issuer ID. Redemption issuers
@@ -251,7 +275,7 @@ class LoyaltyClass extends \Google\Collection implements ClassInterface
      *
      * @var string[]
      */
-    public array $redemptionIssuers;
+    public $redemptionIssuers;
     protected $reviewType = Review::class;
     protected $reviewDataType = '';
     /**
@@ -264,26 +288,36 @@ class LoyaltyClass extends \Google\Collection implements ClassInterface
      * platform will automatically set this field to `approved` and it can be
      * immediately used to create or migrate objects. When updating an already
      * `approved` class you should keep setting this field to `underReview`.
+     *
+     * @var string
      */
-    public string $reviewStatus;
+    public $reviewStatus;
     /**
      * The rewards tier, such as "Gold" or "Platinum." Recommended maximum length
      * is 7 characters to ensure full string is displayed on smaller screens.
+     *
+     * @var string
      */
-    public string $rewardsTier;
+    public $rewardsTier;
     /**
      * The rewards tier label, such as "Rewards Tier." Recommended maximum length
      * is 9 characters to ensure full string is displayed on smaller screens.
+     *
+     * @var string
      */
-    public string $rewardsTierLabel;
+    public $rewardsTierLabel;
     /**
      * The secondary rewards tier, such as "Gold" or "Platinum."
+     *
+     * @var string
      */
-    public string $secondaryRewardsTier;
+    public $secondaryRewardsTier;
     /**
      * The secondary rewards tier label, such as "Rewards Tier."
+     *
+     * @var string
      */
-    public string $secondaryRewardsTierLabel;
+    public $secondaryRewardsTierLabel;
     protected $securityAnimationType = SecurityAnimation::class;
     protected $securityAnimationDataType = '';
     protected $textModulesDataType = TextModuleData::class;
@@ -292,13 +326,17 @@ class LoyaltyClass extends \Google\Collection implements ClassInterface
     protected $valueAddedModuleDataDataType = 'array';
     /**
      * Deprecated
+     *
      * @deprecated
+     * @var string
      */
-    public string $version;
+    public $version;
     /**
      * View Unlock Requirement options for the loyalty card.
+     *
+     * @var string
      */
-    public string $viewUnlockRequirement;
+    public $viewUnlockRequirement;
     protected $wideProgramLogoType = Image::class;
     protected $wideProgramLogoDataType = '';
     protected $wordMarkType = Image::class;
@@ -341,16 +379,16 @@ class LoyaltyClass extends \Google\Collection implements ClassInterface
     /**
      * Deprecated. Use `multipleDevicesAndHoldersAllowedStatus` instead.
      *
-     * @param bool $allowMultipleUsersPerObject
      * @deprecated
+     * @param bool $allowMultipleUsersPerObject
      */
     public function setAllowMultipleUsersPerObject($allowMultipleUsersPerObject)
     {
         $this->allowMultipleUsersPerObject = $allowMultipleUsersPerObject;
     }
     /**
-     * @return bool
      * @deprecated
+     * @return bool
      */
     public function getAllowMultipleUsersPerObject()
     {
@@ -559,16 +597,16 @@ class LoyaltyClass extends \Google\Collection implements ClassInterface
     /**
      * Deprecated. Use textModulesData instead.
      *
-     * @param InfoModuleData $infoModuleData
      * @deprecated
+     * @param InfoModuleData $infoModuleData
      */
     public function setInfoModuleData(InfoModuleData $infoModuleData)
     {
         $this->infoModuleData = $infoModuleData;
     }
     /**
-     * @return InfoModuleData
      * @deprecated
+     * @return InfoModuleData
      */
     public function getInfoModuleData()
     {
@@ -595,16 +633,16 @@ class LoyaltyClass extends \Google\Collection implements ClassInterface
      * Identifies what kind of resource this is. Value: the fixed string
      * `"walletobjects#loyaltyClass"`.
      *
-     * @param string $kind
      * @deprecated
+     * @param string $kind
      */
     public function setKind($kind)
     {
         $this->kind = $kind;
     }
     /**
-     * @return string
      * @deprecated
+     * @return string
      */
     public function getKind()
     {
@@ -765,16 +803,16 @@ class LoyaltyClass extends \Google\Collection implements ClassInterface
     /**
      * Note: This field is currently not supported to trigger geo notifications.
      *
-     * @param LatLongPoint[] $locations
      * @deprecated
+     * @param LatLongPoint[] $locations
      */
     public function setLocations($locations)
     {
         $this->locations = $locations;
     }
     /**
-     * @return LatLongPoint[]
      * @deprecated
+     * @return LatLongPoint[]
      */
     public function getLocations()
     {
@@ -1082,16 +1120,16 @@ class LoyaltyClass extends \Google\Collection implements ClassInterface
     /**
      * Deprecated
      *
-     * @param string $version
      * @deprecated
+     * @param string $version
      */
     public function setVersion($version)
     {
         $this->version = $version;
     }
     /**
-     * @return string
      * @deprecated
+     * @return string
      */
     public function getVersion()
     {
@@ -1136,16 +1174,16 @@ class LoyaltyClass extends \Google\Collection implements ClassInterface
     /**
      * Deprecated.
      *
-     * @param Image $wordMark
      * @deprecated
+     * @param Image $wordMark
      */
     public function setWordMark(Image $wordMark)
     {
         $this->wordMark = $wordMark;
     }
     /**
-     * @return Image
      * @deprecated
+     * @return Image
      */
     public function getWordMark()
     {

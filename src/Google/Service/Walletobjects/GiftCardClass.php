@@ -128,39 +128,51 @@ class GiftCardClass extends \Google\Collection implements ClassInterface
      * Determines whether the merchant supports gift card redemption using
      * barcode. If true, app displays a barcode for the gift card on the Gift card
      * details screen. If false, a barcode is not displayed.
+     *
+     * @var bool
      */
-    public bool $allowBarcodeRedemption;
+    public $allowBarcodeRedemption;
     /**
      * Deprecated. Use `multipleDevicesAndHoldersAllowedStatus` instead.
+     *
      * @deprecated
+     * @var bool
      */
-    public bool $allowMultipleUsersPerObject;
+    public $allowMultipleUsersPerObject;
     protected $appLinkDataType = AppLinkData::class;
     protected $appLinkDataDataType = '';
     protected $callbackOptionsType = CallbackOptions::class;
     protected $callbackOptionsDataType = '';
     /**
      * The label to display for the card number, such as "Card Number".
+     *
+     * @var string
      */
-    public string $cardNumberLabel;
+    public $cardNumberLabel;
     protected $classTemplateInfoType = ClassTemplateInfo::class;
     protected $classTemplateInfoDataType = '';
     /**
      * Country code used to display the card's country (when the user is not in
      * that country), as well as to display localized content when content is not
      * available in the user's locale.
+     *
+     * @var string
      */
-    public string $countryCode;
+    public $countryCode;
     /**
      * Identifies whether this class supports Smart Tap. The `redemptionIssuers`
      * and object level `smartTapRedemptionLevel` fields must also be set up
      * correctly in order for a pass to support Smart Tap.
+     *
+     * @var bool
      */
-    public bool $enableSmartTap;
+    public $enableSmartTap;
     /**
      * The label to display for event number, such as "Target Event #".
+     *
+     * @var string
      */
-    public string $eventNumberLabel;
+    public $eventNumberLabel;
     protected $heroImageType = Image::class;
     protected $heroImageDataType = '';
     /**
@@ -169,8 +181,10 @@ class GiftCardClass extends \Google\Collection implements ClassInterface
      * logo is used. The format is #rrggbb where rrggbb is a hex RGB triplet, such
      * as `#ffcc00`. You can also use the shorthand version of the RGB triplet
      * which is #rgb, such as `#fc0`.
+     *
+     * @var string
      */
-    public string $hexBackgroundColor;
+    public $hexBackgroundColor;
     protected $homepageUriType = Uri::class;
     protected $homepageUriDataType = '';
     /**
@@ -179,8 +193,10 @@ class GiftCardClass extends \Google\Collection implements ClassInterface
      * identifier where the former is issued by Google and latter is chosen by
      * you. Your unique identifier should only include alphanumeric characters,
      * '.', '_', or '-'.
+     *
+     * @var string
      */
-    public string $id;
+    public $id;
     protected $imageModulesDataType = ImageModuleData::class;
     protected $imageModulesDataDataType = 'array';
     protected $infoModuleDataType = InfoModuleData::class;
@@ -188,14 +204,18 @@ class GiftCardClass extends \Google\Collection implements ClassInterface
     /**
      * Required. The issuer name. Recommended maximum length is 20 characters to
      * ensure full string is displayed on smaller screens.
+     *
+     * @var string
      */
-    public string $issuerName;
+    public $issuerName;
     /**
      * Identifies what kind of resource this is. Value: the fixed string
      * `"walletobjects#giftCardClass"`.
+     *
      * @deprecated
+     * @var string
      */
-    public string $kind;
+    public $kind;
     protected $linksModuleDataType = LinksModuleData::class;
     protected $linksModuleDataDataType = '';
     protected $localizedCardNumberLabelType = LocalizedString::class;
@@ -216,15 +236,19 @@ class GiftCardClass extends \Google\Collection implements ClassInterface
      * Merchant name, such as "Adam's Apparel". The app may display an ellipsis
      * after the first 20 characters to ensure full string is displayed on smaller
      * screens.
+     *
+     * @var string
      */
-    public string $merchantName;
+    public $merchantName;
     protected $messagesType = Message::class;
     protected $messagesDataType = 'array';
     /**
      * Identifies whether multiple users and devices will save the same object
      * referencing this class.
+     *
+     * @var string
      */
-    public string $multipleDevicesAndHoldersAllowedStatus;
+    public $multipleDevicesAndHoldersAllowedStatus;
     /**
      * Whether or not field updates to this class should trigger notifications.
      * When set to NOTIFY, we will attempt to trigger a field update notification
@@ -232,12 +256,16 @@ class GiftCardClass extends \Google\Collection implements ClassInterface
      * part of an allowlist. If not specified, no notification will be triggered.
      * This setting is ephemeral and needs to be set with each PATCH or UPDATE
      * request, otherwise a notification will not be triggered.
+     *
+     * @var string
      */
-    public string $notifyPreference;
+    public $notifyPreference;
     /**
      * The label to display for the PIN, such as "4-digit PIN".
+     *
+     * @var string
      */
-    public string $pinLabel;
+    public $pinLabel;
     protected $programLogoType = Image::class;
     protected $programLogoDataType = '';
     /**
@@ -249,7 +277,7 @@ class GiftCardClass extends \Google\Collection implements ClassInterface
      *
      * @var string[]
      */
-    public array $redemptionIssuers;
+    public $redemptionIssuers;
     protected $reviewType = Review::class;
     protected $reviewDataType = '';
     /**
@@ -262,8 +290,10 @@ class GiftCardClass extends \Google\Collection implements ClassInterface
      * platform will automatically set this field to `approved` and it can be
      * immediately used to create or migrate objects. When updating an already
      * `approved` class you should keep setting this field to `underReview`.
+     *
+     * @var string
      */
-    public string $reviewStatus;
+    public $reviewStatus;
     protected $securityAnimationType = SecurityAnimation::class;
     protected $securityAnimationDataType = '';
     protected $textModulesDataType = TextModuleData::class;
@@ -272,13 +302,17 @@ class GiftCardClass extends \Google\Collection implements ClassInterface
     protected $valueAddedModuleDataDataType = 'array';
     /**
      * Deprecated
+     *
      * @deprecated
+     * @var string
      */
-    public string $version;
+    public $version;
     /**
      * View Unlock Requirement options for the gift card.
+     *
+     * @var string
      */
-    public string $viewUnlockRequirement;
+    public $viewUnlockRequirement;
     protected $wideProgramLogoType = Image::class;
     protected $wideProgramLogoDataType = '';
     protected $wordMarkType = Image::class;
@@ -305,16 +339,16 @@ class GiftCardClass extends \Google\Collection implements ClassInterface
     /**
      * Deprecated. Use `multipleDevicesAndHoldersAllowedStatus` instead.
      *
-     * @param bool $allowMultipleUsersPerObject
      * @deprecated
+     * @param bool $allowMultipleUsersPerObject
      */
     public function setAllowMultipleUsersPerObject($allowMultipleUsersPerObject)
     {
         $this->allowMultipleUsersPerObject = $allowMultipleUsersPerObject;
     }
     /**
-     * @return bool
      * @deprecated
+     * @return bool
      */
     public function getAllowMultipleUsersPerObject()
     {
@@ -537,16 +571,16 @@ class GiftCardClass extends \Google\Collection implements ClassInterface
     /**
      * Deprecated. Use textModulesData instead.
      *
-     * @param InfoModuleData $infoModuleData
      * @deprecated
+     * @param InfoModuleData $infoModuleData
      */
     public function setInfoModuleData(InfoModuleData $infoModuleData)
     {
         $this->infoModuleData = $infoModuleData;
     }
     /**
-     * @return InfoModuleData
      * @deprecated
+     * @return InfoModuleData
      */
     public function getInfoModuleData()
     {
@@ -573,16 +607,16 @@ class GiftCardClass extends \Google\Collection implements ClassInterface
      * Identifies what kind of resource this is. Value: the fixed string
      * `"walletobjects#giftCardClass"`.
      *
-     * @param string $kind
      * @deprecated
+     * @param string $kind
      */
     public function setKind($kind)
     {
         $this->kind = $kind;
     }
     /**
-     * @return string
      * @deprecated
+     * @return string
      */
     public function getKind()
     {
@@ -691,16 +725,16 @@ class GiftCardClass extends \Google\Collection implements ClassInterface
     /**
      * Note: This field is currently not supported to trigger geo notifications.
      *
-     * @param LatLongPoint[] $locations
      * @deprecated
+     * @param LatLongPoint[] $locations
      */
     public function setLocations($locations)
     {
         $this->locations = $locations;
     }
     /**
-     * @return LatLongPoint[]
      * @deprecated
+     * @return LatLongPoint[]
      */
     public function getLocations()
     {
@@ -957,16 +991,16 @@ class GiftCardClass extends \Google\Collection implements ClassInterface
     /**
      * Deprecated
      *
-     * @param string $version
      * @deprecated
+     * @param string $version
      */
     public function setVersion($version)
     {
         $this->version = $version;
     }
     /**
-     * @return string
      * @deprecated
+     * @return string
      */
     public function getVersion()
     {
@@ -1011,16 +1045,16 @@ class GiftCardClass extends \Google\Collection implements ClassInterface
     /**
      * Deprecated.
      *
-     * @param Image $wordMark
      * @deprecated
+     * @param Image $wordMark
      */
     public function setWordMark(Image $wordMark)
     {
         $this->wordMark = $wordMark;
     }
     /**
-     * @return Image
      * @deprecated
+     * @return Image
      */
     public function getWordMark()
     {

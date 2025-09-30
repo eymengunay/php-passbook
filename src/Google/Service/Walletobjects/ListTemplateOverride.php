@@ -74,16 +74,16 @@ class ListTemplateOverride extends \Google\Model
      * An unused/deprecated field. Setting it will have no effect on what the user
      * sees.
      *
-     * @param FieldSelector $thirdRowOption
      * @deprecated
+     * @param FieldSelector $thirdRowOption
      */
     public function setThirdRowOption(FieldSelector $thirdRowOption)
     {
         $this->thirdRowOption = $thirdRowOption;
     }
     /**
-     * @return FieldSelector
      * @deprecated
+     * @return FieldSelector
      */
     public function getThirdRowOption()
     {

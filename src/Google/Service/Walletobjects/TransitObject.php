@@ -166,14 +166,18 @@ class TransitObject extends \Google\Collection implements ObjectInterface
      * same type as this object, must already exist, and must be approved. Class
      * IDs should follow the format issuer ID.identifier where the former is
      * issued by Google and latter is chosen by you.
+     *
+     * @var string
      */
-    public string $classId;
+    public $classId;
     protected $classReferenceType = TransitClass::class;
     protected $classReferenceDataType = '';
     /**
      * The concession category for the ticket.
+     *
+     * @var string
      */
-    public string $concessionCategory;
+    public $concessionCategory;
     protected $customConcessionCategoryType = LocalizedString::class;
     protected $customConcessionCategoryDataType = '';
     protected $customTicketStatusType = LocalizedString::class;
@@ -185,8 +189,10 @@ class TransitObject extends \Google\Collection implements ObjectInterface
      * is set to true, regardless of the `messages` field, expiration
      * notifications to the user will be suppressed. By default, this field is set
      * to false. Currently, this can only be set for offers.
+     *
+     * @var bool
      */
-    public bool $disableExpirationNotification;
+    public $disableExpirationNotification;
     protected $groupingInfoType = GroupingInfo::class;
     protected $groupingInfoDataType = '';
     /**
@@ -194,12 +200,16 @@ class TransitObject extends \Google\Collection implements ObjectInterface
      * set by the platform when a user saves the object, linking it to their
      * device. Intended for use by select partners. Contact support for additional
      * information.
+     *
+     * @var bool
      */
-    public bool $hasLinkedDevice;
+    public $hasLinkedDevice;
     /**
      * Indicates if the object has users. This field is set by the platform.
+     *
+     * @var bool
      */
-    public bool $hasUsers;
+    public $hasUsers;
     protected $heroImageType = Image::class;
     protected $heroImageDataType = '';
     /**
@@ -208,16 +218,20 @@ class TransitObject extends \Google\Collection implements ObjectInterface
      * logo is used. The format is #rrggbb where rrggbb is a hex RGB triplet, such
      * as `#ffcc00`. You can also use the shorthand version of the RGB triplet
      * which is #rgb, such as `#fc0`.
+     *
+     * @var string
      */
-    public string $hexBackgroundColor;
+    public $hexBackgroundColor;
     /**
      * Required. The unique identifier for an object. This ID must be unique
      * across all objects from an issuer. This value should follow the format
      * issuer ID.identifier where the former is issued by Google and latter is
      * chosen by you. The unique identifier should only include alphanumeric
      * characters, '.', '_', or '-'.
+     *
+     * @var string
      */
-    public string $id;
+    public $id;
     protected $imageModulesDataType = ImageModuleData::class;
     protected $imageModulesDataDataType = 'array';
     protected $infoModuleDataType = InfoModuleData::class;
@@ -239,7 +253,7 @@ class TransitObject extends \Google\Collection implements ObjectInterface
      *
      * @var string[]
      */
-    public array $linkedObjectIds;
+    public $linkedObjectIds;
     protected $linksModuleDataType = LinksModuleData::class;
     protected $linksModuleDataDataType = '';
     protected $locationsType = LatLongPoint::class;
@@ -256,19 +270,25 @@ class TransitObject extends \Google\Collection implements ObjectInterface
      * NOTIFICATION_SETTINGS_UNSPECIFIED, no notification will be triggered. This
      * setting is ephemeral and needs to be set with each PATCH or UPDATE request,
      * otherwise a notification will not be triggered.
+     *
+     * @var string
      */
-    public string $notifyPreference;
+    public $notifyPreference;
     protected $passConstraintsType = PassConstraints::class;
     protected $passConstraintsDataType = '';
     /**
      * The name(s) of the passengers the ticket is assigned to. The above
      * `passengerType` field is meant to give Google context on this field.
+     *
+     * @var string
      */
-    public string $passengerNames;
+    public $passengerNames;
     /**
      * The number of passengers.
+     *
+     * @var string
      */
-    public string $passengerType;
+    public $passengerType;
     protected $purchaseDetailsType = PurchaseDetails::class;
     protected $purchaseDetailsDataType = '';
     protected $rotatingBarcodeType = RotatingBarcode::class;
@@ -280,14 +300,18 @@ class TransitObject extends \Google\Collection implements ObjectInterface
      * NFC for this object. The class level fields `enableSmartTap` and
      * `redemptionIssuers` must also be set up correctly in order for the pass to
      * support Smart Tap. Only ASCII characters are supported.
+     *
+     * @var string
      */
-    public string $smartTapRedemptionValue;
+    public $smartTapRedemptionValue;
     /**
      * Required. The state of the object. This field is used to determine how an
      * object is displayed in the app. For example, an `inactive` object is moved
      * to the "Expired passes" section.
+     *
+     * @var string
      */
-    public string $state;
+    public $state;
     protected $textModulesDataType = TextModuleData::class;
     protected $textModulesDataDataType = 'array';
     protected $ticketLegType = TicketLeg::class;
@@ -297,35 +321,45 @@ class TransitObject extends \Google\Collection implements ObjectInterface
     /**
      * The number of the ticket. This is a unique identifier for the ticket in the
      * transit operator's system.
+     *
+     * @var string
      */
-    public string $ticketNumber;
+    public $ticketNumber;
     protected $ticketRestrictionsType = TicketRestrictions::class;
     protected $ticketRestrictionsDataType = '';
     /**
      * The status of the ticket. For states which affect display, use the `state`
      * field instead.
+     *
+     * @var string
      */
-    public string $ticketStatus;
+    public $ticketStatus;
     /**
      * This id is used to group tickets together if the user has saved multiple
      * tickets for the same trip.
+     *
+     * @var string
      */
-    public string $tripId;
+    public $tripId;
     /**
      * Required. The type of trip this transit object represents. Used to
      * determine the pass title and/or which symbol to use between the origin and
      * destination.
+     *
+     * @var string
      */
-    public string $tripType;
+    public $tripType;
     protected $validTimeIntervalType = TimeInterval::class;
     protected $validTimeIntervalDataType = '';
     protected $valueAddedModuleDataType = ValueAddedModuleData::class;
     protected $valueAddedModuleDataDataType = 'array';
     /**
      * Deprecated
+     *
      * @deprecated
+     * @var string
      */
-    public string $version;
+    public $version;
 
     /**
      * The activation status for the object. Required if the class has
@@ -694,16 +728,16 @@ class TransitObject extends \Google\Collection implements ObjectInterface
     /**
      * Note: This field is currently not supported to trigger geo notifications.
      *
-     * @param LatLongPoint[] $locations
      * @deprecated
+     * @param LatLongPoint[] $locations
      */
     public function setLocations($locations)
     {
         $this->locations = $locations;
     }
     /**
-     * @return LatLongPoint[]
      * @deprecated
+     * @return LatLongPoint[]
      */
     public function getLocations()
     {
@@ -1100,16 +1134,16 @@ class TransitObject extends \Google\Collection implements ObjectInterface
     /**
      * Deprecated
      *
-     * @param string $version
      * @deprecated
+     * @param string $version
      */
     public function setVersion($version)
     {
         $this->version = $version;
     }
     /**
-     * @return string
      * @deprecated
+     * @return string
      */
     public function getVersion()
     {

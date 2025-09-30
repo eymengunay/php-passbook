@@ -30,19 +30,25 @@ class Uri extends \Google\Model
      * characters to ensure full string is displayed on smaller screens. Note that
      * in some contexts this text is not used, such as when `description` is part
      * of an image.
+     *
+     * @var string
      */
-    public string $description;
+    public $description;
     /**
      * The ID associated with a uri. This field is here to enable ease of
      * management of uris.
+     *
+     * @var string
      */
-    public string $id;
+    public $id;
     /**
      * Identifies what kind of resource this is. Value: the fixed string
      * `"walletobjects#uri"`.
+     *
      * @deprecated
+     * @var string
      */
-    public string $kind;
+    public $kind;
     protected $localizedDescriptionType = LocalizedString::class;
     protected $localizedDescriptionDataType = '';
     /**
@@ -50,8 +56,10 @@ class Uri extends \Google\Model
      * `LinksModuleData` module can have different prefixes indicating the type of
      * URI (a link to a web page, a link to a map, a telephone number, or an email
      * address). URIs must have a scheme.
+     *
+     * @var string
      */
-    public string $uri;
+    public $uri;
 
     /**
      * The URI's title appearing in the app as text. Recommended maximum is 20
@@ -93,16 +101,16 @@ class Uri extends \Google\Model
      * Identifies what kind of resource this is. Value: the fixed string
      * `"walletobjects#uri"`.
      *
-     * @param string $kind
      * @deprecated
+     * @param string $kind
      */
     public function setKind($kind)
     {
         $this->kind = $kind;
     }
     /**
-     * @return string
      * @deprecated
+     * @return string
      */
     public function getKind()
     {

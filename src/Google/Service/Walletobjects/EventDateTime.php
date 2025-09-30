@@ -62,8 +62,10 @@ class EventDateTime extends \Google\Model
      * portion should be `2018-06-05T20:00:00`. If the local date/time at the
      * venue is 4 hours before UTC, an offset of `-04:00` may be appended. Without
      * offset information, some rich features may not be available.
+     *
+     * @var string
      */
-    public string $doorsOpen;
+    public $doorsOpen;
     /**
      * The label to use for the doors open value (`doorsOpen`) on the card detail
      * view. Each available option maps to a set of localized strings, so that
@@ -71,8 +73,10 @@ class EventDateTime extends \Google\Model
      * `doorsOpenLabel` and `customDoorsOpenLabel` may not be set. If neither is
      * set, the label will default to "Doors Open", localized. If the doors open
      * field is unset, this label will not be used.
+     *
+     * @var string
      */
-    public string $doorsOpenLabel;
+    public $doorsOpenLabel;
     /**
      * The date/time when the event ends. If the event spans multiple days, it
      * should be the end date/time on the last day. This is an ISO 8601 extended
@@ -94,14 +98,18 @@ class EventDateTime extends \Google\Model
      * portion should be `2018-06-05T20:00:00`. If the local date/time at the
      * venue is 4 hours before UTC, an offset of `-04:00` may be appended. Without
      * offset information, some rich features may not be available.
+     *
+     * @var string
      */
-    public string $end;
+    public $end;
     /**
      * Identifies what kind of resource this is. Value: the fixed string
      * `"walletobjects#eventDateTime"`.
+     *
      * @deprecated
+     * @var string
      */
-    public string $kind;
+    public $kind;
     /**
      * The date/time when the event starts. If the event spans multiple days, it
      * should be the start date/time on the first day. This is an ISO 8601
@@ -123,8 +131,10 @@ class EventDateTime extends \Google\Model
      * portion should be `2018-06-05T20:00:00`. If the local date/time at the
      * venue is 4 hours before UTC, an offset of `-04:00` may be appended. Without
      * offset information, some rich features may not be available.
+     *
+     * @var string
      */
-    public string $start;
+    public $start;
 
     /**
      * A custom label to use for the doors open value (`doorsOpen`) on the card
@@ -244,16 +254,16 @@ class EventDateTime extends \Google\Model
      * Identifies what kind of resource this is. Value: the fixed string
      * `"walletobjects#eventDateTime"`.
      *
-     * @param string $kind
      * @deprecated
+     * @param string $kind
      */
     public function setKind($kind)
     {
         $this->kind = $kind;
     }
     /**
-     * @return string
      * @deprecated
+     * @return string
      */
     public function getKind()
     {

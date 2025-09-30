@@ -32,18 +32,24 @@ class DiffChecksumsResponse extends \Google\Model
     protected $checksumsLocationDataType = '';
     /**
      * The chunk size of checksums. Must be a multiple of 256KB.
+     *
+     * @var string
      */
-    public string $chunkSizeBytes;
+    public $chunkSizeBytes;
     protected $objectLocationType = CompositeMedia::class;
     protected $objectLocationDataType = '';
     /**
      * The total size of the server object.
+     *
+     * @var string
      */
-    public string $objectSizeBytes;
+    public $objectSizeBytes;
     /**
      * The object version of the object the checksums are being returned for.
+     *
+     * @var string
      */
-    public string $objectVersion;
+    public $objectVersion;
 
     /**
      * Exactly one of these fields must be populated. If checksums_location is

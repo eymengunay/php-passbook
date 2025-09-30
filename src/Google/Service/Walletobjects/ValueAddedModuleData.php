@@ -38,14 +38,18 @@ class ValueAddedModuleData extends \Google\Model
      * shown before modules with a higher sort index. If unspecified, the sort
      * index is assumed to be INT_MAX. For two modules with the same index, the
      * sorting behavior is undefined.
+     *
+     * @var int
      */
-    public int $sortIndex;
+    public $sortIndex;
     /**
      * URI that the module leads to on click. This can be a web link or a deep
      * link as mentioned in https://developer.android.com/training/app-links/deep-
      * linking.
+     *
+     * @var string
      */
-    public string $uri;
+    public $uri;
     protected $viewConstraintsType = ModuleViewConstraints::class;
     protected $viewConstraintsDataType = '';
 

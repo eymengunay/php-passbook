@@ -183,29 +183,39 @@ class Barcode extends \Google\Model
      * An optional text that will override the default text that shows under the
      * barcode. This field is intended for a human readable equivalent of the
      * barcode value, used when the barcode cannot be scanned.
+     *
+     * @var string
      */
-    public string $alternateText;
+    public $alternateText;
     /**
      * Identifies what kind of resource this is. Value: the fixed string
      * `"walletobjects#barcode"`.
+     *
      * @deprecated
+     * @var string
      */
-    public string $kind;
+    public $kind;
     /**
      * The render encoding for the barcode. When specified, barcode is rendered in
      * the given encoding. Otherwise best known encoding is chosen by Google.
+     *
+     * @var string
      */
-    public string $renderEncoding;
+    public $renderEncoding;
     protected $showCodeTextType = LocalizedString::class;
     protected $showCodeTextDataType = '';
     /**
      * The type of barcode.
+     *
+     * @var string
      */
-    public string $type;
+    public $type;
     /**
      * The value encoded in the barcode.
+     *
+     * @var string
      */
-    public string $value;
+    public $value;
 
     /**
      * An optional text that will override the default text that shows under the
@@ -229,16 +239,16 @@ class Barcode extends \Google\Model
      * Identifies what kind of resource this is. Value: the fixed string
      * `"walletobjects#barcode"`.
      *
-     * @param string $kind
      * @deprecated
+     * @param string $kind
      */
     public function setKind($kind)
     {
         $this->kind = $kind;
     }
     /**
-     * @return string
      * @deprecated
+     * @return string
      */
     public function getKind()
     {

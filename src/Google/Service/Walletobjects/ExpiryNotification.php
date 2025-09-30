@@ -30,8 +30,10 @@ class ExpiryNotification extends \Google\Model
 {
     /**
      * Indicates if the object needs to have expiry notification enabled.
+     *
+     * @var bool
      */
-    public bool $enableNotification;
+    public $enableNotification;
 
     /**
      * Indicates if the object needs to have expiry notification enabled.

@@ -49,7 +49,10 @@ class FirstRowOption extends \Google\Model
     public const TRANSIT_OPTION_originName = 'originName';
     protected $fieldOptionType = FieldSelector::class;
     protected $fieldOptionDataType = '';
-    public string $transitOption;
+    /**
+     * @var string
+     */
+    public $transitOption;
 
     /**
      * A reference to the field to be displayed in the first row.

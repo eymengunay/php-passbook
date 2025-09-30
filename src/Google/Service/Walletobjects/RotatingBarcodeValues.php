@@ -30,8 +30,10 @@ class RotatingBarcodeValues extends \Google\Collection
     protected $collection_key = 'values';
     /**
      * Required. The amount of time each barcode is valid for.
+     *
+     * @var string
      */
-    public string $periodMillis;
+    public $periodMillis;
     /**
      * Required. The date/time the first barcode is valid from. Barcodes will be
      * rotated through using period_millis defined on the object's
@@ -46,15 +48,17 @@ class RotatingBarcodeValues extends \Google\Collection
      * equivalent of Eastern Daylight Time (EDT). Remember that offset varies in
      * regions that observe Daylight Saving Time (or Summer Time), depending on
      * the time of the year.
+     *
+     * @var string
      */
-    public string $startDateTime;
+    public $startDateTime;
     /**
      * Required. The values to encode in the barcode. At least one value is
      * required.
      *
      * @var string[]
      */
-    public array $values;
+    public $values;
 
     /**
      * Required. The amount of time each barcode is valid for.

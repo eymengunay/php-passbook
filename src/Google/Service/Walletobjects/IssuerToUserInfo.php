@@ -40,17 +40,24 @@ class IssuerToUserInfo extends \Google\Model
      * @deprecated
      */
     public const ACTION_signUp = 'signUp';
-    public string $action;
+    /**
+     * @var string
+     */
+    public $action;
     protected $signUpInfoType = SignUpInfo::class;
     protected $signUpInfoDataType = '';
     /**
      * Currently not used, consider deprecating.
+     *
+     * @var string
      */
-    public string $url;
+    public $url;
     /**
      * JSON web token for action S2AP.
+     *
+     * @var string
      */
-    public string $value;
+    public $value;
 
     /**
      * @param self::ACTION_* $action

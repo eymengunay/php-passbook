@@ -33,21 +33,27 @@ class TextModuleData extends \Google\Model
      * The body of the Text Module, which is defined as an uninterrupted string.
      * Recommended maximum length is 500 characters to ensure full string is
      * displayed on smaller screens.
+     *
+     * @var string
      */
-    public string $body;
+    public $body;
     /**
      * The header of the Text Module. Recommended maximum length is 35 characters
      * to ensure full string is displayed on smaller screens.
+     *
+     * @var string
      */
-    public string $header;
+    public $header;
     /**
      * The ID associated with a text module. This field is here to enable ease of
      * management of text modules and referencing them in template overrides. The
      * ID should only include alphanumeric characters, '_', or '-'. It can not
      * include dots, as dots are used to separate fields within
      * FieldReference.fieldPaths in template overrides.
+     *
+     * @var string
      */
-    public string $id;
+    public $id;
     protected $localizedBodyType = LocalizedString::class;
     protected $localizedBodyDataType = '';
     protected $localizedHeaderType = LocalizedString::class;

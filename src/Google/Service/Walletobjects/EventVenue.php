@@ -30,9 +30,11 @@ class EventVenue extends \Google\Model
     /**
      * Identifies what kind of resource this is. Value: the fixed string
      * `"walletobjects#eventVenue"`.
+     *
      * @deprecated
+     * @var string
      */
-    public string $kind;
+    public $kind;
     protected $nameType = LocalizedString::class;
     protected $nameDataType = '';
 
@@ -58,16 +60,16 @@ class EventVenue extends \Google\Model
      * Identifies what kind of resource this is. Value: the fixed string
      * `"walletobjects#eventVenue"`.
      *
-     * @param string $kind
      * @deprecated
+     * @param string $kind
      */
     public function setKind($kind)
     {
         $this->kind = $kind;
     }
     /**
-     * @return string
      * @deprecated
+     * @return string
      */
     public function getKind()
     {

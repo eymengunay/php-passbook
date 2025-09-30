@@ -66,46 +66,72 @@ class MediaRequestInfo extends \Google\Model
     public const NOTIFICATION_TYPE_ERROR = 'ERROR';
     /**
      * The number of current bytes uploaded or downloaded.
+     *
+     * @var string
      */
-    public string $currentBytes;
+    public $currentBytes;
     /**
      * Data to be copied to backend requests. Custom data is returned to Scotty in
      * the agent_state field, which Scotty will then provide in subsequent upload
      * notifications.
+     *
+     * @var string
      */
-    public string $customData;
+    public $customData;
     /**
      * Set if the http request info is diff encoded. The value of this field is
      * the version number of the base revision. This is corresponding to Apiary's
      * mediaDiffObjectVersion (//depot/google3/java/com/google/api/server/media/va
      * riable/DiffObjectVersionVariable.java). See go/esf-scotty-diff-upload for
      * more information.
+     *
+     * @var string
      */
-    public string $diffObjectVersion;
-    public int $finalStatus;
+    public $diffObjectVersion;
+    /**
+     * @var int
+     */
+    public $finalStatus;
     /**
      * The type of notification received from Scotty.
+     *
+     * @var string
      */
-    public string $notificationType;
+    public $notificationType;
+    /**
+     * The physical headers provided by RequestReceivedParameters in Scotty
+     * request. type is uploader_service.KeyValuePairs.
+     *
+     * @var string
+     */
+    public $physicalHeaders;
     /**
      * The Scotty request ID.
+     *
+     * @var string
      */
-    public string $requestId;
+    public $requestId;
     /**
      * The partition of the Scotty server handling this request. type is
      * uploader_service.RequestReceivedParamsServingInfo
      * LINT.IfChange(request_received_params_serving_info_annotations)
      * LINT.ThenChange()
+     *
+     * @var string
      */
-    public string $requestReceivedParamsServingInfo;
+    public $requestReceivedParamsServingInfo;
     /**
      * The total size of the file.
+     *
+     * @var string
      */
-    public string $totalBytes;
+    public $totalBytes;
     /**
      * Whether the total bytes field contains an estimated data.
+     *
+     * @var bool
      */
-    public bool $totalBytesIsEstimated;
+    public $totalBytesIsEstimated;
 
     /**
      * The number of current bytes uploaded or downloaded.
@@ -192,6 +218,23 @@ class MediaRequestInfo extends \Google\Model
     public function getNotificationType()
     {
         return $this->notificationType;
+    }
+    /**
+     * The physical headers provided by RequestReceivedParameters in Scotty
+     * request. type is uploader_service.KeyValuePairs.
+     *
+     * @param string $physicalHeaders
+     */
+    public function setPhysicalHeaders($physicalHeaders)
+    {
+        $this->physicalHeaders = $physicalHeaders;
+    }
+    /**
+     * @return string
+     */
+    public function getPhysicalHeaders()
+    {
+        return $this->physicalHeaders;
     }
     /**
      * The Scotty request ID.

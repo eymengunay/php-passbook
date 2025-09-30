@@ -31,9 +31,11 @@ class LocalizedString extends \Google\Collection
     /**
      * Identifies what kind of resource this is. Value: the fixed string
      * `"walletobjects#localizedString"`.
+     *
      * @deprecated
+     * @var string
      */
-    public string $kind;
+    public $kind;
     protected $translatedValuesType = TranslatedString::class;
     protected $translatedValuesDataType = 'array';
 
@@ -58,16 +60,16 @@ class LocalizedString extends \Google\Collection
      * Identifies what kind of resource this is. Value: the fixed string
      * `"walletobjects#localizedString"`.
      *
-     * @param string $kind
      * @deprecated
+     * @param string $kind
      */
     public function setKind($kind)
     {
         $this->kind = $kind;
     }
     /**
-     * @return string
      * @deprecated
+     * @return string
      */
     public function getKind()
     {

@@ -143,18 +143,24 @@ class GenericObject extends \Google\Collection implements ObjectInterface
      * same type as this object, must already exist, and must be approved. Class
      * IDs should follow the format `issuerID.identifier` where `issuerID` is
      * issued by Google and `identifier` is chosen by you.
+     *
+     * @var string
      */
-    public string $classId;
+    public $classId;
     /**
      * Specify which `GenericType` the card belongs to.
+     *
+     * @var string
      */
-    public string $genericType;
+    public $genericType;
     protected $groupingInfoType = GroupingInfo::class;
     protected $groupingInfoDataType = '';
     /**
      * Indicates if the object has users. This field is set by the platform.
+     *
+     * @var bool
      */
-    public bool $hasUsers;
+    public $hasUsers;
     protected $headerType = LocalizedString::class;
     protected $headerDataType = '';
     protected $heroImageType = Image::class;
@@ -163,16 +169,20 @@ class GenericObject extends \Google\Collection implements ObjectInterface
      * The background color for the card. If not set, the dominant color of the
      * hero image is used, and if no hero image is set, the dominant color of the
      * logo is used and if logo is not set, a color would be chosen by Google.
+     *
+     * @var string
      */
-    public string $hexBackgroundColor;
+    public $hexBackgroundColor;
     /**
      * Required. The unique identifier for an object. This ID must be unique
      * across all objects from an issuer. This value needs to follow the format
      * `issuerID.identifier` where `issuerID` is issued by Google and `identifier`
      * is chosen by you. The unique identifier can only include alphanumeric
      * characters, `.`, `_`, or `-`.
+     *
+     * @var string
      */
-    public string $id;
+    public $id;
     protected $imageModulesDataType = ImageModuleData::class;
     protected $imageModulesDataDataType = 'array';
     /**
@@ -192,7 +202,7 @@ class GenericObject extends \Google\Collection implements ObjectInterface
      *
      * @var string[]
      */
-    public array $linkedObjectIds;
+    public $linkedObjectIds;
     protected $linksModuleDataType = LinksModuleData::class;
     protected $linksModuleDataDataType = '';
     protected $logoType = Image::class;
@@ -214,15 +224,19 @@ class GenericObject extends \Google\Collection implements ObjectInterface
      * NFC for this object. The class level fields `enableSmartTap` and
      * `redemptionIssuers` must also be set up correctly in order for the pass to
      * support Smart Tap. Only ASCII characters are supported.
+     *
+     * @var string
      */
-    public string $smartTapRedemptionValue;
+    public $smartTapRedemptionValue;
     /**
      * The state of the object. This field is used to determine how an object is
      * displayed in the app. For example, an `inactive` object is moved to the
      * "Expired passes" section. If this is not provided, the object would be
      * considered `ACTIVE`.
+     *
+     * @var string
      */
-    public string $state;
+    public $state;
     protected $subheaderType = LocalizedString::class;
     protected $subheaderDataType = '';
     protected $textModulesDataType = TextModuleData::class;

@@ -93,14 +93,18 @@ class FieldReference extends \Google\Model
     /**
      * Only valid if the `fieldPath` references a date field. Chooses how the date
      * field will be formatted and displayed in the UI.
+     *
+     * @var string
      */
-    public string $dateFormat;
+    public $dateFormat;
     /**
      * Path to the field being referenced, prefixed with "object" or "class" and
      * separated with dots. For example, it may be the string
      * "object.purchaseDetails.purchasePrice".
+     *
+     * @var string
      */
-    public string $fieldPath;
+    public $fieldPath;
 
     /**
      * Only valid if the `fieldPath` references a date field. Chooses how the date

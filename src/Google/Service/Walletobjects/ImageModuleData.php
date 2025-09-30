@@ -28,8 +28,10 @@ class ImageModuleData extends \Google\Model
     /**
      * The ID associated with an image module. This field is here to enable ease
      * of management of image modules.
+     *
+     * @var string
      */
-    public string $id;
+    public $id;
     protected $mainImageType = Image::class;
     protected $mainImageDataType = '';
 

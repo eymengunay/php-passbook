@@ -27,19 +27,25 @@ class Money extends \Google\Model
 {
     /**
      * The currency code, such as "USD" or "EUR."
+     *
+     * @var string
      */
-    public string $currencyCode;
+    public $currencyCode;
     /**
      * Identifies what kind of resource this is. Value: the fixed string
      * `"walletobjects#money"`.
+     *
      * @deprecated
+     * @var string
      */
-    public string $kind;
+    public $kind;
     /**
      * The unit of money amount in micros. For example, $1 USD would be
      * represented as 1000000 micros.
+     *
+     * @var string
      */
-    public string $micros;
+    public $micros;
 
     /**
      * The currency code, such as "USD" or "EUR."
@@ -61,16 +67,16 @@ class Money extends \Google\Model
      * Identifies what kind of resource this is. Value: the fixed string
      * `"walletobjects#money"`.
      *
-     * @param string $kind
      * @deprecated
+     * @param string $kind
      */
     public function setKind($kind)
     {
         $this->kind = $kind;
     }
     /**
-     * @return string
      * @deprecated
+     * @return string
      */
     public function getKind()
     {

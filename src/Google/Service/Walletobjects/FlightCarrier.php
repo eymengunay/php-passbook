@@ -35,20 +35,26 @@ class FlightCarrier extends \Google\Model
      * Two character IATA airline code of the marketing carrier (as opposed to
      * operating carrier). Exactly one of this or `carrierIcaoCode` needs to be
      * provided for `carrier` and `operatingCarrier`. eg: "LX" for Swiss Air
+     *
+     * @var string
      */
-    public string $carrierIataCode;
+    public $carrierIataCode;
     /**
      * Three character ICAO airline code of the marketing carrier (as opposed to
      * operating carrier). Exactly one of this or `carrierIataCode` needs to be
      * provided for `carrier` and `operatingCarrier`. eg: "EZY" for Easy Jet
+     *
+     * @var string
      */
-    public string $carrierIcaoCode;
+    public $carrierIcaoCode;
     /**
      * Identifies what kind of resource this is. Value: the fixed string
      * `"walletobjects#flightCarrier"`.
+     *
      * @deprecated
+     * @var string
      */
-    public string $kind;
+    public $kind;
     protected $wideAirlineLogoType = Image::class;
     protected $wideAirlineLogoDataType = '';
 
@@ -145,16 +151,16 @@ class FlightCarrier extends \Google\Model
      * Identifies what kind of resource this is. Value: the fixed string
      * `"walletobjects#flightCarrier"`.
      *
-     * @param string $kind
      * @deprecated
+     * @param string $kind
      */
     public function setKind($kind)
     {
         $this->kind = $kind;
     }
     /**
-     * @return string
      * @deprecated
+     * @return string
      */
     public function getKind()
     {

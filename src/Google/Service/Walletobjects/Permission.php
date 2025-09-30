@@ -50,12 +50,16 @@ class Permission extends \Google\Model
     /**
      * The email address of the user, group, or service account to which this
      * permission refers to.
+     *
+     * @var string
      */
-    public string $emailAddress;
+    public $emailAddress;
     /**
      * The role granted by this permission.
+     *
+     * @var string
      */
-    public string $role;
+    public $role;
 
     /**
      * The email address of the user, group, or service account to which this

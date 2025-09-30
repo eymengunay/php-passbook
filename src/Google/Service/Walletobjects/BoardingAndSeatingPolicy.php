@@ -79,19 +79,25 @@ class BoardingAndSeatingPolicy extends \Google\Model
     /**
      * Indicates the policy the airline uses for boarding. If unset, Google will
      * default to `zoneBased`.
+     *
+     * @var string
      */
-    public string $boardingPolicy;
+    public $boardingPolicy;
     /**
      * Identifies what kind of resource this is. Value: the fixed string
      * `"walletobjects#boardingAndSeatingPolicy"`.
+     *
      * @deprecated
+     * @var string
      */
-    public string $kind;
+    public $kind;
     /**
      * Seating policy which dictates how we display the seat class. If unset,
      * Google will default to `cabinBased`.
+     *
+     * @var string
      */
-    public string $seatClassPolicy;
+    public $seatClassPolicy;
 
     /**
      * Indicates the policy the airline uses for boarding. If unset, Google will
@@ -117,16 +123,16 @@ class BoardingAndSeatingPolicy extends \Google\Model
      * Identifies what kind of resource this is. Value: the fixed string
      * `"walletobjects#boardingAndSeatingPolicy"`.
      *
-     * @param string $kind
      * @deprecated
+     * @param string $kind
      */
     public function setKind($kind)
     {
         $this->kind = $kind;
     }
     /**
-     * @return string
      * @deprecated
+     * @return string
      */
     public function getKind()
     {

@@ -31,8 +31,10 @@ class SmartTapMerchantData extends \Google\Collection
     /**
      * Available only to Smart Tap enabled partners. Contact support for
      * additional guidance.
+     *
+     * @var string
      */
-    public string $smartTapMerchantId;
+    public $smartTapMerchantId;
 
     /**
      * Available only to Smart Tap enabled partners. Contact support for
