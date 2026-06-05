@@ -173,6 +173,14 @@ class PassTest extends TestCase
         // Relevant date
         $this->eventTicket->setRelevantDate(new DateTime());
 
+        // Add relevant date interval
+        $relevantDate = new Pass\RelevantDate();
+        $relevantDate
+            ->setDate(new DateTime('2026-06-10 14:00:00'))
+            ->setEndDate(new DateTime('2026-06-10 16:59:59'))
+            ->setStartDate(new DateTime('2026-06-10 14:00:00'));
+        $this->eventTicket->addRelevantDate($relevantDate);
+
         // Set pass structure
         $this->eventTicket->setStructure($structure);
 
@@ -193,6 +201,7 @@ class PassTest extends TestCase
         $this->assertArrayHasKey('backgroundColor', $array);
         $this->assertArrayHasKey('eventTicket', $array);
         $this->assertArrayHasKey('relevantDate', $array);
+        $this->assertArrayHasKey('relevantDates', $array);
         $this->assertArrayHasKey('groupingIdentifier', $array);
     }
 
