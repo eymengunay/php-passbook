@@ -18,6 +18,7 @@ use Passbook\Pass\NfcInterface;
 use Passbook\Pass\ImageInterface;
 use Passbook\Pass\LocalizationInterface;
 use Passbook\Pass\LocationInterface;
+use Passbook\Pass\RelevantDateInterface;
 use Passbook\Pass\Structure;
 use Passbook\Pass\StructureInterface;
 
@@ -125,6 +126,14 @@ class Pass implements PassInterface
      * @var DateTime
      */
     protected $relevantDate;
+
+    /**
+     * Start and end date and times for the pass relevancy interval.
+     * For example, the start time and end time of a movie.
+     *
+     * @var array
+     */
+    protected $relevantDates;
 
     /**
      * Maximum distance in meters from a relevant latitude and longitude that
@@ -304,6 +313,7 @@ class Pass implements PassInterface
             'locations',
             'maxDistance',
             'relevantDate',
+            'relevantDates',
             'barcode',
             'barcodes',
             'backgroundColor',
@@ -564,6 +574,24 @@ class Pass implements PassInterface
     public function getRelevantDate()
     {
         return $this->relevantDate;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function addRelevantDate(RelevantDateInterface $relevantDate)
+    {
+        $this->relevantDates[] = $relevantDate;
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getRelevantDates()
+    {
+        return $this->relevantDates;
     }
 
     /**
